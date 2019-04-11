@@ -1,0 +1,14 @@
+#+TITLE: Readme
+#+AUTHOR: Rohit Goswami
+
+* What?
+This is actually a [[https://github.com/hlissner/doom-emacs][doom-emacs]] private module. I was feeling rather whimsical.
+* Why?
+[[https://github.com/HaoZeke/Dotfiles][My Dotfiles]], managed with the brilliant [[https://github.com/kobus-v-schoor/dotgit][dotgit]], was getting rather overwhelmed
+with ~emacs~ commits. Also managing snippets with ~dotgit~ was not exactly
+pleasant, since each symlink needed to be listed in the ~filelist~.
+* How?
+Well it just goes where ~doom~ expects config files.
+#+BEGIN_SRC bash
+git clone git@github.com:HaoZeke/dotBatcave $XDG_CONFIG_DIR/doom
+#+END_SRC
