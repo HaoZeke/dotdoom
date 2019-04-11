@@ -12,3 +12,5 @@ Well it just goes where ~doom~ expects config files.
 #+BEGIN_SRC bash
 git clone git@github.com:HaoZeke/dotBatcave $XDG_CONFIG_DIR/doom
 #+END_SRC
+* License
+It is a personal configuration. So I guess the [[https://choosealicense.com/licenses/mit/][MIT license]] will do for now.
