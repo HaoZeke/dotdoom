@@ -1,0 +1,263 @@
+#+TITLE: Emacs Literate Package Additions
+#+AUTHOR: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
+#+PROPERTY: header-args :tangle (concat doom-private-dir "packages.el")
+#+PROPERTY: header-args+ :comments link
+#+STARTUP: outline
+
+# Now we set this with STARTUP
+# These can be set per subtree.
+# :PROPERTIES:
+# :VISIBILITY: children
+# :END:
+
+** Table of Contents :TOC_3_gh:noexport:
+  - [[#about-this-file][About this file]]
+    - [[#about-that-toc][About that TOC..]]
+    - [[#the-properties][The properties]]
+  - [[#aesthetic-packages][Aesthetic Packages]]
+    - [[#dired-icons][Dired Icons]]
+  - [[#later-magit-additions][LATER Magit Additions]]
+  - [[#git-annex][Git Annex]]
+  - [[#later-key-chords-and-keybindings][LATER Key Chords and Keybindings]]
+  - [[#org-additions][Org Additions]]
+    - [[#org-download][Org Download]]
+    - [[#later-org-drill][LATER Org Drill]]
+    - [[#org-noter][Org Noter]]
+    - [[#org-ref][Org Ref]]
+    - [[#org-mind-map][Org Mind Map]]
+    - [[#org-rifle][Org Rifle]]
+    - [[#anki-mode][Anki Mode]]
+  - [[#dockerfile-mode][Dockerfile Mode]]
+  - [[#reference-management][Reference Management]]
+  - [[#syntax-highlighting][Syntax Highlighting]]
+    - [[#tup-mode][Tup Mode]]
+    - [[#saltstack-mode][SaltStack Mode]]
+    - [[#pkgbuild-mode][PKGBUILD Mode]]
+    - [[#lammps-mode][LAMMPS Mode]]
+    - [[#pug-mode][Pug Mode]]
+    - [[#nix-mode][Nix Mode]]
+    - [[#jvm-languages][JVM Languages]]
+  - [[#flycheck-additions][Flycheck Additions]]
+    - [[#melpa-helper][MELPA Helper]]
+  - [[#snippets][Snippets]]
+    - [[#doom][Doom]]
+    - [[#standard][Standard]]
+  - [[#math-support][Math support]]
+
+** About this file
+This is an Emacs literate package file. It contains the basic structure along
+with some data about each package and why it's needed. This is to be used in
+tandem with the ~define-package!~ function in ~config.org~.
+
+Since it's primarily aimed at ~doom-emacs~ let's add their comments.
+
+#+BEGIN_SRC emacs-lisp
+;; -*- no-byte-compile: t; -*-
+;;; ~/.config/doom/packages.el
+#+END_SRC
+
+*** About that TOC..
+So as mentioned [[https://github.com/snosov1/toc-org/issues/35][here]] there is trouble when ~org-export~ tries to create files
+while keeping the ~org-toc~ tag.
+
+It's not really a problem since ~org-export~ actually generates a TOC for the
+files anyway.
+*** The properties
+Basically, the properties set imply that the file is to be tangled for every
+block and moreover the output directory is the ~doom-private-dir~. It's
+practically self explanatory but still. 
+
+The filename is determined by the ~SRC~ block languages.
+** Aesthetic Packages
+*** Dired Icons
+Since treemacs already uses ~all-the-icons~ it is silly to not use them in
+dired, from the [[https://github.com/domtronn/all-the-icons.el/wiki][all-the-icons wiki]].
+#+BEGIN_SRC emacs-lisp
+(package! all-the-icons-dired)
+#+END_SRC
+** LATER Magit Additions
+These basically allow for TODOs in magit along with enhanced github integration.
+These have been added upstream in ~develop~.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(package! magit-org-todos)
+(package! magithub)
+#+END_SRC
+
+Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
+There might still be workflows where [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]] is useful since that
+displays a global ~todo.org~ file.
+** Git Annex
+This is actually a [[https://github.com/magit/magit-annex][magit addition]]. The [[https://github.com/jwiegley/git-annex-el][git-annex dired extension]] shares a common
+interface and it makes sense to add it here.
+#+BEGIN_SRC emacs-lisp
+(package! magit-annex)
+(package! git-annex)
+#+END_SRC
+** LATER Key Chords and Keybindings
+It turns out that the switch to [[https://github.com/noctuid/general.el][general.el]] is both inevitable (doom version 2.1)
+and very rational. However, I really can't wait. So.. This is a stop gap solution.
+#+BEGIN_SRC emacs-lisp
+(package! general)
+#+END_SRC
+- [ ] Remove when it's merged upstream
+** Org Additions
+The new ones need to be covered in the ~config.org~ file with the appropriate
+keybindings.
+*** Org Download
+Now I load it here since I don't use ~+attach~.
+#+BEGIN_SRC emacs-lisp
+(package! org-download)
+#+END_SRC
+
+*** LATER Org Drill
+The [[https://bitbucket.org/eeeickythump/org-drill/src][actual repo]] has not been updated in 3 years, so I must use [[https://github.com/hakanserce/org-drill][this fork]].
+#+BEGIN_SRC emacs-lisp :tangle no
+(package! org-drill
+  :recipe (:fetcher github
+            :repo "hakanserce/org-drill"))
+#+END_SRC
+*** TODO Org Noter
+This is sort of more of a ~pdf-tools~ extension and it needs it's own ~biblatex~
+setup and stuff as well so this might move into a tree of it's own.
+
+#+BEGIN_SRC emacs-lisp
+(package! org-noter)
+#+END_SRC
+
+This actually breaks the ~pdf-tools~ bindings.
+
+*** Org Ref
+This is probably not the best thing in my current setup..
+
+#+BEGIN_SRC emacs-lisp
+(package! org-ref)
+#+END_SRC
+*** Org Mind Map
+Not on MELPA yet. From [[github:theodorewiles/org-mind-map][here]].
+#+BEGIN_SRC emacs-lisp
+(package! org-mind-map
+  :recipe (:fetcher github
+            :repo "theodorewiles/org-mind-map"))
+#+END_SRC
+*** Org Rifle
+Technically a helm addition. Perfect for monolithic ~org~ files. More details
+[[github:alphapapa/helm-org-rifle][here]].
+#+BEGIN_SRC emacs-lisp
+(package! helm-org-rifle)
+#+END_SRC
+*** Anki Mode
+This is put here since it only works with ~org-mode~ stuff.
+#+BEGIN_SRC emacs-lisp
+(package! anki-editor)
+#+END_SRC
+** Dockerfile Mode
+For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
+~## -*- docker-image-name: "your-image-name-here" -*-~ can be used to specify
+the image name.
+#+BEGIN_SRC emacs-lisp
+(package! dockerfile-mode)
+#+END_SRC
+** Reference Management
+**** Zotero
+There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://github.com/vspinu/zotelo][zotelo]], but
+they don't seem to be all that well mantained. [[https://github.com/emacsmirror/zotxt][Zotxt]] seems to be updated pretty
+often though.
+
+#+BEGIN_SRC emacs-lisp
+(package! zotxt)
+#+END_SRC
+** Syntax Highlighting
+These are additionally required to work with the sort of files I use often.
+The configuration and settings are as usual in ~config.org~
+*** Tup Mode
+Because honestly there isn't anything better than [[http://gittup.org/tup/][tup]]. Who doesn't need a build
+system which [[http://gittup.org/tup/tup_vs_mordor.html][scales with the eye of Mordor]]?
+
+#+BEGIN_SRC emacs-lisp
+(package! tup-mode
+:recipe (:fetcher github
+           :repo "ejmr/tup-mode"))
+#+END_SRC
+
+**** LATER Caveats
+The repo is unmaintained so I ought to fork it and take a look into maintaining it.
+*** SaltStack Mode
+I have recently decided that [[https://saltstack.com/][saltstack]] ought to be used for working on multiple
+systems.
+
+#+BEGIN_SRC emacs-lisp
+(package! salt-mode
+:recipe (:fetcher github
+         :repo "glynnforrest/salt-mode"))
+#+END_SRC
+*** PKGBUILD Mode
+No point using ~emacs~ if I can't get highlighting for all my needs. This needs
+some extra configuration. +Must figure out if this is well mantained+. The
+developer is very responsive to pull requests and the like.
+
+#+BEGIN_SRC emacs-lisp
+(package! pkgbuild-mode
+  :recipe (:fetcher github
+            :repo "juergenhoetzel/pkgbuild-mode"))
+#+END_SRC
+*** LAMMPS Mode
++This could do with some updates. Will look into this soon. Also it takesunbearably long this way. Must figure out how to stop it from downloading the
+whole repo.+
+Mantained [[https://github.com/HaoZeke/lammps-mode][by me]] now.
+#+BEGIN_SRC emacs-lisp
+(package! lammps-mode
+  :recipe (:fetcher github
+                    :repo "HaoZeke/lammps-mode"))
+#+END_SRC
+*** Pug Mode
+I just like pugs.
+#+BEGIN_SRC emacs-lisp
+(package! pug-mode)
+#+END_SRC
+*** Nix Mode
+For building more cross-os stuff. This is the [[https://github.com/NixOS/nix-mode][official package]], but will look
+into binding and using [[github:travisbhartwell/nix-emacs][nix-emacs]] as well.
+#+BEGIN_SRC emacs-lisp
+(package! nix-mode)
+#+END_SRC
+*** JVM Languages
+Currently the languages I care about (apart from Java) are:
+#+BEGIN_SRC emacs-lisp
+; Kotlin > Java
+(package! kotlin-mode)
+; Groovy -> Testing
+(package! groovy-mode)
+#+END_SRC
+** Flycheck Additions
+*** MELPA Helper
+This is for linting files before submitting to MELPA.
+#+BEGIN_SRC emacs-lisp
+(package! package-lint)
+(package! flycheck-package)
+#+END_SRC
+** Snippets
+These are from [[https://github.com/hlissner][hlissner]].
+*** Doom
+#+BEGIN_SRC emacs-lisp
+(package! emacs-snippets
+  :recipe (:fetcher github
+           :repo "hlissner/emacs-snippets"
+           :files ("*")))
+#+END_SRC
+*** Standard
+These are from the [[https://github.com/AndreaCrotti/yasnippet-snippets][official snippets repo]].
+#+BEGIN_SRC emacs-lisp
+(package! yasnippet-snippets
+  :recipe (:fetcher github
+           :repo "AndreaCrotti/yasnippet-snippets"
+           :files ("*")))
+#+END_SRC
+# Local Variables:
+# eval: (add-hook (quote after-save-hook) (lambda nil (org-babel-tangle)) nil t)
+# End:
+** Math support
+I like [[https://github.com/cdominik/cdlatex][cdlatex]].
+#+BEGIN_SRC emacs-lisp
+(package! cdlatex)
+#+END_SRC
