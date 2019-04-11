@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: revealJS Notes
+# key: rjsNotes
+# --
+
+::: notes
+$0
+:::

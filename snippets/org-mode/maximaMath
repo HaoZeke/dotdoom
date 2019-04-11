@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: maximaMath
+# key: maximaMath
+# --
+
+src_maxima[:exports none :results raw]{tex($0);}

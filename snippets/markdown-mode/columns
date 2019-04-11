@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: columns
+# key: columns
+# --
+:::: {.columns}
+
+::: {.column width=50%}
+$0
+:::
+
+::: {.column width=50%}
+
+:::
+
+::::

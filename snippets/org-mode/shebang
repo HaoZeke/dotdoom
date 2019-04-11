@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: shebang
+# key: <sh
+# --
+
+#!/usr/bin/env $0

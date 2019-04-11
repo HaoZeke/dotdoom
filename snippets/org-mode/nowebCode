@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# contributer: haozeke <rohit.goswami[at]aol.com>
+# name: noweb-code
+# key: noweb
+# --
+
+#+NAME: ${1:noweb-id}
+#+BEGIN_SRC ${2:nix} :tangle ${3:no}
+$0
+#+END_SRC
