@@ -37,6 +37,7 @@
     - [[#pug-mode][Pug Mode]]
     - [[#nix-mode][Nix Mode]]
     - [[#jvm-languages][JVM Languages]]
+    - [[#systemd-mode][Systemd Mode]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
   - [[#snippets][Snippets]]
@@ -228,6 +229,12 @@ Currently the languages I care about (apart from Java) are:
 (package! kotlin-mode)
 ; Groovy -> Testing
 (package! groovy-mode)
+#+END_SRC
+*** Systemd Mode
+Since I use a lot of user systemd units, it makes sense to have pretty
+highlighting.
+#+BEGIN_SRC emacs-lisp
+(package! systemd)
 #+END_SRC
 ** Flycheck Additions
 *** MELPA Helper

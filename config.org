@@ -45,6 +45,7 @@
     - [[#conf-mode-files][Conf Mode Files]]
     - [[#fortran][FORTRAN]]
     - [[#jvm-languages][JVM Languages]]
+    - [[#systemd][Systemd]]
   - [[#aesthetics][Aesthetics]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#functions][Functions]]
@@ -676,6 +677,12 @@ the rest of these need to be loaded here.
 
 (def-package! groovy-mode
   :mode "/\\.groovy$/")
+#+END_SRC
+*** Systemd
+For all those user-units.
+#+BEGIN_SRC emacs-lisp
+(def-package! systemd
+  :mode "/\\.service$/")
 #+END_SRC
 ** Aesthetics
 ** Dockerfile Mode
