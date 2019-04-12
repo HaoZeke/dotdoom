@@ -407,13 +407,14 @@ are a part of ~org-mode~.
         :desc "Item" "o" 'org-insert-item
         :desc "Footnote" "f" 'org-footnote-action
         :desc "Table" "t" 'org-table-create-or-convert-from-region
+        :desc "Screenshot" "s" 'org-screenshot-take
         (:prefix ("h" . "Headings")
           :desc "Normal" "h" 'org-insert-heading
           :desc "Todo" "t" 'org-insert-todo-heading
-          )
-        (:prefix ("s" . "Subheadings")
-          :desc "Normal" "s" 'org-insert-subheading
-          :desc "Todo" "t" 'org-insert-todo-subheading
+          (:prefix ("s" . "Subheadings")
+            :desc "Normal" "s" 'org-insert-subheading
+            :desc "Todo" "t" 'org-insert-todo-subheading
+            )
           )
         (:prefix ("e" . "Exports")
           :desc "Dispatch" "d" 'org-export-dispatch
