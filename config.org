@@ -569,7 +569,7 @@ The keymaps are defined in the following way:
   )
 #+END_SRC
 *** Org Mind Map
-[[github:/theodorewiles/org-mind-map][This]] is used to create ~graphiz~ graphs from ~org-mode~ stuff.
+[[https://github.com//theodorewiles/org-mind-map][This]] is used to create ~graphiz~ graphs from ~org-mode~ stuff.
 #+BEGIN_SRC emacs-lisp
 (def-package! org-mind-map
   :general

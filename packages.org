@@ -135,7 +135,7 @@ This is probably not the best thing in my current setup..
 (package! org-ref)
 #+END_SRC
 *** Org Mind Map
-Not on MELPA yet. From [[github:theodorewiles/org-mind-map][here]].
+Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
 #+BEGIN_SRC emacs-lisp
 (package! org-mind-map
   :recipe (:fetcher github
@@ -143,7 +143,7 @@ Not on MELPA yet. From [[github:theodorewiles/org-mind-map][here]].
 #+END_SRC
 *** Org Rifle
 Technically a helm addition. Perfect for monolithic ~org~ files. More details
-[[github:alphapapa/helm-org-rifle][here]].
+[[https://github.com/alphapapa/helm-org-rifle][here]].
 #+BEGIN_SRC emacs-lisp
 (package! helm-org-rifle)
 #+END_SRC
@@ -218,7 +218,7 @@ I just like pugs.
 #+END_SRC
 *** Nix Mode
 For building more cross-os stuff. This is the [[https://github.com/NixOS/nix-mode][official package]], but will look
-into binding and using [[github:travisbhartwell/nix-emacs][nix-emacs]] as well.
+into binding and using [[https://github.com/travisbhartwell/nix-emacs][nix-emacs]] as well.
 #+BEGIN_SRC emacs-lisp
 (package! nix-mode)
 #+END_SRC
