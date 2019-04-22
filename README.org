@@ -1,8 +1,15 @@
 #+TITLE: dotDOOM
 #+AUTHOR: Rohit Goswami
+#+EXPORT_FILE_NAME: index.html
+
+This looks better [[https://haozeke.github.io/dotdoom][on the website]].
 
 * What?
 This is actually a [[https://github.com/hlissner/doom-emacs][doom-emacs]] private module. I was feeling rather whimsical.
+** Configuration
+This is [[file:config.org][documented here]].
+** Packages
+I also document the packages I use in a [[file:packages.org][separately here]].
 * Why?
 [[https://github.com/HaoZeke/Dotfiles][My Dotfiles repo]], managed with the brilliant [[https://github.com/kobus-v-schoor/dotgit][dotgit]], was getting rather overwhelmed
 with ~emacs~ commits. Also managing snippets with ~dotgit~ was not exactly
