@@ -764,6 +764,49 @@ This is a convinience function for working with ~nanoc~.
            dir "/" (file-name-sans-extension (buffer-name)) ".md"))
     )
 #+END_SRC
+** Projects
+These are to help setup org-mode workflows.
+#+BEGIN_SRC emacs-lisp
+; Make sure it's not set before adding to it
+(unless (boundp 'org-publish-project-alist)
+  (setq org-publish-project-alist nil))
+#+END_SRC
+*** dotDoom
+This is used to generate plain HTML for my [[https://github.com/HaoZeke/dotDoom][dotDoom repo]]. The setup is taken from
+the [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html#fn.3][worg documentation]] and [[https://github.com/shishougang/wiki/blob/gh-pages/src/notes-init.el][this repository]]. It so turns out that we can host the
+entire thing from the master branch on GitHub, but only if it is in a ~docs/~
+subfolder... Plus ~org-html-export-to-html~ does not accept filenames which was
+a real bummer.
+#+BEGIN_SRC emacs-lisp
+; dotDoom stuff
+; This is a rather harmless useful variable
+(setq dotdoom-root-dir "~/.config/doom/")
+(setq dotdoom-publish-dir  (concat dotdoom-root-dir "docs"))
+#+END_SRC
+Now that the variables are set, we can move on to actually setting up the rest
+of the export, this includes my own analytics and stuff. Infact maybe the
+analytics would be better handled by offloading the damn thing to [[https://netlify.com][Netlify]],
+though their recent changes to the TOS are worrying, so Microsoft owned GitHub
+seems to be the better option for now.
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-publish-project-alist
+      `("dotdoom"
+         :base-directory ,dotdoom-root-dir
+         :publishing-directory ,dotdoom-publish-dir
+         :base-extension "org"
+         ;; :html-head  "<link rel=\"stylesheet\" href=\"./assets/stylesheet.css\" type=\"text/css\"/>"
+         :infojs-opt "view:t toc:t ltoc:t mouse:underline buttons:0 path:http://thomasf.github.io/solarized-css/org-info.min.js"
+         :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"http://thomasf.github.io/solarized-css/solarized-dark.min.css\" />"
+         :recursive t
+         :publishing-function org-html-publish-to-html
+         :auto-index nil
+         ;; :index-filename "README.org"
+         ;; :index-title "index"
+         ;; :auto-sitemap t                ; Generate sitemap.org automagically...
+         ;; :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+         ;; :sitemap-title "index"         ; ... with title 'sitemap'.
+         :link-home "index.html"))
+#+END_SRC
 ** Hooks
 *** TODO Caveats
 Move all the hooks to this section if possible.
