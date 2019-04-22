@@ -150,6 +150,14 @@ I am not sure if these need to be initialized.
 (def-package! yasnippet-snippets
   :after yasnippet)
 #+END_SRC
+*** Kill over-eager literate after-save-hook
+This is a little to frequent for working with a ~git~ repo. Henrik mentioned an
+~async~ version of the recompliation might be in the works, until then however I
+will probably only manually trigger the recompliation.
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (remove-hook 'after-save-hook #'+literate|recompile-maybe))
+#+END_SRC
 ** Package Settings
 These should eventually go into a different module.
 Each of these.
