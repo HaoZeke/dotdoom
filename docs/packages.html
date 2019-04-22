@@ -1,0 +1,1079 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head>
+    <!-- 2019-04-22 Mon 06:54 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emacs Literate Package Additions</title>
+    <meta name="generator" content="Org mode" />
+    <meta
+      name="author"
+      content="Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;"
+    />
+    <style type="text/css">
+      <!--/*--><![CDATA[/*><!--*/
+       .title  { text-align: center;
+                  margin-bottom: .2em; }
+       .subtitle { text-align: center;
+                   font-size: medium;
+                   font-weight: bold;
+                   margin-top:0; }
+       .todo   { font-family: monospace; color: red; }
+       .done   { font-family: monospace; color: green; }
+       .priority { font-family: monospace; color: orange; }
+       .tag    { background-color: #eee; font-family: monospace;
+                 padding: 2px; font-size: 80%; font-weight: normal; }
+       .timestamp { color: #bebebe; }
+       .timestamp-kwd { color: #5f9ea0; }
+       .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+       .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+       .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+       .underline { text-decoration: underline; }
+       #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+       p.verse { margin-left: 3%; }
+       pre {
+         border: 1px solid #ccc;
+         box-shadow: 3px 3px 3px #eee;
+         padding: 8pt;
+         font-family: monospace;
+         overflow: auto;
+         margin: 1.2em;
+       }
+       pre.src {
+         position: relative;
+         overflow: visible;
+         padding-top: 1.2em;
+       }
+       pre.src:before {
+         display: none;
+         position: absolute;
+         background-color: white;
+         top: -10px;
+         right: 10px;
+         padding: 3px;
+         border: 1px solid black;
+       }
+       pre.src:hover:before { display: inline;}
+       /* Languages per Org manual */
+       pre.src-asymptote:before { content: 'Asymptote'; }
+       pre.src-awk:before { content: 'Awk'; }
+       pre.src-C:before { content: 'C'; }
+       /* pre.src-C++ doesn't work in CSS */
+       pre.src-clojure:before { content: 'Clojure'; }
+       pre.src-css:before { content: 'CSS'; }
+       pre.src-D:before { content: 'D'; }
+       pre.src-ditaa:before { content: 'ditaa'; }
+       pre.src-dot:before { content: 'Graphviz'; }
+       pre.src-calc:before { content: 'Emacs Calc'; }
+       pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+       pre.src-fortran:before { content: 'Fortran'; }
+       pre.src-gnuplot:before { content: 'gnuplot'; }
+       pre.src-haskell:before { content: 'Haskell'; }
+       pre.src-hledger:before { content: 'hledger'; }
+       pre.src-java:before { content: 'Java'; }
+       pre.src-js:before { content: 'Javascript'; }
+       pre.src-latex:before { content: 'LaTeX'; }
+       pre.src-ledger:before { content: 'Ledger'; }
+       pre.src-lisp:before { content: 'Lisp'; }
+       pre.src-lilypond:before { content: 'Lilypond'; }
+       pre.src-lua:before { content: 'Lua'; }
+       pre.src-matlab:before { content: 'MATLAB'; }
+       pre.src-mscgen:before { content: 'Mscgen'; }
+       pre.src-ocaml:before { content: 'Objective Caml'; }
+       pre.src-octave:before { content: 'Octave'; }
+       pre.src-org:before { content: 'Org mode'; }
+       pre.src-oz:before { content: 'OZ'; }
+       pre.src-plantuml:before { content: 'Plantuml'; }
+       pre.src-processing:before { content: 'Processing.js'; }
+       pre.src-python:before { content: 'Python'; }
+       pre.src-R:before { content: 'R'; }
+       pre.src-ruby:before { content: 'Ruby'; }
+       pre.src-sass:before { content: 'Sass'; }
+       pre.src-scheme:before { content: 'Scheme'; }
+       pre.src-screen:before { content: 'Gnu Screen'; }
+       pre.src-sed:before { content: 'Sed'; }
+       pre.src-sh:before { content: 'shell'; }
+       pre.src-sql:before { content: 'SQL'; }
+       pre.src-sqlite:before { content: 'SQLite'; }
+       /* additional languages in org.el's org-babel-load-languages alist */
+       pre.src-forth:before { content: 'Forth'; }
+       pre.src-io:before { content: 'IO'; }
+       pre.src-J:before { content: 'J'; }
+       pre.src-makefile:before { content: 'Makefile'; }
+       pre.src-maxima:before { content: 'Maxima'; }
+       pre.src-perl:before { content: 'Perl'; }
+       pre.src-picolisp:before { content: 'Pico Lisp'; }
+       pre.src-scala:before { content: 'Scala'; }
+       pre.src-shell:before { content: 'Shell Script'; }
+       pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+       /* additional language identifiers per "defun org-babel-execute"
+            in ob-*.el */
+       pre.src-cpp:before  { content: 'C++'; }
+       pre.src-abc:before  { content: 'ABC'; }
+       pre.src-coq:before  { content: 'Coq'; }
+       pre.src-groovy:before  { content: 'Groovy'; }
+       /* additional language identifiers from org-babel-shell-names in
+          ob-shell.el: ob-shell is the only babel language using a lambda to put
+          the execution function name together. */
+       pre.src-bash:before  { content: 'bash'; }
+       pre.src-csh:before  { content: 'csh'; }
+       pre.src-ash:before  { content: 'ash'; }
+       pre.src-dash:before  { content: 'dash'; }
+       pre.src-ksh:before  { content: 'ksh'; }
+       pre.src-mksh:before  { content: 'mksh'; }
+       pre.src-posh:before  { content: 'posh'; }
+       /* Additional Emacs modes also supported by the LaTeX listings package */
+       pre.src-ada:before { content: 'Ada'; }
+       pre.src-asm:before { content: 'Assembler'; }
+       pre.src-caml:before { content: 'Caml'; }
+       pre.src-delphi:before { content: 'Delphi'; }
+       pre.src-html:before { content: 'HTML'; }
+       pre.src-idl:before { content: 'IDL'; }
+       pre.src-mercury:before { content: 'Mercury'; }
+       pre.src-metapost:before { content: 'MetaPost'; }
+       pre.src-modula-2:before { content: 'Modula-2'; }
+       pre.src-pascal:before { content: 'Pascal'; }
+       pre.src-ps:before { content: 'PostScript'; }
+       pre.src-prolog:before { content: 'Prolog'; }
+       pre.src-simula:before { content: 'Simula'; }
+       pre.src-tcl:before { content: 'tcl'; }
+       pre.src-tex:before { content: 'TeX'; }
+       pre.src-plain-tex:before { content: 'Plain TeX'; }
+       pre.src-verilog:before { content: 'Verilog'; }
+       pre.src-vhdl:before { content: 'VHDL'; }
+       pre.src-xml:before { content: 'XML'; }
+       pre.src-nxml:before { content: 'XML'; }
+       /* add a generic configuration mode; LaTeX export needs an additional
+          (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+       pre.src-conf:before { content: 'Configuration File'; }
+
+       table { border-collapse:collapse; }
+       caption.t-above { caption-side: top; }
+       caption.t-bottom { caption-side: bottom; }
+       td, th { vertical-align:top;  }
+       th.org-right  { text-align: center;  }
+       th.org-left   { text-align: center;   }
+       th.org-center { text-align: center; }
+       td.org-right  { text-align: right;  }
+       td.org-left   { text-align: left;   }
+       td.org-center { text-align: center; }
+       dt { font-weight: bold; }
+       .footpara { display: inline; }
+       .footdef  { margin-bottom: 1em; }
+       .figure { padding: 1em; }
+       .figure p { text-align: center; }
+       .equation-container {
+         display: table;
+         text-align: center;
+         width: 100%;
+       }
+       .equation {
+         vertical-align: middle;
+       }
+       .equation-label {
+         display: table-cell;
+         text-align: right;
+         vertical-align: middle;
+       }
+       .inlinetask {
+         padding: 10px;
+         border: 2px solid gray;
+         margin: 10px;
+         background: #ffffcc;
+       }
+       #org-div-home-and-up
+        { text-align: right; font-size: 70%; white-space: nowrap; }
+       textarea { overflow-x: auto; }
+       .linenr { font-size: smaller }
+       .code-highlighted { background-color: #ffff00; }
+       .org-info-js_info-navigation { border-style: none; }
+       #org-info-js_console-label
+         { font-size: 10px; font-weight: bold; white-space: nowrap; }
+       .org-info-js_search-highlight
+         { background-color: #ffff00; color: #000000; font-weight: bold; }
+       .org-svg { width: 90%; }
+       /*]]>*/-->
+    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://thomasf.github.io/solarized-css/solarized-dark.min.css"
+    />
+
+    <script
+      type="text/javascript"
+      src="http://thomasf.github.io/solarized-css/org-info.min.js"
+    >
+      /**
+       *
+       * @source: http://thomasf.github.io/solarized-css/org-info.min.js
+       *
+       * @licstart  The following is the entire license notice for the
+       *  JavaScript code in http://thomasf.github.io/solarized-css/org-info.min.js.
+       *
+       * Copyright (C) 2012-2019 Free Software Foundation, Inc.
+       *
+       *
+       * The JavaScript code in this tag is free software: you can
+       * redistribute it and/or modify it under the terms of the GNU
+       * General Public License (GNU GPL) as published by the Free Software
+       * Foundation, either version 3 of the License, or (at your option)
+       * any later version.  The code is distributed WITHOUT ANY WARRANTY;
+       * without even the implied warranty of MERCHANTABILITY or FITNESS
+       * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+       *
+       * As additional permission under GNU GPL version 3 section 7, you
+       * may distribute non-source (e.g., minimized or compacted) forms of
+       * that code without the copy of the GNU GPL normally required by
+       * section 4, provided you include this license notice and a URL
+       * through which recipients can access the Corresponding Source.
+       *
+       * @licend  The above is the entire license notice
+       * for the JavaScript code in http://thomasf.github.io/solarized-css/org-info.min.js.
+       *
+       */
+    </script>
+
+    <script type="text/javascript">
+
+      /*
+      @licstart  The following is the entire license notice for the
+      JavaScript code in this tag.
+
+      Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+      The JavaScript code in this tag is free software: you can
+      redistribute it and/or modify it under the terms of the GNU
+      General Public License (GNU GPL) as published by the Free Software
+      Foundation, either version 3 of the License, or (at your option)
+      any later version.  The code is distributed WITHOUT ANY WARRANTY;
+      without even the implied warranty of MERCHANTABILITY or FITNESS
+      FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+      As additional permission under GNU GPL version 3 section 7, you
+      may distribute non-source (e.g., minimized or compacted) forms of
+      that code without the copy of the GNU GPL normally required by
+      section 4, provided you include this license notice and a URL
+      through which recipients can access the Corresponding Source.
+
+
+      @licend  The above is the entire license notice
+      for the JavaScript code in this tag.
+      */
+
+      <!--/*--><![CDATA[/*><!--*/
+      org_html_manager.set("TOC_DEPTH", "3");
+      org_html_manager.set("LINK_HOME", "");
+      org_html_manager.set("LINK_UP", "");
+      org_html_manager.set("LOCAL_TOC", "1");
+      org_html_manager.set("VIEW_BUTTONS", "0");
+      org_html_manager.set("MOUSE_HINT", "underline");
+      org_html_manager.set("FIXED_TOC", "0");
+      org_html_manager.set("TOC", "1");
+      org_html_manager.set("VIEW", "1");
+      org_html_manager.setup();  // activate after the parameters are set
+      /*]]>*///-->
+    </script>
+    <script type="text/javascript">
+      /*
+      @licstart  The following is the entire license notice for the
+      JavaScript code in this tag.
+
+      Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+      The JavaScript code in this tag is free software: you can
+      redistribute it and/or modify it under the terms of the GNU
+      General Public License (GNU GPL) as published by the Free Software
+      Foundation, either version 3 of the License, or (at your option)
+      any later version.  The code is distributed WITHOUT ANY WARRANTY;
+      without even the implied warranty of MERCHANTABILITY or FITNESS
+      FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+      As additional permission under GNU GPL version 3 section 7, you
+      may distribute non-source (e.g., minimized or compacted) forms of
+      that code without the copy of the GNU GPL normally required by
+      section 4, provided you include this license notice and a URL
+      through which recipients can access the Corresponding Source.
+
+
+      @licend  The above is the entire license notice
+      for the JavaScript code in this tag.
+      */
+      <!--/*--><![CDATA[/*><!--*/
+       function CodeHighlightOn(elem, id)
+       {
+         var target = document.getElementById(id);
+         if(null != target) {
+           elem.cacheClassElem = elem.className;
+           elem.cacheClassTarget = target.className;
+           target.className = "code-highlighted";
+           elem.className   = "code-highlighted";
+         }
+       }
+       function CodeHighlightOff(elem, id)
+       {
+         var target = document.getElementById(id);
+         if(elem.cacheClassElem)
+           elem.className = elem.cacheClassElem;
+         if(elem.cacheClassTarget)
+           target.className = elem.cacheClassTarget;
+       }
+      /*]]>*///-->
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <h1 class="title">Emacs Literate Package Additions</h1>
+      <div id="table-of-contents">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents">
+          <ul>
+            <li>
+              <a href="#org83e02bf">1. About this file</a>
+              <ul>
+                <li><a href="#org9f95dc7">1.1. About that TOC..</a></li>
+                <li><a href="#org8e1b3a3">1.2. The properties</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#orgc2b0328">2. Aesthetic Packages</a>
+              <ul>
+                <li><a href="#orgba80f1f">2.1. Dired Icons</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#orgcf3b8c8"
+                >3. <span class="todo LATER">LATER</span> Magit Additions</a
+              >
+            </li>
+            <li><a href="#orgb495ca6">4. Git Annex</a></li>
+            <li>
+              <a href="#org294ce11"
+                >5. <span class="todo LATER">LATER</span> Key Chords and
+                Keybindings</a
+              >
+            </li>
+            <li>
+              <a href="#orgb7396aa">6. Org Additions</a>
+              <ul>
+                <li><a href="#org5ee187a">6.1. Org Download</a></li>
+                <li>
+                  <a href="#org7110300"
+                    >6.2. <span class="todo LATER">LATER</span> Org Drill</a
+                  >
+                </li>
+                <li>
+                  <a href="#org7237eb3"
+                    >6.3. <span class="todo TODO">TODO</span> Org Noter</a
+                  >
+                </li>
+                <li><a href="#org2ce7277">6.4. Org Ref</a></li>
+                <li><a href="#org2e9db71">6.5. Org Mind Map</a></li>
+                <li><a href="#org16066ba">6.6. Org Rifle</a></li>
+                <li><a href="#org6975b77">6.7. Anki Mode</a></li>
+              </ul>
+            </li>
+            <li><a href="#org7fc12b4">7. Dockerfile Mode</a></li>
+            <li>
+              <a href="#org6292c8f">8. Reference Management</a>
+              <ul>
+                <li>
+                  <ul>
+                    <li><a href="#org19742b5">8.0.1. Zotero</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org084af94">9. Syntax Highlighting</a>
+              <ul>
+                <li>
+                  <a href="#org7639c43">9.1. Tup Mode</a>
+                  <ul>
+                    <li>
+                      <a href="#org274e709"
+                        >9.1.1. <span class="todo LATER">LATER</span> Caveats</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#org0a4cbca">9.2. SaltStack Mode</a></li>
+                <li><a href="#orgfeaabd6">9.3. PKGBUILD Mode</a></li>
+                <li><a href="#org3e820dd">9.4. LAMMPS Mode</a></li>
+                <li><a href="#org4443a29">9.5. Pug Mode</a></li>
+                <li><a href="#orgad72768">9.6. Nix Mode</a></li>
+                <li><a href="#orgf2ba935">9.7. JVM Languages</a></li>
+                <li><a href="#org4af110c">9.8. Systemd Mode</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org4e7ef86">10. Flycheck Additions</a>
+              <ul>
+                <li><a href="#orgf6b4fbb">10.1. MELPA Helper</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="#orgf1f187f">11. Snippets</a>
+              <ul>
+                <li><a href="#orgfca36e1">11.1. Doom</a></li>
+                <li><a href="#org5626dc3">11.2. Standard</a></li>
+              </ul>
+            </li>
+            <li><a href="#org770f3d7">12. Math support</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="outline-container-org83e02bf" class="outline-2">
+        <h2 id="org83e02bf">
+          <span class="section-number-2">1</span> About this file
+        </h2>
+        <div class="outline-text-2" id="text-1">
+          <p>
+            This is an Emacs literate package file. It contains the basic
+            structure along with some data about each package and why it's
+            needed. This is to be used in tandem with the
+            <code>define-package!</code> function in <code>config.org</code>.
+          </p>
+
+          <p>
+            Since it's primarily aimed at <code>doom-emacs</code> let's add
+            their comments.
+          </p>
+
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #5B6268;">;; </span><span style="color: #5B6268;">-*- no-byte-compile: t; -*-</span>
+<span style="color: #5B6268;">;;; </span><span style="color: #5B6268;">~/.config/doom/packages.el</span>
+</pre>
+          </div>
+        </div>
+
+        <div id="outline-container-org9f95dc7" class="outline-3">
+          <h3 id="org9f95dc7">
+            <span class="section-number-3">1.1</span> About that TOC..
+          </h3>
+          <div class="outline-text-3" id="text-1-1">
+            <p>
+              So as mentioned
+              <a href="https://github.com/snosov1/toc-org/issues/35">here</a>
+              there is trouble when <code>org-export</code> tries to create
+              files while keeping the <code>org-toc</code> tag.
+            </p>
+
+            <p>
+              It's not really a problem since <code>org-export</code> actually
+              generates a TOC for the files anyway.
+            </p>
+          </div>
+        </div>
+        <div id="outline-container-org8e1b3a3" class="outline-3">
+          <h3 id="org8e1b3a3">
+            <span class="section-number-3">1.2</span> The properties
+          </h3>
+          <div class="outline-text-3" id="text-1-2">
+            <p>
+              Basically, the properties set imply that the file is to be tangled
+              for every block and moreover the output directory is the
+              <code>doom-private-dir</code>. It's practically self explanatory
+              but still.
+            </p>
+
+            <p>
+              The filename is determined by the <code>SRC</code> block
+              languages.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orgc2b0328" class="outline-2">
+        <h2 id="orgc2b0328">
+          <span class="section-number-2">2</span> Aesthetic Packages
+        </h2>
+        <div class="outline-text-2" id="text-2"></div>
+        <div id="outline-container-orgba80f1f" class="outline-3">
+          <h3 id="orgba80f1f">
+            <span class="section-number-3">2.1</span> Dired Icons
+          </h3>
+          <div class="outline-text-3" id="text-2-1">
+            <p>
+              Since treemacs already uses <code>all-the-icons</code> it is silly
+              to not use them in dired, from the
+              <a href="https://github.com/domtronn/all-the-icons.el/wiki"
+                >all-the-icons wiki</a
+              >.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> all-the-icons-dired<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orgcf3b8c8" class="outline-2">
+        <h2 id="orgcf3b8c8">
+          <span class="section-number-2">3</span>
+          <span class="todo LATER">LATER</span> Magit Additions
+        </h2>
+        <div class="outline-text-2" id="text-3">
+          <p>
+            These basically allow for TODOs in magit along with enhanced github
+            integration. These have been added upstream in <code>develop</code>.
+          </p>
+
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magit-org-todos<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magithub<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+
+          <p>
+            Actually
+            <a href="https://github.com/alphapapa/magit-todos">magit-todos</a>
+            has been added upstream which collates all <code>todo</code> items.
+            There might still be workflows where
+            <a href="https://github.com/danielma/magit-org-todos.el"
+              >magit-org-todos</a
+            >
+            is useful since that displays a global <code>todo.org</code> file.
+          </p>
+        </div>
+      </div>
+      <div id="outline-container-orgb495ca6" class="outline-2">
+        <h2 id="orgb495ca6">
+          <span class="section-number-2">4</span> Git Annex
+        </h2>
+        <div class="outline-text-2" id="text-4">
+          <p>
+            This is actually a
+            <a href="https://github.com/magit/magit-annex">magit addition</a>.
+            The
+            <a href="https://github.com/jwiegley/git-annex-el"
+              >git-annex dired extension</a
+            >
+            shares a common interface and it makes sense to add it here.
+          </p>
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magit-annex<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> git-annex<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org294ce11" class="outline-2">
+        <h2 id="org294ce11">
+          <span class="section-number-2">5</span>
+          <span class="todo LATER">LATER</span> Key Chords and Keybindings
+        </h2>
+        <div class="outline-text-2" id="text-5">
+          <p>
+            It turns out that the switch to
+            <a href="https://github.com/noctuid/general.el">general.el</a> is
+            both inevitable (doom version 2.1) and very rational. However, I
+            really can't wait. So.. This is a stop gap solution.
+          </p>
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> general<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+          <ul class="org-ul">
+            <li class="off">
+              <code>[&#xa0;]</code> Remove when it's merged upstream
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="outline-container-orgb7396aa" class="outline-2">
+        <h2 id="orgb7396aa">
+          <span class="section-number-2">6</span> Org Additions
+        </h2>
+        <div class="outline-text-2" id="text-6">
+          <p>
+            The new ones need to be covered in the <code>config.org</code> file
+            with the appropriate keybindings.
+          </p>
+        </div>
+        <div id="outline-container-org5ee187a" class="outline-3">
+          <h3 id="org5ee187a">
+            <span class="section-number-3">6.1</span> Org Download
+          </h3>
+          <div class="outline-text-3" id="text-6-1">
+            <p>Now I load it here since I don't use <code>+attach</code>.</p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-download<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+
+        <div id="outline-container-org7110300" class="outline-3">
+          <h3 id="org7110300">
+            <span class="section-number-3">6.2</span>
+            <span class="todo LATER">LATER</span> Org Drill
+          </h3>
+          <div class="outline-text-3" id="text-6-2">
+            <p>
+              The
+              <a href="https://bitbucket.org/eeeickythump/org-drill/src"
+                >actual repo</a
+              >
+              has not been updated in 3 years, so I must use
+              <a href="https://github.com/hakanserce/org-drill">this fork</a>.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-drill
+  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+            <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"hakanserce/org-drill"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org7237eb3" class="outline-3">
+          <h3 id="org7237eb3">
+            <span class="section-number-3">6.3</span>
+            <span class="todo TODO">TODO</span> Org Noter
+          </h3>
+          <div class="outline-text-3" id="text-6-3">
+            <p>
+              This is sort of more of a <code>pdf-tools</code> extension and it
+              needs it's own <code>biblatex</code>
+              setup and stuff as well so this might move into a tree of it's
+              own.
+            </p>
+
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-noter<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+
+            <p>This actually breaks the <code>pdf-tools</code> bindings.</p>
+          </div>
+        </div>
+
+        <div id="outline-container-org2ce7277" class="outline-3">
+          <h3 id="org2ce7277">
+            <span class="section-number-3">6.4</span> Org Ref
+          </h3>
+          <div class="outline-text-3" id="text-6-4">
+            <p>
+              This is probably not the best thing in my current setup..
+            </p>
+
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-ref<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org2e9db71" class="outline-3">
+          <h3 id="org2e9db71">
+            <span class="section-number-3">6.5</span> Org Mind Map
+          </h3>
+          <div class="outline-text-3" id="text-6-5">
+            <p>
+              Not on MELPA yet. From
+              <a href="https://github.com/theodorewiles/org-mind-map">here</a>.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-mind-map
+  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+            <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"theodorewiles/org-mind-map"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org16066ba" class="outline-3">
+          <h3 id="org16066ba">
+            <span class="section-number-3">6.6</span> Org Rifle
+          </h3>
+          <div class="outline-text-3" id="text-6-6">
+            <p>
+              Technically a helm addition. Perfect for monolithic
+              <code>org</code> files. More details
+              <a href="https://github.com/alphapapa/helm-org-rifle">here</a>.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> helm-org-rifle<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org6975b77" class="outline-3">
+          <h3 id="org6975b77">
+            <span class="section-number-3">6.7</span> Anki Mode
+          </h3>
+          <div class="outline-text-3" id="text-6-7">
+            <p>
+              This is put here since it only works with
+              <code>org-mode</code> stuff.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> anki-editor<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org7fc12b4" class="outline-2">
+        <h2 id="org7fc12b4">
+          <span class="section-number-2">7</span> Dockerfile Mode
+        </h2>
+        <div class="outline-text-2" id="text-7">
+          <p>
+            For syntax highlighting and inline builds.
+            <a href="https://github.com/spotify/dockerfile-mode"
+              >From spotify</a
+            >
+            weirdly.
+            <code>## -*- docker-image-name: "your-image-name-here" -*-</code>
+            can be used to specify the image name.
+          </p>
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> dockerfile-mode<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org6292c8f" class="outline-2">
+        <h2 id="org6292c8f">
+          <span class="section-number-2">8</span> Reference Management
+        </h2>
+        <div class="outline-text-2" id="text-8"></div>
+        <div id="outline-container-org19742b5" class="outline-4">
+          <h4 id="org19742b5">
+            <span class="section-number-4">8.0.1</span> Zotero
+          </h4>
+          <div class="outline-text-4" id="text-8-0-1">
+            <p>
+              There are a bunch of <code>zotero</code> integrations for emacs,
+              most notably,
+              <a href="https://github.com/vspinu/zotelo">zotelo</a>, but they
+              don't seem to be all that well mantained.
+              <a href="https://github.com/emacsmirror/zotxt">Zotxt</a> seems to
+              be updated pretty often though.
+            </p>
+
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> zotxt<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org084af94" class="outline-2">
+        <h2 id="org084af94">
+          <span class="section-number-2">9</span> Syntax Highlighting
+        </h2>
+        <div class="outline-text-2" id="text-9">
+          <p>
+            These are additionally required to work with the sort of files I use
+            often. The configuration and settings are as usual in
+            <code>config.org</code>
+          </p>
+        </div>
+        <div id="outline-container-org7639c43" class="outline-3">
+          <h3 id="org7639c43">
+            <span class="section-number-3">9.1</span> Tup Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-1">
+            <p>
+              Because honestly there isn't anything better than
+              <a href="http://gittup.org/tup/">tup</a>. Who doesn't need a build
+              system which
+              <a href="http://gittup.org/tup/tup_vs_mordor.html"
+                >scales with the eye of Mordor</a
+              >?
+            </p>
+
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> tup-mode
+<span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+           <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"ejmr/tup-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+
+          <div id="outline-container-org274e709" class="outline-4">
+            <h4 id="org274e709">
+              <span class="section-number-4">9.1.1</span>
+              <span class="todo LATER">LATER</span> Caveats
+            </h4>
+            <div class="outline-text-4" id="text-9-1-1">
+              <p>
+                The repo is unmaintained so I ought to fork it and take a look
+                into maintaining it.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org0a4cbca" class="outline-3">
+          <h3 id="org0a4cbca">
+            <span class="section-number-3">9.2</span> SaltStack Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-2">
+            <p>
+              I have recently decided that
+              <a href="https://saltstack.com/">saltstack</a> ought to be used
+              for working on multiple systems.
+            </p>
+
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> salt-mode
+<span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+         <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"glynnforrest/salt-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orgfeaabd6" class="outline-3">
+          <h3 id="orgfeaabd6">
+            <span class="section-number-3">9.3</span> PKGBUILD Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-3">
+            <p>
+              No point using <code>emacs</code> if I can't get highlighting for
+              all my needs. This needs some extra configuration.
+              <del>Must figure out if this is well mantained</del>. The
+              developer is very responsive to pull requests and the like.
+            </p>
+
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> pkgbuild-mode
+  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+            <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"juergenhoetzel/pkgbuild-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org3e820dd" class="outline-3">
+          <h3 id="org3e820dd">
+            <span class="section-number-3">9.4</span> LAMMPS Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-4">
+            <p>
+              <del
+                >This could do with some updates. Will look into this soon. Also
+                it takesunbearably long this way. Must figure out how to stop it
+                from downloading the whole repo.</del
+              >
+              Mantained
+              <a href="https://github.com/HaoZeke/lammps-mode">by me</a> now.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> lammps-mode
+  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+                    <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"HaoZeke/lammps-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org4443a29" class="outline-3">
+          <h3 id="org4443a29">
+            <span class="section-number-3">9.5</span> Pug Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-5">
+            <p>
+              I just like pugs.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> pug-mode<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orgad72768" class="outline-3">
+          <h3 id="orgad72768">
+            <span class="section-number-3">9.6</span> Nix Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-6">
+            <p>
+              For building more cross-os stuff. This is the
+              <a href="https://github.com/NixOS/nix-mode">official package</a>,
+              but will look into binding and using
+              <a href="https://github.com/travisbhartwell/nix-emacs"
+                >nix-emacs</a
+              >
+              as well.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> nix-mode<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orgf2ba935" class="outline-3">
+          <h3 id="orgf2ba935">
+            <span class="section-number-3">9.7</span> JVM Languages
+          </h3>
+          <div class="outline-text-3" id="text-9-7">
+            <p>
+              Currently the languages I care about (apart from Java) are:
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #5B6268;">; </span><span style="color: #5B6268;">Kotlin &gt; Java</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> kotlin-mode<span style="color: #51afef;">)</span>
+<span style="color: #5B6268;">; </span><span style="color: #5B6268;">Groovy -&gt; Testing</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> groovy-mode<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org4af110c" class="outline-3">
+          <h3 id="org4af110c">
+            <span class="section-number-3">9.8</span> Systemd Mode
+          </h3>
+          <div class="outline-text-3" id="text-9-8">
+            <p>
+              Since I use a lot of user systemd units, it makes sense to have
+              pretty highlighting.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> systemd<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org4e7ef86" class="outline-2">
+        <h2 id="org4e7ef86">
+          <span class="section-number-2">10</span> Flycheck Additions
+        </h2>
+        <div class="outline-text-2" id="text-10"></div>
+        <div id="outline-container-orgf6b4fbb" class="outline-3">
+          <h3 id="orgf6b4fbb">
+            <span class="section-number-3">10.1</span> MELPA Helper
+          </h3>
+          <div class="outline-text-3" id="text-10-1">
+            <p>
+              This is for linting files before submitting to MELPA.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> package-lint<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> flycheck-package<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orgf1f187f" class="outline-2">
+        <h2 id="orgf1f187f">
+          <span class="section-number-2">11</span> Snippets
+        </h2>
+        <div class="outline-text-2" id="text-11">
+          <p>
+            These are from <a href="https://github.com/hlissner">hlissner</a>.
+          </p>
+        </div>
+        <div id="outline-container-orgfca36e1" class="outline-3">
+          <h3 id="orgfca36e1">
+            <span class="section-number-3">11.1</span> Doom
+          </h3>
+          <div class="outline-text-3" id="text-11-1">
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> emacs-snippets
+  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+           <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"hlissner/emacs-snippets"</span>
+           <span style="color: #c678dd;">:files</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"*"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org5626dc3" class="outline-3">
+          <h3 id="org5626dc3">
+            <span class="section-number-3">11.2</span> Standard
+          </h3>
+          <div class="outline-text-3" id="text-11-2">
+            <p>
+              These are from the
+              <a href="https://github.com/AndreaCrotti/yasnippet-snippets"
+                >official snippets repo</a
+              >.
+            </p>
+            <div class="org-src-container">
+              <pre
+                class="src src-emacs-lisp"
+              ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> yasnippet-snippets
+  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:fetcher</span> github
+           <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"AndreaCrotti/yasnippet-snippets"</span>
+           <span style="color: #c678dd;">:files</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"*"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org770f3d7" class="outline-2">
+        <h2 id="org770f3d7">
+          <span class="section-number-2">12</span> Math support
+        </h2>
+        <div class="outline-text-2" id="text-12">
+          <p>
+            I like <a href="https://github.com/cdominik/cdlatex">cdlatex</a>.
+          </p>
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> cdlatex<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="postamble" class="status">
+      <p class="author">
+        Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;
+      </p>
+      <p class="date">Created: 2019-04-22 Mon 06:54</p>
+      <p class="validation">
+        <a href="http://validator.w3.org/check?uri=referer">Validate</a>
+      </p>
+    </div>
+  </body>
+</html>
