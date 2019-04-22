@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # contributer: haozeke <rohit.goswami[at]aol.com>
 # name: noweb-code
-# key: noweb
+# key: <nc
 # --
 
 #+NAME: ${1:noweb-id}
