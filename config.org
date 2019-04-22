@@ -804,7 +804,7 @@ It turns out that each part of the site which needs a separate publish function
 needs to be added to the ~org-publish-project-alist~ so we will define each rule.
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'org-publish-project-alist
-      `("dotdoom"
+      `("dotdoom-org"
          :base-directory ,dotdoom-root-dir
          :publishing-directory ,dotdoom-publish-dir
          :base-extension "org"
