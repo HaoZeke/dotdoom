@@ -799,6 +799,9 @@ of the export, this includes my own analytics and stuff. Infact maybe the
 analytics would be better handled by offloading the damn thing to [[https://netlify.com][Netlify]],
 though their recent changes to the TOS are worrying, so Microsoft owned GitHub
 seems to be the better option for now.
+**** Org Setup
+It turns out that each part of the site which needs a separate publish function
+needs to be added to the ~org-publish-project-alist~ so we will define each rule.
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'org-publish-project-alist
       `("dotdoom"
@@ -817,6 +820,27 @@ seems to be the better option for now.
          ;; :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
          ;; :sitemap-title "index"         ; ... with title 'sitemap'.
          :link-home "index.html"))
+#+END_SRC
+**** Static Content
+We will at the very least need the ~.txt~ files to be transferred as is for
+keybase.
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-publish-project-alist
+      `("dotdoom-static"
+         :base-directory ,dotdoom-root-dir
+         :publishing-directory ,dotdoom-publish-dir
+         :base-extension "txt"
+         :recursive t
+         :publishing-function org-publish-attachment))
+#+END_SRC
+**** Inherit and Combine
+Now we compose the previous projects, keeping in mind the fact that they are in the
+LTR order of preference.
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-publish-project-alist
+      `("dotdoom"
+        :components ("dotdoom-org" "dotdoom-static")
+        ))
 #+END_SRC
 ** Hooks
 *** TODO Caveats

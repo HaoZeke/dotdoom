@@ -2,7 +2,7 @@
 #+AUTHOR: Rohit Goswami
 #+EXPORT_FILE_NAME: index.html
 
-This looks better [[https://haozeke.github.io/dotdoom][on the website]].
+This looks better [[https://dotdoom.netlify.com][on the website]].
 
 * What?
 This is actually a [[https://github.com/hlissner/doom-emacs][doom-emacs]] private module. I was feeling rather whimsical.
