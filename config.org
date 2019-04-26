@@ -924,7 +924,10 @@ proper repo. This is really ad-hoc right now and from [[https://www.reddit.com/r
       ("\\chapter{%s}" . "\\chapter*{%s}")
       ("\\section{%s}" . "\\section*{%s}")
       ("utf8" . "utf8x")
-      ("\\subsection{%s}" . "\\subsection*{%s}")))))
+      ("\\subsection{%s}" . "\\subsection*{%s}"))))
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (setq org-latex-listings 'minted)
+  )
 #+END_SRC
 *** LaTeX Preview for Org mode
 Basically I need to see math and physics. Originally borrowed from [[https://emacs.stackexchange.com/questions/30341/how-do-i-customize-the-process-that-gets-triggered-in-org-preview-latex-fragment][this
