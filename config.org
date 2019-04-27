@@ -38,7 +38,9 @@
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-download][Org Download]]
     - [[#org-drill][Org Drill]]
-    - [[#org-capture-templates][Org Capture Templates]]
+- [[#org-capture][Org Capture]]
+  - [[#functions][Functions]]
+  - [[#templates][Templates]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -50,7 +52,7 @@
     - [[#systemd][Systemd]]
   - [[#aesthetics][Aesthetics]]
   - [[#dockerfile-mode][Dockerfile Mode]]
-  - [[#functions][Functions]]
+  - [[#functions-1][Functions]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
     - [[#org-mode-export-tex-when-saved][Org-mode export tex when saved]]
     - [[#caveats][Caveats]]
@@ -611,9 +613,12 @@ This is much easier to work with compared to the Anki mode stuff.
 (def-package! org-drill
   :after org)
 #+END_SRC
-*** Org Capture Templates
+* Org Capture
 I am not really sure how to use these correctly, but I have the bare minimum
-required for the [[https://github.com/sprig/org-capture-extension#set-up-handlers-in-emacs][Firefox browser extension]] (setup [[http://www.mediaonfire.com/blog/2017_07_21_org_protocol_firefox.html][from here]]), and a random article thing.
+required for the [[https://github.com/sprig/org-capture-extension#set-up-handlers-in-emacs][Firefox browser extension]] (setup [[http://www.mediaonfire.com/blog/2017_07_21_org_protocol_firefox.html][from here]]), and a random
+article thing.
+** Functions
+These are needed for ~org-capture~ alone for now.
 #+BEGIN_SRC emacs-lisp
 ;; Fix some link issues
 (defun transform-square-brackets-to-round-ones(string-to-transform)
@@ -621,6 +626,11 @@ required for the [[https://github.com/sprig/org-capture-extension#set-up-handler
   (concat
    (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
   )
+#+END_SRC
+** Templates
+This might get complicated but I am only trying to get the bare minimum for
+~org-protocol~ right now.
+#+BEGIN_SRC emacs-lisp
 ;; Actually start using templates
 (after! org-capture
   ;; Firefox
