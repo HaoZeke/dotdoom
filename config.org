@@ -38,9 +38,6 @@
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-download][Org Download]]
     - [[#org-drill][Org Drill]]
-- [[#org-capture][Org Capture]]
-  - [[#functions][Functions]]
-  - [[#templates][Templates]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -52,7 +49,7 @@
     - [[#systemd][Systemd]]
   - [[#aesthetics][Aesthetics]]
   - [[#dockerfile-mode][Dockerfile Mode]]
-  - [[#functions-1][Functions]]
+  - [[#functions][Functions]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
     - [[#org-mode-export-tex-when-saved][Org-mode export tex when saved]]
     - [[#caveats][Caveats]]
@@ -83,6 +80,10 @@
     - [[#noteyoda][noteYoda]]
     - [[#reftex][Reftex]]
     - [[#org-ref-ivy][+Org Ref Ivy+]]
+- [[#notes][Notes]]
+  - [[#org-capture][Org Capture]]
+    - [[#functions-1][Functions]]
+    - [[#templates][Templates]]
 
 ** About
 This is a literate config file for [[https://github.com/hlissner/doom-emacs][doom-emacs]] by
@@ -613,52 +614,6 @@ This is much easier to work with compared to the Anki mode stuff.
 (def-package! org-drill
   :after org)
 #+END_SRC
-* Org Capture
-I am not really sure how to use these correctly, but I have the bare minimum
-required for the [[https://github.com/sprig/org-capture-extension#set-up-handlers-in-emacs][Firefox browser extension]] (setup [[http://www.mediaonfire.com/blog/2017_07_21_org_protocol_firefox.html][from here]]), and a random
-article thing.
-** Functions
-These are needed for ~org-capture~ alone for now.
-#+BEGIN_SRC emacs-lisp
-;; Fix some link issues
-(defun transform-square-brackets-to-round-ones(string-to-transform)
-  "Transforms [ into ( and ] into ), other chars left unchanged."
-  (concat
-   (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
-  )
-#+END_SRC
-** Templates
-This might get complicated but I am only trying to get the bare minimum for
-~org-protocol~ right now.
-#+BEGIN_SRC emacs-lisp
-;; Actually start using templates
-(after! org-capture
-  ;; Firefox
-  (add-to-list 'org-capture-templates
-               '("P" "Protocol" entry
-                 (file+headline +org-capture-notes-file "Inbox")
-                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?"
-                 :prepend t
-                 :kill-buffer t))
-  (add-to-list 'org-capture-templates
-               '("L" "Protocol Link" entry
-                 (file+headline +org-capture-notes-file "Inbox")
-                 "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n"
-                 :prepend t
-                 :kill-buffer t))
-  ;; Misc
-  (add-to-list 'org-capture-templates
-         '("a"               ; key
-           "Article"         ; name
-           entry             ; type
-           (file+headline "~/.megaRefs/Notes/consolidated.org" "Article")  ; target
-           "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-           :prepend t        ; properties
-           :empty-lines 1    ; properties
-           :created t        ; properties
-           ))
-)
-#+END_SRC
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
 typically non-standard. These are matched by extensions.
@@ -1124,3 +1079,56 @@ Ivy is used exclusively throughout ~doom~, makes sense to use it here too.
 Turns out ~helm~ is probably faster for larger collections since it can be
 asynchronous. Basically, this is because using the minibuffer, as ivy does is a
 blocking action while the ~helm~ buffer may be opened asynchronously.
+* Notes
+I have a rather involved setup in mind, so I have spun this section off from the
+rest. The basic idea is to use [[https://github.com/jrblevin/deft][~deft~]] for short-to-long lookup notes, and
+~org-capture~ templates with ~org-protocol~ for the rest. I am also considering
+[[https://github.com/hasu/notdeft][notdeft]] since it might work better for what I want to achieve. Though it isn't
+really part of a note taking workflow, I also intend to use [[https://github.com/anticodeninja/michel2][michel2]] to sync my
+tasks...
+** Org Capture
+I am not really sure how to use these correctly, but I have the bare minimum
+required for the [[https://github.com/sprig/org-capture-extension#set-up-handlers-in-emacs][Firefox browser extension]] (setup [[http://www.mediaonfire.com/blog/2017_07_21_org_protocol_firefox.html][from here]]), and a random
+article thing.
+*** Functions
+These are needed for ~org-capture~ alone for now.
+#+BEGIN_SRC emacs-lisp
+;; Fix some link issues
+(defun transform-square-brackets-to-round-ones(string-to-transform)
+  "Transforms [ into ( and ] into ), other chars left unchanged."
+  (concat
+   (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
+  )
+#+END_SRC
+*** Templates
+This might get complicated but I am only trying to get the bare minimum for
+~org-protocol~ right now.
+#+BEGIN_SRC emacs-lisp
+;; Actually start using templates
+(after! org-capture
+  ;; Firefox
+  (add-to-list 'org-capture-templates
+               '("P" "Protocol" entry
+                 (file+headline +org-capture-notes-file "Inbox")
+                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?"
+                 :prepend t
+                 :kill-buffer t))
+  (add-to-list 'org-capture-templates
+               '("L" "Protocol Link" entry
+                 (file+headline +org-capture-notes-file "Inbox")
+                 "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n"
+                 :prepend t
+                 :kill-buffer t))
+  ;; Misc
+  (add-to-list 'org-capture-templates
+         '("a"               ; key
+           "Article"         ; name
+           entry             ; type
+           (file+headline "~/.megaRefs/Notes/consolidated.org" "Article")  ; target
+           "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+           :prepend t        ; properties
+           :empty-lines 1    ; properties
+           :created t        ; properties
+           ))
+)
+#+END_SRC
