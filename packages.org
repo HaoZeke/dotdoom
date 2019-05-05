@@ -47,9 +47,10 @@
   - [[#math-support][Math support]]
 
 ** About this file
-This is an Emacs literate package file. It contains the basic structure along
-with some data about each package and why it's needed. This is to be used in
-tandem with the ~define-package!~ function in ~config.org~.
+This is an Emacs literate package file and is meant to compliment [[file:config.org][my
+configuration]]. It contains the basic structure along with some data about each
+package and why it's needed. This is to be used in tandem with the
+~define-package!~ function in ~config.org~.
 
 Since it's primarily aimed at ~doom-emacs~ let's add their comments.
 
