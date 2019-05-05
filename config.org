@@ -90,7 +90,7 @@
 This is a literate config file for [[https://github.com/hlissner/doom-emacs][doom-emacs]] by ~hlinssner~. This is meant to
 be used with the =develop= branch. Much of the basic setup is pulled from the
 [[https://github.com/gilbertw1/emacs-literate-starter][emacs literate starter]] by =gilbertw1=. The [[file:packages.org][companion packages page]] describes the
-basic package setup.
+basic package setup, while the ~init.el~ is described on [[file:README.org][the project homepage]].
 
 *** About that TOC..
 So as mentioned [[https:https://github.com/snosov1/toc-org/issues/35][here]] there is trouble when ~org-export~ tries to create files
