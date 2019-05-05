@@ -834,7 +834,7 @@ keybase.
          :base-directory ,dotdoom-root-dir
          :publishing-directory ,dotdoom-publish-dir
          :base-extension "txt"
-         :recursive t
+         :recursive nil
          :publishing-function org-publish-attachment))
 #+END_SRC
 **** Inherit and Combine
