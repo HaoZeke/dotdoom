@@ -48,7 +48,7 @@
 
 ** About this file
 This is an Emacs literate package file and is meant to compliment [[file:config.org][my
-configuration]], as well as [[file:README.org][the init.el]]. It contains the basic structure along
+configuration]], as well as [[file:index.html][the init.el]]. It contains the basic structure along
 with some data about each package and why it's needed. This is to be used in
 tandem with the ~define-package!~ function in ~config.org~.
 
