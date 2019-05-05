@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <!-- 2019-05-05 Sun 18:53 -->
+    <!-- 2019-05-05 Sun 18:59 -->
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>dotDOOM</title>
@@ -335,7 +335,8 @@
             </li>
             <li><a href="#orgba3e2ea">2. Why?</a></li>
             <li><a href="#org0c484c3">3. How?</a></li>
-            <li><a href="#orgeb0711d">4. License</a></li>
+            <li><a href="#org065b4e9">4. Config</a></li>
+            <li><a href="#orgeb0711d">5. License</a></li>
           </ul>
         </div>
       </div>
@@ -399,9 +400,201 @@
           </div>
         </div>
       </div>
-      <div id="outline-container-orgeb0711d" class="outline-2">
-        <h2 id="orgeb0711d"><span class="section-number-2">4</span> License</h2>
+      <div id="outline-container-org065b4e9" class="outline-2">
+        <h2 id="org065b4e9"><span class="section-number-2">4</span> Config</h2>
         <div class="outline-text-2" id="text-4">
+          <p>
+            Since the <code>config.el</code> needs no page of its own, it is
+            simply included below:
+          </p>
+          <div class="org-src-container">
+            <pre
+              class="src src-emacs-lisp"
+            ><span style="color: #5B6268;">;;; </span><span style="color: #5B6268;">init.el -*- lexical-binding: t; -*-</span>
+<span style="color: #5B6268;">;; </span><span style="color: #5B6268;">Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!</span>
+
+<span style="color: #51afef;">(</span><span style="color: #51afef;">doom!</span> <span style="color: #c678dd;">:completion</span>
+       <span style="color: #c678dd;">(</span>company          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">the ultimate code completion backend</span>
+        +childframe      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a better UI for company (Emacs 26+)</span>
+        +auto<span style="color: #c678dd;">)</span>           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">as-you-type code completion</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">(helm             ; the *other* search engine for love and life</span>
+      <span style="color: #5B6268;">;;   </span><span style="color: #5B6268;">+childframe      ; a better UI for helm (Emacs 26+)</span>
+      <span style="color: #5B6268;">;;   </span><span style="color: #5B6268;">+fuzzy)          ; enable fuzzy search backend for helm</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ido               ; the other *other* search engine...</span>
+       <span style="color: #c678dd;">(</span>ivy              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a search engine for love and life</span>
+        +childframe      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a better UI for ivy (Emacs 26+)</span>
+        +fuzzy<span style="color: #c678dd;">)</span>          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">enable fuzzy search backend for ivy</span>
+
+      <span style="color: #c678dd;">:ui</span>
+      deft              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">notational velocity for Emacs</span>
+      doom              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">what makes DOOM look the way it does</span>
+      doom-dashboard    <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a nifty splash screen for Emacs</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">doom-modeline    ; a snazzy Atom-inspired mode-line</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">doom-quit         ; DOOM quit-message prompts when you quit Emacs</span>
+      <span style="color: #dcaeea;">fill-column</span>       <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a `</span><span style="color: #a9a1e1;">fill-column</span><span style="color: #5B6268;">' indicator</span>
+      hl-todo           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">highlight </span><span style="color: #ECBE7B;">TODO</span><span style="color: #5B6268;">/</span><span style="color: #ff6c6b;">FIXME</span><span style="color: #5B6268;">/</span><span style="color: #98be65;">NOTE</span><span style="color: #5B6268;"> tags</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">indent-guides     ; highlighted indent columns</span>
+      modeline          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">snazzy, Atom-inspired modeline, plus API</span>
+      nav-flash         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">blink the current line after jumping</span>
+      ophints           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">highlight the region an operation acts on</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">neotree           ; a project drawer, like NERDTree for vim</span>
+      <span style="color: #c678dd;">(</span>popup            <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tame sudden yet inevitable temporary windows</span>
+        +all             <span style="color: #5B6268;">; </span><span style="color: #5B6268;">catch all popups that start with an asterix</span>
+        +defaults<span style="color: #c678dd;">)</span>       <span style="color: #5B6268;">; </span><span style="color: #5B6268;">default popup rules</span>
+      pretty-code       <span style="color: #5B6268;">; </span><span style="color: #5B6268;">replace bits of code with pretty symbols</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">tabbar            ; </span><span style="color: #ff6c6b;">FIXME</span><span style="color: #5B6268;"> an (incomplete) tab bar for Emacs</span>
+      treemacs          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a project drawer, like neotree but cooler</span>
+      unicode           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">extended unicode support for various languages</span>
+      vc-gutter         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">vcs diff in the fringe</span>
+      vi-tilde-fringe   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">fringe tildes to mark beyond EOB</span>
+      window-select     <span style="color: #5B6268;">; </span><span style="color: #5B6268;">visually switch windows</span>
+      workspaces        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tab emulation, persistence &amp; separate workspaces</span>
+
+      <span style="color: #c678dd;">:editor</span>
+      <span style="color: #c678dd;">(</span>evil +everywhere<span style="color: #c678dd;">)</span> <span style="color: #5B6268;">; </span><span style="color: #5B6268;">come to the dark side, we have cookies</span>
+      file-templates     <span style="color: #5B6268;">; </span><span style="color: #5B6268;">auto-snippets for empty files</span>
+      fold               <span style="color: #5B6268;">; </span><span style="color: #5B6268;">(nigh) universal code folding</span>
+      <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">format</span> +onsave<span style="color: #c678dd;">)</span>   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">Automated prettiness</span>
+      <span style="color: #5B6268;">;</span><span style="color: #5B6268;">lispy             ; vim for lisp, for people who dont like vim</span>
+      multiple-cursors   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">editing in many places at once</span>
+      <span style="color: #5B6268;">;</span><span style="color: #5B6268;">parinfer          ; turn lisp into python, sort of</span>
+      rotate-text        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">cycle region at point between text candidates</span>
+      snippets           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">my elves. They type so I don't have to</span>
+
+       <span style="color: #c678dd;">:emacs</span>
+       <span style="color: #c678dd;">(</span><span style="color: #c678dd;">dired</span>            <span style="color: #5B6268;">; </span><span style="color: #5B6268;">making dired pretty [functional]</span>
+       +ranger           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">bringing the goodness of ranger to dired</span>
+       +icons            <span style="color: #5B6268;">; </span><span style="color: #5B6268;">colorful icons for dired-mode</span>
+        <span style="color: #c678dd;">)</span>
+       electric          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">smarter, keyword-based electric-indent</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">eshell           ; a consistent, cross-platform shell (WIP)</span>
+       imenu             <span style="color: #5B6268;">; </span><span style="color: #5B6268;">an imenu sidebar and searchable code index</span>
+       term              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">terminals in Emacs</span>
+       vc                <span style="color: #5B6268;">; </span><span style="color: #5B6268;">version-control and Emacs, sitting in a tree</span>
+
+       <span style="color: #c678dd;">:tools</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ansible</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">debugger          ; </span><span style="color: #ff6c6b;">FIXME</span><span style="color: #5B6268;"> stepping through code, to help you add bugs</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">direnv</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">docker</span>
+      editorconfig      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">let someone else argue about tabs vs spaces</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ein              ; tame Jupyter notebooks with emacs</span>
+      eval              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">run code, run (also, repls)</span>
+      <span style="color: #c678dd;">(</span>flycheck         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tasing you for every semicolon you forget</span>
+       +childframe<span style="color: #c678dd;">)</span>     <span style="color: #5B6268;">; </span><span style="color: #5B6268;">use childframes for error popups (Emacs 26+ only)</span>
+      flyspell          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tasing you for misspelling mispelling</span>
+      gist              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">interacting with github gists</span>
+      <span style="color: #c678dd;">(</span>lookup           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">helps you navigate your code and documentation</span>
+       +devdocs         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">...on devdocs.io online</span>
+       +docsets<span style="color: #c678dd;">)</span>        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">...or in Dash docsets locally</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">lsp</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">macos            ; MacOS-specific commands</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">make             ; run make tasks from Emacs</span>
+      magit             <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a git porcelain for Emacs</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">password-store   ; password manager for nerds</span>
+      pdf               <span style="color: #5B6268;">; </span><span style="color: #5B6268;">pdf enhancements</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">prodigy          ; </span><span style="color: #ff6c6b;">FIXME</span><span style="color: #5B6268;"> managing external services &amp; code builders</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">rgb              ; creating color strings</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">terraform         ; infrastructure as code</span>
+      tmux              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">an API for interacting with tmux</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">upload           ; map local to remote projects via ssh/ftp</span>
+      wakatime          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">stats for coders</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">vterm             ; another terminals in Emacs</span>
+
+       <span style="color: #c678dd;">:lang</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">agda               ; types of types of types of types...</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">assembly           ; assembly for fun or debugging</span>
+       <span style="color: #c678dd;">(</span>cc +irony +rtags<span style="color: #c678dd;">)</span>  <span style="color: #5B6268;">; </span><span style="color: #5B6268;">C/C++/Obj-C madness</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">clojure           ; java with a lisp</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">common-lisp       ; if you've seen one lisp, you've seen them all</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">coq               ; proofs-as-programs</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">crystal           ; ruby at the speed of c</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">csharp            ; unity, .NET, and mono shenanigans</span>
+       data                <span style="color: #5B6268;">; </span><span style="color: #5B6268;">config/data formats</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">erlang             ; an elegant language for a more civilized age</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">elixir             ; erlang done right</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">elm                ; care for a cup of TEA?</span>
+       emacs-lisp          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">drown in parentheses</span>
+       ess                 <span style="color: #5B6268;">; </span><span style="color: #5B6268;">emacs speaks statistics</span>
+       go                  <span style="color: #5B6268;">; </span><span style="color: #5B6268;">the hipster dialect</span>
+       <span style="color: #c678dd;">(</span>haskell +intero<span style="color: #c678dd;">)</span>   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a language that's lazier than I am</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">hy                 ; readability of scheme w/ speed of python</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">idris</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">(java +meghanada)  ; the poster child for carpal tunnel syndrome</span>
+       javascript          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">all(hope(abandon(ye(who(enter(here))))))</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">julia            ; a better, faster MATLAB</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">kotlin           ; a better, slicker Java(Script)</span>
+       <span style="color: #c678dd;">(</span>latex              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">writing papers in Emacs has never been so fun</span>
+        +unicode-math     <span style="color: #5B6268;">; </span><span style="color: #5B6268;">adding better math support</span>
+        +latexmk          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">No other option TBH</span>
+        +preview-pane<span style="color: #c678dd;">)</span>    <span style="color: #5B6268;">; </span><span style="color: #5B6268;">Eh why not.</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ledger             ; an accounting system in Emacs</span>
+       lua               <span style="color: #5B6268;">; </span><span style="color: #5B6268;">one-based indices? one-based indices</span>
+       <span style="color: #c678dd;">(</span><span style="color: #c678dd;">markdown</span>         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">writing docs for people to ignore</span>
+        +pandoc<span style="color: #c678dd;">)</span>         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">can I get that in "* format?"</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">nim               ; python + lisp at the speed of c</span>
+       nix                <span style="color: #5B6268;">; </span><span style="color: #5B6268;">I hereby declare "nix geht mehr!"</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ocaml             ; an objective camel</span>
+       <span style="color: #c678dd;">(</span>org              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">organize your plain life in plain text</span>
+        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">+attach        ; custom attachment system</span>
+        +babel            <span style="color: #5B6268;">; </span><span style="color: #5B6268;">running code in org</span>
+        +capture          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">org-capture in and outside of Emacs</span>
+        +export           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">Exporting org to whatever you want</span>
+        +habit            <span style="color: #5B6268;">; </span><span style="color: #5B6268;">Keep track of your habits</span>
+        +present          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">Emacs for presentations</span>
+        +protocol<span style="color: #c678dd;">)</span>       <span style="color: #5B6268;">; </span><span style="color: #5B6268;">Support for org-protocol:// links</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">perl            ; write code no one else can comprehend</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">php             ; perl's insecure younger brother</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">plantuml        ; diagrams for confusing people more</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">purescript      ; javascript, but functional</span>
+       python            <span style="color: #5B6268;">; </span><span style="color: #5B6268;">beautiful is better than ugly</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">qt              ; the 'cutest' gui framework ever</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">racket          ; a DSL for DSLs</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">rest            ; Emacs as a REST client</span>
+       ruby              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">1.step do {|i| p "Ruby is #{i.even? ? 'love' : 'life</span><span style="color: #ffffff; background-color: brightblack;">'</span><span style="color: #5B6268;">}"}</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">rust            ; Fe2O3.unwrap().unwrap().unwrap().unwrap()</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">scala           ; java, but good</span>
+       sh                <span style="color: #5B6268;">; </span><span style="color: #5B6268;">she sells (ba|z)sh shells on the C xor</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">+fish)         ; Fish support</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">solidity          ; do you need a blockchain? No.</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">swift             ; who asked for emoji variables?</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">terra           ; Earth and Moon in alignment for performance.</span>
+       web                <span style="color: #5B6268;">; </span><span style="color: #5B6268;">the tubes</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">vala             ; GObjective-C</span>
+
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">Applications are complex and opinionated modules that transform Emacs</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">toward a specific purpose. They may have additional dependencies and</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">should be loaded late.</span>
+       <span style="color: #c678dd;">:app</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">(email +gmail)    ; emacs as an email client</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">irc               ; how neckbeards socialize</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">(rss +org)        ; emacs as an RSS reader</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">twitter           ; twitter client https://twitter.com/vnought</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">(write             ; emacs as a word processor (latex + org + markdown</span><span style="color: #ffffff; background-color: brightblack;">)</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">+wordnut           ; wordnet (wn) search</span>
+      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">+langtool)         ; a proofreader (grammar/style check) for Emacs</span>
+
+       <span style="color: #c678dd;">:collab</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">floobits          ; peer programming for a price</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">impatient-mode    ; show off code over HTTP</span>
+
+       <span style="color: #c678dd;">:config</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">For literate config users. This will tangle+compile a config.org</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">literate config in your `</span><span style="color: #a9a1e1;">doom-private-dir</span><span style="color: #5B6268;">' whenever it changes.</span>
+      literate
+
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">The default module set reasonable defaults for Emacs. It also provide</span><span style="color: #ffffff; background-color: brightblack;">s</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">a Spacemacs-inspired keybinding scheme, a custom yasnippet library,</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">and additional ex commands for evil-mode. Use it as a reference for</span>
+       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">your own modules.</span>
+       <span style="color: #c678dd;">(</span>default +bindings +smartparens<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orgeb0711d" class="outline-2">
+        <h2 id="orgeb0711d"><span class="section-number-2">5</span> License</h2>
+        <div class="outline-text-2" id="text-5">
           <p>
             It is a personal configuration. So I guess the
             <a href="https://choosealicense.com/licenses/mit/">MIT license</a>
@@ -412,7 +605,7 @@
     </div>
     <div id="postamble" class="status">
       <p class="author">Author: Rohit Goswami</p>
-      <p class="date">Created: 2019-05-05 Sun 18:53</p>
+      <p class="date">Created: 2019-05-05 Sun 18:59</p>
       <p class="validation">
         <a href="http://validator.w3.org/check?uri=referer">Validate</a>
       </p>
