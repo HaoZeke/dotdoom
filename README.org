@@ -1,6 +1,7 @@
 #+TITLE: dotDOOM
 #+AUTHOR: Rohit Goswami
 #+EXPORT_FILE_NAME: index.html
+#+OPTIONS: toc:nil
 
 This looks better [[https://dotdoom.netlify.com][on the website]].
 

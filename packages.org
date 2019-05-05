@@ -3,6 +3,7 @@
 #+PROPERTY: header-args :tangle (concat doom-private-dir "packages.el")
 #+PROPERTY: header-args+ :comments link
 #+STARTUP: outline
+#+OPTIONS: toc:nil
 
 # Now we set this with STARTUP
 # These can be set per subtree.
