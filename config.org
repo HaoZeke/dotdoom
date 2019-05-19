@@ -916,7 +916,8 @@ upstream.
 ** Temporary
 *** LaTeX for Org mode
 Pretty this up. Consider using file templates or something. Atleast make a
-proper repo. This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]].
+proper repo. This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]]. The
+KOMA article stuff is from [[https://tex.stackexchange.com/a/364982/130845][here]].
 #+BEGIN_SRC emacs-lisp
 (with-eval-after-load 'ox-latex
   (append-to-list
@@ -930,6 +931,13 @@ proper repo. This is really ad-hoc right now and from [[https://www.reddit.com/r
       ("utf8" . "utf8x")
       ("\\subsection{%s}" . "\\subsection*{%s}"))))
   (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (add-to-list 'org-latex-classes
+               '("koma-article" "\\documentclass{scrartcl}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   (setq org-latex-listings 'minted)
   )
 #+END_SRC
