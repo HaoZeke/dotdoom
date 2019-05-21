@@ -26,7 +26,7 @@
 #+LATEX_HEADER: \\usepackage{mathspec}
 #+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
 #+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}]{Hoefler Text}
-#+LATEX_HEADER: \\setsansfont[Scale=0.9]{Helvetica Neue}
+# #+LATEX_HEADER: \\setsansfont[Scale=0.9]{Helvetica Neue} # Replace or obtain font
 #+LATEX_HEADER: \\setmonofont[Scale=0.8]{Courier}
 #+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Minion Pro}
 # Wider Text
