@@ -16,6 +16,9 @@
 #
 #+LATEX_COMPILER: xelatex
 #+LATEX_CLASS_OPTIONS: [12pt,a4paper]
+# References
+#+LATEX_HEADER: \\usepackage[natbib]{biblatex}
+#+LATEX_HEADER: \\bibliography{${5:refs}}
 # Nicer Fonts
 #+LATEX_HEADER: \\usepackage{xunicode}
 #+LATEX_HEADER: \\usepackage{xltxtra}
@@ -51,8 +54,9 @@
 \\vspace{0.7em}
 \\parindent $0
 
+* References
 
-
+\printbibliography
 
 # Local Variables:
 # after-save-hook: haozeke/org-save-and-export-pdf
