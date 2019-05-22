@@ -978,7 +978,7 @@ These are required to view math properly.
 *** Org Ref LaTeX
 This is really not part of my workflow...
 #+BEGIN_SRC emacs-lisp
-(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
 #+END_SRC
 *** Math support
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
