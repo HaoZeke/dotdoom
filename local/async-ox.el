@@ -22,5 +22,6 @@
   (setq org-latex-listings 'minted)
   )
 
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
 (provide 'autoExport)
 ;;; autoExport.el ends here
