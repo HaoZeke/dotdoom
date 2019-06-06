@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: choices
+# key: <choi
+# --
+
+\\begin{choices}
+  \\choice\\
+  \\choice\\
+  \\choice\\
+  \\CorrectChoice\\ $0
+\\end{choices}
