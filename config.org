@@ -340,7 +340,7 @@ This should hopefully propogate across all modes.
 (map! :leader
       (:prefix ("i" . "Insert")
        :desc "Unicode" "u" 'insert-char
-       :desc "Snippet" "s" '+snippets/expand-on-region
+       :desc "Snippet" "s" 'yas-insert-snippet
        :desc "From Clipboard" "y" '+default/yank-pop
        :desc "From Evil Registers" "r" 'counsel-evil-registers
       )
