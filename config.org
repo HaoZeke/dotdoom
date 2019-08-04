@@ -174,7 +174,7 @@ Of course this is not really meant to be here..
 A variation of this was included upstream in the ~develop~ branch.
 #+BEGIN_SRC emacs-lisp :tangle no
 (def-package! magit-org-todos
-  :mode "\\COMMIT_EDITMSG$"
+  :mode "\\COMMIT_EDITMSG\\'"
   :commands (magit-org-todods magit-org-todos-autoinsert)
   :config
   (magit-org-todos-autoinsert))
@@ -634,7 +634,7 @@ This is the non ~doom~ way of loading this.
 I use ~doom~. So.
 #+BEGIN_SRC emacs-lisp
 (def-package! pkgbuild-mode
-  :mode "/PKGBUILD$")
+  :mode "\\PKGBUILD")
 #+END_SRC
 *** LAMMPS Mode
 **** No doom setup
@@ -661,7 +661,7 @@ With macros.
 Need better font locking everywhere.
 #+BEGIN_SRC emacs-lisp
 (def-package! pug-mode
-  :mode "/\\.pug$/")
+  :mode "\\.pug\\'")
 #+END_SRC
 *** Conf Mode Files
 The ~rc~ files are usually encountered while building android stuff. They are handled
@@ -669,8 +669,8 @@ well by ~conf-mode~. Turns out that ~vmd~ files also look just like ~conf-mode~ 
 #+BEGIN_SRC emacs-lisp
 (setq auto-mode-alist
              (append
-             '(("\\.rc$" . conf-mode))
-             '(("\\.vmd$" . conf-mode))
+             '(("\\.rc\\'" . conf-mode))
+             '(("\\.vmd\\'" . conf-mode))
              auto-mode-alist
              ))
 #+END_SRC
@@ -679,7 +679,7 @@ Strangely the default settings do not pick up a bunch of fortran files.
 #+BEGIN_SRC emacs-lisp
 (setq auto-mode-alist
              (append
-             '(("\\.F90$" . fortran-mode))
+             '(("\\.F90\\'" . fortran-mode))
              auto-mode-alist
              ))
 #+END_SRC
@@ -688,16 +688,16 @@ Since ~java+meghnada~, ~clojure~, and ~scala~ are covered by the standard ~doom~
 the rest of these need to be loaded here.
 #+BEGIN_SRC emacs-lisp
 (def-package! kotlin-mode
-  :mode "/\\.kt$/")
+  :mode "\\.kt\\'")
 
 (def-package! groovy-mode
-  :mode "/\\.groovy$/")
+  :mode "\\.groovy\\'")
 #+END_SRC
 *** Systemd
 For all those user-units.
 #+BEGIN_SRC emacs-lisp
 (def-package! systemd
-  :mode "/\\.service$/")
+  :mode "\\.service\\'")
 #+END_SRC
 ** Aesthetics
 ** Dockerfile Mode
