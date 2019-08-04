@@ -117,7 +117,7 @@ Now I load it here since I don't use ~+attach~.
 The [[https://bitbucket.org/eeeickythump/org-drill/src][actual repo]] has not been updated in 3 years, so I must use [[https://github.com/hakanserce/org-drill][this fork]].
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! org-drill
-  :recipe (:fetcher github
+  :recipe (:host github
             :repo "hakanserce/org-drill"))
 #+END_SRC
 *** TODO Org Noter
@@ -140,7 +140,7 @@ This is probably not the best thing in my current setup..
 Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
 #+BEGIN_SRC emacs-lisp
 (package! org-mind-map
-  :recipe (:fetcher github
+  :recipe (:host github
             :repo "theodorewiles/org-mind-map"))
 #+END_SRC
 *** Org Rifle
@@ -179,7 +179,7 @@ system which [[http://gittup.org/tup/tup_vs_mordor.html][scales with the eye of 
 
 #+BEGIN_SRC emacs-lisp
 (package! tup-mode
-:recipe (:fetcher github
+:recipe (:host github
            :repo "ejmr/tup-mode"))
 #+END_SRC
 
@@ -191,7 +191,7 @@ systems.
 
 #+BEGIN_SRC emacs-lisp
 (package! salt-mode
-:recipe (:fetcher github
+:recipe (:host github
          :repo "glynnforrest/salt-mode"))
 #+END_SRC
 *** PKGBUILD Mode
@@ -201,7 +201,7 @@ developer is very responsive to pull requests and the like.
 
 #+BEGIN_SRC emacs-lisp
 (package! pkgbuild-mode
-  :recipe (:fetcher github
+  :recipe (:host github
             :repo "juergenhoetzel/pkgbuild-mode"))
 #+END_SRC
 *** LAMMPS Mode
@@ -210,7 +210,7 @@ whole repo.+
 Mantained [[https://github.com/HaoZeke/lammps-mode][by me]] now.
 #+BEGIN_SRC emacs-lisp
 (package! lammps-mode
-  :recipe (:fetcher github
+  :recipe (:host github
                     :repo "HaoZeke/lammps-mode"))
 #+END_SRC
 *** Pug Mode
@@ -250,7 +250,7 @@ These are from [[https://github.com/hlissner][hlissner]].
 *** Doom
 #+BEGIN_SRC emacs-lisp
 (package! emacs-snippets
-  :recipe (:fetcher github
+  :recipe (:host github
            :repo "hlissner/emacs-snippets"
            :files ("*")))
 #+END_SRC
@@ -258,7 +258,7 @@ These are from [[https://github.com/hlissner][hlissner]].
 These are from the [[https://github.com/AndreaCrotti/yasnippet-snippets][official snippets repo]].
 #+BEGIN_SRC emacs-lisp
 (package! yasnippet-snippets
-  :recipe (:fetcher github
+  :recipe (:host github
            :repo "AndreaCrotti/yasnippet-snippets"
            :files ("*")))
 #+END_SRC
