@@ -610,7 +610,7 @@ trouble with relative exports so I have this one instead. Partially kanged from
 #+END_SRC
 *** Org Drill
 This is much easier to work with compared to the Anki mode stuff.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (def-package! org-drill
   :after org)
 #+END_SRC
