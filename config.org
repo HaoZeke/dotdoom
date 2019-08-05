@@ -642,7 +642,7 @@ For most users.
 #+BEGIN_SRC emacs-lisp :tangle no
 (autoload 'lammps-mode "lammps-mode.el" "LAMMPS mode." t)
 (setq auto-mode-alist (append
-                              '(("in\\." . lammps-mode))
+                              '(("in\\.'" . lammps-mode))
                               '(("\\.lmp\\'" . lammps-mode))
                               auto-mode-alist
                               ))
@@ -652,7 +652,7 @@ With macros.
 #+BEGIN_SRC emacs-lisp
 (def-package! lammps-mode)
 (setq auto-mode-alist (append
-                              '(("in\\." . lammps-mode))
+                              '(("in\\.'" . lammps-mode))
                               '(("\\.lmp\\'" . lammps-mode))
                               auto-mode-alist
                               ))
