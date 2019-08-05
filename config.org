@@ -134,7 +134,7 @@ I have trouble at work with the current DOOM dashboard. This one is from the
 #+END_SRC
 *** Helm changes
 This makes `helm` behave more like `ivy` while working with directories.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (after! helm
   ;; I want backspace to go up a level, like ivy
   (add-hook! 'helm-find-files-after-init-hook
