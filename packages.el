@@ -115,7 +115,3 @@
 ;; [[file:~/.config/doom/packages.org::*Math support][Math support:1]]
 (package! cdlatex)
 ;; Math support:1 ends here
-
-;; [[file:~/.config/doom/packages.org::*Polymodes][Polymodes:1]]
-(package! polymode)
-;; Polymodes:1 ends here
