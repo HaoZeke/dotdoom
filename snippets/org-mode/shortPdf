@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: short-pdf
 # contributor: Rohit Goswami (HaoZeke)
-# key:                                                    
+# key:  <spd                                                                                        
 # --
 
 #+TITLE: ${1:Statement of Purpose}
@@ -15,7 +15,18 @@
 # LaTeX Stuff
 #
 #+LATEX_COMPILER: xelatex
+#+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [12pt,a4paper]
+# Suppress section numbers
+#+OPTIONS: num:nil
+# Load first
+#+LATEX_HEADER: \\usepackage{mathtools}
+#+LATEX_HEADER: \\usepackage{mathspec}
+#+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
+#+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{HoeflerText} % If Hoefler is missing replace with Crimson
+#+LATEX_HEADER: \\setsansfont[Scale=0.8]{Nimbus Sans} % Used to be Helvetica Neue LT Com
+#+LATEX_HEADER: \\setmonofont[Scale=0.8]{Fira Mono} % Used to be MesloLGSDZ Nerd Font
+#+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Minion Pro}
 # References
 #+LATEX_HEADER: \\usepackage[natbib]{biblatex}
 #+LATEX_HEADER: \\bibliography{${5:refs}}
@@ -23,12 +34,6 @@
 #+LATEX_HEADER: \\usepackage{xunicode}
 #+LATEX_HEADER: \\usepackage{xltxtra}
 #+LATEX_HEADER: \\usepackage[protrusion=true,final]{microtype}
-#+LATEX_HEADER: \\usepackage{mathspec}
-#+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
-#+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}]{Hoefler Text}
-# #+LATEX_HEADER: \\setsansfont[Scale=0.9]{Helvetica Neue} # Replace or obtain font
-#+LATEX_HEADER: \\setmonofont[Scale=0.8]{Courier}
-#+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Minion Pro}
 # Wider Text
 # #+LATEX_HEADER: \\usepackage[textwidth=7in,textheight=9in]{geometry}
 # Better Heading (from this [[https://github.com/tatlicioglu/SoP/blob/master/SoP.tex][minimal template]])
@@ -48,11 +53,11 @@
 #+LATEX_HEADER: \\renewcommand{\\abstractname}{\\vspace{-\\baselineskip}}
 
 #+begin_abstract
-\parindent This is an abstract
+\\noindent This is an abstract
 #+end_abstract
 
 \\vspace{0.7em}
-\\parindent $0
+\\noindent $0
 
 * References
 
