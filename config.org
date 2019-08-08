@@ -930,7 +930,9 @@ KOMA article stuff is from [[https://tex.stackexchange.com/a/364982/130845][here
       ("\\section{%s}" . "\\section*{%s}")
       ("utf8" . "utf8x")
       ("\\subsection{%s}" . "\\subsection*{%s}"))))
-  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
+  (setq org-latex-minted-options
+    '(("bgcolor" "black") ("linenos" "true") ("style" "native")))
   (add-to-list 'org-latex-classes
                '("koma-article" "\\documentclass{scrartcl}"
                  ("\\section{%s}" . "\\section*{%s}")
