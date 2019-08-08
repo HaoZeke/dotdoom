@@ -24,7 +24,7 @@
 #+LATEX_HEADER: \\usepackage{mathspec}
 #+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
 #+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{HoeflerText} % If Hoefler is missing replace with Crimson
-#+LATEX_HEADER: \\setsansfont[Scale=0.8]{Nimbus Sans} % Used to be Helvetica Neue LT Com
+#+LATEX_HEADER: \\setsansfont[Scale=0.8]{Roboto} % Used to be Helvetica Neue LT Com -> Nimbus Sans
 #+LATEX_HEADER: \\setmonofont[Scale=0.8]{Fira Mono} % Used to be MesloLGSDZ Nerd Font
 #+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Minion Pro}
 # References
