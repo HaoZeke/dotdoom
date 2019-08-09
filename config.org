@@ -913,8 +913,13 @@ upstream.
 (after! doom-themes
   (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
 #+END_SRC
-** Temporary
-*** LaTeX for Org mode
+* Org LaTeX
+Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's also why here it's better to *not* use very _doom_ specific code.
+** Processing
+It makes sense to use ~latexmk~ anyway. This way I can set sane defaults.
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
+#+END_SRC
 Pretty this up. Consider using file templates or something. Atleast make a
 proper repo. This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]]. The
 KOMA article stuff is from [[https://tex.stackexchange.com/a/364982/130845][here]].
@@ -943,7 +948,7 @@ KOMA article stuff is from [[https://tex.stackexchange.com/a/364982/130845][here
   (setq org-latex-listings 'minted)
   )
 #+END_SRC
-*** LaTeX Preview for Org mode
+** LaTeX Preview for Org mode
 Basically I need to see math and physics. Originally borrowed from [[https://emacs.stackexchange.com/questions/30341/how-do-i-customize-the-process-that-gets-triggered-in-org-preview-latex-fragment][this
 stackexchange]] question.
 **** Process
@@ -977,12 +982,7 @@ stackexchange]] question.
 #+END_SRC
 **** Packages
 These are required to view math properly.
-*** Org Ref LaTeX
-This is really not part of my workflow...
-#+BEGIN_SRC emacs-lisp
-(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
-#+END_SRC
-*** Math support
+** Math support
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
 #+BEGIN_SRC emacs-lisp
 (def-package! cdlatex
