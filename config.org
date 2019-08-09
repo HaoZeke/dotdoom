@@ -918,46 +918,61 @@ Portions of this section are to be mirrored in [[file:local/async-ox.el][the asy
 also why here it's better to *not* use very _doom_ specific code. I think it
 would be a lot better to just work these into a single literate block instead of
 maitaining two different sets of syntax.
+#+BEGIN_SRC emacs-lisp :noweb yes
+(with-eval-after-load 'ox-latex
+  <<tex_process>>
+  <<common_pkgs>>
+  <<tufte_book>>
+  <<koma_art>>
+)
+#+END_SRC
 ** Shared Preferences
 *** Compiler
 It makes sense to use ~latexmk~ anyway. This way I can set sane defaults.
-#+BEGIN_SRC emacs-lisp
+#+NAME: tex_process
+#+BEGIN_SRC emacs-lisp :tangle none
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
 #+END_SRC
 *** Packages
 Some of these are damn near universal given my set up, so they are declared here.
+#+NAME: common_pkgs
+#+BEGIN_SRC emacs-lisp :tangle none
+(add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
+(setq org-latex-listings 'minted)
+(setq org-latex-minted-options
+  '(("bgcolor" "black") ("linenos" "true") ("style" "native")))
+#+END_SRC
 ** Export Templates
 Most of the configuration is to be moved into the file snippets. However, class
-definitions and other packages are still to be loaded here. This is really
-ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]]. Though here in the ~config.el~ I could use ~doom~ semantics and might as
+definitions and other packages are still to be loaded here. Though here in the ~config.el~ I could use ~doom~ semantics and might as
 well to keep things DRY, it appears that the [[file:local/async-ox.el][async file]] needs to keep things in
 the old syntax.
 *** KOMA Article
 Inspired by the post [[https://tex.stackexchange.com/a/364982/130845][here]].
-#+BEGIN_SRC emacs-lisp
-(with-eval-after-load 'ox-latex
-  (append-to-list
-   'org-latex-classes
-   '(("tufte-book"
-      "\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}
-     \\input{/home/haozeke/Git/tufte-book.tex}"
-      ("\\part{%s}" . "\\part*{%s}")
-      ("\\chapter{%s}" . "\\chapter*{%s}")
-      ("\\section{%s}" . "\\section*{%s}")
-      ("utf8" . "utf8x")
-      ("\\subsection{%s}" . "\\subsection*{%s}"))))
-  (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
-  (setq org-latex-minted-options
-    '(("bgcolor" "black") ("linenos" "true") ("style" "native")))
-  (add-to-list 'org-latex-classes
-               '("koma-article" "\\documentclass{scrartcl}"
-                 ("\\section{%s}" . "\\section*{%s}")
-                 ("\\subsection{%s}" . "\\subsection*{%s}")
-                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
-                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-  (setq org-latex-listings 'minted)
-  )
+#+NAME: koma_art
+#+BEGIN_SRC emacs-lisp :tangle none
+(add-to-list 'org-latex-classes
+             '("koma-article" "\\documentclass{scrartcl}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+#+END_SRC
+*** Tufte Book
+This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]].
+#+NAME: tufte_book
+#+BEGIN_SRC emacs-lisp :tangle none
+(append-to-list
+ 'org-latex-classes
+ '(("tufte-book"
+    "\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}
+    \\input{/home/haozeke/Git/tufte-book.tex}"
+    ("\\part{%s}" . "\\part*{%s}")
+    ("\\chapter{%s}" . "\\chapter*{%s}")
+    ("\\section{%s}" . "\\section*{%s}")
+    ("utf8" . "utf8x")
+    ("\\subsection{%s}" . "\\subsection*{%s}"))))
 #+END_SRC
 ** LaTeX Preview for Org mode
 Basically I need to see math and physics. Originally borrowed from [[https://emacs.stackexchange.com/questions/30341/how-do-i-customize-the-process-that-gets-triggered-in-org-preview-latex-fragment][this
