@@ -703,7 +703,7 @@ For all those user-units.
 *** Dart Mode
 Dart seems like a rather fun C-like language. Sort of fallen on the wayside what
 with Golang and what not but still might be worth a shot.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (def-package! dart-mode
   :mode "\\.dart\\'")
 #+END_SRC

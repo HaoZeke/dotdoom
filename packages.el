@@ -93,10 +93,6 @@
 (package! systemd)
 ;; Systemd Mode:1 ends here
 
-;; [[file:~/.config/doom/packages.org::*Dart Mode][Dart Mode:1]]
-(package! dart-mode)
-;; Dart Mode:1 ends here
-
 ;; [[file:~/.config/doom/packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
 (package! flycheck-package)

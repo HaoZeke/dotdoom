@@ -243,7 +243,7 @@ highlighting.
 Might eventually want to also get the companion [[https://github.com/bradyt/dart-server][dart server]] sometime, but for
 now this syntax-highlighter will do. Might actually want to see if ~prettier~
 has anything for it.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! dart-mode)
 #+END_SRC
 ** Flycheck Additions
