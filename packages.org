@@ -39,6 +39,7 @@
     - [[#nix-mode][Nix Mode]]
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd-mode][Systemd Mode]]
+    - [[#dart-mode][Dart Mode]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
   - [[#snippets][Snippets]]
@@ -237,6 +238,13 @@ Since I use a lot of user systemd units, it makes sense to have pretty
 highlighting.
 #+BEGIN_SRC emacs-lisp
 (package! systemd)
+#+END_SRC
+*** Dart Mode
+Might eventually want to also get the companion [[https://github.com/bradyt/dart-server][dart server]] sometime, but for
+now this syntax-highlighter will do. Might actually want to see if ~prettier~
+has anything for it.
+#+BEGIN_SRC emacs-lisp
+(package! dart-mode)
 #+END_SRC
 ** Flycheck Additions
 *** MELPA Helper

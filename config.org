@@ -48,6 +48,7 @@
     - [[#fortran][FORTRAN]]
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd][Systemd]]
+    - [[#dart-mode][Dart Mode]]
   - [[#aesthetics][Aesthetics]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#functions][Functions]]
@@ -698,6 +699,13 @@ For all those user-units.
 #+BEGIN_SRC emacs-lisp
 (def-package! systemd
   :mode "\\.service\\'")
+#+END_SRC
+*** Dart Mode
+Dart seems like a rather fun C-like language. Sort of fallen on the wayside what
+with Golang and what not but still might be worth a shot.
+#+BEGIN_SRC emacs-lisp
+(def-package! dart-mode
+  :mode "\\.dart\\'")
 #+END_SRC
 ** Aesthetics
 ** Dockerfile Mode
