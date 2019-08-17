@@ -157,10 +157,10 @@ for other random buffers.
 I am not sure if these need to be initialized.
 #+BEGIN_SRC emacs-lisp
 ; hlissner
-(def-package! doom-snippets
+(use-package! doom-snippets
   :after yasnippet)
 ; AndreaCrotti
-(def-package! yasnippet-snippets
+(use-package! yasnippet-snippets
   :after yasnippet)
 #+END_SRC
 *** Kill over-eager literate after-save-hook
@@ -179,7 +179,7 @@ Each of these.
 Of course this is not really meant to be here..
 A variation of this was included upstream in the ~develop~ branch.
 #+BEGIN_SRC emacs-lisp :tangle no
-(def-package! magit-org-todos
+(use-package! magit-org-todos
   :mode "\\COMMIT_EDITMSG\\'"
   :commands (magit-org-todods magit-org-todos-autoinsert)
   :config
@@ -189,7 +189,7 @@ A variation of this was included upstream in the ~develop~ branch.
 This is for sweet github integration.
 Also integrated upstream.
 #+BEGIN_SRC emacs-lisp :tangle no
-(def-package! magithub
+(use-package! magithub
   :after magit
   :commands (magithub-clone
              magithub-completion-enable)
@@ -200,23 +200,23 @@ Also integrated upstream.
    magithub-clone-default-directory "$HOME/Git/Github/"
    magithub-dir (concat doom-etc-dir "magithub/")
    magithub-preferred-remote-method 'clone_url))
-(def-package! evil-magit :after magit
+(use-package! evil-magit :after magit
   :init
   (setq evil-magit-state 'normal))
 #+END_SRC
 **** Magit Annex
 Barely any setup.
 #+BEGIN_SRC emacs-lisp
-(def-package! magit-annex
+(use-package! magit-annex
   :after magit)
-(def-package! git-annex
+(use-package! git-annex
   :after dired)
 #+END_SRC
 *** SaltStack Settings
 I like having spell checks for everything.
 #+BEGIN_SRC emacs-lisp
 ;; Load it
-(def-package! salt-mode
+(use-package! salt-mode
   :config
 ;; Flyspell
 (add-hook 'salt-mode-hook
@@ -226,15 +226,15 @@ I like having spell checks for everything.
 # ** Hugo Stuff
 # Easy hugo I don't need right now.
 # #+BEGIN_SRC emacs-lisp
-# (def-package! ox-hugo
+# (use-package! ox-hugo
 #   :after ox)
-# (def-package! ox-hugo-auto-export)
+# (use-package! ox-hugo-auto-export)
 # #+END_SRC
 ** Anki Editor
 # TODO Add to doom as a module
 This is for my favorite [[https://github.com/louietan/anki-editor][anki interaction]] mechanism.
 #+BEGIN_SRC emacs-lisp
-(def-package! anki-editor
+(use-package! anki-editor
   :after org-noter
   :config
   ; I like making decks
@@ -247,7 +247,7 @@ for now and carry on. Later this block can be prevented from being tangled.
 - [X] Remove once merged upstream.
 This does very little other than load it and remind it that ~SPC~ is the leader for the other bindings to work.
 #+BEGIN_SRC emacs-lisp :tangle no
-(def-package! general)
+(use-package! general)
 ;; Creating a constant for making future changes simpler
 (defconst my-leader "SPC")
 ;; Tell general all about it
@@ -570,7 +570,7 @@ These need to be disabled by default otherwise ~emacs~ stalls often.
 This probably needs to be refactored later. Or loaded elsewhere.
 The keymaps are defined in the following way:
 #+BEGIN_SRC emacs-lisp
-(def-package! helm-org-rifle
+(use-package! helm-org-rifle
   :after org
   :general
   (:keymaps 'org-mode-map
@@ -592,7 +592,7 @@ The keymaps are defined in the following way:
 *** Org Mind Map
 [[https://github.com//theodorewiles/org-mind-map][This]] is used to create ~graphiz~ graphs from ~org-mode~ stuff.
 #+BEGIN_SRC emacs-lisp
-(def-package! org-mind-map
+(use-package! org-mind-map
   :general
   (:keymaps 'org-mode-map
             :states 'normal
@@ -604,7 +604,7 @@ This is already included in the standard doom setup. However, I was having
 trouble with relative exports so I have this one instead. Partially kanged from
 ~doom-emacs~.
 #+BEGIN_SRC emacs-lisp
-(def-package! org-download
+(use-package! org-download
   :after org
   :config
 (setq-default org-download-image-dir "./img/"
@@ -617,7 +617,7 @@ trouble with relative exports so I have this one instead. Partially kanged from
 *** Org Drill
 This is much easier to work with compared to the Anki mode stuff.
 #+BEGIN_SRC emacs-lisp :tangle no
-(def-package! org-drill
+(use-package! org-drill
   :after org)
 #+END_SRC
 ** Syntax Highlighting
@@ -639,7 +639,7 @@ This is the non ~doom~ way of loading this.
 #+END_SRC
 I use ~doom~. So.
 #+BEGIN_SRC emacs-lisp
-(def-package! pkgbuild-mode
+(use-package! pkgbuild-mode
   :mode "\\PKGBUILD")
 #+END_SRC
 *** LAMMPS Mode
@@ -656,7 +656,7 @@ For most users.
 **** Doom Version
 With macros.
 #+BEGIN_SRC emacs-lisp
-(def-package! lammps-mode)
+(use-package! lammps-mode)
 (setq auto-mode-alist (append
                               '(("in\\.'" . lammps-mode))
                               '(("\\.lmp\\'" . lammps-mode))
@@ -666,7 +666,7 @@ With macros.
 *** Pug Mode
 Need better font locking everywhere.
 #+BEGIN_SRC emacs-lisp
-(def-package! pug-mode
+(use-package! pug-mode
   :mode "\\.pug\\'")
 #+END_SRC
 *** Conf Mode Files
@@ -693,23 +693,23 @@ Strangely the default settings do not pick up a bunch of fortran files.
 Since ~java+meghnada~, ~clojure~, and ~scala~ are covered by the standard ~doom~ config,
 the rest of these need to be loaded here.
 #+BEGIN_SRC emacs-lisp
-(def-package! kotlin-mode
+(use-package! kotlin-mode
   :mode "\\.kt\\'")
 
-(def-package! groovy-mode
+(use-package! groovy-mode
   :mode "\\.groovy\\'")
 #+END_SRC
 *** Systemd
 For all those user-units.
 #+BEGIN_SRC emacs-lisp
-(def-package! systemd
+(use-package! systemd
   :mode "\\.service\\'")
 #+END_SRC
 *** Dart Mode
 Dart seems like a rather fun C-like language. Sort of fallen on the wayside what
 with Golang and what not but still might be worth a shot.
 #+BEGIN_SRC emacs-lisp :tangle no
-(def-package! dart-mode
+(use-package! dart-mode
   :mode "\\.dart\\'")
 #+END_SRC
 ** Aesthetics
@@ -717,7 +717,7 @@ with Golang and what not but still might be worth a shot.
 [[https://github.com/spotify/dockerfile-mode][This]] package from spotify has support for building things as well as
 highlighting Dockerfiles.
 #+BEGIN_SRC emacs-lisp
-(def-package! dockerfile-mode
+(use-package! dockerfile-mode
   :mode "Dockerfile\\'"
   :config
   (put 'dockerfile-image-name 'safe-local-variable #'stringp)
@@ -884,7 +884,7 @@ This conflicts with the ArchLinux ~systemctl --user start rdm~ thing.
 *** Private Variables
 These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
 #+BEGIN_SRC emacs-lisp
-(def-package! epa-file
+(use-package! epa-file
   :demand
   :config
   (epa-file-enable)
@@ -1035,13 +1035,13 @@ These are required to view math properly.
 ** Math support
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
 #+BEGIN_SRC emacs-lisp
-(def-package! cdlatex
+(use-package! cdlatex
     :after (:any org-mode LaTeX-mode)
     :hook
     ((LaTeX-mode . turn-on-cdlatex)
      (org-mode . turn-on-org-cdlatex)))
 
-(def-package! company-math
+(use-package! company-math
     :after (:any org-mode TeX-mode)
     :config
     (set-company-backend! 'org-mode 'company-math-symbols-latex)
@@ -1058,7 +1058,7 @@ added here.
 *** MELPA Helpers
 This includes settings for both flycheck and the packages it needs.
 #+BEGIN_SRC emacs-lisp
-(def-package! flycheck-package
+(use-package! flycheck-package
   :after flycheck
   :config (flycheck-package-setup))
 #+END_SRC
@@ -1108,7 +1108,7 @@ bibliographies in general.
 I decided to use [[https://github.com/weirdNox/org-noter][org-noter]] over the more commonly described [[https://github.com/rudolfochrist/interleave][interleave]] because
 it has better support for working with multiple documents linked to one file.
 #+BEGIN_SRC emacs-lisp
-(def-package! org-noter
+(use-package! org-noter
   :after (:any org pdf-view)
   :config
   (setq
