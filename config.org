@@ -66,7 +66,8 @@
     - [[#before-save-hooks][Before Save Hooks]]
     - [[#disable-auto-rdm][Disable Auto RDM]]
   - [[#safe-evals-and-variables][Safe Evals and Variables]]
-    - [[#safe-variables][Safe variables]]
+    - [[#private-variables][Private Variables]]
+    - [[#safe-variables][Safe Variables]]
     - [[#safe-evals][Safe Evals]]
     - [[#asynchronous-exports][Asynchronous Exports]]
   - [[#troubleshooting][Troubleshooting]]
@@ -880,7 +881,15 @@ This conflicts with the ArchLinux ~systemctl --user start rdm~ thing.
 (remove-hook 'c-mode-common-hook #'+cc|init-rtags)
 #+END_SRC
 ** Safe Evals and Variables
-*** Safe variables
+*** Private Variables
+These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
+#+BEGIN_SRC emacs-lisp
+(require 'epa-file)
+(epa-file-enable)
+(setq custom-file (concat doom-private-dir "local/private.el.gpg"))
+(load custom-file)
+#+END_SRC
+*** Safe Variables
 The problem is that ~packages.el~ isn't being produced by the clever little ugly
 commit I tried so, this is a workaround to tangle *any* file to be produced in
 ~.el~ format in the same location.
