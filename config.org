@@ -956,6 +956,8 @@ This is essentially the same, only some extra packages are added.
 
 (require 'org)
 (require 'ox)
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org/contrib/lisp/")
+(require 'ox-koma-letter)
 (require 'cl)
 
 ;; Functions
