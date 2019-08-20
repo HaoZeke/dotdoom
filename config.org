@@ -747,6 +747,7 @@ keep editing my files without waiting for it to finish creating the ~pdf~.
 - There are really a lot of optimizations to the above.
 *** Helper function
 Figure out if I can replicate this some other way. Taken from [[https://github.com/sam217pa/emacs-config][sam217pa's github repo]].
+#+NAME: appList
 #+BEGIN_SRC emacs-lisp
 ;; this function is used to append multiple elements to the list 'ox-latex
 (defun append-to-list (list-var elements)
@@ -957,6 +958,8 @@ This is essentially the same, only some extra packages are added.
 (require 'ox)
 (require 'cl)
 
+;; Functions
+<<appList>>
 ;; Feature parity with doom
 <<orgConf>>
 (provide 'autoExport)
