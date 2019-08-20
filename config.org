@@ -72,6 +72,8 @@
     - [[#asynchronous-exports][Asynchronous Exports]]
   - [[#troubleshooting][Troubleshooting]]
 - [[#org-latex][Org LaTeX]]
+    - [[#async-config][Async Config]]
+    - [[#config][Config]]
   - [[#shared-preferences][Shared Preferences]]
     - [[#compiler][Compiler]]
     - [[#packages][Packages]]
@@ -942,6 +944,33 @@ Portions of this section are to be mirrored in [[file:local/async-ox.el][the asy
 also why here it's better to *not* use very _doom_ specific code. I think it
 would be a lot better to just work these into a single literate block instead of
 maitaining two different sets of syntax.
+*** Async Config
+This is essentially the same, only some extra packages are added.
+#+BEGIN_SRC emacs-lisp :noweb yes :tangle local/async-ox.el
+;;; autoExport.el --- For async exports -*- lexical-binding: t; -*-
+
+(require 'package)
+(setq package-enable-at-startup nil)
+(package-initialize)
+
+(require 'org)
+(require 'ox)
+(require 'cl)
+
+; For KOMAscript stuff
+<<orgConf>>
+; Configuration
+(add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
+(setq org-latex-minted-options
+  '(("bgcolor" "black") ("linenos" "true") ("style" "native")))
+(setq org-latex-listings 'minted)
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
+(provide 'autoExport)
+;;; autoExport.el ends here
+#+END_SRC
+*** Config
+This is the part which is exported normally.
+#+NAME: orgConf
 #+BEGIN_SRC emacs-lisp :noweb yes
 (with-eval-after-load 'ox-latex
   <<tex_process>>
