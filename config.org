@@ -957,14 +957,8 @@ This is essentially the same, only some extra packages are added.
 (require 'ox)
 (require 'cl)
 
-; For KOMAscript stuff
+;; Feature parity with doom
 <<orgConf>>
-; Configuration
-(add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
-(setq org-latex-minted-options
-  '(("bgcolor" "black") ("linenos" "true") ("style" "native")))
-(setq org-latex-listings 'minted)
-(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
 (provide 'autoExport)
 ;;; autoExport.el ends here
 #+END_SRC
@@ -984,12 +978,14 @@ This is the part which is exported normally.
 It makes sense to use ~latexmk~ anyway. This way I can set sane defaults.
 #+NAME: tex_process
 #+BEGIN_SRC emacs-lisp :tangle none
+;; Compiler
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
 #+END_SRC
 *** Packages
 Some of these are damn near universal given my set up, so they are declared here.
 #+NAME: common_pkgs
 #+BEGIN_SRC emacs-lisp :tangle none
+;; Configuration
 (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
 (setq org-latex-listings 'minted)
 (setq org-latex-minted-options
