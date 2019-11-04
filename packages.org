@@ -88,6 +88,10 @@ These have been added upstream in ~develop~.
 (package! magithub)
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp :tangle no
+(package! magit-todos)
+#+END_SRC
+
 Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
 There might still be workflows where [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]] is useful since that
 displays a global ~todo.org~ file.
