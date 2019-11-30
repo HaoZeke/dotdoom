@@ -50,6 +50,7 @@
     - [[#systemd][Systemd]]
     - [[#dart-mode][Dart Mode]]
   - [[#aesthetics][Aesthetics]]
+    - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#functions][Functions]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
@@ -716,6 +717,11 @@ with Golang and what not but still might be worth a shot.
   :mode "\\.dart\\'")
 #+END_SRC
 ** Aesthetics
+*** Wakatime
+Was removed from the core ~modules~ of ~doom-emacs~.
+#+BEGIN_SRC emacs-lisp
+(use-package! wakatime-mode)
+#+END_SRC
 ** Dockerfile Mode
 [[https://github.com/spotify/dockerfile-mode][This]] package from spotify has support for building things as well as
 highlighting Dockerfiles.
