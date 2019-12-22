@@ -7,6 +7,10 @@
 (package! all-the-icons-dired)
 ;; Dired Icons:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Wakatime][Wakatime:1]]
+(package! wakatime-mode)
+;; Wakatime:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Git Annex][Git Annex:1]]
 (package! magit-annex)
 (package! git-annex)

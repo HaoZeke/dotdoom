@@ -50,6 +50,7 @@
     - [[#systemd][Systemd]]
     - [[#dart-mode][Dart Mode]]
   - [[#aesthetics][Aesthetics]]
+    - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#functions][Functions]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
@@ -121,7 +122,7 @@ Honestly the basic font setting is simply not pretty enough.
 #+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "Attribute Mono" :size 20))
 (unless (find-font doom-font)
-  (setq doom-font (font-spec :family "Fira Mono" :size 20)))
+  (setq doom-font (font-spec :family "FuraCode Nerd Font" :size 20)))
 #+END_SRC
 **** Unicode Fonts
 This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
@@ -187,6 +188,9 @@ A variation of this was included upstream in the ~develop~ branch.
   :commands (magit-org-todods magit-org-todos-autoinsert)
   :config
   (magit-org-todos-autoinsert))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! magit-todos)
 #+END_SRC
 **** DONE Magithub
 This is for sweet github integration.
@@ -716,6 +720,11 @@ with Golang and what not but still might be worth a shot.
   :mode "\\.dart\\'")
 #+END_SRC
 ** Aesthetics
+*** Wakatime
+Was removed from the core ~modules~ of ~doom-emacs~.
+#+BEGIN_SRC emacs-lisp
+(use-package! wakatime-mode)
+#+END_SRC
 ** Dockerfile Mode
 [[https://github.com/spotify/dockerfile-mode][This]] package from spotify has support for building things as well as
 highlighting Dockerfiles.

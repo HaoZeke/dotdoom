@@ -17,6 +17,7 @@
     - [[#the-properties][The properties]]
   - [[#aesthetic-packages][Aesthetic Packages]]
     - [[#dired-icons][Dired Icons]]
+    - [[#wakatime][Wakatime]]
   - [[#later-magit-additions][LATER Magit Additions]]
   - [[#git-annex][Git Annex]]
   - [[#later-key-chords-and-keybindings][LATER Key Chords and Keybindings]]
@@ -79,6 +80,11 @@ dired, from the [[https://github.com/domtronn/all-the-icons.el/wiki][all-the-ico
 #+BEGIN_SRC emacs-lisp
 (package! all-the-icons-dired)
 #+END_SRC
+*** Wakatime
+Not exactly aesthetic, but yeah, for stats.
+#+BEGIN_SRC emacs-lisp
+(package! wakatime-mode)
+#+END_SRC
 ** LATER Magit Additions
 These basically allow for TODOs in magit along with enhanced github integration.
 These have been added upstream in ~develop~.
@@ -86,6 +92,10 @@ These have been added upstream in ~develop~.
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! magit-org-todos)
 (package! magithub)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(package! magit-todos)
 #+END_SRC
 
 Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
