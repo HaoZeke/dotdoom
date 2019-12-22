@@ -175,3 +175,6 @@
        ;; and additional ex commands for evil-mode. Use it as a reference for
        ;; your own modules.
        (default +bindings +smartparens))
+;; Fixes for straight and the git timeouts
+(setq straight-vc-git-default-protocol 'ssh
+      straight-vc-git-force-protocol t)
