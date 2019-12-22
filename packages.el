@@ -42,6 +42,10 @@
 (package! helm-org-rifle)
 ;; Org Rifle:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Org Gcal][Org Gcal:1]]
+(package! org-gcal)
+;; Org Gcal:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Anki Mode][Anki Mode:1]]
 (package! anki-editor)
 ;; Anki Mode:1 ends here

@@ -28,6 +28,7 @@
     - [[#org-ref][Org Ref]]
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-rifle][Org Rifle]]
+    - [[#org-gcal][Org Gcal]]
     - [[#anki-mode][Anki Mode]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
@@ -159,6 +160,12 @@ Technically a helm addition. Perfect for monolithic ~org~ files. More details
 [[https://github.com/alphapapa/helm-org-rifle][here]].
 #+BEGIN_SRC emacs-lisp
 (package! helm-org-rifle)
+#+END_SRC
+*** Org Gcal
+[[https://github.com/myuhe/org-gcal.el][Google calendar integration]]. Most of this is to be dealt with in the ~private~
+encrypted file.
+#+BEGIN_SRC emacs-lisp
+(package! org-gcal)
 #+END_SRC
 *** Anki Mode
 This is put here since it only works with ~org-mode~ stuff.

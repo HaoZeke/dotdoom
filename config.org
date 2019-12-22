@@ -39,6 +39,7 @@
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-download][Org Download]]
     - [[#org-drill][Org Drill]]
+    - [[#org-gcal][Org Gcal]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -626,6 +627,14 @@ This is much easier to work with compared to the Anki mode stuff.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package! org-drill
   :after org)
+#+END_SRC
+*** Org Gcal
+Not much to be configured here.
+#+BEGIN_SRC emacs-lisp
+(use-package! org-gcal
+  :config
+(setq org-gcal-file-alist '(("r95g10@gmail.com" .  "~/.config/doom/org/agenda.org.gpg")))
+  )
 #+END_SRC
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
