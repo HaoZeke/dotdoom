@@ -6,9 +6,22 @@
 
 (require 'org)
 (require 'ox)
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org/contrib/lisp/")
+(require 'ox-koma-letter)
 (require 'cl)
 
+;; Functions
+;; this function is used to append multiple elements to the list 'ox-latex
+(defun append-to-list (list-var elements)
+  "Append ELEMENTS to the end of LIST-VAR. The return value is the new value of LIST-VAR."
+  (unless (consp elements) (error "ELEMENTS must be a list"))
+  (let ((list (symbol-value list-var)))
+    (if list
+        (setcdr (last list) elements)
+      (set list-var elements)))
+(symbol-value list-var))
 ;; Feature parity with doom
+(eval-after-load 'ox '(require 'ox-koma-letter))
 (with-eval-after-load 'ox-latex
   ;; Compiler
   (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))

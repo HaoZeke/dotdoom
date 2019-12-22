@@ -53,6 +53,7 @@
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#functions][Functions]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
+    - [[#org-mode-export-koma-letter][Org-mode export koma-letter]]
     - [[#org-mode-export-tex-when-saved][Org-mode export tex when saved]]
     - [[#caveats][Caveats]]
     - [[#helper-function][Helper function]]
@@ -734,6 +735,13 @@ This one is to generate pdfs whenever a buffer is saved. Mainly taken from
   (if (eq major-mode 'org-mode)
     (org-latex-export-to-pdf t)))
 #+END_SRC
+*** Org-mode export koma-letter
+Since the ~koma-letter~ backend is separate, this needs a function as well.
+#+BEGIN_SRC emacs-lisp
+(defun haozeke/org-save-and-export-koma-letter-pdf ()
+  (if (eq major-mode 'org-mode)
+    (org-koma-letter-export-to-pdf t)))
+#+END_SRC
 *** Org-mode export tex when saved
 Similar to the one above, but ~tex~ generation is much faster and this way I can
 keep editing my files without waiting for it to finish creating the ~pdf~.
@@ -971,6 +979,7 @@ This is essentially the same, only some extra packages are added.
 This is the part which is exported normally.
 #+NAME: orgConf
 #+BEGIN_SRC emacs-lisp :noweb yes
+(eval-after-load 'ox '(require 'ox-koma-letter))
 (with-eval-after-load 'ox-latex
   <<tex_process>>
   <<common_pkgs>>
