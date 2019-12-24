@@ -15,6 +15,10 @@ I also document the packages I use in a [[file:packages.org][separately here]].
 [[https://github.com/HaoZeke/Dotfiles][My Dotfiles repo]], managed with the brilliant [[https://github.com/kobus-v-schoor/dotgit][dotgit]], was getting rather overwhelmed
 with ~emacs~ commits. Also managing snippets with ~dotgit~ was not exactly
 pleasant, since each symlink needed to be listed in the ~filelist~.
+** Who?
+I'm [[https://orcid.org/0000-0002-2393-8056][Rohit Goswami]] (or HaoZeke, or rg0swami), and well, if you
+need to know more about why you might want to use my work, check my [[https:grimoire.science][(outdated)
+site]], or any of the [[https:keybase.io/HaoZeke][other sites]] I manage, or even [[https://publons.com/researcher/2911170/rohit-goswami/][my publications]] or [[github:HaoZeke][my code]].
 * How?
 Well it just goes where ~doom~ expects config files.
 #+BEGIN_SRC bash
