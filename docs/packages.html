@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head>
-<!-- 2019-11-28 Thu 17:07 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Emacs Literate Package Additions</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+  <head>
+    <!-- 2019-12-24 Tue 16:43 -->
+    <meta http-equiv="Content-Type"
+    content="text/html;charset=utf-8" />
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1" />
+    <title>Emacs Literate Package Additions</title>
+    <meta name="generator" content="Org mode" />
+    <meta name="author"
+    content="Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;" />
+    <style type="text/css">
+    <!--/*-->
+<![CDATA[/*><!--*/
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -192,69 +195,53 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
-</style>
-<link rel="stylesheet" type="text/css" href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
-
-<script type="text/javascript" src="https://thomasf.github.io/solarized-css/org-info.min.js">
-/**
- *
- * @source: https://thomasf.github.io/solarized-css/org-info.min.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in https://thomasf.github.io/solarized-css/org-info.min.js.
- *
- * Copyright (C) 2012-2019 Free Software Foundation, Inc.
- *
- *
- * The JavaScript code in this tag is free software: you can
- * redistribute it and/or modify it under the terms of the GNU
- * General Public License (GNU GPL) as published by the Free Software
- * Foundation, either version 3 of the License, or (at your option)
- * any later version.  The code is distributed WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
- *
- * As additional permission under GNU GPL version 3 section 7, you
- * may distribute non-source (e.g., minimized or compacted) forms of
- * that code without the copy of the GNU GPL normally required by
- * section 4, provided you include this license notice and a URL
- * through which recipients can access the Corresponding Source.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in https://thomasf.github.io/solarized-css/org-info.min.js.
- *
- */
-</script>
-
-<script type="text/javascript">
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-
-<!--/*--><![CDATA[/*><!--*/
+  /*]]>
+*/--&gt;</style>
+    <link rel="stylesheet" type="text/css"
+    href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
+    <script type="text/javascript"
+    src="https://thomasf.github.io/solarized-css/org-info.min.js">
+    /** * * @source:
+    https://thomasf.github.io/solarized-css/org-info.min.js * *
+    @licstart The following is the entire license notice for the *
+    JavaScript code in
+    https://thomasf.github.io/solarized-css/org-info.min.js. * *
+    Copyright (C) 2012-2019 Free Software Foundation, Inc. * * *
+    The JavaScript code in this tag is free software: you can *
+    redistribute it and/or modify it under the terms of the GNU *
+    General Public License (GNU GPL) as published by the Free
+    Software * Foundation, either version 3 of the License, or (at
+    your option) * any later version. The code is distributed
+    WITHOUT ANY WARRANTY; * without even the implied warranty of
+    MERCHANTABILITY or FITNESS * FOR A PARTICULAR PURPOSE. See the
+    GNU GPL for more details. * * As additional permission under
+    GNU GPL version 3 section 7, you * may distribute non-source
+    (e.g., minimized or compacted) forms of * that code without the
+    copy of the GNU GPL normally required by * section 4, provided
+    you include this license notice and a URL * through which
+    recipients can access the Corresponding Source. * * @licend The
+    above is the entire license notice * for the JavaScript code in
+    https://thomasf.github.io/solarized-css/org-info.min.js. *
+    */</script>
+    <script type="text/javascript">/* @licstart The following is
+    the entire license notice for the JavaScript code in this tag.
+    Copyright (C) 2012-2019 Free Software Foundation, Inc. The
+    JavaScript code in this tag is free software: you can
+    redistribute it and/or modify it under the terms of the GNU
+    General Public License (GNU GPL) as published by the Free
+    Software Foundation, either version 3 of the License, or (at
+    your option) any later version. The code is distributed WITHOUT
+    ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU GPL for more details. As additional permission under GNU
+    GPL version 3 section 7, you may distribute non-source (e.g.,
+    minimized or compacted) forms of that code without the copy of
+    the GNU GPL normally required by section 4, provided you
+    include this license notice and a URL through which recipients
+    can access the Corresponding Source. @licend The above is the
+    entire license notice for the JavaScript code in this tag. */
+    <!--/*-->
+<![CDATA[/*><!--*/
 org_html_manager.set("TOC_DEPTH", "3");
 org_html_manager.set("LINK_HOME", "");
 org_html_manager.set("LINK_UP", "");
@@ -265,34 +252,27 @@ org_html_manager.set("FIXED_TOC", "0");
 org_html_manager.set("TOC", "1");
 org_html_manager.set("VIEW", "1");
 org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-</script>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
+/*]]>
+*///--&gt;</script>
+    <script type="text/javascript">/* @licstart The following is
+    the entire license notice for the JavaScript code in this tag.
+    Copyright (C) 2012-2019 Free Software Foundation, Inc. The
+    JavaScript code in this tag is free software: you can
+    redistribute it and/or modify it under the terms of the GNU
+    General Public License (GNU GPL) as published by the Free
+    Software Foundation, either version 3 of the License, or (at
+    your option) any later version. The code is distributed WITHOUT
+    ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU GPL for more details. As additional permission under GNU
+    GPL version 3 section 7, you may distribute non-source (e.g.,
+    minimized or compacted) forms of that code without the copy of
+    the GNU GPL normally required by section 4, provided you
+    include this license notice and a URL through which recipients
+    can access the Corresponding Source. @licend The above is the
+    entire license notice for the JavaScript code in this tag. */
+    <!--/*-->
+<![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
    var target = document.getElementById(id);
@@ -311,568 +291,865 @@ for the JavaScript code in this tag.
    if(elem.cacheClassTarget)
      target.className = elem.cacheClassTarget;
  }
-/*]]>*///-->
-</script>
-</head>
-<body>
-<div id="content">
-<h1 class="title">Emacs Literate Package Additions</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org038cac8">1. About this file</a>
-<ul>
-<li><a href="#orgfae1e9b">1.1. About that TOC..</a></li>
-<li><a href="#org083e63c">1.2. The properties</a></li>
-</ul>
-</li>
-<li><a href="#orgd85c161">2. Aesthetic Packages</a>
-<ul>
-<li><a href="#org9e95a0d">2.1. Dired Icons</a></li>
-</ul>
-</li>
-<li><a href="#orged5bfe0">3. LATER Magit Additions</a></li>
-<li><a href="#orgbc7b604">4. Git Annex</a></li>
-<li><a href="#orgd018cbe">5. LATER Key Chords and Keybindings</a></li>
-<li><a href="#orga0d4b03">6. Org Additions</a>
-<ul>
-<li><a href="#org4df9bef">6.1. Org Download</a></li>
-<li><a href="#orgb4f77d8">6.2. LATER Org Drill</a></li>
-<li><a href="#orgec2845f">6.3. <span class="todo TODO">TODO</span> Org Noter</a></li>
-<li><a href="#org31bab9e">6.4. Org Ref</a></li>
-<li><a href="#orgcec5d18">6.5. Org Mind Map</a></li>
-<li><a href="#org122184e">6.6. Org Rifle</a></li>
-<li><a href="#org0919ee3">6.7. Anki Mode</a></li>
-</ul>
-</li>
-<li><a href="#org347a28e">7. Dockerfile Mode</a></li>
-<li><a href="#org4bd16c5">8. Reference Management</a>
-<ul>
-<li>
-<ul>
-<li><a href="#org0ed4c4b">8.0.1. Zotero</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org37c846d">9. Syntax Highlighting</a>
-<ul>
-<li><a href="#orgd555170">9.1. Tup Mode</a>
-<ul>
-<li><a href="#org50779ec">9.1.1. LATER Caveats</a></li>
-</ul>
-</li>
-<li><a href="#org6f9ae8d">9.2. SaltStack Mode</a></li>
-<li><a href="#org8d236d5">9.3. PKGBUILD Mode</a></li>
-<li><a href="#org0030871">9.4. LAMMPS Mode</a></li>
-<li><a href="#orgfbbc7a4">9.5. Pug Mode</a></li>
-<li><a href="#org3e0f249">9.6. Nix Mode</a></li>
-<li><a href="#org26b26f3">9.7. JVM Languages</a></li>
-<li><a href="#org9ceb144">9.8. Systemd Mode</a></li>
-<li><a href="#org0fa5116">9.9. Dart Mode</a></li>
-</ul>
-</li>
-<li><a href="#orgf6d2244">10. Flycheck Additions</a>
-<ul>
-<li><a href="#org391425c">10.1. MELPA Helper</a></li>
-</ul>
-</li>
-<li><a href="#orga2e857e">11. Snippets</a>
-<ul>
-<li><a href="#orgc99b4a2">11.1. Doom</a></li>
-<li><a href="#org730c2b8">11.2. Standard</a></li>
-</ul>
-</li>
-<li><a href="#org12a5bc4">12. Math support</a></li>
-</ul>
-</div>
-</div>
+/*]]>
+*///--&gt;</script>
+  </head>
+  <body>
+    <div id="content">
+      <h1 class="title">Emacs Literate Package Additions</h1>
+      <div id="table-of-contents">
+        <h2>Table of Contents</h2>
+        <div id="text-table-of-contents">
+          <ul>
+            <li>
+              <a href="#orgdfd4a04">1. About this file</a>
+              <ul>
+                <li>
+                  <a href="#orgfaa7cc1">1.1. About that TOC..</a>
+                </li>
+                <li>
+                  <a href="#orga58be00">1.2. The properties</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org5fc84b2">2. Aesthetic Packages</a>
+              <ul>
+                <li>
+                  <a href="#org8b1eadc">2.1. Dired Icons</a>
+                </li>
+                <li>
+                  <a href="#orga97c46f">2.2. Wakatime</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org715f598">3. LATER Magit Additions</a>
+            </li>
+            <li>
+              <a href="#org4c0ac5e">4. Git Annex</a>
+            </li>
+            <li>
+              <a href="#orgbc9bb0b">5. LATER Key Chords and
+              Keybindings</a>
+            </li>
+            <li>
+              <a href="#orgcee2b80">6. Org Additions</a>
+              <ul>
+                <li>
+                  <a href="#org1226c3a">6.1. Org Download</a>
+                </li>
+                <li>
+                  <a href="#org660a393">6.2. LATER Org Drill</a>
+                </li>
+                <li>
+                  <a href="#orgfcaddcd">6.3.
+                  <span class="todo TODO">TODO</span>Org Noter</a>
+                </li>
+                <li>
+                  <a href="#org52e6b04">6.4. Org Ref</a>
+                </li>
+                <li>
+                  <a href="#org42f063d">6.5. Org Mind Map</a>
+                </li>
+                <li>
+                  <a href="#org958fe6a">6.6. Org Rifle</a>
+                </li>
+                <li>
+                  <a href="#org2dcb485">6.7. Org Gcal</a>
+                </li>
+                <li>
+                  <a href="#org886ca1d">6.8. Anki Mode</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org91040fb">7. Dockerfile Mode</a>
+            </li>
+            <li>
+              <a href="#org314aa2d">8. Reference Management</a>
+              <ul>
+                <li>
+                  <ul>
+                    <li>
+                      <a href="#orgaf00fe4">8.0.1. Zotero</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org0eb3ae3">9. Syntax Highlighting</a>
+              <ul>
+                <li>
+                  <a href="#org5514d90">9.1. Tup Mode</a>
+                  <ul>
+                    <li>
+                      <a href="#org6618c61">9.1.1. LATER
+                      Caveats</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#org6342c4a">9.2. SaltStack Mode</a>
+                </li>
+                <li>
+                  <a href="#org74819ee">9.3. PKGBUILD Mode</a>
+                </li>
+                <li>
+                  <a href="#org6727884">9.4. LAMMPS Mode</a>
+                </li>
+                <li>
+                  <a href="#org15c09d3">9.5. Pug Mode</a>
+                </li>
+                <li>
+                  <a href="#org0c5a88c">9.6. Nix Mode</a>
+                </li>
+                <li>
+                  <a href="#orgc772075">9.7. JVM Languages</a>
+                </li>
+                <li>
+                  <a href="#org9786c85">9.8. Systemd Mode</a>
+                </li>
+                <li>
+                  <a href="#org3232b27">9.9. Dart Mode</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org915350c">10. Flycheck Additions</a>
+              <ul>
+                <li>
+                  <a href="#org5985dbd">10.1. MELPA Helper</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#org9218c7a">11. Snippets</a>
+              <ul>
+                <li>
+                  <a href="#org132d67c">11.1. Doom</a>
+                </li>
+                <li>
+                  <a href="#orgc14aba1">11.2. Standard</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#orge1bd3be">12. Math support</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="outline-container-orgdfd4a04" class="outline-2">
+        <h2 id="orgdfd4a04">
+        <span class="section-number-2">1</span>About this file</h2>
+        <div class="outline-text-2" id="text-1">
+          <p>This is an Emacs literate package file and is meant to
+          compliment
+          <a href="config.html">my configuration</a>, as well as
+          <a href="index.html">the init.el</a>. It contains the
+          basic structure along with some data about each package
+          and why it’s needed. This is to be used in tandem with
+          the
+          <code>define-package!</code>function in
+          <code>config.org</code>.</p>
+          <p>Since it’s primarily aimed at
+          <code>doom-emacs</code>let’s add their comments.</p>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #5B6268;">;; </span>
+<span style="color: #5B6268;">-*- no-byte-compile: t; -*-</span>
+<span style="color: #5B6268;">;;; </span>
+<span style="color: #5B6268;">~/.config/doom/packages.el</span>
+</pre>
+          </div>
+        </div>
+        <div id="outline-container-orgfaa7cc1" class="outline-3">
+          <h3 id="orgfaa7cc1">
+          <span class="section-number-3">1.1</span>About that
+          TOC..</h3>
+          <div class="outline-text-3" id="text-1-1">
+            <p>So as mentioned
+            <a href="https://github.com/snosov1/toc-org/issues/35">
+            here</a>there is trouble when
+            <code>org-export</code>tries to create files while
+            keeping the
+            <code>org-toc</code>tag.</p>
+            <p>It’s not really a problem since
+            <code>org-export</code>actually generates a TOC for the
+            files anyway.</p>
+          </div>
+        </div>
+        <div id="outline-container-orga58be00" class="outline-3">
+          <h3 id="orga58be00">
+          <span class="section-number-3">1.2</span>The
+          properties</h3>
+          <div class="outline-text-3" id="text-1-2">
+            <p>Basically, the properties set imply that the file is
+            to be tangled for every block and moreover the output
+            directory is the
+            <code>doom-private-dir</code>. It’s practically self
+            explanatory but still.</p>
+            <p>The filename is determined by the
+            <code>SRC</code>block languages.</p>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org5fc84b2" class="outline-2">
+        <h2 id="org5fc84b2">
+        <span class="section-number-2">2</span>Aesthetic
+        Packages</h2>
+        <div class="outline-text-2" id="text-2"></div>
+        <div id="outline-container-org8b1eadc" class="outline-3">
+          <h3 id="org8b1eadc">
+          <span class="section-number-3">2.1</span>Dired Icons</h3>
+          <div class="outline-text-3" id="text-2-1">
+            <p>Since treemacs already uses
+            <code>all-the-icons</code>it is silly to not use them
+            in dired, from the
+            <a href="https://github.com/domtronn/all-the-icons.el/wiki">
+            all-the-icons wiki</a>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> all-the-icons-dired
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orga97c46f" class="outline-3">
+          <h3 id="orga97c46f">
+          <span class="section-number-3">2.2</span>Wakatime</h3>
+          <div class="outline-text-3" id="text-2-2">
+            <p>Not exactly aesthetic, but yeah, for stats.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span>
+<span style="color: #dcaeea;">wakatime-mode</span>
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org715f598" class="outline-2">
+        <h2 id="org715f598">
+        <span class="section-number-2">3</span>LATER Magit
+        Additions</h2>
+        <div class="outline-text-2" id="text-3">
+          <p>These basically allow for TODOs in magit along with
+          enhanced github integration. These have been added
+          upstream in
+          <code>develop</code>.</p>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> magit-org-todos
+<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> magithub
+<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> magit-todos
+<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+          <p>Actually
+          <a href="https://github.com/alphapapa/magit-todos">
+          magit-todos</a>has been added upstream which collates all
 
-<div id="outline-container-org038cac8" class="outline-2">
-<h2 id="org038cac8"><span class="section-number-2">1</span> About this file</h2>
-<div class="outline-text-2" id="text-1">
-<p>
-This is an Emacs literate package file and is meant to compliment <a href="config.html">my
-configuration</a>, as well as <a href="index.html">the init.el</a>. It contains the basic structure along
-with some data about each package and why it&rsquo;s needed. This is to be used in
-tandem with the <code>define-package!</code> function in <code>config.org</code>.
-</p>
+          <code>todo</code>items. There might still be workflows
+          where
+          <a href="https://github.com/danielma/magit-org-todos.el">
+          magit-org-todos</a>is useful since that displays a global
 
-<p>
-Since it&rsquo;s primarily aimed at <code>doom-emacs</code> let&rsquo;s add their comments.
-</p>
+          <code>todo.org</code>file.</p>
+        </div>
+      </div>
+      <div id="outline-container-org4c0ac5e" class="outline-2">
+        <h2 id="org4c0ac5e">
+        <span class="section-number-2">4</span>Git Annex</h2>
+        <div class="outline-text-2" id="text-4">
+          <p>This is actually a
+          <a href="https://github.com/magit/magit-annex">magit
+          addition</a>. The
+          <a href="https://github.com/jwiegley/git-annex-el">
+          git-annex dired extension</a>shares a common interface
+          and it makes sense to add it here.</p>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> magit-annex
+<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> git-annex
+<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orgbc9bb0b" class="outline-2">
+        <h2 id="orgbc9bb0b">
+        <span class="section-number-2">5</span>LATER Key Chords and
+        Keybindings</h2>
+        <div class="outline-text-2" id="text-5">
+          <p>It turns out that the switch to
+          <a href="https://github.com/noctuid/general.el">
+          general.el</a>is both inevitable (doom version 2.1) and
+          very rational. However, I really can’t wait. So.. This is
+          a stop gap solution.</p>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> general
+<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+          <ul class="org-ul">
+            <li class="off">
+            <code>[&#160;]</code>Remove when it’s merged
+            upstream</li>
+          </ul>
+        </div>
+      </div>
+      <div id="outline-container-orgcee2b80" class="outline-2">
+        <h2 id="orgcee2b80">
+        <span class="section-number-2">6</span>Org Additions</h2>
+        <div class="outline-text-2" id="text-6">
+          <p>The new ones need to be covered in the
+          <code>config.org</code>file with the appropriate
+          keybindings.</p>
+        </div>
+        <div id="outline-container-org1226c3a" class="outline-3">
+          <h3 id="org1226c3a">
+          <span class="section-number-3">6.1</span>Org
+          Download</h3>
+          <div class="outline-text-3" id="text-6-1">
+            <p>Now I load it here since I don’t use
+            <code>+attach</code>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> org-download
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org660a393" class="outline-3">
+          <h3 id="org660a393">
+          <span class="section-number-3">6.2</span>LATER Org
+          Drill</h3>
+          <div class="outline-text-3" id="text-6-2">
+            <p>The
+            <a href="https://bitbucket.org/eeeickythump/org-drill/src">
+            actual repo</a>has not been updated in 3 years, so I
+            must use
+            <a href="https://github.com/hakanserce/org-drill">this
+            fork</a>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> org-drill
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #5B6268;">;; </span><span style="color: #5B6268;">-*- no-byte-compile: t; -*-</span>
-<span style="color: #5B6268;">;;; </span><span style="color: #5B6268;">~/.config/doom/packages.el</span>
-</pre>
-</div>
-</div>
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<div id="outline-container-orgfae1e9b" class="outline-3">
-<h3 id="orgfae1e9b"><span class="section-number-3">1.1</span> About that TOC..</h3>
-<div class="outline-text-3" id="text-1-1">
-<p>
-So as mentioned <a href="https://github.com/snosov1/toc-org/issues/35">here</a> there is trouble when <code>org-export</code> tries to create files
-while keeping the <code>org-toc</code> tag.
-</p>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"hakanserce/org-drill"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orgfcaddcd" class="outline-3">
+          <h3 id="orgfcaddcd">
+          <span class="section-number-3">6.3</span>
+          <span class="todo TODO">TODO</span>Org Noter</h3>
+          <div class="outline-text-3" id="text-6-3">
+            <p>This is sort of more of a
+            <code>pdf-tools</code>extension and it needs it’s own
+            <code>biblatex</code>setup and stuff as well so this
+            might move into a tree of it’s own.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> org-noter
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+            <p>This actually breaks the
+            <code>pdf-tools</code>bindings.</p>
+          </div>
+        </div>
+        <div id="outline-container-org52e6b04" class="outline-3">
+          <h3 id="org52e6b04">
+          <span class="section-number-3">6.4</span>Org Ref</h3>
+          <div class="outline-text-3" id="text-6-4">
+            <p>This is probably not the best thing in my current
+            setup..</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> org-ref
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org42f063d" class="outline-3">
+          <h3 id="org42f063d">
+          <span class="section-number-3">6.5</span>Org Mind
+          Map</h3>
+          <div class="outline-text-3" id="text-6-5">
+            <p>Not on MELPA yet. From
+            <a href="https://github.com/theodorewiles/org-mind-map">
+            here</a>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> org-mind-map
 
-<p>
-It&rsquo;s not really a problem since <code>org-export</code> actually generates a TOC for the
-files anyway.
-</p>
-</div>
-</div>
-<div id="outline-container-org083e63c" class="outline-3">
-<h3 id="org083e63c"><span class="section-number-3">1.2</span> The properties</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-Basically, the properties set imply that the file is to be tangled for every
-block and moreover the output directory is the <code>doom-private-dir</code>. It&rsquo;s
-practically self explanatory but still. 
-</p>
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<p>
-The filename is determined by the <code>SRC</code> block languages.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd85c161" class="outline-2">
-<h2 id="orgd85c161"><span class="section-number-2">2</span> Aesthetic Packages</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-org9e95a0d" class="outline-3">
-<h3 id="org9e95a0d"><span class="section-number-3">2.1</span> Dired Icons</h3>
-<div class="outline-text-3" id="text-2-1">
-<p>
-Since treemacs already uses <code>all-the-icons</code> it is silly to not use them in
-dired, from the <a href="https://github.com/domtronn/all-the-icons.el/wiki">all-the-icons wiki</a>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> all-the-icons-dired<span style="color: #51afef;">)</span>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"theodorewiles/org-mind-map"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orged5bfe0" class="outline-2">
-<h2 id="orged5bfe0"><span class="section-number-2">3</span> LATER Magit Additions</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-These basically allow for TODOs in magit along with enhanced github integration.
-These have been added upstream in <code>develop</code>.
-</p>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org958fe6a" class="outline-3">
+          <h3 id="org958fe6a">
+          <span class="section-number-3">6.6</span>Org Rifle</h3>
+          <div class="outline-text-3" id="text-6-6">
+            <p>Technically a helm addition. Perfect for monolithic
+            <code>org</code>files. More details
+            <a href="https://github.com/alphapapa/helm-org-rifle">
+            here</a>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> helm-org-rifle
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org2dcb485" class="outline-3">
+          <h3 id="org2dcb485">
+          <span class="section-number-3">6.7</span>Org Gcal</h3>
+          <div class="outline-text-3" id="text-6-7">
+            <p>
+            <a href="https://github.com/myuhe/org-gcal.el">Google
+            calendar integration</a>. Most of this is to be dealt
+            with in the
+            <code>private</code>encrypted file.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> org-gcal
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org886ca1d" class="outline-3">
+          <h3 id="org886ca1d">
+          <span class="section-number-3">6.8</span>Anki Mode</h3>
+          <div class="outline-text-3" id="text-6-8">
+            <p>This is put here since it only works with
+            <code>org-mode</code>stuff.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> anki-editor
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org91040fb" class="outline-2">
+        <h2 id="org91040fb">
+        <span class="section-number-2">7</span>Dockerfile Mode</h2>
+        <div class="outline-text-2" id="text-7">
+          <p>For syntax highlighting and inline builds.
+          <a href="https://github.com/spotify/dockerfile-mode">From
+          spotify</a>weirdly.
+          <code>## -*- docker-image-name: "your-image-name-here"
+          -*-</code>can be used to specify the image name.</p>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> dockerfile-mode
+<span style="color: #51afef;">)</span>
+</pre>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org314aa2d" class="outline-2">
+        <h2 id="org314aa2d">
+        <span class="section-number-2">8</span>Reference
+        Management</h2>
+        <div class="outline-text-2" id="text-8"></div>
+        <div id="outline-container-orgaf00fe4" class="outline-4">
+          <h4 id="orgaf00fe4">
+          <span class="section-number-4">8.0.1</span>Zotero</h4>
+          <div class="outline-text-4" id="text-8-0-1">
+            <p>There are a bunch of
+            <code>zotero</code>integrations for emacs, most
+            notably,
+            <a href="https://github.com/vspinu/zotelo">zotelo</a>,
+            but they don’t seem to be all that well mantained.
+            <a href="https://github.com/emacsmirror/zotxt">
+            Zotxt</a>seems to be updated pretty often though.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> zotxt
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org0eb3ae3" class="outline-2">
+        <h2 id="org0eb3ae3">
+        <span class="section-number-2">9</span>Syntax
+        Highlighting</h2>
+        <div class="outline-text-2" id="text-9">
+          <p>These are additionally required to work with the sort
+          of files I use often. The configuration and settings are
+          as usual in
+          <code>config.org</code></p>
+        </div>
+        <div id="outline-container-org5514d90" class="outline-3">
+          <h3 id="org5514d90">
+          <span class="section-number-3">9.1</span>Tup Mode</h3>
+          <div class="outline-text-3" id="text-9-1">
+            <p>Because honestly there isn’t anything better than
+            <a href="http://gittup.org/tup/">tup</a>. Who doesn’t
+            need a build system which
+            <a href="http://gittup.org/tup/tup_vs_mordor.html">
+            scales with the eye of Mordor</a>?</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> tup-mode
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magit-org-todos<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magithub<span style="color: #51afef;">)</span>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"ejmr/tup-mode"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
+            </div>
+          </div>
+          <div id="outline-container-org6618c61" class="outline-4">
+            <h4 id="org6618c61">
+            <span class="section-number-4">9.1.1</span>LATER
+            Caveats</h4>
+            <div class="outline-text-4" id="text-9-1-1">
+              <p>The repo is unmaintained so I ought to fork it and
+              take a look into maintaining it.</p>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org6342c4a" class="outline-3">
+          <h3 id="org6342c4a">
+          <span class="section-number-3">9.2</span>SaltStack
+          Mode</h3>
+          <div class="outline-text-3" id="text-9-2">
+            <p>I have recently decided that
+            <a href="https://saltstack.com/">saltstack</a>ought to
+            be used for working on multiple systems.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> salt-mode
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magit-todos<span style="color: #51afef;">)</span>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"glynnforrest/salt-mode"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org74819ee" class="outline-3">
+          <h3 id="org74819ee">
+          <span class="section-number-3">9.3</span>PKGBUILD
+          Mode</h3>
+          <div class="outline-text-3" id="text-9-3">
+            <p>No point using
+            <code>emacs</code>if I can’t get highlighting for all
+            my needs. This needs some extra configuration.
+            <del>Must figure out if this is well mantained</del>.
+            The developer is very responsive to pull requests and
+            the like.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> pkgbuild-mode
 
-<p>
-Actually <a href="https://github.com/alphapapa/magit-todos">magit-todos</a> has been added upstream which collates all <code>todo</code> items.
-There might still be workflows where <a href="https://github.com/danielma/magit-org-todos.el">magit-org-todos</a> is useful since that
-displays a global <code>todo.org</code> file.
-</p>
-</div>
-</div>
-<div id="outline-container-orgbc7b604" class="outline-2">
-<h2 id="orgbc7b604"><span class="section-number-2">4</span> Git Annex</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-This is actually a <a href="https://github.com/magit/magit-annex">magit addition</a>. The <a href="https://github.com/jwiegley/git-annex-el">git-annex dired extension</a> shares a common
-interface and it makes sense to add it here.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> magit-annex<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> git-annex<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgd018cbe" class="outline-2">
-<h2 id="orgd018cbe"><span class="section-number-2">5</span> LATER Key Chords and Keybindings</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-It turns out that the switch to <a href="https://github.com/noctuid/general.el">general.el</a> is both inevitable (doom version 2.1)
-and very rational. However, I really can&rsquo;t wait. So.. This is a stop gap solution.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> general<span style="color: #51afef;">)</span>
-</pre>
-</div>
-<ul class="org-ul">
-<li class="off"><code>[&#xa0;]</code> Remove when it&rsquo;s merged upstream</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orga0d4b03" class="outline-2">
-<h2 id="orga0d4b03"><span class="section-number-2">6</span> Org Additions</h2>
-<div class="outline-text-2" id="text-6">
-<p>
-The new ones need to be covered in the <code>config.org</code> file with the appropriate
-keybindings.
-</p>
-</div>
-<div id="outline-container-org4df9bef" class="outline-3">
-<h3 id="org4df9bef"><span class="section-number-3">6.1</span> Org Download</h3>
-<div class="outline-text-3" id="text-6-1">
-<p>
-Now I load it here since I don&rsquo;t use <code>+attach</code>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-download<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<div id="outline-container-orgb4f77d8" class="outline-3">
-<h3 id="orgb4f77d8"><span class="section-number-3">6.2</span> LATER Org Drill</h3>
-<div class="outline-text-3" id="text-6-2">
-<p>
-The <a href="https://bitbucket.org/eeeickythump/org-drill/src">actual repo</a> has not been updated in 3 years, so I must use <a href="https://github.com/hakanserce/org-drill">this fork</a>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-drill
-  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-            <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"hakanserce/org-drill"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"juergenhoetzel/pkgbuild-mode"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgec2845f" class="outline-3">
-<h3 id="orgec2845f"><span class="section-number-3">6.3</span> <span class="todo TODO">TODO</span> Org Noter</h3>
-<div class="outline-text-3" id="text-6-3">
-<p>
-This is sort of more of a <code>pdf-tools</code> extension and it needs it&rsquo;s own <code>biblatex</code>
-setup and stuff as well so this might move into a tree of it&rsquo;s own.
-</p>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org6727884" class="outline-3">
+          <h3 id="org6727884">
+          <span class="section-number-3">9.4</span>LAMMPS Mode</h3>
+          <div class="outline-text-3" id="text-9-4">
+            <p>
+            <del>This could do with some updates. Will look into
+            this soon. Also it takesunbearably long this way. Must
+            figure out how to stop it from downloading the whole
+            repo.</del>Mantained
+            <a href="https://github.com/HaoZeke/lammps-mode">by
+            me</a>now.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> lammps-mode
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-noter<span style="color: #51afef;">)</span>
-</pre>
-</div>
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<p>
-This actually breaks the <code>pdf-tools</code> bindings.
-</p>
-</div>
-</div>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"HaoZeke/lammps-mode"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org15c09d3" class="outline-3">
+          <h3 id="org15c09d3">
+          <span class="section-number-3">9.5</span>Pug Mode</h3>
+          <div class="outline-text-3" id="text-9-5">
+            <p>I just like pugs.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> pug-mode
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org0c5a88c" class="outline-3">
+          <h3 id="org0c5a88c">
+          <span class="section-number-3">9.6</span>Nix Mode</h3>
+          <div class="outline-text-3" id="text-9-6">
+            <p>For building more cross-os stuff. This is the
+            <a href="https://github.com/NixOS/nix-mode">official
+            package</a>, but will look into binding and using
+            <a href="https://github.com/travisbhartwell/nix-emacs">
+            nix-emacs</a>as well.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> nix-mode
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orgc772075" class="outline-3">
+          <h3 id="orgc772075">
+          <span class="section-number-3">9.7</span>JVM
+          Languages</h3>
+          <div class="outline-text-3" id="text-9-7">
+            <p>Currently the languages I care about (apart from
+            Java) are:</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #5B6268;">; </span>
+<span style="color: #5B6268;">Kotlin &gt; Java</span>
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> kotlin-mode
+<span style="color: #51afef;">)</span>
+<span style="color: #5B6268;">; </span>
+<span style="color: #5B6268;">Groovy -&gt; Testing</span>
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> groovy-mode
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org9786c85" class="outline-3">
+          <h3 id="org9786c85">
+          <span class="section-number-3">9.8</span>Systemd
+          Mode</h3>
+          <div class="outline-text-3" id="text-9-8">
+            <p>Since I use a lot of user systemd units, it makes
+            sense to have pretty highlighting.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> systemd
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-org3232b27" class="outline-3">
+          <h3 id="org3232b27">
+          <span class="section-number-3">9.9</span>Dart Mode</h3>
+          <div class="outline-text-3" id="text-9-9">
+            <p>Might eventually want to also get the companion
+            <a href="https://github.com/bradyt/dart-server">dart
+            server</a>sometime, but for now this syntax-highlighter
+            will do. Might actually want to see if
+            <code>prettier</code>has anything for it.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> dart-mode
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org915350c" class="outline-2">
+        <h2 id="org915350c">
+        <span class="section-number-2">10</span>Flycheck
+        Additions</h2>
+        <div class="outline-text-2" id="text-10"></div>
+        <div id="outline-container-org5985dbd" class="outline-3">
+          <h3 id="org5985dbd">
+          <span class="section-number-3">10.1</span>MELPA
+          Helper</h3>
+          <div class="outline-text-3" id="text-10-1">
+            <p>This is for linting files before submitting to
+            MELPA.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> package-lint
+<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> flycheck-package
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-org9218c7a" class="outline-2">
+        <h2 id="org9218c7a">
+        <span class="section-number-2">11</span>Snippets</h2>
+        <div class="outline-text-2" id="text-11">
+          <p>These are from
+          <a href="https://github.com/hlissner">hlissner</a>.</p>
+        </div>
+        <div id="outline-container-org132d67c" class="outline-3">
+          <h3 id="org132d67c">
+          <span class="section-number-3">11.1</span>Doom</h3>
+          <div class="outline-text-3" id="text-11-1">
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> emacs-snippets
 
-<div id="outline-container-org31bab9e" class="outline-3">
-<h3 id="org31bab9e"><span class="section-number-3">6.4</span> Org Ref</h3>
-<div class="outline-text-3" id="text-6-4">
-<p>
-This is probably not the best thing in my current setup..
-</p>
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-ref<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgcec5d18" class="outline-3">
-<h3 id="orgcec5d18"><span class="section-number-3">6.5</span> Org Mind Map</h3>
-<div class="outline-text-3" id="text-6-5">
-<p>
-Not on MELPA yet. From <a href="https://github.com/theodorewiles/org-mind-map">here</a>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> org-mind-map
-  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-            <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"theodorewiles/org-mind-map"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org122184e" class="outline-3">
-<h3 id="org122184e"><span class="section-number-3">6.6</span> Org Rifle</h3>
-<div class="outline-text-3" id="text-6-6">
-<p>
-Technically a helm addition. Perfect for monolithic <code>org</code> files. More details
-<a href="https://github.com/alphapapa/helm-org-rifle">here</a>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> helm-org-rifle<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org0919ee3" class="outline-3">
-<h3 id="org0919ee3"><span class="section-number-3">6.7</span> Anki Mode</h3>
-<div class="outline-text-3" id="text-6-7">
-<p>
-This is put here since it only works with <code>org-mode</code> stuff.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> anki-editor<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org347a28e" class="outline-2">
-<h2 id="org347a28e"><span class="section-number-2">7</span> Dockerfile Mode</h2>
-<div class="outline-text-2" id="text-7">
-<p>
-For syntax highlighting and inline builds. <a href="https://github.com/spotify/dockerfile-mode">From spotify</a> weirdly.
-<code>## -*- docker-image-name: "your-image-name-here" -*-</code> can be used to specify
-the image name.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> dockerfile-mode<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org4bd16c5" class="outline-2">
-<h2 id="org4bd16c5"><span class="section-number-2">8</span> Reference Management</h2>
-<div class="outline-text-2" id="text-8">
-</div>
-<div id="outline-container-org0ed4c4b" class="outline-4">
-<h4 id="org0ed4c4b"><span class="section-number-4">8.0.1</span> Zotero</h4>
-<div class="outline-text-4" id="text-8-0-1">
-<p>
-There are a bunch of <code>zotero</code> integrations for emacs, most notably, <a href="https://github.com/vspinu/zotelo">zotelo</a>, but
-they don&rsquo;t seem to be all that well mantained. <a href="https://github.com/emacsmirror/zotxt">Zotxt</a> seems to be updated pretty
-often though.
-</p>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">"hlissner/emacs-snippets"</span>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> zotxt<span style="color: #51afef;">)</span>
+<span style="color: #c678dd;">:files</span>
+<span style="color: #98be65;">(</span>
+<span style="color: #98be65;">"*"</span>
+<span style="color: #98be65;">)</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org37c846d" class="outline-2">
-<h2 id="org37c846d"><span class="section-number-2">9</span> Syntax Highlighting</h2>
-<div class="outline-text-2" id="text-9">
-<p>
-These are additionally required to work with the sort of files I use often.
-The configuration and settings are as usual in <code>config.org</code>
-</p>
-</div>
-<div id="outline-container-orgd555170" class="outline-3">
-<h3 id="orgd555170"><span class="section-number-3">9.1</span> Tup Mode</h3>
-<div class="outline-text-3" id="text-9-1">
-<p>
-Because honestly there isn&rsquo;t anything better than <a href="http://gittup.org/tup/">tup</a>. Who doesn&rsquo;t need a build
-system which <a href="http://gittup.org/tup/tup_vs_mordor.html">scales with the eye of Mordor</a>?
-</p>
+            </div>
+          </div>
+        </div>
+        <div id="outline-container-orgc14aba1" class="outline-3">
+          <h3 id="orgc14aba1">
+          <span class="section-number-3">11.2</span>Standard</h3>
+          <div class="outline-text-3" id="text-11-2">
+            <p>These are from the
+            <a href="https://github.com/AndreaCrotti/yasnippet-snippets">
+            official snippets repo</a>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> yasnippet-snippets
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> tup-mode
-<span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-           <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"ejmr/tup-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
+<span style="color: #c678dd;">:recipe</span>
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
 
-<div id="outline-container-org50779ec" class="outline-4">
-<h4 id="org50779ec"><span class="section-number-4">9.1.1</span> LATER Caveats</h4>
-<div class="outline-text-4" id="text-9-1-1">
-<p>
-The repo is unmaintained so I ought to fork it and take a look into maintaining it.
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-org6f9ae8d" class="outline-3">
-<h3 id="org6f9ae8d"><span class="section-number-3">9.2</span> SaltStack Mode</h3>
-<div class="outline-text-3" id="text-9-2">
-<p>
-I have recently decided that <a href="https://saltstack.com/">saltstack</a> ought to be used for working on multiple
-systems.
-</p>
+<span style="color: #c678dd;">:repo</span>
+<span style="color: #98be65;">
+"AndreaCrotti/yasnippet-snippets"</span>
 
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> salt-mode
-<span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-         <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"glynnforrest/salt-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #c678dd;">:files</span>
+<span style="color: #98be65;">(</span>
+<span style="color: #98be65;">"*"</span>
+<span style="color: #98be65;">)</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org8d236d5" class="outline-3">
-<h3 id="org8d236d5"><span class="section-number-3">9.3</span> PKGBUILD Mode</h3>
-<div class="outline-text-3" id="text-9-3">
-<p>
-No point using <code>emacs</code> if I can&rsquo;t get highlighting for all my needs. This needs
-some extra configuration. <del>Must figure out if this is well mantained</del>. The
-developer is very responsive to pull requests and the like.
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> pkgbuild-mode
-  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-            <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"juergenhoetzel/pkgbuild-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="outline-container-orge1bd3be" class="outline-2">
+        <h2 id="orge1bd3be">
+        <span class="section-number-2">12</span>Math support</h2>
+        <div class="outline-text-2" id="text-12">
+          <p>I like
+          <a href="https://github.com/cdominik/cdlatex">
+          cdlatex</a>.</p>
+          <div class="org-src-container">
+            <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> cdlatex
+<span style="color: #51afef;">)</span>
 </pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org0030871" class="outline-3">
-<h3 id="org0030871"><span class="section-number-3">9.4</span> LAMMPS Mode</h3>
-<div class="outline-text-3" id="text-9-4">
-<p>
-<del>This could do with some updates. Will look into this soon. Also it takesunbearably long this way. Must figure out how to stop it from downloading the
-whole repo.</del>
-Mantained <a href="https://github.com/HaoZeke/lammps-mode">by me</a> now.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> lammps-mode
-  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-                    <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"HaoZeke/lammps-mode"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgfbbc7a4" class="outline-3">
-<h3 id="orgfbbc7a4"><span class="section-number-3">9.5</span> Pug Mode</h3>
-<div class="outline-text-3" id="text-9-5">
-<p>
-I just like pugs.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> pug-mode<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org3e0f249" class="outline-3">
-<h3 id="org3e0f249"><span class="section-number-3">9.6</span> Nix Mode</h3>
-<div class="outline-text-3" id="text-9-6">
-<p>
-For building more cross-os stuff. This is the <a href="https://github.com/NixOS/nix-mode">official package</a>, but will look
-into binding and using <a href="https://github.com/travisbhartwell/nix-emacs">nix-emacs</a> as well.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> nix-mode<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org26b26f3" class="outline-3">
-<h3 id="org26b26f3"><span class="section-number-3">9.7</span> JVM Languages</h3>
-<div class="outline-text-3" id="text-9-7">
-<p>
-Currently the languages I care about (apart from Java) are:
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #5B6268;">; </span><span style="color: #5B6268;">Kotlin &gt; Java</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> kotlin-mode<span style="color: #51afef;">)</span>
-<span style="color: #5B6268;">; </span><span style="color: #5B6268;">Groovy -&gt; Testing</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> groovy-mode<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org9ceb144" class="outline-3">
-<h3 id="org9ceb144"><span class="section-number-3">9.8</span> Systemd Mode</h3>
-<div class="outline-text-3" id="text-9-8">
-<p>
-Since I use a lot of user systemd units, it makes sense to have pretty
-highlighting.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> systemd<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org0fa5116" class="outline-3">
-<h3 id="org0fa5116"><span class="section-number-3">9.9</span> Dart Mode</h3>
-<div class="outline-text-3" id="text-9-9">
-<p>
-Might eventually want to also get the companion <a href="https://github.com/bradyt/dart-server">dart server</a> sometime, but for
-now this syntax-highlighter will do. Might actually want to see if <code>prettier</code>
-has anything for it.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> dart-mode<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgf6d2244" class="outline-2">
-<h2 id="orgf6d2244"><span class="section-number-2">10</span> Flycheck Additions</h2>
-<div class="outline-text-2" id="text-10">
-</div>
-<div id="outline-container-org391425c" class="outline-3">
-<h3 id="org391425c"><span class="section-number-3">10.1</span> MELPA Helper</h3>
-<div class="outline-text-3" id="text-10-1">
-<p>
-This is for linting files before submitting to MELPA.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> package-lint<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> flycheck-package<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orga2e857e" class="outline-2">
-<h2 id="orga2e857e"><span class="section-number-2">11</span> Snippets</h2>
-<div class="outline-text-2" id="text-11">
-<p>
-These are from <a href="https://github.com/hlissner">hlissner</a>.
-</p>
-</div>
-<div id="outline-container-orgc99b4a2" class="outline-3">
-<h3 id="orgc99b4a2"><span class="section-number-3">11.1</span> Doom</h3>
-<div class="outline-text-3" id="text-11-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> emacs-snippets
-  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-           <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"hlissner/emacs-snippets"</span>
-           <span style="color: #c678dd;">:files</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"*"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org730c2b8" class="outline-3">
-<h3 id="org730c2b8"><span class="section-number-3">11.2</span> Standard</h3>
-<div class="outline-text-3" id="text-11-2">
-<p>
-These are from the <a href="https://github.com/AndreaCrotti/yasnippet-snippets">official snippets repo</a>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> yasnippet-snippets
-  <span style="color: #c678dd;">:recipe</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:host</span> github
-           <span style="color: #c678dd;">:repo</span> <span style="color: #98be65;">"AndreaCrotti/yasnippet-snippets"</span>
-           <span style="color: #c678dd;">:files</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"*"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org12a5bc4" class="outline-2">
-<h2 id="org12a5bc4"><span class="section-number-2">12</span> Math support</h2>
-<div class="outline-text-2" id="text-12">
-<p>
-I like <a href="https://github.com/cdominik/cdlatex">cdlatex</a>.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">package!</span> cdlatex<span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="postamble" class="status">
-<p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2019-11-28 Thu 17:07</p>
-</div>
-</body>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="postamble" class="status">
+      <p class="author">Author: Rohit Goswami (HaoZeke)
+      &lt;rohit.goswami@aol.com&gt;</p>
+      <p class="date">Created: 2019-12-24 Tue 16:43</p>
+    </div>
+  </body>
 </html>
