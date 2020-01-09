@@ -1,9 +1,10 @@
 #+TITLE: dotDOOM
 #+AUTHOR: Rohit Goswami
+#+date: 2020:09:01
 #+EXPORT_FILE_NAME: index.html
 #+OPTIONS: toc:nil
 
-This looks better [[https://dotdoom.netlify.com][on the website]].
+This looks better [[https://dotdoom.grimoire.science][on the website]].
 
 * What?
 This is actually a [[https://github.com/hlissner/doom-emacs][doom-emacs]] private module. I was feeling rather whimsical.
