@@ -1011,14 +1011,14 @@ This is the part which is exported normally.
 *** Compiler
 It makes sense to use ~latexmk~ anyway. This way I can set sane defaults.
 #+NAME: tex_process
-#+BEGIN_SRC emacs-lisp :tangle none
+#+BEGIN_SRC emacs-lisp :tangle no
 ;; Compiler
 (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
 #+END_SRC
 *** Packages
 Some of these are damn near universal given my set up, so they are declared here.
 #+NAME: common_pkgs
-#+BEGIN_SRC emacs-lisp :tangle none
+#+BEGIN_SRC emacs-lisp :tangle no
 ;; Configuration
 (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
 (setq org-latex-listings 'minted)
@@ -1033,7 +1033,7 @@ the old syntax.
 *** KOMA Article
 Inspired by the post [[https://tex.stackexchange.com/a/364982/130845][here]].
 #+NAME: koma_art
-#+BEGIN_SRC emacs-lisp :tangle none
+#+BEGIN_SRC emacs-lisp :tangle no
 (add-to-list 'org-latex-classes
              '("koma-article" "\\documentclass{scrartcl}"
                ("\\section{%s}" . "\\section*{%s}")
@@ -1045,7 +1045,7 @@ Inspired by the post [[https://tex.stackexchange.com/a/364982/130845][here]].
 *** Tufte Book
 This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]].
 #+NAME: tufte_book
-#+BEGIN_SRC emacs-lisp :tangle none
+#+BEGIN_SRC emacs-lisp :tangle no
 (append-to-list
  'org-latex-classes
  '(("tufte-book"
