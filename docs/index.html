@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-09 Thu 13:48 -->
+<!-- 2020-01-09 Thu 15:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>dotDOOM</title>
@@ -444,7 +444,7 @@ Since the <code>config.el</code> needs no page of its own, it is simply included
       deft              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">notational velocity for Emacs</span>
       doom              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">what makes DOOM look the way it does</span>
       doom-dashboard    <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a nifty splash screen for Emacs</span>
-      <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">doom-quit         ; DOOM quit-message prompts when you quit Emacs</span>
+      doom-quit         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">DOOM quit-message prompts when you quit Emacs</span>
       <span style="color: #dcaeea;">fill-column</span>       <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a `</span><span style="color: #a9a1e1;">fill-column</span><span style="color: #5B6268;">' indicator</span>
       hl-todo           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">highlight </span><span style="color: #ECBE7B; font-weight: bold;">TODO</span><span style="color: #5B6268;">/</span><span style="color: #ff6c6b; font-weight: bold;">FIXME</span><span style="color: #5B6268;">/</span><span style="color: #98be65; font-weight: bold;">NOTE</span><span style="color: #5B6268;"> tags</span>
       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">hydra</span>
@@ -509,7 +509,7 @@ Since the <code>config.el</code> needs no page of its own, it is simply included
        gist              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">interacting with github gists</span>
        <span style="color: #c678dd;">(</span>lookup           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">helps you navigate your code and documentation</span>
         +docsets<span style="color: #c678dd;">)</span>        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">...on in Dash docsets locally</span>
-       <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">lsp</span>
+       lsp
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">macos            ; MacOS-specific commands</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">make             ; run make tasks from Emacs</span>
        magit             <span style="color: #5B6268;">; </span><span style="color: #5B6268;">a git porcelain for Emacs</span>
@@ -524,7 +524,7 @@ Since the <code>config.el</code> needs no page of its own, it is simply included
        <span style="color: #c678dd;">:lang</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">agda              ; types of types of types of types...</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">assembly          ; assembly for fun or debugging</span>
-       cc                   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">C/C++/Obj-C madness</span>
+       <span style="color: #c678dd;">(</span>cc +lsp<span style="color: #c678dd;">)</span>                   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">C/C++/Obj-C madness</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">clojure           ; java with a lisp</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">common-lisp       ; if you've seen one lisp, you've seen them all</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">coq               ; proofs-as-programs</span>
@@ -627,7 +627,7 @@ It is a personal configuration. So I guess the <a href="https://choosealicense.c
 <div id="postamble" class="status">
 <p class="date">Date: 2020:09:01</p>
 <p class="author">Author: Rohit Goswami</p>
-<p class="date">Created: 2020-01-09 Thu 13:48</p>
+<p class="date">Created: 2020-01-09 Thu 15:23</p>
 </div>
 </body>
 </html>
