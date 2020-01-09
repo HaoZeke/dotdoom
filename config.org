@@ -14,6 +14,7 @@
     - [[#kill-over-eager-literate-after-save-hook][Kill over-eager literate after-save-hook]]
   - [[#package-settings][Package Settings]]
     - [[#magit-aids][Magit Aids]]
+    - [[#word-wrap][Word wrap]]
   - [[#anki-editor][Anki Editor]]
   - [[#keybindings][Keybindings]]
     - [[#general][General]]
@@ -219,6 +220,14 @@ Barely any setup.
   :after magit)
 (use-package! git-annex
   :after dired)
+#+END_SRC
+*** Word wrap
+This section is to work with the settings for the ~word-wrap~ ~doom~ module.
+#+BEGIN_SRC emacs-lisp
+;; enable word-wrap in C/C++/ObjC/Java
+(add-hook! 'markdown-mode-hook #'+word-wrap-mode)
+(add-hook! 'text-mode-hook #'+word-wrap-mode)
+(add-hook! 'tex-mode-hook #'+word-wrap-mode)
 #+END_SRC
 ** Anki Editor
 # TODO Add to doom as a module
