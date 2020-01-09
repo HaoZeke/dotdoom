@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-09 Thu 13:46 -->
+<!-- 2020-01-09 Thu 15:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate doom-emacs config</title>
@@ -341,7 +341,7 @@ for the JavaScript code in this tag.
 <li><a href="#org3bd0b13">0.4.2. Word wrap</a></li>
 </ul>
 </li>
-<li><a href="#org7396296">0.5. Anki Editor</a></li>
+<li><a href="#org2563336">0.5. Anki Editor</a></li>
 <li><a href="#org5dcb079">0.6. Keybindings</a>
 <ul>
 <li><a href="#org2b3411b">0.6.1. <span class="done DONE">DONE</span> General</a></li>
@@ -352,8 +352,8 @@ for the JavaScript code in this tag.
 <li><a href="#org93025dc">0.6.6. Org Noter</a></li>
 <li><a href="#orgc417667">0.6.7. Pdf Mode</a></li>
 <li><a href="#orgefd9664">0.6.8. Org Mode additions</a></li>
-<li><a href="#org2563336">0.6.9. Anki Editor</a></li>
-<li><a href="#org9b70b5f">0.6.10. CC Mode</a></li>
+<li><a href="#org872b1a4">0.6.9. Anki Editor</a></li>
+<li><a href="#org6fb4a19">0.6.10. CC Mode</a></li>
 <li><a href="#org6741b85">0.6.11. Evil Movement</a></li>
 <li><a href="#orgd7251f0">0.6.12. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
 <li><a href="#orga4e8ac0">0.6.13. TeX Mode</a></li>
@@ -392,12 +392,12 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org20a595c">0.10. Dockerfile Mode</a></li>
-<li><a href="#orge679614">0.11. Functions</a>
+<li><a href="#orgcba9964">0.11. Functions</a>
 <ul>
 <li><a href="#orgdc6ac67">0.11.1. Org-mode export pdf when saved</a></li>
 <li><a href="#org543c63c">0.11.2. Org-mode export koma-letter</a></li>
 <li><a href="#orgb84f2d8">0.11.3. Org-mode export tex when saved</a></li>
-<li><a href="#org08a8bf8">0.11.4. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org0e3a566">0.11.4. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org1dfc761">0.11.5. Helper function</a></li>
 <li><a href="#org534a892">0.11.6. Async Command without Buffers</a></li>
 <li><a href="#orgbcc01db">0.11.7. Smarter Clang Formatting</a></li>
@@ -411,7 +411,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgf4b34ee">0.13. Hooks</a>
 <ul>
-<li><a href="#orgd1e7aa0">0.13.1. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org47ce630">0.13.1. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org2dabf08">0.13.2. Before Save Hooks</a></li>
 <li><a href="#org7583d78">0.13.3. Disable Auto RDM</a></li>
 </ul>
@@ -438,7 +438,7 @@ for the JavaScript code in this tag.
 <li><a href="#orga853e30">1.1. Shared Preferences</a>
 <ul>
 <li><a href="#orgc4a4443">1.1.1. Compiler</a></li>
-<li><a href="#org05168a6">1.1.2. Packages</a></li>
+<li><a href="#orgc20fa7e">1.1.2. Packages</a></li>
 </ul>
 </li>
 <li><a href="#org212cd69">1.2. Export Templates</a>
@@ -468,7 +468,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org3eb2ac7">2.1. Org Capture</a>
 <ul>
-<li><a href="#orgcba9964">2.1.1. Functions</a></li>
+<li><a href="#orgca999c0">2.1.1. Functions</a></li>
 <li><a href="#org021ecc5">2.1.2. Templates</a></li>
 </ul>
 </li>
@@ -721,16 +721,16 @@ This section is to work with the settings for the <code>word-wrap</code> <code>d
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5B6268;">;; </span><span style="color: #5B6268;">enable word-wrap in C/C++/ObjC/Java</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">markdown-mode-hook</span> <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">+word-wrap-mode</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">text-mode-hook</span> <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">+word-wrap-mode</span><span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">tex-mode-hook</span> <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">+word-wrap-mode</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">markdown-mode-hook</span> <span style="color: #51afef;">#'</span><span style="color: #dcaeea;">+word-wrap-mode</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">text-mode-hook</span> <span style="color: #51afef;">#'</span><span style="color: #dcaeea;">+word-wrap-mode</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">tex-mode-hook</span> <span style="color: #51afef;">#'</span><span style="color: #dcaeea;">+word-wrap-mode</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org7396296" class="outline-3">
-<h3 id="org7396296"><span class="section-number-3">0.5</span> Anki Editor</h3>
+<div id="outline-container-org2563336" class="outline-3">
+<h3 id="org2563336"><span class="section-number-3">0.5</span> Anki Editor</h3>
 <div class="outline-text-3" id="text-0-5">
 <p>
 This is for my favorite <a href="https://github.com/louietan/anki-editor">anki interaction</a> mechanism.
@@ -1060,8 +1060,8 @@ are a part of <code>org-mode</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-org2563336" class="outline-4">
-<h4 id="org2563336"><span class="section-number-4">0.6.9</span> Anki Editor</h4>
+<div id="outline-container-org872b1a4" class="outline-4">
+<h4 id="org872b1a4"><span class="section-number-4">0.6.9</span> Anki Editor</h4>
 <div class="outline-text-4" id="text-0-6-9">
 <p>
 These are only relevant to <code>org-mode</code>. Nevertheless they are not part of
@@ -1084,8 +1084,8 @@ These are only relevant to <code>org-mode</code>. Nevertheless they are not part
 </div>
 </div>
 </div>
-<div id="outline-container-org9b70b5f" class="outline-4">
-<h4 id="org9b70b5f"><span class="section-number-4">0.6.10</span> CC Mode</h4>
+<div id="outline-container-org6fb4a19" class="outline-4">
+<h4 id="org6fb4a19"><span class="section-number-4">0.6.10</span> CC Mode</h4>
 <div class="outline-text-4" id="text-0-6-10">
 <p>
 These are basically wrappers around various <code>rtags</code> functions.
@@ -1590,8 +1590,8 @@ highlighting Dockerfiles.
 </div>
 </div>
 </div>
-<div id="outline-container-orge679614" class="outline-3">
-<h3 id="orge679614"><span class="section-number-3">0.11</span> Functions</h3>
+<div id="outline-container-orgcba9964" class="outline-3">
+<h3 id="orgcba9964"><span class="section-number-3">0.11</span> Functions</h3>
 <div class="outline-text-3" id="text-0-11">
 </div>
 <div id="outline-container-orgdc6ac67" class="outline-4">
@@ -1638,8 +1638,8 @@ keep editing my files without waiting for it to finish creating the <code>pdf</c
 </div>
 </div>
 </div>
-<div id="outline-container-org08a8bf8" class="outline-4">
-<h4 id="org08a8bf8"><span class="section-number-4">0.11.4</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org0e3a566" class="outline-4">
+<h4 id="org0e3a566"><span class="section-number-4">0.11.4</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-11-4">
 <ul class="org-ul">
 <li>Minted needs to be setup.</li>
@@ -1832,8 +1832,8 @@ LTR order of preference.
 <h3 id="orgf4b34ee"><span class="section-number-3">0.13</span> Hooks</h3>
 <div class="outline-text-3" id="text-0-13">
 </div>
-<div id="outline-container-orgd1e7aa0" class="outline-4">
-<h4 id="orgd1e7aa0"><span class="section-number-4">0.13.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org47ce630" class="outline-4">
+<h4 id="org47ce630"><span class="section-number-4">0.13.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-13-1">
 <p>
 Move all the hooks to this section if possible.
@@ -1845,7 +1845,7 @@ Move all the hooks to this section if possible.
 <div class="outline-text-4" id="text-0-13-2">
 </div>
 <ol class="org-ol">
-<li><a id="org6fb4a19"></a>CC Mode<br />
+<li><a id="org0bd74ba"></a>CC Mode<br />
 <div class="outline-text-5" id="text-0-13-2-1">
 <p>
 Currently I only need to use the clang formatting hook here.
@@ -1938,7 +1938,7 @@ This is a catch all for the eventual <code>org-mode</code> based multiple target
 </div>
 </div>
 </li>
-<li><a id="org0e3a566"></a><span class="todo TODO">TODO</span> Caveats<br />
+<li><a id="org6208d5d"></a><span class="todo TODO">TODO</span> Caveats<br />
 <div class="outline-text-5" id="text-0-14-2-3">
 <ul class="org-ul">
 <li>This actually forms it relative to the exact path. 
@@ -2120,8 +2120,8 @@ It makes sense to use <code>latexmk</code> anyway. This way I can set sane defau
 </div>
 </div>
 </div>
-<div id="outline-container-org05168a6" class="outline-4">
-<h4 id="org05168a6"><span class="section-number-4">1.1.2</span> Packages</h4>
+<div id="outline-container-orgc20fa7e" class="outline-4">
+<h4 id="orgc20fa7e"><span class="section-number-4">1.1.2</span> Packages</h4>
 <div class="outline-text-4" id="text-1-1-2">
 <p>
 Some of these are damn near universal given my set up, so they are declared here.
@@ -2229,7 +2229,7 @@ stackexchange</a> question.
 </div>
 </div>
 </li>
-<li><a id="orgc20fa7e"></a>Packages<br />
+<li><a id="orgd8f61e7"></a>Packages<br />
 <div class="outline-text-5" id="text-1-3-0-2">
 <p>
 These are required to view math properly.
@@ -2450,8 +2450,8 @@ required for the <a href="https://github.com/sprig/org-capture-extension#set-up-
 article thing.
 </p>
 </div>
-<div id="outline-container-orgcba9964" class="outline-4">
-<h4 id="orgcba9964"><span class="section-number-4">2.1.1</span> Functions</h4>
+<div id="outline-container-orgca999c0" class="outline-4">
+<h4 id="orgca999c0"><span class="section-number-4">2.1.1</span> Functions</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 These are needed for <code>org-capture</code> alone for now.
@@ -2511,7 +2511,7 @@ This might get complicated but I am only trying to get the bare minimum for
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2020-01-09 Thu 13:46</p>
+<p class="date">Created: 2020-01-09 Thu 15:24</p>
 </div>
 </body>
 </html>
