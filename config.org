@@ -14,7 +14,6 @@
     - [[#kill-over-eager-literate-after-save-hook][Kill over-eager literate after-save-hook]]
   - [[#package-settings][Package Settings]]
     - [[#magit-aids][Magit Aids]]
-    - [[#saltstack-settings][SaltStack Settings]]
   - [[#anki-editor][Anki Editor]]
   - [[#keybindings][Keybindings]]
     - [[#general][General]]
@@ -50,6 +49,7 @@
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd][Systemd]]
     - [[#dart-mode][Dart Mode]]
+    - [[#saltstack][SaltStack]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
@@ -219,17 +219,6 @@ Barely any setup.
   :after magit)
 (use-package! git-annex
   :after dired)
-#+END_SRC
-*** SaltStack Settings
-I like having spell checks for everything.
-#+BEGIN_SRC emacs-lisp
-;; Load it
-(use-package! salt-mode
-  :config
-;; Flyspell
-(add-hook 'salt-mode-hook
-        (lambda ()
-            (flyspell-mode 1))))
 #+END_SRC
 ** Anki Editor
 # TODO Add to doom as a module
@@ -720,6 +709,17 @@ with Golang and what not but still might be worth a shot.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package! dart-mode
   :mode "\\.dart\\'")
+#+END_SRC
+*** SaltStack
+I like having spell checks for everything.
+#+BEGIN_SRC emacs-lisp
+;; Load it
+(use-package! salt-mode
+  :config
+;; Flyspell
+(add-hook 'salt-mode-hook
+        (lambda ()
+            (flyspell-mode 1))))
 #+END_SRC
 ** Aesthetics
 *** Wakatime
