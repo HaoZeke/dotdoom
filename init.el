@@ -154,7 +154,7 @@
         +gnuplot         ; render gnuplot
         ;; hugo          ; use Emacs for hugo blogging
         ;; +journal      ; journaling in org
-        +jupyter         ; enable jupyter integration
+        ;; +jupyter         ; enable jupyter integration
         +pandoc          ; pandoc integration into org's exporter
        ;;+pomodoro       ; be fruitful with the tomato technique
         +present)        ; using Emacs for presentations
