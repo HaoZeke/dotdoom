@@ -156,6 +156,7 @@
        nix                ; I hereby declare "nix geht mehr!"
        ;; ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
+        +gnuplot         ; render gnuplot
         ;;hugo           ; use Emacs for hugo blogging
         +dragndrop       ; file drag & drop support
         +ipython         ; ipython support for babel
