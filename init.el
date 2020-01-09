@@ -21,8 +21,7 @@
 
        :completion
        (company          ; the ultimate code completion backend
-        +childframe      ; a better UI for company (Emacs 26+)
-        +auto)           ; as-you-type code completion
+        +childframe)      ; a better UI for company (Emacs 26+)
       ;; (helm             ; the *other* search engine for love and life
       ;;   +childframe      ; a better UI for helm (Emacs 26+)
       ;;   +fuzzy)          ; enable fuzzy search backend for helm
