@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-09 Thu 15:24 -->
+<!-- 2020-01-12 Sun 15:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>dotDOOM</title>
@@ -494,6 +494,12 @@ Since the <code>config.el</code> needs no page of its own, it is simply included
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">shell           ; a terminal REPL for Emacs</span>
        term              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">terminals in Emacs</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">vterm             ; another terminal in Emacs</span>
+      
+       <span style="color: #c678dd;">:checkers</span>
+       <span style="color: #c678dd;">(</span>syntax             <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tasing you for every semicolon you forget</span>
+        +childframe<span style="color: #c678dd;">)</span>       <span style="color: #5B6268;">; </span><span style="color: #5B6268;">use childframes for error popups (Emacs 26+ only)</span>
+       spell             <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tasing you for misspelling mispelling</span>
+       <span style="color: #5B6268;">;;</span><span style="color: #5B6268;">grammar           ; tasing grammar mistake every you make</span>
 
        <span style="color: #c678dd;">:tools</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ansible</span>
@@ -503,9 +509,6 @@ Since the <code>config.el</code> needs no page of its own, it is simply included
        editorconfig      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">let someone else argue about tabs vs spaces</span>
        <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">ein            ; tame Jupyter notebooks with emacs</span>
        <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">eval</span> +overlay<span style="color: #c678dd;">)</span>   <span style="color: #5B6268;">; </span><span style="color: #5B6268;">run code, run (also, repls)</span>
-       <span style="color: #c678dd;">(</span>flycheck         <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tasing you for every semicolon you forget</span>
-        +childframe<span style="color: #c678dd;">)</span>     <span style="color: #5B6268;">; </span><span style="color: #5B6268;">use childframes for error popups (Emacs 26+ only)</span>
-       flyspell          <span style="color: #5B6268;">; </span><span style="color: #5B6268;">tasing you for misspelling mispelling</span>
        gist              <span style="color: #5B6268;">; </span><span style="color: #5B6268;">interacting with github gists</span>
        <span style="color: #c678dd;">(</span>lookup           <span style="color: #5B6268;">; </span><span style="color: #5B6268;">helps you navigate your code and documentation</span>
         +docsets<span style="color: #c678dd;">)</span>        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">...on in Dash docsets locally</span>
@@ -627,7 +630,7 @@ It is a personal configuration. So I guess the <a href="https://choosealicense.c
 <div id="postamble" class="status">
 <p class="date">Date: 2020:09:01</p>
 <p class="author">Author: Rohit Goswami</p>
-<p class="date">Created: 2020-01-09 Thu 15:24</p>
+<p class="date">Created: 2020-01-12 Sun 15:06</p>
 </div>
 </body>
 </html>
