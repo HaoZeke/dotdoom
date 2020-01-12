@@ -86,6 +86,12 @@
        ;; shell           ; a terminal REPL for Emacs
        term              ; terminals in Emacs
        ;; vterm             ; another terminal in Emacs
+      
+       :checkers
+       (syntax             ; tasing you for every semicolon you forget
+        +childframe)       ; use childframes for error popups (Emacs 26+ only)
+       spell             ; tasing you for misspelling mispelling
+       ;;grammar           ; tasing grammar mistake every you make
 
        :tools
        ;; ansible
@@ -95,9 +101,6 @@
        editorconfig      ; let someone else argue about tabs vs spaces
        ;; ein            ; tame Jupyter notebooks with emacs
        (eval +overlay)   ; run code, run (also, repls)
-       (flycheck         ; tasing you for every semicolon you forget
-        +childframe)     ; use childframes for error popups (Emacs 26+ only)
-       flyspell          ; tasing you for misspelling mispelling
        gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...on in Dash docsets locally
