@@ -1,5 +1,6 @@
 #+TITLE: Literate doom-emacs config
 #+AUTHOR: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
+#+DATE: 2020:01:13
 #+PROPERTY: header-args :tangle yes
 #+OPTIONS: toc:nil
 
