@@ -64,6 +64,7 @@
     - [[#async-command-without-buffers][Async Command without Buffers]]
     - [[#smarter-clang-formatting][Smarter Clang Formatting]]
     - [[#org-mode-export-to-markdown][Org-mode export to Markdown]]
+    - [[#smartparens-wrapping][Smartparens Wrapping]]
   - [[#projects][Projects]]
     - [[#dotdoom][dotDoom]]
   - [[#hooks][Hooks]]
@@ -825,6 +826,20 @@ This is a convinience function for working with ~nanoc~.
    (concat "pandoc -f org -t markdown -s " pargs " " (buffer-name) " -o "
            dir "/" (file-name-sans-extension (buffer-name)) ".md"))
     )
+#+END_SRC
+*** TODO Smartparens Wrapping
+- [ ] Make this conditional and only when ~+smartparens~ is active
+This is to define some more wrapping functions I use often (for markdown and
+org-mode inline code):
+#+BEGIN_SRC emacs-lisp
+(defun sp-wrap-backtick ()
+  "Wrap following sexp in backticks."
+  (interactive)
+  (sp-wrap-with-pair "`"))
+(defun sp-wrap-tilda ()
+  "Wrap following sexp in tildes."
+  (interactive)
+  (sp-wrap-with-pair "~"))
 #+END_SRC
 ** Projects
 These are to help setup org-mode workflows.
