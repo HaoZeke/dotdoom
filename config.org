@@ -1,6 +1,6 @@
 #+TITLE: Literate doom-emacs config
 #+AUTHOR: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
-#+DATE: 2020:01:13
+#+DATE: 2020:01:15
 #+PROPERTY: header-args :tangle yes
 #+OPTIONS: toc:nil
 
@@ -980,11 +980,21 @@ Basically only ~poly-markdown~ for ~rmd~ files.
 ;; Load
 (use-package! poly-R
 :config
-(map! :localleader
+(map! (:localleader
       :map polymode-mode-map
-:desc "Export"   "e" 'polymode-export
-      )
+      :desc "Export"   "e" 'polymode-export
+      :desc "Errors" "$" 'polymode-show-process-buffer
+      :desc "Weave" "w" 'polymode-weave
+      ;; (:prefix ("n" . "Navigation")
+      ;;   :desc "Next" "n" . 'polymode-next-chunk
+      ;;   :desc "Previous" "N" . 'polymode-previous-chunk)
+      ;; (:prefix ("c" . "Chunks")
+      ;;   :desc "Narrow" "n" . 'polymode-toggle-chunk-narrowing
+      ;;   :desc "Kill" "k" . 'polymode-kill-chunk
+      ;;   :desc "Mark-Extend" "m" . 'polymode-mark-or-extend-chunk)
+      ))
   )
+
 #+END_SRC
 * Org LaTeX
 Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's
