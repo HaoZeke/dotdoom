@@ -1,6 +1,6 @@
 #+TITLE: Emacs Literate Package Additions
 #+AUTHOR: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
-#+DATE: 2020:01:13
+#+DATE: 2020:01:15
 #+PROPERTY: header-args :tangle (concat doom-private-dir "packages.el")
 #+PROPERTY: header-args+ :comments link
 #+STARTUP: outline
