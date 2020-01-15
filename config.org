@@ -76,6 +76,8 @@
     - [[#safe-evals][Safe Evals]]
     - [[#asynchronous-exports][Asynchronous Exports]]
   - [[#troubleshooting][Troubleshooting]]
+- [[#r-helpers][R Helpers]]
+    - [[#polymode][Polymode]]
 - [[#org-latex][Org LaTeX]]
     - [[#async-config][Async Config]]
     - [[#config][Config]]
@@ -968,6 +970,21 @@ upstream.
 #+BEGIN_SRC emacs-lisp
 (after! doom-themes
   (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
+#+END_SRC
+* R Helpers
+This section is essentially to configure working with ~R~ above and beyond the
+default ~ess~ configuration supplied by ~doom-emacs~.
+*** Polymode
+Basically only ~poly-markdown~ for ~rmd~ files.
+#+BEGIN_SRC emacs-lisp
+;; Load
+(use-package! poly-R
+:config
+(map! :localleader
+      :map polymode-mode-map
+:desc "Export"   "e" 'polymode-export
+      )
+  )
 #+END_SRC
 * Org LaTeX
 Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's
