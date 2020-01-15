@@ -380,9 +380,16 @@ more.
 (map! :localleader
       :map markdown-mode-map
       :prefix ("i" . "Insert")
-      :desc "Image"   "i" 'markdown-insert-image
-      :desc "Link"    "l" 'markdown-insert-link
-      :desc "Github Code Block" "c" 'markdown-insert-gfm-code-block
+      :desc "Blockquote"    "q" 'markdown-insert-blockquote
+      :desc "Bold"          "b" 'markdown-insert-bold
+      :desc "Code"          "c" 'markdown-insert-code
+      :desc "Emphasis"      "e" 'markdown-insert-italic
+      :desc "Footnote"      "f" 'markdown-insert-footnote
+      :desc "Code Block"    "s" 'markdown-insert-gfm-code-block
+      :desc "Image"         "i" 'markdown-insert-image
+      :desc "Link"          "l" 'markdown-insert-link
+      :desc "List Item"     "n" 'markdown-insert-list-item
+      :desc "Pre"           "p" 'markdown-insert-pre
       (:prefix ("h" . "Headings")
         :desc "One"   "1" 'markdown-insert-atx-1
         :desc "Two"   "2" 'markdown-insert-atx-2
