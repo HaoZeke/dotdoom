@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: short-pdf
 # contributor: Rohit Goswami (HaoZeke)
-# key:  <spd                                                                                        
+# key:  <spdf
 # --
 
 #+TITLE: ${1:Statement of Purpose}
