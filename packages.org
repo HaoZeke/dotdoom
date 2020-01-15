@@ -43,6 +43,7 @@
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd-mode][Systemd Mode]]
     - [[#dart-mode][Dart Mode]]
+    - [[#polymode][Polymode]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
   - [[#snippets][Snippets]]
@@ -263,6 +264,11 @@ now this syntax-highlighter will do. Might actually want to see if ~prettier~
 has anything for it.
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! dart-mode)
+#+END_SRC
+*** Polymode
+For working with ~.rmd~ files.
+#+BEGIN_SRC emacs-lisp
+(package! poly-R)
 #+END_SRC
 ** Flycheck Additions
 *** MELPA Helper
