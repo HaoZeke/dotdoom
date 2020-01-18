@@ -3,6 +3,7 @@
 #+date: 2020:09:01
 #+EXPORT_FILE_NAME: index.html
 #+OPTIONS: toc:nil
+#+STARTUP: nofold
 
 This looks better [[https://dotdoom.grimoire.science][on the website]].
 
