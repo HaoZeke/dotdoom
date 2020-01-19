@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-01-15 Wed 11:28 -->
+<!-- 2020-01-19 Sun 16:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate doom-emacs config</title>
@@ -341,7 +341,7 @@ for the JavaScript code in this tag.
 <li><a href="#org3bd0b13">0.4.2. Word wrap</a></li>
 </ul>
 </li>
-<li><a href="#org6449088">0.5. Anki Editor</a></li>
+<li><a href="#org84ad9be">0.5. Anki Editor</a></li>
 <li><a href="#org5dcb079">0.6. Keybindings</a>
 <ul>
 <li><a href="#org2b3411b">0.6.1. <span class="done DONE">DONE</span> General</a></li>
@@ -352,8 +352,8 @@ for the JavaScript code in this tag.
 <li><a href="#org93025dc">0.6.6. Org Noter</a></li>
 <li><a href="#orgc417667">0.6.7. Pdf Mode</a></li>
 <li><a href="#orgefd9664">0.6.8. Org Mode additions</a></li>
-<li><a href="#org84ad9be">0.6.9. Anki Editor</a></li>
-<li><a href="#org5018c64">0.6.10. CC Mode</a></li>
+<li><a href="#orgf6462f2">0.6.9. Anki Editor</a></li>
+<li><a href="#org0bb5239">0.6.10. CC Mode</a></li>
 <li><a href="#org6741b85">0.6.11. Evil Movement</a></li>
 <li><a href="#orgd7251f0">0.6.12. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
 <li><a href="#orga4e8ac0">0.6.13. TeX Mode</a></li>
@@ -392,16 +392,17 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#org20a595c">0.10. Dockerfile Mode</a></li>
-<li><a href="#org9bf2520">0.11. Functions</a>
+<li><a href="#org01f3df1">0.11. Functions</a>
 <ul>
 <li><a href="#orgdc6ac67">0.11.1. Org-mode export pdf when saved</a></li>
 <li><a href="#org543c63c">0.11.2. Org-mode export koma-letter</a></li>
 <li><a href="#orgb84f2d8">0.11.3. Org-mode export tex when saved</a></li>
-<li><a href="#orge3c8e9d">0.11.4. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#orga2ba02f">0.11.4. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org1dfc761">0.11.5. Helper function</a></li>
 <li><a href="#org534a892">0.11.6. Async Command without Buffers</a></li>
 <li><a href="#orgbcc01db">0.11.7. Smarter Clang Formatting</a></li>
 <li><a href="#org1b02601">0.11.8. Org-mode export to Markdown</a></li>
+<li><a href="#org5329169">0.11.9. <span class="todo TODO">TODO</span> Smartparens Wrapping</a></li>
 </ul>
 </li>
 <li><a href="#org0685bf3">0.12. Projects</a>
@@ -411,7 +412,7 @@ for the JavaScript code in this tag.
 </li>
 <li><a href="#orgf4b34ee">0.13. Hooks</a>
 <ul>
-<li><a href="#orgae77214">0.13.1. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#orga8f49a9">0.13.1. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org2dabf08">0.13.2. Before Save Hooks</a></li>
 <li><a href="#org7583d78">0.13.3. Disable Auto RDM</a></li>
 </ul>
@@ -447,7 +448,7 @@ for the JavaScript code in this tag.
 <li><a href="#orga853e30">2.1. Shared Preferences</a>
 <ul>
 <li><a href="#orgc4a4443">2.1.1. Compiler</a></li>
-<li><a href="#org70bb5a4">2.1.2. Packages</a></li>
+<li><a href="#orgc3a66c3">2.1.2. Packages</a></li>
 </ul>
 </li>
 <li><a href="#org212cd69">2.2. Export Templates</a>
@@ -477,7 +478,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#org3eb2ac7">3.1. Org Capture</a>
 <ul>
-<li><a href="#org01f3df1">3.1.1. Functions</a></li>
+<li><a href="#orgbd56033">3.1.1. Functions</a></li>
 <li><a href="#org021ecc5">3.1.2. Templates</a></li>
 </ul>
 </li>
@@ -738,8 +739,8 @@ This section is to work with the settings for the <code>word-wrap</code> <code>d
 </div>
 </div>
 </div>
-<div id="outline-container-org6449088" class="outline-3">
-<h3 id="org6449088"><span class="section-number-3">0.5</span> Anki Editor</h3>
+<div id="outline-container-org84ad9be" class="outline-3">
+<h3 id="org84ad9be"><span class="section-number-3">0.5</span> Anki Editor</h3>
 <div class="outline-text-3" id="text-0-5">
 <p>
 This is for my favorite <a href="https://github.com/louietan/anki-editor">anki interaction</a> mechanism.
@@ -935,8 +936,27 @@ This should hopefully propogate across all modes.
 </div>
 </div>
 </li>
-<li><a id="org7428dcd"></a>Lookup<br />
+<li><a id="orga9c87b7"></a>Wrap Words<br />
 <div class="outline-text-5" id="text-0-6-4-4">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Load conditionally</li>
+</ul>
+<p>
+This is for working with the various options enabled by <code>+smartparens</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:leader</span>
+      <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"i"</span> . <span style="color: #98be65;">"Insert"</span><span style="color: #98be65;">)</span>
+        <span style="color: #98be65;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #51afef;">(</span><span style="color: #98be65;">"w"</span> . <span style="color: #98be65;">"Wrap"</span><span style="color: #51afef;">)</span>
+          <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Backticks"</span> <span style="color: #98be65;">"`"</span> . <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">sp-wrap-backtick</span>
+          <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Tildes"</span> <span style="color: #98be65;">"~"</span> . <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">sp-wrap-tilde</span>
+          <span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org7428dcd"></a>Lookup<br />
+<div class="outline-text-5" id="text-0-6-4-5">
 <p>
 These were bound to really weird things.
 </p>
@@ -953,7 +973,7 @@ These were bound to really weird things.
 </div>
 </li>
 <li><a id="org678684e"></a>No ESC<br />
-<div class="outline-text-5" id="text-0-6-4-5">
+<div class="outline-text-5" id="text-0-6-4-6">
 <p>
 The escape key for exiting things seems very painful.
 </p>
@@ -978,9 +998,16 @@ more.
 <pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:localleader</span>
       <span style="color: #c678dd;">:map</span> <span style="color: #dcaeea;">markdown-mode-map</span>
       <span style="color: #c678dd;">:prefix</span> <span style="color: #c678dd;">(</span><span style="color: #98be65;">"i"</span> . <span style="color: #98be65;">"Insert"</span><span style="color: #c678dd;">)</span>
-      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Image"</span>   <span style="color: #98be65;">"i"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-image</span>
-      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Link"</span>    <span style="color: #98be65;">"l"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-link</span>
-      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Github Code Block"</span> <span style="color: #98be65;">"c"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-gfm-code-block</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Blockquote"</span>    <span style="color: #98be65;">"q"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-blockquote</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Bold"</span>          <span style="color: #98be65;">"b"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-bold</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Code"</span>          <span style="color: #98be65;">"c"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-code</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Emphasis"</span>      <span style="color: #98be65;">"e"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-italic</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Footnote"</span>      <span style="color: #98be65;">"f"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-footnote</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Code Block"</span>    <span style="color: #98be65;">"s"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-gfm-code-block</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Image"</span>         <span style="color: #98be65;">"i"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-image</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Link"</span>          <span style="color: #98be65;">"l"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-link</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"List Item"</span>     <span style="color: #98be65;">"n"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-list-item</span>
+      <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Pre"</span>           <span style="color: #98be65;">"p"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-pre</span>
       <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"h"</span> . <span style="color: #98be65;">"Headings"</span><span style="color: #98be65;">)</span>
         <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"One"</span>   <span style="color: #98be65;">"1"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-atx-1</span>
         <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Two"</span>   <span style="color: #98be65;">"2"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">markdown-insert-atx-2</span>
@@ -1000,7 +1027,7 @@ These bindings should probably be after <code>org-noter</code> is loaded.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:localleader</span>
-      <span style="color: #c678dd;">:map</span> <span style="color: #c678dd;">(</span><span style="color: #dcaeea;">org-mode-map</span> <span style="color: #dcaeea;">pdf-view-mode-map</span><span style="color: #c678dd;">)</span>
+      <span style="color: #c678dd;">:map</span> <span style="color: #c678dd;">(</span><span style="color: #dcaeea;">org-mode-map</span> pdf-view-mode-map<span style="color: #c678dd;">)</span>
       <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"o"</span> . <span style="color: #98be65;">"Org"</span><span style="color: #98be65;">)</span>
         <span style="color: #98be65;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #51afef;">(</span><span style="color: #98be65;">"n"</span> . <span style="color: #98be65;">"Noter"</span><span style="color: #51afef;">)</span>
           <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Noter"</span> <span style="color: #98be65;">"n"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-noter</span>
@@ -1019,7 +1046,7 @@ need to be bound in <code>org-mode</code> files.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5B6268;">; </span><span style="color: #5B6268;">localleader is SPC m</span>
 <span style="color: #51afef;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:localleader</span>
-      <span style="color: #c678dd;">:map</span> <span style="color: #dcaeea;">pdf-view-mode-map</span>
+      <span style="color: #c678dd;">:map</span> pdf-view-mode-map
       <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">"o"</span>
         <span style="color: #98be65;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">"n"</span>
           <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Insert"</span> <span style="color: #98be65;">"i"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-noter-insert-note</span>
@@ -1069,8 +1096,8 @@ are a part of <code>org-mode</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-org84ad9be" class="outline-4">
-<h4 id="org84ad9be"><span class="section-number-4">0.6.9</span> Anki Editor</h4>
+<div id="outline-container-orgf6462f2" class="outline-4">
+<h4 id="orgf6462f2"><span class="section-number-4">0.6.9</span> Anki Editor</h4>
 <div class="outline-text-4" id="text-0-6-9">
 <p>
 These are only relevant to <code>org-mode</code>. Nevertheless they are not part of
@@ -1093,8 +1120,8 @@ These are only relevant to <code>org-mode</code>. Nevertheless they are not part
 </div>
 </div>
 </div>
-<div id="outline-container-org5018c64" class="outline-4">
-<h4 id="org5018c64"><span class="section-number-4">0.6.10</span> CC Mode</h4>
+<div id="outline-container-org0bb5239" class="outline-4">
+<h4 id="org0bb5239"><span class="section-number-4">0.6.10</span> CC Mode</h4>
 <div class="outline-text-4" id="text-0-6-10">
 <p>
 These are basically wrappers around various <code>rtags</code> functions.
@@ -1599,8 +1626,8 @@ highlighting Dockerfiles.
 </div>
 </div>
 </div>
-<div id="outline-container-org9bf2520" class="outline-3">
-<h3 id="org9bf2520"><span class="section-number-3">0.11</span> Functions</h3>
+<div id="outline-container-org01f3df1" class="outline-3">
+<h3 id="org01f3df1"><span class="section-number-3">0.11</span> Functions</h3>
 <div class="outline-text-3" id="text-0-11">
 </div>
 <div id="outline-container-orgdc6ac67" class="outline-4">
@@ -1647,8 +1674,8 @@ keep editing my files without waiting for it to finish creating the <code>pdf</c
 </div>
 </div>
 </div>
-<div id="outline-container-orge3c8e9d" class="outline-4">
-<h4 id="orge3c8e9d"><span class="section-number-4">0.11.4</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-orga2ba02f" class="outline-4">
+<h4 id="orga2ba02f"><span class="section-number-4">0.11.4</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-11-4">
 <ul class="org-ul">
 <li>Minted needs to be setup.</li>
@@ -1729,6 +1756,29 @@ This is a convinience function for working with <code>nanoc</code>.
    <span style="color: #98be65;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">"pandoc -f org -t markdown -s "</span> pargs <span style="color: #98be65;">" "</span> <span style="color: #51afef;">(</span><span style="color: #a9a1e1;">buffer-name</span><span style="color: #51afef;">)</span> <span style="color: #98be65;">" -o "</span>
            dir <span style="color: #98be65;">"/"</span> <span style="color: #51afef;">(</span><span style="color: #c678dd;">file-name-sans-extension</span> <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">buffer-name</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span> <span style="color: #98be65;">".md"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
     <span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5329169" class="outline-4">
+<h4 id="org5329169"><span class="section-number-4">0.11.9</span> <span class="todo TODO">TODO</span> Smartparens Wrapping</h4>
+<div class="outline-text-4" id="text-0-11-9">
+<ul class="org-ul">
+<li class="off"><code>[&#xa0;]</code> Make this conditional and only when <code>+smartparens</code> is active</li>
+</ul>
+<p>
+This is to define some more wrapping functions I use often (for markdown and
+org-mode inline code):
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">defun</span> <span style="color: #c678dd;">sp-wrap-backtick</span> <span style="color: #c678dd;">()</span>
+  <span style="color: #83898d;">"Wrap following sexp in backticks."</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">interactive</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #c678dd;">sp-wrap-with-pair</span> <span style="color: #98be65;">"`"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #51afef;">defun</span> <span style="color: #c678dd;">sp-wrap-tilda</span> <span style="color: #c678dd;">()</span>
+  <span style="color: #83898d;">"Wrap following sexp in tildes."</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">interactive</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #c678dd;">sp-wrap-with-pair</span> <span style="color: #98be65;">"~"</span><span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 </div>
@@ -1841,8 +1891,8 @@ LTR order of preference.
 <h3 id="orgf4b34ee"><span class="section-number-3">0.13</span> Hooks</h3>
 <div class="outline-text-3" id="text-0-13">
 </div>
-<div id="outline-container-orgae77214" class="outline-4">
-<h4 id="orgae77214"><span class="section-number-4">0.13.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-orga8f49a9" class="outline-4">
+<h4 id="orga8f49a9"><span class="section-number-4">0.13.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-13-1">
 <p>
 Move all the hooks to this section if possible.
@@ -1854,7 +1904,7 @@ Move all the hooks to this section if possible.
 <div class="outline-text-4" id="text-0-13-2">
 </div>
 <ol class="org-ol">
-<li><a id="org0bb5239"></a>CC Mode<br />
+<li><a id="org85f7d5d"></a>CC Mode<br />
 <div class="outline-text-5" id="text-0-13-2-1">
 <p>
 Currently I only need to use the clang formatting hook here.
@@ -1947,7 +1997,7 @@ This is a catch all for the eventual <code>org-mode</code> based multiple target
 </div>
 </div>
 </li>
-<li><a id="orga2ba02f"></a><span class="todo TODO">TODO</span> Caveats<br />
+<li><a id="org9a8bcf6"></a><span class="todo TODO">TODO</span> Caveats<br />
 <div class="outline-text-5" id="text-0-14-2-3">
 <ul class="org-ul">
 <li>This actually forms it relative to the exact path. 
@@ -2167,8 +2217,8 @@ It makes sense to use <code>latexmk</code> anyway. This way I can set sane defau
 </div>
 </div>
 </div>
-<div id="outline-container-org70bb5a4" class="outline-4">
-<h4 id="org70bb5a4"><span class="section-number-4">2.1.2</span> Packages</h4>
+<div id="outline-container-orgc3a66c3" class="outline-4">
+<h4 id="orgc3a66c3"><span class="section-number-4">2.1.2</span> Packages</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Some of these are damn near universal given my set up, so they are declared here.
@@ -2276,7 +2326,7 @@ stackexchange</a> question.
 </div>
 </div>
 </li>
-<li><a id="orgc3a66c3"></a>Packages<br />
+<li><a id="org1c7f546"></a>Packages<br />
 <div class="outline-text-5" id="text-2-3-0-2">
 <p>
 These are required to view math properly.
@@ -2497,8 +2547,8 @@ required for the <a href="https://github.com/sprig/org-capture-extension#set-up-
 article thing.
 </p>
 </div>
-<div id="outline-container-org01f3df1" class="outline-4">
-<h4 id="org01f3df1"><span class="section-number-4">3.1.1</span> Functions</h4>
+<div id="outline-container-orgbd56033" class="outline-4">
+<h4 id="orgbd56033"><span class="section-number-4">3.1.1</span> Functions</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 These are needed for <code>org-capture</code> alone for now.
@@ -2559,7 +2609,7 @@ This might get complicated but I am only trying to get the bare minimum for
 <div id="postamble" class="status">
 <p class="date">Date: 2020:01:15</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2020-01-15 Wed 11:28</p>
+<p class="date">Created: 2020-01-19 Sun 16:58</p>
 </div>
 </body>
 </html>
