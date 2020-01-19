@@ -355,6 +355,17 @@ This should hopefully propogate across all modes.
       )
 )
 #+END_SRC
+**** Wrap Words
+- [ ] Load conditionally
+This is for working with the various options enabled by ~+smartparens~.
+#+BEGIN_SRC emacs-lisp :tangle no
+(map! :leader
+      (:prefix ("i" . "Insert")
+        (:prefix ("w" . "Wrap")
+          :desc "Backticks" "`" . 'sp-wrap-backtick
+          :desc "Tildes" "~" . 'sp-wrap-tilde
+          )))
+#+END_SRC
 **** Lookup
 These were bound to really weird things.
 #+BEGIN_SRC emacs-lisp
