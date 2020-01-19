@@ -1,6 +1,6 @@
 #+TITLE: dotDOOM
 #+AUTHOR: Rohit Goswami
-#+date: 2020:09:01
+#+date: 2020:19:01
 #+EXPORT_FILE_NAME: index.html
 #+OPTIONS: toc:nil
 #+STARTUP: nofold
