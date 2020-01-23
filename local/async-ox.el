@@ -29,7 +29,7 @@
   (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
   (setq org-latex-listings 'minted)
   (setq org-latex-minted-options
-    '(("bgcolor" "black") ("linenos" "true") ("style" "native")))
+    '(("bgcolor" "lightgray") ("linenos" "true") ("style" "tango")))
   (append-to-list
    'org-latex-classes
    '(("tufte-book"
