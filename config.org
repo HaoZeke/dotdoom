@@ -773,9 +773,14 @@ highlighting Dockerfiles.
 This one is to generate pdfs whenever a buffer is saved. Mainly taken from
 [[https:https://emacs.stackexchange.com/questions/9893/how-can-i-export-to-latex-every-time-i-save-an-org-mode-buffer][this stack exchange question]].
 #+BEGIN_SRC emacs-lisp
+; Pdf
 (defun haozeke/org-save-and-export-pdf ()
   (if (eq major-mode 'org-mode)
     (org-latex-export-to-pdf t)))
+; LaTeX
+(defun haozeke/org-save-and-export-latex ()
+  (if (eq major-mode 'org-mode)
+    (org-latex-export-to-latex t)))
 #+END_SRC
 *** Org-mode export koma-letter
 Since the ~koma-letter~ backend is separate, this needs a function as well.
