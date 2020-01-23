@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: after-save-hook
+# key: <ash
+# --
+
+# Local Variables:
+# after-save-hook: haozeke/org-save-and-export-latex
+# End:
