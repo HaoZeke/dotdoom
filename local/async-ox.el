@@ -6,7 +6,7 @@
 
 (require 'org)
 (require 'ox)
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org/contrib/lisp/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-mode/contrib/lisp/")
 (require 'ox-koma-letter)
 (require 'cl)
 
