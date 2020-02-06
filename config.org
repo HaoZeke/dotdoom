@@ -90,6 +90,7 @@
     - [[#tufte-book][Tufte Book]]
   - [[#latex-preview-for-org-mode][LaTeX Preview for Org mode]]
   - [[#math-support][Math support]]
+  - [[#babel-tabs][Babel Tabs]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
   - [[#references][References]]
@@ -1038,7 +1039,7 @@ Basically only ~poly-markdown~ for ~rmd~ files.
 Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's
 also why here it's better to *not* use very _doom_ specific code. I think it
 would be a lot better to just work these into a single literate block instead of
-maitaining two different sets of syntax.
+maintaining two different sets of syntax.
 *** Async Config
 This is essentially the same, only some extra packages are added.
 #+BEGIN_SRC emacs-lisp :noweb yes :tangle local/async-ox.el
@@ -1177,6 +1178,17 @@ This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_genera
     (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
 # TODO Add more stuff about the maxima hint from [[https://www.reddit.com/r/emacs/comments/75fp3d/taking_university_notes_in_orgmode_latex/][this reddit thread]].
+** Babel Tabs
+Evidently there was [[https://emacs.stackexchange.com/questions/24283/org-mode-converting-spaces-to-tabs-when-evaluating-source][some sort of re-indentation]] going on during the export
+process which was breaking a lot of ~python~, this should fix that:
+More generally, it is best set with ~# -*- org-src-preserve-indentation: t;
+org-edit-src-content: 0; -*-~ on a per-file basis, however given that the
+indentation is handled by the programming major mode, this is a good global
+setting as well.
+#+BEGIN_SRC emacs-lisp
+(setq org-src-preserve-indentation t
+      org-edit-src-content-indentation 0)
+#+END_SRC
 ** Flycheck Additions
 These are basically meant to aid in development. The relevant linters are also
 added here.
