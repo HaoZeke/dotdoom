@@ -782,6 +782,9 @@ This one is to generate pdfs whenever a buffer is saved. Mainly taken from
 (defun haozeke/org-save-and-export-latex ()
   (if (eq major-mode 'org-mode)
     (org-latex-export-to-latex t)))
+(defun haozeke/org-save-and-export-to-beamer ()
+  (if (eq major-mode 'org-mode)
+    (org-beamer-export-to-latex  t)))
 #+END_SRC
 *** Org-mode export koma-letter
 Since the ~koma-letter~ backend is separate, this needs a function as well.
