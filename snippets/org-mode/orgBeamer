@@ -1,0 +1,157 @@
+# -*- mode: snippet -*-
+# name: orgBeamer
+# contributor: Rohit Goswami (HaoZeke)
+# key: <orgbbmr
+# --
+
+#+TITLE:     ${1: Presentation Title}
+#+SUBTITLE: ${2: Subtitle}
+#+AUTHOR:    ${3:Author},\\textsc{\\scriptsize\\ ${4:PostNominals}}
+#+EMAIL:     ${4:Email}
+#+DATE:      \today
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS:   H:2 num:t toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:
+#+LINK_HOME:
+
+#+LATEX_COMPILER: xelatex
+#+LATEX_HEADER: \\PassOptionsToPackage{unicode=true}{hyperref}
+#+LATEX_HEADER: \\PassOptionsToPackage{hyphens}{url}
+#+LATEX_HEADER: \\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
+#+LaTeX_CLASS_OPTIONS: [bigger]
+#+LATEX_HEADER: \\usepackage{amssymb,amsmath}
+#+LATEX_HEADER: \\usepackage{physics}
+#+LATEX_HEADER: \\usepackage{ifxetex,ifluatex}
+#+LATEX_HEADER: \\usepackage{fixltx2e} % provides \textsubscript
+#+LATEX_HEADER: \\ifnum 0\\ifxetex 1\\fi\\ifluatex 1\\fi=0 % if pdftex
+#+LATEX_HEADER: \\usepackage[T1]{fontenc}
+#+LATEX_HEADER: \\usepackage[utf8]{inputenc}
+#+LATEX_HEADER: \\usepackage{textcomp} % provides euro and other symbols
+#+LATEX_HEADER: \\else % if luatex or xelatex
+#+LATEX_HEADER: \\usepackage{unicode-math}
+#+LATEX_HEADER: \\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+#+LATEX_HEADER: \\fi
+#+LATEX_HEADER: % use upquote if available, for straight quotes in verbatim environments
+#+LATEX_HEADER: \\IfFileExists{upquote.sty}{\\usepackage{upquote}}{}
+#+LATEX_HEADER: % use microtype if available
+#+LATEX_HEADER: \\IfFileExists{microtype.sty}{%
+#+LATEX_HEADER: \\usepackage[]{microtype}
+#+LATEX_HEADER: \\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+#+LATEX_HEADER: }{}
+#+LATEX_HEADER: \\IfFileExists{parskip.sty}{%
+#+LATEX_HEADER: \\usepackage{parskip}
+#+LATEX_HEADER: }{% else
+#+LATEX_HEADER: \\setlength{\\parindent}{0pt}
+#+LATEX_HEADER: \\setlength{\\parskip}{6pt plus 2pt minus 1pt}
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \\usepackage{hyperref}
+#+LATEX_HEADER: \\hypersetup{
+#+LATEX_HEADER:             pdftitle={$1},
+#+LATEX_HEADER:             pdfauthor={$3},
+#+LATEX_HEADER:             pdfborder={0 0 0},
+#+LATEX_HEADER:             breaklinks=true}
+#+LATEX_HEADER: \\urlstyle{same}  % don't use monospace font for urls
+#+LATEX_HEADER: \\usepackage{longtable,booktabs}
+#+LATEX_HEADER: \\usepackage{graphicx,grffile}
+#+LATEX_HEADER: \\makeatletter
+#+LATEX_HEADER: \\def\\maxwidth{\\ifdim\\Gin@nat@width>\\linewidth\\linewidth\\else\\Gin@nat@width\\fi}
+#+LATEX_HEADER: \\def\\maxheight{\\ifdim\\Gin@nat@height>\\textheight\\textheight\\else\\Gin@nat@height\\fi}
+#+LATEX_HEADER: \\makeatother
+#+LATEX_HEADER: % Scale images if necessary, so that they will not overflow the page
+#+LATEX_HEADER: % margins by default, and it is still possible to overwrite the defaults
+#+LATEX_HEADER: % using explicit options in \includegraphics[width, height, ...]{}
+#+LATEX_HEADER: \\setkeys{Gin}{width=\\maxwidth,height=\\maxheight,keepaspectratio}
+#+LATEX_HEADER: \\setlength{\\emergencystretch}{3em}  % prevent overfull lines
+#+LATEX_HEADER: \\providecommand{\\tightlist}{%
+#+LATEX_HEADER:   \\setlength{\\itemsep}{0pt}\\setlength{\\parskip}{0pt}}
+#+LATEX_HEADER: \\setcounter{secnumdepth}{0}
+#+LATEX_HEADER: % Redefines (sub)paragraphs to behave more like sections
+#+LATEX_HEADER: \\ifx\\paragraph\\undefined\\else
+#+LATEX_HEADER: \\let\\oldparagraph\\paragraph
+#+LATEX_HEADER: \\renewcommand{\\paragraph}[1]{\\oldparagraph{#1}\\mbox{}}
+#+LATEX_HEADER: \\fi
+#+LATEX_HEADER: \\ifx\\subparagraph\\undefined\\else
+#+LATEX_HEADER: \\let\\oldsubparagraph\\subparagraph
+#+LATEX_HEADER: \\renewcommand{\\subparagraph}[1]{\\oldsubparagraph{#1}\\mbox{}}
+#+LATEX_HEADER: \\fi
+#+LATEX_HEADER: % Make use of float-package and set default placement for figures to H
+#+LATEX_HEADER: \\usepackage{float}
+#+LATEX_HEADER: \\floatplacement{figure}{H}
+
+
+#+LaTeX_CLASS: beamer
+#+startup: beamer
+#+BEAMER_THEME: ${5:metropolis} % Verona,metropolis are both good
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+# Nicer Fonts
+# #+LATEX_HEADER: \\usepackage{xunicode}
+# #+LATEX_HEADER: \\usepackage{xltxtra}
+# #+LATEX_HEADER: \\usepackage[protrusion=true,final]{microtype}
+# #+LATEX_HEADER: \\usepackage{mathspec}
+# #+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
+# #+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}]{Hoefler Text}
+# #+LATEX_HEADER: \\setsansfont[Scale=0.9]{Helvetica Neue}
+# #+LATEX_HEADER: \\setmonofont[Scale=0.8]{Courier}
+# #+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Minion Pro}
+
+# #+LATEX_HEADER: \\usepackage[default]{sourcesanspro}
+# #+LATEX_HEADER: \\usepackage{sourcecodepro}
+
+# Wider Text
+# #+LATEX_HEADER: \\usepackage[textwidth=7in,textheight=9in]{geometry}
+# #+LATEX_HEADER: \\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
+
+# References
+#+LATEX_HEADER: \\usepackage[natbib]{biblatex}
+#+LATEX_HEADER: \\bibliography{${6:refs}}
+
+* Callout
+** Slide
+
+$0
+
+** Slide
+
+This slide consists of some text with a number of bullet points:
+
+- the first, very *important*, point!
+- the previous point shows the use of the special markup which
+  translates to the Beamer specific /alert/ command for highlighting
+  text.
+
+
+The above list could be numbered or any other type of list and may
+include sub-lists.
+
+** Two columns
+
+*** A block                                           :B_ignoreheading:BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.4
+    :END:
+    - this slide consists of two columns
+    - the first (left) column has no heading and consists of text
+    - the second (right) column has an image and is enclosed in an
+      *example* block
+
+*** A screenshot                                            :BMCOL:B_example:
+    :PROPERTIES:
+    :BEAMER_col: 0.6
+    :END:
+
+    - Test
+* References
+
+\printbibliography
+
+# Local Variables:
+# after-save-hook: haozeke/org-save-and-export-to-beamer
+# End:
