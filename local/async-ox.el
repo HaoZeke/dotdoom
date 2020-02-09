@@ -8,6 +8,7 @@
 (require 'ox)
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-mode/contrib/lisp/")
 (require 'ox-koma-letter)
+(require 'ox-beamer)
 (require 'cl)
 
 ;; Functions
