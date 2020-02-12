@@ -6,7 +6,7 @@
 
 #+TITLE: ${1:Statement of Purpose}
 #+SUBTITLE: ${2:Program}
-#+AUTHOR: ${3:Author},\\textsc{\\scriptsize\\ ${4:AMIChemE}}
+#+AUTHOR: ${3:Author},\\textsc{\\scriptsize\\ ${4:MInstP AMIE AMIChemE}}
 #+OPTIONS: toc:nil
 # I need the footnotes to be inlined
 #+STARTUP: fninline
@@ -26,7 +26,7 @@
 #+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{HoeflerText} % If Hoefler is missing replace with Crimson
 #+LATEX_HEADER: \\setsansfont[Scale=0.8]{Roboto} % Used to be Helvetica Neue LT Com -> Nimbus Sans
 #+LATEX_HEADER: \\setmonofont[Scale=0.8]{Fira Mono} % Used to be MesloLGSDZ Nerd Font
-#+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Minion Pro}
+#+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Crimson} % Used to be Minion Pro
 # References
 #+LATEX_HEADER: \\usepackage[natbib]{biblatex}
 #+LATEX_HEADER: \\bibliography{${5:refs}}
