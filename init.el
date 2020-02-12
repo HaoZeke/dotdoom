@@ -155,7 +155,7 @@
         ;; +brain           ; for org-brain support
         +dragndrop       ; file drag & drop support
         +gnuplot         ; render gnuplot
-        ;; hugo          ; use Emacs for hugo blogging
+        +hugo            ; use Emacs for hugo blogging
         ;; +journal      ; journaling in org
         ;; +jupyter         ; enable jupyter integration
         +pandoc          ; pandoc integration into org's exporter
