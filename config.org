@@ -81,6 +81,7 @@
     - [[#polymode][Polymode]]
 - [[#org-latex][Org LaTeX]]
     - [[#async-config][Async Config]]
+    - [[#path-additions][Path Additions]]
     - [[#config][Config]]
   - [[#shared-preferences][Shared Preferences]]
     - [[#compiler][Compiler]]
@@ -1088,6 +1089,14 @@ This is essentially the same, only some extra packages are added.
 <<orgConf>>
 (provide 'autoExport)
 ;;; autoExport.el ends here
+#+END_SRC
+*** Path Additions
+Due to my recent switch to using ~tlmgr~, I had to make some modifications to
+the ~emacs~ path.
+#+NAME: orgPaths
+#+BEGIN_SRC emacs-lisp
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2019/bin/x86_64-linux"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2019/bin/x86_64-linux")))
 #+END_SRC
 *** Config
 This is the part which is exported normally.
