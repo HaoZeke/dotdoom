@@ -11,6 +11,29 @@
 (require 'ox-beamer)
 (require 'cl)
 
+;; Org-Ref Stuff
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-ref/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/dash.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/build/helm/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm-bibtex/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/ivy/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/hydra/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/key-chord/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/s.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/f.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/pdf-tools/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/emacs-htmlize/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/parsebib/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/build/async/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/biblio.el/")
+(require 'org-ref)
+
+;; Path addtion
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2019/bin/x86_64-linux"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2019/bin/x86_64-linux")))
+
 ;; Functions
 ;; this function is used to append multiple elements to the list 'ox-latex
 (defun append-to-list (list-var elements)
@@ -30,12 +53,11 @@
   (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
   (setq org-latex-listings 'minted)
   (setq org-latex-minted-options
-    '(("bgcolor" "lightgray") ("linenos" "true") ("style" "tango")))
+    '(("bgcolor" "grey") ("breaklines" "true") ("linenos" "true") ("style" "tango")))
   (append-to-list
    'org-latex-classes
    '(("tufte-book"
-      "\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}
-      \\input{/home/haozeke/Git/tufte-book.tex}"
+      "\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}"
       ("\\part{%s}" . "\\part*{%s}")
       ("\\chapter{%s}" . "\\chapter*{%s}")
       ("\\section{%s}" . "\\section*{%s}")
@@ -48,6 +70,8 @@
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (add-to-list 'org-latex-classes
+               '("koma-report" "\\documentclass{scrreprt}"))
 )
 (provide 'autoExport)
 ;;; autoExport.el ends here
