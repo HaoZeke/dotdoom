@@ -1060,6 +1060,28 @@ This is essentially the same, only some extra packages are added.
 (require 'ox-beamer)
 (require 'cl)
 
+;; Org-Ref Stuff
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-ref/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/dash.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/build/helm/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm-bibtex/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/ivy/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/hydra/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/key-chord/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/s.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/f.el/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/pdf-tools/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/emacs-htmlize/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/parsebib/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/build/async/")
+(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/biblio.el/")
+(require 'org-ref)
+
+;; Path addtion
+<<orgPaths>>
+
 ;; Functions
 <<appList>>
 ;; Feature parity with doom
