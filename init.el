@@ -156,8 +156,9 @@
         +dragndrop       ; file drag & drop support
         +gnuplot         ; render gnuplot
         +hugo            ; use Emacs for hugo blogging
+        ;; +ipython         ; So much more asynchronous, overshadowed by jupyter
         ;; +journal      ; journaling in org
-        ;; +jupyter         ; enable jupyter integration
+        +jupyter         ; enable jupyter integration
         +pandoc          ; pandoc integration into org's exporter
        ;;+pomodoro       ; be fruitful with the tomato technique
         +present)        ; using Emacs for presentations
