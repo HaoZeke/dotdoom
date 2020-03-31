@@ -40,7 +40,8 @@
 
 #+LaTeX_CLASS: beamer
 #+startup: beamer
-#+BEAMER_THEME: ${5:metropolis} % Verona,metropolis are both good
+#+BEAMER_THEME: ${5:metropolis}
+# % Verona,metropolis are both good
 #+BEAMER_FRAME_LEVEL: 2
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
@@ -109,7 +110,7 @@ include sub-lists.
 :PROPERTIES:
 :BEAMER_opt: standout
 :END:
-Thank you % Needs a manual edit of the tex file
+Thank you
 
 # Local Variables:
 # after-save-hook: haozeke/org-save-and-export-to-beamer
