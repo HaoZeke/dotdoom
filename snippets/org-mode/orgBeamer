@@ -24,7 +24,6 @@
 #+LATEX_HEADER: \\PassOptionsToPackage{unicode=true}{hyperref}
 #+LATEX_HEADER: \\PassOptionsToPackage{hyphens}{url}
 #+LATEX_HEADER: \\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
-#+LaTeX_CLASS_OPTIONS: [bigger]
 #+LATEX_HEADER: \\usepackage{amssymb,amsmath}
 #+LATEX_HEADER: \\usepackage{physics}
 #+LATEX_HEADER: \\usepackage{hyperref}
@@ -39,6 +38,7 @@
 
 
 #+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger,unknownkeysallowed]
 #+startup: beamer
 #+BEAMER_THEME: ${5:metropolis}
 # % Verona,metropolis are both good
