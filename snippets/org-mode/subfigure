@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: subfigure
+# contributor: Rohit Goswami (HaoZeke)
+# key: <sf
+# --
+
+#+begin_figure
+\\begin{subfigure}{.5\\textwidth}
+  \\centering
+  \\includegraphics[width=.8\\linewidth]{images/${1:image}}
+  \\caption{${2:subcaption1}}
+  \\label{fig:${3:sublabel1}}
+\\end{subfigure}
+\\begin{subfigure}{.5\\textwidth}
+  \\centering
+  \\includegraphics[width=.8\\linewidth]{images/${4:image2}}
+  \\caption{${5:subcaption2}}
+  \\label{fig:${6:sublabel2}}
+\\end{subfigure}
+\\caption{${7:figcaption}}
+\\label{fig:${8:figlabel}}
+#+end_figure
