@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: twoColbeamer
+# contributor: Rohit Goswami (HaoZeke)
+# key: <b2c
+# --
+
+
+** ${1:Slide Heading}
+*** ${2:Column1}
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+**** $2
+
+$0
+
+*** ${3:Column1}
+:PROPERTIES:
+:BEAMER_col: 0.5
+:END:
+**** $3
+
+*** No Column :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
