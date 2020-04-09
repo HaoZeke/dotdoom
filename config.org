@@ -1269,7 +1269,7 @@ to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[
 #+BEGIN_SRC emacs-lisp
 (setq org-ref-notes-directory "~/.megaRefs/Notes"
       org-ref-bibliography-notes "~/.megaRefs/articles.org"
-      org-ref-default-bibliography '("~/.megaRefs/Bibliographies/zotLib.bib")
+      org-ref-default-bibliography '("~/Documents/zotLib.bib")
       org-ref-pdf-directory "~/.megaRefs/Papers/")
 #+END_SRC
 Apparently, ~org-ref~ is also able to fetch ~pdf~ files when ~DOI~ or ~URL~
