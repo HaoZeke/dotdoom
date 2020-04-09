@@ -142,7 +142,8 @@
        ;; julia            ; a better, faster MATLAB
        ;; kotlin           ; a better, slicker Java(Script)
        (latex              ; writing papers in Emacs has never been so fun
-        +latexmk)          ; No other option TBH
+        +latexmk           ; no other option TBH
+        +cdlatex)          ; for better math
        ;; lean
        ;; factor
        ;; ledger             ; an accounting system in Emacs
