@@ -143,7 +143,8 @@
        ;; kotlin           ; a better, slicker Java(Script)
        (latex              ; writing papers in Emacs has never been so fun
         +latexmk           ; no other option TBH
-        +cdlatex)          ; for better math
+        +cdlatex           ; for better math
+        +fold)             ; neat folding things
        ;; lean
        ;; factor
        ;; ledger             ; an accounting system in Emacs
