@@ -5,7 +5,7 @@
 #+OPTIONS: toc:nil
 #+STARTUP: nofold
 
-This looks better [[https://dotdoom.grimoire.science][on the website]].
+This looks better [[https://dotdoom.rgoswami.me][on the website]].
 
 * What?
 This is actually a [[https://github.com/hlissner/doom-emacs][doom-emacs]] private module. I was feeling rather whimsical.
@@ -19,8 +19,7 @@ with ~emacs~ commits. Also managing snippets with ~dotgit~ was not exactly
 pleasant, since each symlink needed to be listed in the ~filelist~.
 ** Who?
 I'm [[https://orcid.org/0000-0002-2393-8056][Rohit Goswami]] (or HaoZeke, or rg0swami), and well, if you
-need to know more about why you might want to use my work, check my [[https:grimoire.science][(outdated)
-site]], or any of the [[https:keybase.io/HaoZeke][other sites]] I manage, or even [[https://publons.com/researcher/2911170/rohit-goswami/][my publications]] or [[github:HaoZeke][my code]].
+need to know more about why you might want to use my work, check my [[https://rgoswami.me][site]], or any of the [[https:keybase.io/HaoZeke][other sites]] I manage, or even [[https://publons.com/researcher/2911170/rohit-goswami/][my publications]] or [[github:HaoZeke][my code]].
 * How?
 Well it just goes where ~doom~ expects config files.
 #+BEGIN_SRC bash
