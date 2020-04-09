@@ -1161,8 +1161,7 @@ This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/commen
 (append-to-list
  'org-latex-classes
  '(("tufte-book"
-    "\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}
-    \\input{/home/haozeke/Git/tufte-book.tex}"
+    "\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}"
     ("\\part{%s}" . "\\part*{%s}")
     ("\\chapter{%s}" . "\\chapter*{%s}")
     ("\\section{%s}" . "\\section*{%s}")
