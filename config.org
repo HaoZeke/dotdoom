@@ -88,6 +88,7 @@
     - [[#packages][Packages]]
   - [[#export-templates][Export Templates]]
     - [[#koma-article][KOMA Article]]
+    - [[#koma-report][KOMA Report]]
     - [[#tufte-book][Tufte Book]]
   - [[#latex-preview-for-org-mode][LaTeX Preview for Org mode]]
   - [[#math-support][Math support]]
@@ -1108,6 +1109,7 @@ This is the part which is exported normally.
   <<common_pkgs>>
   <<tufte_book>>
   <<koma_art>>
+  <<koma_rprt>>
 )
 #+END_SRC
 ** Shared Preferences
@@ -1144,6 +1146,13 @@ Inspired by the post [[https://tex.stackexchange.com/a/364982/130845][here]].
                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+#+END_SRC
+*** KOMA Report
+Inspired by the post [[https://tex.stackexchange.com/a/364982/130845][here]].
+#+NAME: koma_rprt
+#+BEGIN_SRC emacs-lisp :tangle no
+(add-to-list 'org-latex-classes
+             '("koma-report" "\\documentclass{scrreprt}"))
 #+END_SRC
 *** Tufte Book
 This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/][this reddit thread]].
