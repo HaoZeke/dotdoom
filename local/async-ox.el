@@ -53,7 +53,7 @@
   (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
   (setq org-latex-listings 'minted)
   (setq org-latex-minted-options
-    '(("bgcolor" "grey") ("breaklines" "true") ("linenos" "true") ("style" "tango")))
+    '(("bgcolor" "white") ("breaklines" "true") ("linenos" "true") ("style" "tango")))
   (append-to-list
    'org-latex-classes
    '(("tufte-book"
