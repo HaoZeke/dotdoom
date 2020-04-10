@@ -2,7 +2,7 @@
 #+AUTHOR: Rohit Goswami
 #+DATE: 2020:04:09
 #+HTML_LINK_HOME: https://rgoswami.me
-#+HTML_HEAD_EXTRA: <script> window.goatcounter = { path: 'https://dotdoom.rgoswami.me', }; </script>
+#+HTML_HEAD_EXTRA: <script> window.goatcounter = { path: '/dotdoomhome', }; </script>
 #+HTML_HEAD_EXTRA: <script data-goatcounter="https://rgoswami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 #+EXPORT_FILE_NAME: index.html
 #+OPTIONS: toc:nil
