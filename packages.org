@@ -147,10 +147,10 @@ setup and stuff as well so this might move into a tree of it's own.
 
 This actually breaks the ~pdf-tools~ bindings.
 
-*** Org Ref
-This is probably not the best thing in my current setup..
+*** DONE Org Ref
+This is probably not the best thing in my current setup.. Now part of the ~init.el~ setup.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! org-ref)
 #+END_SRC
 *** Org Mind Map

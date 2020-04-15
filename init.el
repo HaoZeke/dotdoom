@@ -155,6 +155,7 @@
        ;; ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         ;; +brain           ; for org-brain support
+        +biblio          ; prioritize native implementations
         +dragndrop       ; file drag & drop support
         +gnuplot         ; render gnuplot
         +hugo            ; use Emacs for hugo blogging
