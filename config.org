@@ -637,7 +637,7 @@ trouble with relative exports so I have this one instead. Partially kanged from
   :after org
   :config
 (setq-default org-download-image-dir "./img/"
-              org-download-screenshot-method "scrot -s %s"
+              org-download-screenshot-method "gnome-screenshot -a -f %s"
               org-download-method 'directory
               org-download-heading-lvl 1
               )
