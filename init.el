@@ -115,6 +115,7 @@
        ;; terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
        ;; upload           ; map local to remote projects via ssh/ftp
+       biblio          ; prioritize native implementations
 
        :lang
        ;; agda              ; types of types of types of types...
@@ -155,7 +156,6 @@
        ;; ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         ;; +brain           ; for org-brain support
-        +biblio          ; prioritize native implementations
         +dragndrop       ; file drag & drop support
         +gnuplot         ; render gnuplot
         +hugo            ; use Emacs for hugo blogging
