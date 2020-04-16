@@ -1271,10 +1271,16 @@ to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[
 **** Org-Ref
 [[https://github.com/jkitchin/org-ref][This]] seems like an ubiquitous choice for working with org files and references.
 #+BEGIN_SRC emacs-lisp
-(setq org-ref-notes-directory "~/.megaRefs/Notes"
-      org-ref-bibliography-notes "~/.megaRefs/articles.org"
-      org-ref-default-bibliography '("~/Documents/zotLib.bib")
-      org-ref-pdf-directory "~/.megaRefs/Papers/")
+(def-package! org-ref
+    :after org
+    :init
+    ; code to run before loading org-ref
+    :config
+    (setq org-ref-notes-directory "~/.megaRefs/Notes"
+          org-ref-bibliography-notes "~/.megaRefs/articles.org"
+          org-ref-default-bibliography '("~/Documents/zotLib.bib")
+          org-ref-pdf-directory "~/.megaRefs/Papers/")
+    )
 #+END_SRC
 Apparently, ~org-ref~ is also able to fetch ~pdf~ files when ~DOI~ or ~URL~
 links are dragged onto the ~.bib~ file. However, since ~zotero~ will handle the
