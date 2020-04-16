@@ -28,6 +28,10 @@
 (package! org-noter)
 ;; Org Noter:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Org Ref][Org Ref:1]]
+(package! org-ref)
+;; Org Ref:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Org Mind Map][Org Mind Map:1]]
 (package! org-mind-map
   :recipe (:host github
