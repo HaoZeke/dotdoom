@@ -457,7 +457,7 @@ are a part of ~org-mode~.
         :desc "Citation" "c" 'org-ref-helm-insert-cite-link
         :desc "Footnote" "f" 'org-footnote-action
         :desc "Table" "t" 'org-table-create-or-convert-from-region
-        :desc "Screenshot" "s" 'org-screenshot-take
+        :desc "Screenshot" "s" 'org-download-screenshot
         (:prefix ("h" . "Headings")
           :desc "Normal" "h" 'org-insert-heading
           :desc "Todo" "t" 'org-insert-todo-heading
