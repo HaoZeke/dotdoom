@@ -156,7 +156,7 @@
        ;; ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         ;; +brain           ; for org-brain support
-        +dragndrop       ; file drag & drop support
+        ;; +dragndrop       ; file drag & drop support
         +gnuplot         ; render gnuplot
         +hugo            ; use Emacs for hugo blogging
         ;; +ipython         ; So much more asynchronous, overshadowed by jupyter
