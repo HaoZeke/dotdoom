@@ -113,5 +113,5 @@ include sub-lists.
 Thank you
 
 # Local Variables:
-# after-save-hook: haozeke/org-save-and-export-to-beamer
+# after-save-hook: haozeke/org-save-and-export-beamer
 # End:
