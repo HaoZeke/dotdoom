@@ -36,7 +36,7 @@
     - [[#tex-mode][TeX Mode]]
   - [[#org-additions][Org Additions]]
     - [[#file-handling][File Handling]]
-    - [[#ob-julia][Ob-Julia]]
+    - [[#kill-ob-julia][KILL Ob-Julia]]
     - [[#org-babel][Org Babel]]
     - [[#org-config][Org Config]]
     - [[#org-rifle][Org Rifle]]
@@ -574,26 +574,34 @@ dealing with ~append~ and stuff.
     ("\\.jpg\\'" . viewnior)
     ))
 #+END_SRC
-*** Ob-Julia
+*** KILL Ob-Julia
 So ~julia~ support is inbuilt, however the process variable needs to be set:
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (setq  inferior-julia-program-name "/bin/julia")
 #+END_SRC
 *** Org Babel
-Julia is not set. Other languages might also be needed here eventually.
+Julia and Mathematica are not set. Other languages might also be needed here eventually.
 #+BEGIN_SRC emacs-lisp
 (after! 'org
             (org-babel-do-load-languages 'org-babel-load-languages
                                          (append org-babel-load-languages
-                                                 '(julia . t))))
+                                                 ;; '(julia . t)
+                                                 '(mathematica . t)
+                                                 ))
+            (setq org-babel-mathematica-command "~/.local/bin/mash")
+            )
 #+END_SRC
 *** Org Config
 These are just variables I need to set to prevent things from dying.
 **** Inline images
-These need to be disabled by default otherwise ~emacs~ stalls often.
+These need to be disabled by default otherwise ~emacs~ stalls often. Also, it turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better, once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
 #+BEGIN_SRC emacs-lisp
-(setq org-startup-with-inline-images 'nil)
-(setq org-image-actual-width 500)
+(after! 'org
+  (setq org-startup-with-inline-images 'nil)
+  (setq org-image-actual-width 500)
+  (setq org-directory "~/org")
+  (setq org-latex-create-formula-image-program 'imagemagick)
+  )
 #+END_SRC
 *** Org Rifle
 This probably needs to be refactored later. Or loaded elsewhere.
