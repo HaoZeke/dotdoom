@@ -46,6 +46,7 @@
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd-mode][Systemd Mode]]
     - [[#dart-mode][Dart Mode]]
+    - [[#wolfram-mode][Wolfram Mode]]
     - [[#polymode][Polymode]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
@@ -267,6 +268,11 @@ now this syntax-highlighter will do. Might actually want to see if ~prettier~
 has anything for it.
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! dart-mode)
+#+END_SRC
+*** Wolfram Mode
+Actually ~wolfram-mode~ seems to be able to do more than just syntax highlighting, but at the moment I just need font-locking.
+#+BEGIN_SRC emacs-lisp
+(package! wolfram-mode)
 #+END_SRC
 *** Polymode
 For working with ~.rmd~ files.

@@ -55,6 +55,7 @@
     - [[#systemd][Systemd]]
     - [[#dart-mode][Dart Mode]]
     - [[#saltstack][SaltStack]]
+    - [[#mathematica][Mathematica]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
@@ -767,6 +768,15 @@ I like having spell checks for everything.
 (add-hook 'salt-mode-hook
         (lambda ()
             (flyspell-mode 1))))
+#+END_SRC
+*** Mathematica
+Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the best for syntax highlighting.
+#+BEGIN_SRC emacs-lisp
+;; Load it
+(use-package! wolfram-mode
+  :config
+  (setq mathematica-command-line "~/.local/bin/mash")
+  (add-to-list 'org-src-lang-modes '("mathematica" . wolfram)))
 #+END_SRC
 ** Aesthetics
 *** Wakatime
