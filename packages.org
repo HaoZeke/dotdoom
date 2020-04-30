@@ -34,6 +34,7 @@
     - [[#org-rifle][Org Rifle]]
     - [[#org-gcal][Org Gcal]]
     - [[#anki-mode][Anki Mode]]
+    - [[#org-re-reveal-ref][Org Re-Reveal Ref]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
@@ -178,6 +179,11 @@ This is put here since it only works with ~org-mode~ stuff.
 #+BEGIN_SRC emacs-lisp
 (package! anki-editor)
 #+END_SRC
+*** Org Re-Reveal Ref
+An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref~.
+#+begin_src emacs-lisp
+(package! org-re-reveal-ref)
+#+end_src
 ** Dockerfile Mode
 For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
 ~## -*- docker-image-name: "your-image-name-here" -*-~ can be used to specify

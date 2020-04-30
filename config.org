@@ -44,6 +44,7 @@
     - [[#org-download][Org Download]]
     - [[#org-drill][Org Drill]]
     - [[#org-gcal][Org Gcal]]
+    - [[#org-re-reveal-refs][Org Re-Reveal Refs]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -666,6 +667,11 @@ Not much to be configured here.
 (setq org-gcal-file-alist '(("r95g10@gmail.com" .  "~/.config/doom/org/agenda.org.gpg")))
   )
 #+END_SRC
+*** Org Re-Reveal Refs
+This is apparently the ~org-ref~ for ~org-re-reveal~.
+#+begin_src emacs-lisp
+(use-package! org-re-reveal-ref)
+#+end_src
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
 typically non-standard. These are matched by extensions.
