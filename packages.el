@@ -50,6 +50,10 @@
 (package! anki-editor)
 ;; Anki Mode:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Org Re-Reveal Ref][Org Re-Reveal Ref:1]]
+(package! org-re-reveal-ref)
+;; Org Re-Reveal Ref:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Dockerfile Mode][Dockerfile Mode:1]]
 (package! dockerfile-mode)
 ;; Dockerfile Mode:1 ends here
