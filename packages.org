@@ -122,7 +122,12 @@ and very rational. However, I really can't wait. So.. This is a stop gap solutio
 #+BEGIN_SRC emacs-lisp
 (package! general)
 #+END_SRC
-- [ ] Remove when it's merged upstream
+- [x] Remove when it's merged upstream
+** Evil Colemak
+I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from here]].
+#+begin_src emacs-lisp :tangle yes
+(package! evil-colemak-basics)
+#+end_src
 ** Org Additions
 The new ones need to be covered in the ~config.org~ file with the appropriate
 keybindings.

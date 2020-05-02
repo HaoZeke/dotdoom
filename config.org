@@ -519,10 +519,19 @@ These are mostly for convinience. I know that the upper cased versions of
 commands are usually for the reverse action, but unless I get a 60% keyboard
 these seem comfortable.
 #+BEGIN_SRC emacs-lisp
-(nmap 
+(nmap
   "K" 'nil
   "K" 'evil-scroll-page-up
   "J" 'evil-scroll-page-down)
+#+END_SRC
+*** Evil Colemak
+These are mostly because movement without ~hnei~ is horrible.
+#+BEGIN_SRC emacs-lisp
+(use-package! evil-colemak-basics
+  :after evil
+  :config (setq evil-colemak-basics-rotate-t-f-j t)
+  )
+(after! evil (global-evil-colemak-basics-mode))
 #+END_SRC
 *** DONE Neotree --> Treemacs
 **** CANCELLED Toggle pane
