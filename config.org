@@ -16,10 +16,8 @@
     - [[#helm-changes][Helm changes]]
     - [[#kill-spellcheck][Kill spellcheck]]
     - [[#kill-over-eager-literate-after-save-hook][Kill over-eager literate after-save-hook]]
-  - [[#package-settings][Package Settings]]
-    - [[#magit-aids][Magit Aids]]
-    - [[#word-wrap][Word wrap]]
-  - [[#anki-editor][Anki Editor]]
+    - [[#kill-orgmode-template][Kill Orgmode template]]
+    - [[#variables][Variables]]
   - [[#keybindings][Keybindings]]
     - [[#general][General]]
     - [[#evil-setup-and-error-handling][Evil Setup and Error Handling]]
@@ -29,21 +27,30 @@
     - [[#org-noter][Org Noter]]
     - [[#pdf-mode][Pdf Mode]]
     - [[#org-mode-additions][Org Mode additions]]
-    - [[#anki-editor-1][Anki Editor]]
+    - [[#anki-editor][Anki Editor]]
     - [[#cc-mode][CC Mode]]
     - [[#evil-movement][Evil Movement]]
+    - [[#evil-colemak][Evil Colemak]]
     - [[#neotree----treemacs][Neotree --> Treemacs]]
     - [[#tex-mode][TeX Mode]]
+  - [[#safe-evals-and-variables][Safe Evals and Variables]]
+    - [[#private-variables][Private Variables]]
+    - [[#safe-variables][Safe Variables]]
+    - [[#safe-evals][Safe Evals]]
+    - [[#asynchronous-exports][Asynchronous Exports]]
+  - [[#package-settings][Package Settings]]
+    - [[#word-wrap][Word wrap]]
+    - [[#magit-aids][Magit Aids]]
+  - [[#anki-editor-1][Anki Editor]]
   - [[#org-additions][Org Additions]]
     - [[#file-handling][File Handling]]
     - [[#kill-ob-julia][KILL Ob-Julia]]
+    - [[#org-download][Org Download]]
     - [[#org-babel][Org Babel]]
     - [[#org-config][Org Config]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-mind-map][Org Mind Map]]
-    - [[#org-download][Org Download]]
     - [[#org-drill][Org Drill]]
-    - [[#org-gcal][Org Gcal]]
     - [[#org-re-reveal-refs][Org Re-Reveal Refs]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
@@ -64,7 +71,7 @@
     - [[#org-export-html-with-useful-ids][Org-Export HTML with useful IDs]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
     - [[#org-mode-export-koma-letter][Org-mode export koma-letter]]
-    - [[#org-mode-export-tex-when-saved][Org-mode export tex when saved]]
+    - [[#org-mode-export-tex][Org-mode export TeX]]
     - [[#caveats][Caveats]]
     - [[#helper-function][Helper function]]
     - [[#async-command-without-buffers][Async Command without Buffers]]
@@ -77,11 +84,6 @@
     - [[#caveats-1][Caveats]]
     - [[#before-save-hooks][Before Save Hooks]]
     - [[#disable-auto-rdm][Disable Auto RDM]]
-  - [[#safe-evals-and-variables][Safe Evals and Variables]]
-    - [[#private-variables][Private Variables]]
-    - [[#safe-variables][Safe Variables]]
-    - [[#safe-evals][Safe Evals]]
-    - [[#asynchronous-exports][Asynchronous Exports]]
   - [[#troubleshooting][Troubleshooting]]
 - [[#r-helpers][R Helpers]]
     - [[#polymode][Polymode]]
@@ -99,14 +101,16 @@
   - [[#latex-preview-for-org-mode][LaTeX Preview for Org mode]]
   - [[#math-support][Math support]]
   - [[#babel-tabs][Babel Tabs]]
+  - [[#pandoc-babel][Pandoc Babel]]
+    - [[#restructured-text][Restructured Text]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
-  - [[#references][References]]
-    - [[#basic-setup][Basic Setup]]
-    - [[#noteyoda][noteYoda]]
-    - [[#reftex][Reftex]]
-    - [[#org-ref-ivy][+Org Ref Ivy+]]
 - [[#notes][Notes]]
+  - [[#noteyoda][noteYoda]]
+    - [[#org-ref][Org-Ref]]
+    - [[#helm-bibtex][Helm Bibtex]]
+    - [[#org-roam][Org-Roam]]
+    - [[#org-noter-1][Org-Noter]]
   - [[#org-capture][Org Capture]]
     - [[#functions-1][Functions]]
     - [[#templates][Templates]]
@@ -116,7 +120,6 @@ This is a literate config file for [[https://github.com/hlissner/doom-emacs][doo
 be used with the =develop= branch. Much of the basic setup is pulled from the
 [[https://github.com/gilbertw1/emacs-literate-starter][emacs literate starter]] by =gilbertw1=. The [[file:packages.org][companion packages page]] describes the
 basic package setup, while the ~init.el~ is described on [[file:index.html][the project homepage]].
-
 *** About that TOC..
 So as mentioned [[https:https://github.com/snosov1/toc-org/issues/35][here]] there is trouble when ~org-export~ tries to create files
 while keeping the ~org-toc~ tag.
@@ -187,71 +190,27 @@ This is a little to frequent for working with a ~git~ repo. Henrik mentioned an
 ~async~ version of the recompliation might be in the works, until then however I
 will probably only manually trigger the recompliation.
 #+BEGIN_SRC emacs-lisp
-(after! org
-  (remove-hook 'after-save-hook #'+literate|recompile-maybe))
+(after! 'org
+  (remove-hook 'after-save-hook #'+literate|recompile-maybe)
+)
 #+END_SRC
-** Package Settings
-These should eventually go into a different module.
-Each of these.
-*** Magit Aids
-**** DONE Magit todos
-Of course this is not really meant to be here..
-A variation of this was included upstream in the ~develop~ branch.
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package! magit-org-todos
-  :mode "\\COMMIT_EDITMSG\\'"
-  :commands (magit-org-todods magit-org-todos-autoinsert)
-  :config
-  (magit-org-todos-autoinsert))
-#+END_SRC
+*** Kill Orgmode template
+These conflict with my other templates.
 #+BEGIN_SRC emacs-lisp
-(use-package! magit-todos)
+ (set-file-template!  :mode 'org-mode :ignore t)
 #+END_SRC
-**** DONE Magithub
-This is for sweet github integration.
-Also integrated upstream.
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package! magithub
-  :after magit
-  :commands (magithub-clone
-             magithub-completion-enable)
-  ;; :ensure t
-  :config
-  (magithub-feature-autoinject t)
-  (setq
-   magithub-clone-default-directory "$HOME/Git/Github/"
-   magithub-dir (concat doom-etc-dir "magithub/")
-   magithub-preferred-remote-method 'clone_url))
-(use-package! evil-magit :after magit
-  :init
-  (setq evil-magit-state 'normal))
-#+END_SRC
-**** Magit Annex
-Barely any setup.
-#+BEGIN_SRC emacs-lisp
-(use-package! magit-annex
-  :after magit)
-(use-package! git-annex
-  :after dired)
-#+END_SRC
-*** Word wrap
-This section is to work with the settings for the ~word-wrap~ ~doom~ module.
-#+BEGIN_SRC emacs-lisp
-;; enable word-wrap in C/C++/ObjC/Java
-(add-hook! 'markdown-mode-hook #'+word-wrap-mode)
-(add-hook! 'text-mode-hook #'+word-wrap-mode)
-(add-hook! 'tex-mode-hook #'+word-wrap-mode)
-#+END_SRC
-** Anki Editor
-# TODO Add to doom as a module
-This is for my favorite [[https://github.com/louietan/anki-editor][anki interaction]] mechanism.
-#+BEGIN_SRC emacs-lisp
-(use-package! anki-editor
-  :after org-noter
-  :config
-  ; I like making decks
-  (setq anki-editor-create-decks 't))
-#+END_SRC
+
+*** Variables
+#+begin_src emacs-lisp
+(setq
+   org_notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
+   zot_bib (concat (getenv "HOME") "/GDrive/zotLib.bib")
+   org-directory org_notes
+   deft-directory org_notes
+   org-roam-directory org_notes
+   )
+#+end_src
+
 ** Keybindings
 These are eventually going to with [[https://github.com/noctuid/general.el][general]] anyway. So it's better to load that
 for now and carry on. Later this block can be prevented from being tangled.
@@ -444,7 +403,7 @@ need to be bound in ~org-mode~ files.
 Apart from extension specific bindings, here we define useful functions which
 are a part of ~org-mode~.
 #+BEGIN_SRC emacs-lisp
-(map! :localleader
+(after! org (map! :localleader
       :map org-mode-map
       (:prefix "o"
         :desc "Tags" "t" 'org-set-tags
@@ -456,7 +415,7 @@ are a part of ~org-mode~.
         )
       (:prefix ("i" . "Insert")
         :desc "Link/Image" "l" 'org-insert-link
-        :desc "Item" "o" 'org-insert-item
+        :desc "Item" "o" 'org-toggle-item
         :desc "Citation" "c" 'org-ref-helm-insert-cite-link
         :desc "Footnote" "f" 'org-footnote-action
         :desc "Table" "t" 'org-table-create-or-convert-from-region
@@ -474,11 +433,12 @@ are a part of ~org-mode~.
           )
         )
       )
+  )
 #+END_SRC
 *** Anki Editor
 These are only relevant to ~org-mode~. Nevertheless they are not part of
 ~org-mode~ so semantically it makes no sense to use ~o~ after the localleader.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (map! :localleader
       :map org-mode-map
       (:prefix ("a" . "Anki")
@@ -570,6 +530,110 @@ These are more semantic for me.
   "m i r r" '(reftex-citation :wk "Reftex")
   )
 #+END_SRC
+** Safe Evals and Variables
+*** Private Variables
+These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
+#+BEGIN_SRC emacs-lisp
+(use-package! epa-file
+  :demand
+  :config
+  (epa-file-enable)
+  (setq custom-file (concat doom-private-dir "local/private.el.gpg"))
+  (load custom-file)
+)
+#+END_SRC
+
+*** Safe Variables
+The problem is that ~packages.el~ isn't being produced by the clever little ugly
+commit I tried so, this is a workaround to tangle *any* file to be produced in
+~.el~ format in the same location.
+**** Tangle
+So adding the automatic tangling code doesn't mangle things up everytime you
+open emacs. Basically this is adapted from [[https://www.reddit.com/r/emacs/comments/5d4hqq/using_babel_to_put_your_init_file_in_org/][this reddit thread]].
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'safe-local-variable-values
+             '(eval add-hook 'after-save-hook
+	                (lambda () (org-babel-tangle))
+	                nil t))
+#+END_SRC
+**** TODO Export
+This is a catch all for the eventual ~org-mode~ based multiple target exports.
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'safe-local-variable-values
+                '(eval add-hook 'after-save-hook 'haozeke/org-save-and-export-tex nil t)
+                '(eval add-hook 'after-save-hook 'haozeke/org-save-and-export-pdf nil t))
+#+END_SRC
+**** TODO Caveats
+- This actually forms it relative to the exact path.
+  (Gotta move it to the config folder)
+- The actual code is much more elegant in every way possible.
+- Seriously there has to be  a way to not have to do this.
+*** TODO Safe Evals
+This enables the evaluation of these forms. Read more about this via
+~docstrings~ sometime.
+#+BEGIN_SRC emacs-lisp :tangle no
+(add-to-list 'safe-local-eval-forms (eval add-hook 'after-save-hook haozeke/org-save-and-export))
+#+END_SRC
+*** Asynchronous Exports
+As per this [[https://superuser.com/a/898717/899764][interesting answer on the superuser forums]], I need to set
+~org-export-async-init-file~.
+#+BEGIN_SRC emacs-lisp
+(setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
+#+END_SRC
+** Package Settings
+These should eventually go into a different module.
+Each of these.
+*** Word wrap
+This section is to work with the settings for the ~word-wrap~ ~doom~ module.
+#+BEGIN_SRC emacs-lisp
+;; enable word-wrap in C/C++/ObjC/Java
+(add-hook! 'markdown-mode-hook #'+word-wrap-mode)
+(add-hook! 'text-mode-hook #'+word-wrap-mode)
+(add-hook! 'tex-mode-hook #'+word-wrap-mode)
+#+END_SRC
+*** Magit Aids
+**** DONE Magit todos
+Of course this is not really meant to be here..
+A variation of this was included upstream in the ~develop~ branch.
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package! magit-org-todos
+  :mode "\\COMMIT_EDITMSG\\'"
+  :commands (magit-org-todods magit-org-todos-autoinsert)
+  :config
+  (magit-org-todos-autoinsert))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+(use-package! magit-todos)
+#+END_SRC
+**** DONE Magithub
+This is for sweet github integration.
+Also integrated upstream.
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package! magithub
+  :after magit
+  :commands (magithub-clone
+             magithub-completion-enable)
+  ;; :ensure t
+  :config
+  (magithub-feature-autoinject t)
+  (setq
+   magithub-clone-default-directory "$HOME/Git/Github/"
+   magithub-dir (concat doom-etc-dir "magithub/")
+   magithub-preferred-remote-method 'clone_url))
+(use-package! evil-magit :after magit
+  :init
+  (setq evil-magit-state 'normal))
+#+END_SRC
+** Anki Editor
+# TODO Add to doom as a module
+This is for my favorite [[https://github.com/louietan/anki-editor][anki interaction]] mechanism.
+#+BEGIN_SRC emacs-lisp :tangle no
+(use-package! anki-editor
+  :after org-noter
+  :config
+  ; I like making decks
+  (setq anki-editor-create-decks 't))
+#+END_SRC
 ** Org Additions
 These are numerous and complicated enough to be in a segment of their own.
 *** File Handling
@@ -584,12 +648,29 @@ dealing with ~append~ and stuff.
     ("\\.pdf\\'" . default)
     ("\\.png\\'" . viewnior)
     ("\\.jpg\\'" . viewnior)
+    ("\\.svg\\'" . viewnior)
     ))
 #+END_SRC
+
 *** KILL Ob-Julia
 So ~julia~ support is inbuilt, however the process variable needs to be set:
 #+BEGIN_SRC emacs-lisp :tangle no
 (setq  inferior-julia-program-name "/bin/julia")
+#+END_SRC
+*** Org Download
+This is already included in the standard doom setup. However, I was having
+trouble with relative exports so I have this one instead. Partially kanged from
+~doom-emacs~.
+#+BEGIN_SRC emacs-lisp
+(use-package! org-download
+  :after org
+  :config
+  (setq-default org-download-image-dir "./images/"
+                org-download-screenshot-method "gnome-screenshot -a -f %s"
+                org-download-method 'directory
+                org-download-heading-lvl 1
+                )
+  )
 #+END_SRC
 *** Org Babel
 Julia and Mathematica are not set. Other languages might also be needed here eventually.
@@ -597,8 +678,8 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
 (after! 'org
             (org-babel-do-load-languages 'org-babel-load-languages
                                          (append org-babel-load-languages
-                                                 ;; '(julia . t)
-                                                 '(mathematica . t)
+                                                 ;; '((julia . t))
+                                                 '((mathematica . t))
                                                  ))
             (setq org-babel-mathematica-command "~/.local/bin/mash")
             )
@@ -608,12 +689,8 @@ These are just variables I need to set to prevent things from dying.
 **** Inline images
 These need to be disabled by default otherwise ~emacs~ stalls often. Also, it turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better, once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
 #+BEGIN_SRC emacs-lisp
-(after! 'org
-  (setq org-startup-with-inline-images 'nil)
-  (setq org-image-actual-width 500)
-  (setq org-directory "~/org")
-  (setq org-latex-create-formula-image-program 'imagemagick)
-  )
+(setq org-startup-with-inline-images 'nil)
+(setq org-image-actual-width 500)
 #+END_SRC
 *** Org Rifle
 This probably needs to be refactored later. Or loaded elsewhere.
@@ -648,38 +725,15 @@ The keymaps are defined in the following way:
             :prefix my-leader
             "m e m" '(org-mind-map-write :wk "Export mind-map") ))
 #+END_SRC
-*** Org Download
-This is already included in the standard doom setup. However, I was having
-trouble with relative exports so I have this one instead. Partially kanged from
-~doom-emacs~.
-#+BEGIN_SRC emacs-lisp
-(use-package! org-download
-  :after org
-  :config
-(setq-default org-download-image-dir "./img/"
-              org-download-screenshot-method "gnome-screenshot -a -f %s"
-              org-download-method 'directory
-              org-download-heading-lvl 1
-              )
-  )
-#+END_SRC
 *** Org Drill
 This is much easier to work with compared to the Anki mode stuff.
 #+BEGIN_SRC emacs-lisp :tangle no
 (use-package! org-drill
   :after org)
 #+END_SRC
-*** Org Gcal
-Not much to be configured here.
-#+BEGIN_SRC emacs-lisp
-(use-package! org-gcal
-  :config
-(setq org-gcal-file-alist '(("r95g10@gmail.com" .  "~/.config/doom/org/agenda.org.gpg")))
-  )
-#+END_SRC
 *** Org Re-Reveal Refs
 This is apparently the ~org-ref~ for ~org-re-reveal~.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package! org-re-reveal-ref)
 #+end_src
 ** Syntax Highlighting
@@ -909,14 +963,8 @@ This one is to generate pdfs whenever a buffer is saved. Mainly taken from
 (defun haozeke/org-save-and-export-pdf ()
   (if (eq major-mode 'org-mode)
     (org-latex-export-to-pdf t)))
-; LaTeX
-(defun haozeke/org-save-and-export-latex ()
-  (if (eq major-mode 'org-mode)
-    (org-latex-export-to-latex t)))
-(defun haozeke/org-save-and-export-beamer ()
-  (if (eq major-mode 'org-mode)
-    (org-beamer-export-to-latex  t)))
 #+END_SRC
+
 *** Org-mode export koma-letter
 Since the ~koma-letter~ backend is separate, this needs a function as well.
 #+BEGIN_SRC emacs-lisp
@@ -924,13 +972,17 @@ Since the ~koma-letter~ backend is separate, this needs a function as well.
   (if (eq major-mode 'org-mode)
     (org-koma-letter-export-to-pdf t)))
 #+END_SRC
-*** Org-mode export tex when saved
+*** Org-mode export TeX
 Similar to the one above, but ~tex~ generation is much faster and this way I can
 keep editing my files without waiting for it to finish creating the ~pdf~.
 #+BEGIN_SRC emacs-lisp
-(defun haozeke/org-save-and-export-tex ()
+; LaTeX
+(defun haozeke/org-save-and-export-latex ()
   (if (eq major-mode 'org-mode)
     (org-latex-export-to-latex t)))
+(defun haozeke/org-save-and-export-beamer ()
+  (if (eq major-mode 'org-mode)
+    (org-beamer-export-to-latex  t)))
 #+END_SRC
 *** TODO Caveats
 - Minted needs to be setup.
@@ -1087,56 +1139,6 @@ This conflicts with the ArchLinux ~systemctl --user start rdm~ thing.
 ; Do not automatically try to run rdm
 (remove-hook 'c-mode-common-hook #'+cc|init-rtags)
 #+END_SRC
-** Safe Evals and Variables
-*** Private Variables
-These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
-#+BEGIN_SRC emacs-lisp
-(use-package! epa-file
-  :demand
-  :config
-  (epa-file-enable)
-  (setq custom-file (concat doom-private-dir "local/private.el.gpg"))
-  (load custom-file)
-)
-#+END_SRC
-*** Safe Variables
-The problem is that ~packages.el~ isn't being produced by the clever little ugly
-commit I tried so, this is a workaround to tangle *any* file to be produced in
-~.el~ format in the same location.
-**** Tangle
-So adding the automatic tangling code doesn't mangle things up everytime you
-open emacs. Basically this is adapted from [[https://www.reddit.com/r/emacs/comments/5d4hqq/using_babel_to_put_your_init_file_in_org/][this reddit thread]].
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'safe-local-variable-values
-             '(eval add-hook 'after-save-hook
-	                (lambda () (org-babel-tangle))
-	                nil t))
-#+END_SRC
-**** TODO Export
-This is a catch all for the eventual ~org-mode~ based multiple target exports.
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'safe-local-variable-values
-                '(eval add-hook 'after-save-hook 'haozeke/org-save-and-export-tex nil t)
-                '(eval add-hook 'after-save-hook 'haozeke/org-save-and-export-pdf nil t))
-#+END_SRC
-**** TODO Caveats
-- This actually forms it relative to the exact path. 
-  (Gotta move it to the config folder)
-- The actual code is much more elegant in every way possible.
-- Seriously there has to be  a way to not have to do this.
-  
-*** TODO Safe Evals
-This enables the evaluation of these forms. Read more about this via
-~docstrings~ sometime.
-#+BEGIN_SRC emacs-lisp :tangle no
-(add-to-list 'safe-local-eval-forms (eval add-hook 'after-save-hook haozeke/org-save-and-export))
-#+END_SRC
-*** Asynchronous Exports
-As per this [[https://superuser.com/a/898717/899764][interesting answer on the superuser forums]], I need to set
-~org-export-async-init-file~.
-#+BEGIN_SRC emacs-lisp
-(setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
-#+END_SRC
 ** Troubleshooting
 These are strictly temporary hacks to resolve problems until they are fixed
 upstream.
@@ -1246,7 +1248,7 @@ It makes sense to use ~latexmk~ anyway. This way I can set sane defaults.
 #+NAME: tex_process
 #+BEGIN_SRC emacs-lisp :tangle no
 ;; Compiler
-(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
+(setq org-latex-pdf-process (list "latexmk -shell-escape -f -pdfxe %f"))
 #+END_SRC
 *** Packages
 Some of these are damn near universal given my set up, so they are declared here.
@@ -1349,7 +1351,6 @@ This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_genera
     (setq company-tooltip-align-annotations t)
     (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
-# TODO Add more stuff about the maxima hint from [[https://www.reddit.com/r/emacs/comments/75fp3d/taking_university_notes_in_orgmode_latex/][this reddit thread]].
 ** Babel Tabs
 Evidently there was [[https://emacs.stackexchange.com/questions/24283/org-mode-converting-spaces-to-tabs-when-evaluating-source][some sort of re-indentation]] going on during the export
 process which was breaking a lot of ~python~, this should fix that:
@@ -1361,6 +1362,32 @@ setting as well.
 (setq org-src-preserve-indentation t
       org-edit-src-content-indentation 0)
 #+END_SRC
+** Pandoc Babel
+As fully described in [[https://rgoswami.me/posts/org-pandoc-babel/][this post]], I felt the need to export some common ~pandoc~
+formats with ~babel~.
+*** Restructured Text
+#+begin_src emacs-lisp :tangle yes
+(defun org-babel-execute:rst (body params)
+  "Execute a block of rst code with org-babel.
+This function is called by `org-babel-execute-src-block'."
+  (let* ((result-params (split-string (or (cdr (assoc :results params)) "")))
+       (in-file (org-babel-temp-file "rst-"))
+       (cmdline (cdr (assoc :cmdline params)))
+       (to (cdr (assoc :to params)))
+       (template (cdr (assoc :template params)))
+       (cmd (concat "pandoc"
+                    " -t  org"
+                    " -i " (org-babel-process-file-name in-file)
+                    " -f rst "
+                    " " cmdline)))
+    (with-temp-file in-file (insert body))
+    (message cmd)
+    (shell-command-to-string cmd))) ;; Send to results
+
+(defun org-babel-prep-session:rst (session params)
+  "Return an error because rst does not support sessions."
+  (error "rst does not support sessions"))
+#+end_src
 ** Flycheck Additions
 These are basically meant to aid in development. The relevant linters are also
 added here.
@@ -1371,55 +1398,78 @@ This includes settings for both flycheck and the packages it needs.
   :after flycheck
   :config (flycheck-package-setup))
 #+END_SRC
-** TODO References
-*** Basic Setup
-This is a standard [[https://github.com/jkitchin/org-ref][org-ref]] setup.
-#+BEGIN_SRC emacs-lisp :tangle no
-;; see org-ref for use of these variables
-(setq org-ref-bibliography-notes "~/Documents/References/notes.org"
-      org-ref-default-bibliography '("~/Documents/References/zotero.bib")
-      org-ref-pdf-directory "~/Documents/References/bibtex-pdfs/")
-
-(setq bibtex-completion-notes-path "~/Documents/References/notes.org"
-      bibtex-completion-bibliography '("~/Documents/References/zotero.bib")
-      bibtex-completion-library-directory "~/Documents/References/bibtex-pdfs/")
-#+END_SRC
-+I don't actually use ~org-ref-pdf-directory~ or ~org-ref-bibliography-notes~ so
-I should change those soon.+
-Depreciated in favor of a better setup.
-*** noteYoda
+* Notes
+** noteYoda
 This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility
 this will be broken down into a per-package configuration. The heart of this is
 an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links
 to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]]. More on this in a post later.
-**** Org-Ref
-[[https://github.com/jkitchin/org-ref][This]] seems like an ubiquitous choice for working with org files and references.
+*** Org-Ref
+[[https://github.com/jkitchin/org-ref][This]] seems like an ubiquitous choice for working with org files and references,
+though quite a bit of the config here relates to [[https://github.com/tmalsburg/helm-bibtex/tree/file-field][helm-bibtex]]. *Commented*
+sections are set in my ~private~ config.
 #+BEGIN_SRC emacs-lisp
 (use-package! org-ref
-    :after org
-    :init
+    ;; :init
     ; code to run before loading org-ref
     :config
-    (setq org-ref-notes-directory "~/.megaRefs/Notes"
-          org-ref-bibliography-notes "~/.megaRefs/articles.org"
-          org-ref-default-bibliography '("~/Documents/zotLib.bib")
-          org-ref-pdf-directory "~/.megaRefs/Papers/")
-    )
+    (setq
+         org-ref-completion-library 'org-ref-ivy-cite
+         org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+         org-ref-default-bibliography (list "/home/haozeke/GDrive/zotLib.bib")
+         org-ref-bibliography-notes "/home/haozeke/Git/Gitlab/Mine/Notes/bibnotes.org"
+         ;; org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+         org-ref-notes-directory "/home/haozeke/Git/Gitlab/Mine/Notes/"
+         org-ref-notes-function 'org-ref-notes-function-many-files
+    ))
 #+END_SRC
+
 Apparently, ~org-ref~ is also able to fetch ~pdf~ files when ~DOI~ or ~URL~
 links are dragged onto the ~.bib~ file. However, since ~zotero~ will handle the
 metadata, this remains to be considered.
-***** Customizing notes
-The notes created are not in a form which is used by 
-**** Helm-Bibtex
-Name aside, [[https://github.com/tmalsburg/helm-bibtex][this]] also works for ~ivy~. Basically meant to interface with
-bibliographies in general.
+
+Ivy is used exclusively throughout ~doom~, makes sense to use it here too, but I recently switched to ~helm~.
+Turns out ~helm~ is probably faster for larger collections since it can be
+asynchronous. Basically, this is because using the minibuffer, as ivy does is a
+blocking action while the ~helm~ buffer may be opened asynchronously.
+Name aside, [[https://github.com/tmalsburg/helm-bibtex][helm-bibtex]] also works for ~ivy~. Basically meant to interface with
+bibliographies in general. However, since I'm using ~org-ref~, I won't be configuring or loading that anymore.
+*** Helm Bibtex
+For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above prioritizes the ~helm-bibtex~ note-taking setup.
 #+BEGIN_SRC emacs-lisp
-(setq helm-bibtex-bibliography "~/.megaRefs/Bibliographies/zotLib.bib"
-      helm-bibtex-library-path "~/.megaRefs/Papers/"
-      helm-bibtex-notes-path "~/.megaRefs/articles.org")
+(after! org-ref
+  (setq
+   bibtex-completion-notes-path "/home/haozeke/Git/Gitlab/Mine/Notes/"
+   bibtex-completion-bibliography "/home/haozeke/GDrive/zotLib.bib"
+   bibtex-completion-pdf-field "file"
+   bibtex-completion-notes-template-multiple-files
+   (concat
+    "#+TITLE: ${title}\n"
+    "#+ROAM_KEY: cite:${=key=}\n"
+    "* TODO Notes\n"
+    ":PROPERTIES:\n"
+    ":Custom_ID: ${=key=}\n"
+    ":NOTER_DOCUMENT: ${file}\n"
+    ":AUTHOR: ${author-abbrev}\n"
+    ":JOURNAL: ${journaltitle}\n"
+    ":DATE: ${date}\n"
+    ":YEAR: ${year}\n"
+    ":DOI: ${doi}\n"
+    ":URL: ${url}\n"
+    ":END:\n\n"
+    )
+   )
+)
 #+END_SRC
-**** Org-Noter
+*** Org-Roam
+Will also setup the ~org-roam-bibtex~ thing here.
+#+begin_src emacs-lisp
+(use-package! org-roam-bibtex
+  :after (org-roam)
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  )
+#+end_src
+*** Org-Noter
 I decided to use [[https://github.com/weirdNox/org-noter][org-noter]] over the more commonly described [[https://github.com/rudolfochrist/interleave][interleave]] because
 it has better support for working with multiple documents linked to one file.
 #+BEGIN_SRC emacs-lisp
@@ -1434,27 +1484,11 @@ it has better support for working with multiple documents linked to one file.
    ;; I want to see the whole file
    org-noter-hide-other nil
    ;; Everything is relative to the rclone mega
-   ;; org-noter-notes-search-path '("~/.megaRefs/Notes"
-   ;;                                  "~/.megaRefs/"
-   ;;                                  "~/Documents")
+   org-noter-notes-search-path (list org_notes)
    )
   )
 #+END_SRC
-*** Reftex
-Actually I don't really use ~reftex~ since I'm using heavier tools now, but it
-still needs some setup.
-#+BEGIN_SRC emacs-lisp
-(setq reftex-default-bibliography '("~/.megaRefs/Bibliographies/zotLib.bib"))
-#+END_SRC
-*** +Org Ref Ivy+
-Ivy is used exclusively throughout ~doom~, makes sense to use it here too.
-#+BEGIN_SRC emacs-lisp :tangle no
-(setq org-ref-completion-library 'org-ref-ivy-cite)
-#+END_SRC
-Turns out ~helm~ is probably faster for larger collections since it can be
-asynchronous. Basically, this is because using the minibuffer, as ivy does is a
-blocking action while the ~helm~ buffer may be opened asynchronously.
-* Notes
+
 I have a rather involved setup in mind, so I have spun this section off from the
 rest. The basic idea is to use [[https://github.com/jrblevin/deft][~deft~]] for short-to-long lookup notes, and
 ~org-capture~ templates with ~org-protocol~ for the rest. I am also considering
@@ -1499,7 +1533,7 @@ This might get complicated but I am only trying to get the bare minimum for
          '("a"               ; key
            "Article"         ; name
            entry             ; type
-           (file+headline "~/.megaRefs/Notes/consolidated.org" "Article")  ; target
+           (file+headline +org-capture-notes-file "Article")  ; target
            "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
            :prepend t        ; properties
            :empty-lines 1    ; properties
