@@ -689,6 +689,7 @@ These are just variables I need to set to prevent things from dying.
 **** Inline images
 These need to be disabled by default otherwise ~emacs~ stalls often. Also, it turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better, once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
 #+BEGIN_SRC emacs-lisp
+(setq org-preview-latex-default-process 'imagemagick)
 (setq org-startup-with-inline-images 'nil)
 (setq org-image-actual-width 500)
 #+END_SRC
