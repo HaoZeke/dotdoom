@@ -395,6 +395,7 @@ are a part of ~org-mode~.
       :map org-mode-map
       (:prefix "o"
         :desc "Tags" "t" 'org-set-tags
+        :desc "Roam Bibtex" "b" 'orb-note-actions
         (:prefix ("p" . "Properties")
           :desc "Set" "s" 'org-set-property
           :desc "Delete" "d" 'org-delete-property
@@ -1489,8 +1490,6 @@ modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
  (use-package! org-roam-bibtex
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)
-  :bind (:map org-mode-map
-         (("n r B" . orb-note-actions)))
   :config
   (add-hook! 'org-mode (org-roam-bibtex-mode t))
   (setq org-roam-bibtex-preformat-keywords
