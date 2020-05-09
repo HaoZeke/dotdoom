@@ -23,8 +23,8 @@
     - [[#dired-icons][Dired Icons]]
     - [[#wakatime][Wakatime]]
   - [[#later-magit-additions][LATER Magit Additions]]
-  - [[#git-annex][Git Annex]]
-  - [[#later-key-chords-and-keybindings][LATER Key Chords and Keybindings]]
+  - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
+  - [[#evil-colemak][Evil Colemak]]
   - [[#org-additions][Org Additions]]
     - [[#org-download][Org Download]]
     - [[#later-org-drill][LATER Org Drill]]
@@ -32,9 +32,9 @@
     - [[#org-ref][Org Ref]]
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-rifle][Org Rifle]]
-    - [[#org-gcal][Org Gcal]]
     - [[#anki-mode][Anki Mode]]
     - [[#org-re-reveal-ref][Org Re-Reveal Ref]]
+    - [[#org-roam-bibtex][Org Roam Bibtex]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
@@ -90,7 +90,7 @@ dired, from the [[https://github.com/domtronn/all-the-icons.el/wiki][all-the-ico
 #+END_SRC
 *** Wakatime
 Not exactly aesthetic, but yeah, for stats.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! wakatime-mode)
 #+END_SRC
 ** LATER Magit Additions
@@ -109,17 +109,10 @@ These have been added upstream in ~develop~.
 Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
 There might still be workflows where [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]] is useful since that
 displays a global ~todo.org~ file.
-** Git Annex
-This is actually a [[https://github.com/magit/magit-annex][magit addition]]. The [[https://github.com/jwiegley/git-annex-el][git-annex dired extension]] shares a common
-interface and it makes sense to add it here.
-#+BEGIN_SRC emacs-lisp
-(package! magit-annex)
-(package! git-annex)
-#+END_SRC
-** LATER Key Chords and Keybindings
+** DONE Key Chords and Keybindings
 It turns out that the switch to [[https://github.com/noctuid/general.el][general.el]] is both inevitable (doom version 2.1)
 and very rational. However, I really can't wait. So.. This is a stop gap solution.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! general)
 #+END_SRC
 - [x] Remove when it's merged upstream
@@ -134,7 +127,9 @@ keybindings.
 *** Org Download
 Now I load it here since I don't use ~+attach~.
 #+BEGIN_SRC emacs-lisp
-(package! org-download)
+(package! org-download
+  :recipe (:host github
+            :repo "abo-abo/org-download"))
 #+END_SRC
 
 *** LATER Org Drill
@@ -173,21 +168,20 @@ Technically a helm addition. Perfect for monolithic ~org~ files. More details
 #+BEGIN_SRC emacs-lisp
 (package! helm-org-rifle)
 #+END_SRC
-*** Org Gcal
-[[https://github.com/myuhe/org-gcal.el][Google calendar integration]]. Most of this is to be dealt with in the ~private~
-encrypted file.
-#+BEGIN_SRC emacs-lisp
-(package! org-gcal)
-#+END_SRC
 *** Anki Mode
 This is put here since it only works with ~org-mode~ stuff.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! anki-editor)
 #+END_SRC
 *** Org Re-Reveal Ref
 An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref~.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (package! org-re-reveal-ref)
+#+end_src
+*** Org Roam Bibtex
+This should be a part of the main ~+roam~ setup, but until then.
+#+begin_src emacs-lisp :tangle yes
+(package! org-roam-bibtex)
 #+end_src
 ** Dockerfile Mode
 For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
