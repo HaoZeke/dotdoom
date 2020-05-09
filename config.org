@@ -25,7 +25,6 @@
     - [[#global-maps][Global Maps]]
     - [[#markdown-improvements][Markdown Improvements]]
     - [[#org-noter][Org Noter]]
-    - [[#pdf-mode][Pdf Mode]]
     - [[#org-mode-additions][Org Mode additions]]
     - [[#anki-editor][Anki Editor]]
     - [[#cc-mode][CC Mode]]
@@ -41,6 +40,7 @@
   - [[#package-settings][Package Settings]]
     - [[#word-wrap][Word wrap]]
     - [[#magit-aids][Magit Aids]]
+    - [[#pdf-tools][PDF Tools]]
   - [[#anki-editor-1][Anki Editor]]
   - [[#org-additions][Org Additions]]
     - [[#file-handling][File Handling]]
@@ -387,18 +387,6 @@ These bindings should probably be after ~org-noter~ is loaded.
           :desc "Noter" "n" 'org-noter
           )))
 #+END_SRC
-*** Pdf Mode
-These bindings are essentially part of ~org-noter~ however, they do not actually
-need to be bound in ~org-mode~ files.
-#+BEGIN_SRC emacs-lisp
-; localleader is SPC m
-(map! :localleader
-      :map pdf-view-mode-map
-      (:prefix "o"
-        (:prefix "n"
-          :desc "Insert" "i" 'org-noter-insert-note
-          )))
-#+END_SRC
 *** Org Mode additions
 Apart from extension specific bindings, here we define useful functions which
 are a part of ~org-mode~.
@@ -624,6 +612,36 @@ Also integrated upstream.
   :init
   (setq evil-magit-state 'normal))
 #+END_SRC
+*** PDF Tools
+These bindings are essentially part of ~org-noter~ however, they do not actually
+need to be bound in ~org-mode~ files. Also updated to have ~evil-colemak~ bindings.
+#+begin_src emacs-lisp :tangle yes
+(after! pdf-view
+  ;; open pdfs scaled to fit page
+  (setq-default pdf-view-display-size 'fit-width)
+  (add-hook! 'pdf-view-mode-hook (evil-colemak-basics-mode -1))
+  ;; automatically annotate highlights
+  (setq pdf-annot-activate-created-annotations t
+        pdf-view-resize-factor 1.1)
+   ;; faster motion
+ (map!
+   :map pdf-view-mode-map
+   :n "g g"          #'pdf-view-first-page
+   :n "G"            #'pdf-view-last-page
+   :n "N"            #'pdf-view-next-page-command
+   :n "E"            #'pdf-view-previous-page-command
+   :n "e"            #'evil-collection-pdf-view-previous-line-or-previous-page
+   :n "n"            #'evil-collection-pdf-view-next-line-or-next-page
+   :localleader
+   (:prefix "o"
+    (:prefix "n"
+     :desc "Insert" "i" 'org-noter-insert-note
+     ))
+ ))
+#+end_src
+
+#+RESULTS:
+
 ** Anki Editor
 # TODO Add to doom as a module
 This is for my favorite [[https://github.com/louietan/anki-editor][anki interaction]] mechanism.
