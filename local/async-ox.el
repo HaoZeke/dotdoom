@@ -48,7 +48,7 @@
 (eval-after-load 'ox '(require 'ox-koma-letter))
 (with-eval-after-load 'ox-latex
   ;; Compiler
-  (setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdfxe %f"))
+  (setq org-latex-pdf-process (list "latexmk -shell-escape -f -pdfxe %f"))
   ;; Configuration
   (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
   (setq org-latex-listings 'minted)

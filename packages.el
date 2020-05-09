@@ -1,27 +1,15 @@
-;; [[file:~/.config/doom/packages.org::*About this file][About this file:1]]
-;; -*- no-byte-compile: t; -*-
-;;; ~/.config/doom/packages.el
-;; About this file:1 ends here
-
-;; [[file:~/.config/doom/packages.org::*Dired Icons][Dired Icons:1]]
-(package! all-the-icons-dired)
-;; Dired Icons:1 ends here
-
 ;; [[file:~/.config/doom/packages.org::*Wakatime][Wakatime:1]]
 (package! wakatime-mode)
 ;; Wakatime:1 ends here
 
-;; [[file:~/.config/doom/packages.org::*Git Annex][Git Annex:1]]
-(package! magit-annex)
-(package! git-annex)
-;; Git Annex:1 ends here
-
-;; [[file:~/.config/doom/packages.org::*LATER Key Chords and Keybindings][LATER Key Chords and Keybindings:1]]
-(package! general)
-;; LATER Key Chords and Keybindings:1 ends here
+;; [[file:~/.config/doom/packages.org::*Evil Colemak][Evil Colemak:1]]
+(package! evil-colemak-basics)
+;; Evil Colemak:1 ends here
 
 ;; [[file:~/.config/doom/packages.org::*Org Download][Org Download:1]]
-(package! org-download)
+(package! org-download
+  :recipe (:host github
+            :repo "abo-abo/org-download"))
 ;; Org Download:1 ends here
 
 ;; [[file:~/.config/doom/packages.org::*Org Noter][Org Noter:1]]
@@ -42,17 +30,9 @@
 (package! helm-org-rifle)
 ;; Org Rifle:1 ends here
 
-;; [[file:~/.config/doom/packages.org::*Org Gcal][Org Gcal:1]]
-(package! org-gcal)
-;; Org Gcal:1 ends here
-
-;; [[file:~/.config/doom/packages.org::*Anki Mode][Anki Mode:1]]
-(package! anki-editor)
-;; Anki Mode:1 ends here
-
-;; [[file:~/.config/doom/packages.org::*Org Re-Reveal Ref][Org Re-Reveal Ref:1]]
-(package! org-re-reveal-ref)
-;; Org Re-Reveal Ref:1 ends here
+;; [[file:~/.config/doom/packages.org::*Org Roam Bibtex][Org Roam Bibtex:1]]
+(package! org-roam-bibtex)
+;; Org Roam Bibtex:1 ends here
 
 ;; [[file:~/.config/doom/packages.org::*Dockerfile Mode][Dockerfile Mode:1]]
 (package! dockerfile-mode)
