@@ -1437,7 +1437,7 @@ sections are set in my ~private~ config.
          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
          org-ref-default-bibliography (list "/home/haozeke/GDrive/zotLib.bib")
          org-ref-bibliography-notes "/home/haozeke/Git/Gitlab/Mine/Notes/bibnotes.org"
-         ;; org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+         org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
          org-ref-notes-directory "/home/haozeke/Git/Gitlab/Mine/Notes/"
          org-ref-notes-function 'org-ref-notes-function-many-files
     ))
@@ -1468,7 +1468,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
     "* TODO Notes\n"
     ":PROPERTIES:\n"
     ":Custom_ID: ${=key=}\n"
-    ":NOTER_DOCUMENT: ${file}\n"
+    ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
     ":AUTHOR: ${author-abbrev}\n"
     ":JOURNAL: ${journaltitle}\n"
     ":DATE: ${date}\n"
@@ -1480,14 +1480,35 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
    )
 )
 #+END_SRC
+
 *** Org-Roam
 Will also setup the ~org-roam-bibtex~ thing here.
-#+begin_src emacs-lisp
-(use-package! org-roam-bibtex
+As foretold in the last line, there are more settings for [[https://github.com/Zaeph/org-roam-bibtex][ORB]]. The template is
+modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
+#+begin_src emacs-lisp :tangle yes
+ (use-package! org-roam-bibtex
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)
-  )
+  :bind (:map org-mode-map
+         (("n r B" . orb-note-actions)))
+  :config
+  (add-hook! 'org-mode (org-roam-bibtex-mode t))
+  (setq org-roam-bibtex-preformat-keywords
+   '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+  (setq orb-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           ""
+           :file-name "${slug}"
+           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+
+- tags ::
+- keywords :: ${keywords}
+
+\n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
+
+           :unnarrowed t))))
 #+end_src
+
 *** Org-Noter
 I decided to use [[https://github.com/weirdNox/org-noter][org-noter]] over the more commonly described [[https://github.com/rudolfochrist/interleave][interleave]] because
 it has better support for working with multiple documents linked to one file.
