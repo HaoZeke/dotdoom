@@ -197,7 +197,7 @@ will probably only manually trigger the recompliation.
 *** Kill Orgmode template
 These conflict with my other templates.
 #+BEGIN_SRC emacs-lisp
- (set-file-template!  :mode 'org-mode :ignore t)
+(set-file-template! "\\.org$" :ignore t)
 #+END_SRC
 
 *** Variables
