@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-09 Sat 15:38 -->
+<!-- 2020-05-09 Sat 15:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate doom-emacs config</title>
@@ -279,8 +279,8 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org0e3aa5f">0.4.5. Markdown Improvements</a></li>
 <li><a href="#org1d99a6a">0.4.6. Org Noter</a></li>
 <li><a href="#org895b329">0.4.7. Org Mode additions</a></li>
-<li><a href="#org4ceb458">0.4.8. Anki Editor</a></li>
-<li><a href="#orgf363a84">0.4.9. CC Mode</a></li>
+<li><a href="#orgdab7a0f">0.4.8. Anki Editor</a></li>
+<li><a href="#org5a31424">0.4.9. CC Mode</a></li>
 <li><a href="#org6c5782f">0.4.10. Evil Movement</a></li>
 <li><a href="#org5febf0b">0.4.11. Evil Colemak</a></li>
 <li><a href="#orgbb4b191">0.4.12. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
@@ -302,7 +302,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#orgfc27cf9">0.6.3. PDF Tools</a></li>
 </ul>
 </li>
-<li><a href="#orgdab7a0f">0.7. Anki Editor</a></li>
+<li><a href="#org4bf3a85">0.7. Anki Editor</a></li>
 <li><a href="#org1a32a8d">0.8. Org Additions</a>
 <ul>
 <li><a href="#org442ceef">0.8.1. File Handling</a></li>
@@ -337,13 +337,13 @@ org_html_manager.setup();  // activate after the parameters are set
 </ul>
 </li>
 <li><a href="#org43ea918">0.11. Dockerfile Mode</a></li>
-<li><a href="#org36e2552">0.12. Functions</a>
+<li><a href="#orgf33d574">0.12. Functions</a>
 <ul>
 <li><a href="#org7116331">0.12.1. Org-Export HTML with useful IDs</a></li>
 <li><a href="#org4c01b77">0.12.2. Org-mode export pdf when saved</a></li>
 <li><a href="#org1b18652">0.12.3. Org-mode export koma-letter</a></li>
 <li><a href="#org13eed8a">0.12.4. Org-mode export TeX</a></li>
-<li><a href="#org837b1b6">0.12.5. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org456ef38">0.12.5. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org886e9cc">0.12.6. Helper function</a></li>
 <li><a href="#org4387b03">0.12.7. Async Command without Buffers</a></li>
 <li><a href="#org94a9690">0.12.8. Smarter Clang Formatting</a></li>
@@ -358,7 +358,7 @@ org_html_manager.setup();  // activate after the parameters are set
 </li>
 <li><a href="#orgb749e3e">0.14. Hooks</a>
 <ul>
-<li><a href="#orgd9d470c">0.14.1. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org6e4833a">0.14.1. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org5f292ef">0.14.2. Before Save Hooks</a></li>
 <li><a href="#org5b0d52f">0.14.3. Disable Auto RDM</a></li>
 </ul>
@@ -387,7 +387,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org8570f5d">2.1. Shared Preferences</a>
 <ul>
 <li><a href="#org9329351">2.1.1. Compiler</a></li>
-<li><a href="#orgb768163">2.1.2. Packages</a></li>
+<li><a href="#org75cbdfb">2.1.2. Packages</a></li>
 </ul>
 </li>
 <li><a href="#org63c51db">2.2. Export Templates</a>
@@ -424,7 +424,7 @@ org_html_manager.setup();  // activate after the parameters are set
 </li>
 <li><a href="#org7441d83">3.2. Org Capture</a>
 <ul>
-<li><a href="#orgf33d574">3.2.1. Functions</a></li>
+<li><a href="#orgd60fac4">3.2.1. Functions</a></li>
 <li><a href="#org192d796">3.2.2. Templates</a></li>
 </ul>
 </li>
@@ -615,7 +615,7 @@ These conflict with my other templates.
    org_notes <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">(</span><span style="color: #c678dd;">getenv</span> <span style="color: #98be65;">"HOME"</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">"/Git/Gitlab/Mine/Notes/"</span><span style="color: #c678dd;">)</span>
    zot_bib <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">(</span><span style="color: #c678dd;">getenv</span> <span style="color: #98be65;">"HOME"</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">"/GDrive/zotLib.bib"</span><span style="color: #c678dd;">)</span>
    <span style="color: #dcaeea;">org-directory</span> org_notes
-   deft-directory org_notes
+   <span style="color: #dcaeea;">deft-directory</span> org_notes
    <span style="color: #dcaeea;">org-roam-directory</span> org_notes
    <span style="color: #51afef;">)</span>
 </pre>
@@ -917,6 +917,7 @@ are a part of <code>org-mode</code>.
       <span style="color: #c678dd;">:map</span> <span style="color: #dcaeea;">org-mode-map</span>
       <span style="color: #98be65;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">"o"</span>
         <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Tags"</span> <span style="color: #98be65;">"t"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-set-tags</span>
+        <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Roam Bibtex"</span> <span style="color: #98be65;">"b"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">orb-note-actions</span>
         <span style="color: #51afef;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #c678dd;">(</span><span style="color: #98be65;">"p"</span> . <span style="color: #98be65;">"Properties"</span><span style="color: #c678dd;">)</span>
           <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Set"</span> <span style="color: #98be65;">"s"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-set-property</span>
           <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Delete"</span> <span style="color: #98be65;">"d"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-delete-property</span>
@@ -948,8 +949,8 @@ are a part of <code>org-mode</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-org4ceb458" class="outline-4">
-<h4 id="org4ceb458"><span class="section-number-4">0.4.8</span> Anki Editor</h4>
+<div id="outline-container-orgdab7a0f" class="outline-4">
+<h4 id="orgdab7a0f"><span class="section-number-4">0.4.8</span> Anki Editor</h4>
 <div class="outline-text-4" id="text-0-4-8">
 <p>
 These are only relevant to <code>org-mode</code>. Nevertheless they are not part of
@@ -972,8 +973,8 @@ These are only relevant to <code>org-mode</code>. Nevertheless they are not part
 </div>
 </div>
 </div>
-<div id="outline-container-orgf363a84" class="outline-4">
-<h4 id="orgf363a84"><span class="section-number-4">0.4.9</span> CC Mode</h4>
+<div id="outline-container-org5a31424" class="outline-4">
+<h4 id="org5a31424"><span class="section-number-4">0.4.9</span> CC Mode</h4>
 <div class="outline-text-4" id="text-0-4-9">
 <p>
 These are basically wrappers around various <code>rtags</code> functions.
@@ -1154,7 +1155,7 @@ This is a catch all for the eventual <code>org-mode</code> based multiple target
 </div>
 </div>
 </li>
-<li><a id="org115ba40"></a><span class="todo TODO">TODO</span> Caveats<br />
+<li><a id="orgd9d470c"></a><span class="todo TODO">TODO</span> Caveats<br />
 <div class="outline-text-5" id="text-0-5-2-3">
 <ul class="org-ul">
 <li>This actually forms it relative to the exact path.
@@ -1304,8 +1305,8 @@ need to be bound in <code>org-mode</code> files. Also updated to have <code>evil
 </div>
 </div>
 
-<div id="outline-container-orgdab7a0f" class="outline-3">
-<h3 id="orgdab7a0f"><span class="section-number-3">0.7</span> Anki Editor</h3>
+<div id="outline-container-org4bf3a85" class="outline-3">
+<h3 id="org4bf3a85"><span class="section-number-3">0.7</span> Anki Editor</h3>
 <div class="outline-text-3" id="text-0-7">
 <p>
 This is for my favorite <a href="https://github.com/louietan/anki-editor">anki interaction</a> mechanism.
@@ -1742,8 +1743,8 @@ highlighting Dockerfiles.
 </div>
 </div>
 </div>
-<div id="outline-container-org36e2552" class="outline-3">
-<h3 id="org36e2552"><span class="section-number-3">0.12</span> Functions</h3>
+<div id="outline-container-orgf33d574" class="outline-3">
+<h3 id="orgf33d574"><span class="section-number-3">0.12</span> Functions</h3>
 <div class="outline-text-3" id="text-0-12">
 </div>
 <div id="outline-container-org7116331" class="outline-4">
@@ -1893,8 +1894,8 @@ keep editing my files without waiting for it to finish creating the <code>pdf</c
 </div>
 </div>
 </div>
-<div id="outline-container-org837b1b6" class="outline-4">
-<h4 id="org837b1b6"><span class="section-number-4">0.12.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org456ef38" class="outline-4">
+<h4 id="org456ef38"><span class="section-number-4">0.12.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-12-5">
 <ul class="org-ul">
 <li>Minted needs to be setup.</li>
@@ -2110,8 +2111,8 @@ LTR order of preference.
 <h3 id="orgb749e3e"><span class="section-number-3">0.14</span> Hooks</h3>
 <div class="outline-text-3" id="text-0-14">
 </div>
-<div id="outline-container-orgd9d470c" class="outline-4">
-<h4 id="orgd9d470c"><span class="section-number-4">0.14.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org6e4833a" class="outline-4">
+<h4 id="org6e4833a"><span class="section-number-4">0.14.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-14-1">
 <p>
 Move all the hooks to this section if possible.
@@ -2123,7 +2124,7 @@ Move all the hooks to this section if possible.
 <div class="outline-text-4" id="text-0-14-2">
 </div>
 <ol class="org-ol">
-<li><a id="org5a31424"></a>CC Mode<br />
+<li><a id="org5338c2c"></a>CC Mode<br />
 <div class="outline-text-5" id="text-0-14-2-1">
 <p>
 Currently I only need to use the clang formatting hook here.
@@ -2376,8 +2377,8 @@ It makes sense to use <code>latexmk</code> anyway. This way I can set sane defau
 </div>
 </div>
 </div>
-<div id="outline-container-orgb768163" class="outline-4">
-<h4 id="orgb768163"><span class="section-number-4">2.1.2</span> Packages</h4>
+<div id="outline-container-org75cbdfb" class="outline-4">
+<h4 id="org75cbdfb"><span class="section-number-4">2.1.2</span> Packages</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Some of these are damn near universal given my set up, so they are declared here.
@@ -2497,7 +2498,7 @@ stackexchange</a> question.
 </div>
 </div>
 </li>
-<li><a id="org75cbdfb"></a>Packages<br />
+<li><a id="orga354ca4"></a>Packages<br />
 <div class="outline-text-5" id="text-2-3-0-2">
 <p>
 These are required to view math properly.
@@ -2713,13 +2714,11 @@ modified from <a href="https://github.com/zaeph/org-roam-bibtex/issues/4">here</
 <pre class="src src-emacs-lisp"> <span style="color: #51afef;">(</span><span style="color: #51afef;">use-package!</span> org-roam-bibtex
   <span style="color: #c678dd;">:after</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">org-roam</span><span style="color: #c678dd;">)</span>
   <span style="color: #c678dd;">:hook</span> <span style="color: #c678dd;">(</span><span style="color: #dcaeea;">org-roam-mode</span> . <span style="color: #dcaeea;">org-roam-bibtex-mode</span><span style="color: #c678dd;">)</span>
-  <span style="color: #c678dd;">:bind</span> <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:map</span> <span style="color: #dcaeea;">org-mode-map</span>
-         <span style="color: #98be65;">(</span><span style="color: #51afef;">(</span><span style="color: #98be65;">"n r B"</span> . orb-note-actions<span style="color: #51afef;">)</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
   <span style="color: #c678dd;">:config</span>
   <span style="color: #c678dd;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-mode</span> <span style="color: #98be65;">(</span><span style="color: #dcaeea;">org-roam-bibtex-mode</span> t<span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
-  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> org-roam-bibtex-preformat-keywords
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> <span style="color: #dcaeea;">org-roam-bibtex-preformat-keywords</span>
    <span style="color: #51afef;">'</span><span style="color: #98be65;">(</span><span style="color: #98be65;">"=key="</span> <span style="color: #98be65;">"title"</span> <span style="color: #98be65;">"url"</span> <span style="color: #98be65;">"file"</span> <span style="color: #98be65;">"author-or-editor"</span> <span style="color: #98be65;">"keywords"</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
-  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> orb-templates
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> <span style="color: #dcaeea;">orb-templates</span>
         <span style="color: #51afef;">'</span><span style="color: #98be65;">(</span><span style="color: #51afef;">(</span><span style="color: #98be65;">"r"</span> <span style="color: #98be65;">"ref"</span> plain <span style="color: #c678dd;">(</span><span style="color: #51afef;">function</span> org-roam-capture--get-point<span style="color: #c678dd;">)</span>
            <span style="color: #98be65;">""</span>
            <span style="color: #c678dd;">:file-name</span> <span style="color: #98be65;">"${slug}"</span>
@@ -2781,8 +2780,8 @@ required for the <a href="https://github.com/sprig/org-capture-extension#set-up-
 article thing.
 </p>
 </div>
-<div id="outline-container-orgf33d574" class="outline-4">
-<h4 id="orgf33d574"><span class="section-number-4">3.2.1</span> Functions</h4>
+<div id="outline-container-orgd60fac4" class="outline-4">
+<h4 id="orgd60fac4"><span class="section-number-4">3.2.1</span> Functions</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 These are needed for <code>org-capture</code> alone for now.
@@ -2843,7 +2842,7 @@ This might get complicated but I am only trying to get the bare minimum for
 <div id="postamble" class="status">
 <p class="date">Date: 2020:04:09</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2020-05-09 Sat 15:38</p>
+<p class="date">Created: 2020-05-09 Sat 15:49</p>
 </div>
 </body>
 </html>
