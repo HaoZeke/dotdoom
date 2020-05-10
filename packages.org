@@ -123,7 +123,7 @@ I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from 
 #+end_src
 ** Org Additions
 The new ones need to be covered in the ~config.org~ file with the appropriate
-keybindings.
+keybindings. The notes are [[https://rgoswami.me/posts/org-note-workflow][described here]].
 *** Org Download
 Now I load it here since I don't use ~+attach~.
 #+BEGIN_SRC emacs-lisp

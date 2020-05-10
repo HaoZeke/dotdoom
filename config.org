@@ -1420,10 +1420,7 @@ This includes settings for both flycheck and the packages it needs.
 #+END_SRC
 * Notes
 ** noteYoda
-This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility
-this will be broken down into a per-package configuration. The heart of this is
-an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links
-to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]]. More on this in a post later.
++This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility this will be broken down into a per-package configuration. The heart of this is an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]].+ Now described in [[https://rgoswami.me/posts/org-note-workflow][this post]].
 *** Org-Ref
 [[https://github.com/jkitchin/org-ref][This]] seems like an ubiquitous choice for working with org files and references,
 though quite a bit of the config here relates to [[https://github.com/tmalsburg/helm-bibtex/tree/file-field][helm-bibtex]]. *Commented*
