@@ -1440,7 +1440,7 @@ sections are set in my ~private~ config.
          org-ref-bibliography-notes "/home/haozeke/Git/Gitlab/Mine/Notes/bibnotes.org"
          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
          org-ref-notes-directory "/home/haozeke/Git/Gitlab/Mine/Notes/"
-         org-ref-notes-function 'org-ref-notes-function-many-files
+         org-ref-notes-function 'orb-edit-notes
     ))
 #+END_SRC
 
@@ -1491,7 +1491,6 @@ modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
-  (add-hook! 'org-mode (org-roam-bibtex-mode t))
   (setq org-roam-bibtex-preformat-keywords
    '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
   (setq orb-templates
