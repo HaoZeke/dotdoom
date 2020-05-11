@@ -482,6 +482,21 @@ These are mostly because movement without ~hnei~ is horrible. Read about it [[ht
   )
 (after! evil (global-evil-colemak-basics-mode))
 #+END_SRC
+**** Window Bindings
+These are somehow not part of the ~evil-colemak~ setup.
+#+BEGIN_SRC emacs-lisp
+(after! evil
+  (map! :map evil-window-map
+        (:leader
+         (:prefix ("w" . "Select Window")
+          :n :desc "Left"  "h" 'evil-window-left
+          :n :desc "Up"    "e" 'evil-window-up
+          :n :desc "Down"  "n" 'evil-window-down
+          :n :desc "Right" "i" 'evil-window-right
+          ))
+        ))
+#+END_SRC
+
 *** DONE Neotree --> Treemacs
 **** CANCELLED Toggle pane
 This remaps ~SPC o N~ to use ~treemacs~.
