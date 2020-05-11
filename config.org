@@ -474,7 +474,8 @@ these seem comfortable.
   "J" 'evil-scroll-page-down)
 #+END_SRC
 *** Evil Colemak
-These are mostly because movement without ~hnei~ is horrible. Read about it [[https://rgoswami.me/posts/colemak-dots-refactor/][here]].
+These are mostly because movement without ~hnei~ is horrible. Read about it
+[[https://rgoswami.me/posts/colemak-dots-refactor/][here]].
 #+BEGIN_SRC emacs-lisp
 (use-package! evil-colemak-basics
   :after evil
