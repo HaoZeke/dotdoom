@@ -103,6 +103,8 @@
        (eval +overlay)   ; run code, run (also, repls)
        gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
+        +dictionary      ; enable word definitions and thesaurus lookup
+        +offline         ; install and prefer offline dictionary/thesaurus
         +docsets)        ; ...on in Dash docsets locally
        lsp
        ;; macos            ; MacOS-specific commands
