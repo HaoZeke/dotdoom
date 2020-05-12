@@ -28,7 +28,6 @@
     - [[#org-mode-additions][Org Mode additions]]
     - [[#anki-editor][Anki Editor]]
     - [[#cc-mode][CC Mode]]
-    - [[#evil-movement][Evil Movement]]
     - [[#evil-colemak][Evil Colemak]]
     - [[#neotree----treemacs][Neotree --> Treemacs]]
     - [[#tex-mode][TeX Mode]]
@@ -462,16 +461,6 @@ These are basically wrappers around various ~rtags~ functions.
 "m r f r" '(rtags-find-references :wk "References")
 )
 
-#+END_SRC
-*** Evil Movement
-These are mostly for convinience. I know that the upper cased versions of
-commands are usually for the reverse action, but unless I get a 60% keyboard
-these seem comfortable.
-#+BEGIN_SRC emacs-lisp
-(nmap
-  "K" 'nil
-  "K" 'evil-scroll-page-up
-  "J" 'evil-scroll-page-down)
 #+END_SRC
 *** Evil Colemak
 These are mostly because movement without ~hnei~ is horrible. Read about it
