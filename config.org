@@ -472,6 +472,16 @@ These are mostly because movement without ~hnei~ is horrible. Read about it
   )
 (after! evil (global-evil-colemak-basics-mode))
 #+END_SRC
+**** Search
+Harmonizing with Vimium.
+#+BEGIN_SRC emacs-lisp
+(after! evil (map! :map evil-motion-state-map
+                   (:n :desc "Previous match" "K" 'evil-ex-search-previous
+                    :n :desc "Next match" "k" 'evil-ex-search-next
+                    :n :desc "Forward search" "/" 'evil-search-forward
+                    )
+                   ))
+#+END_SRC
 **** Window Bindings
 These are somehow not part of the ~evil-colemak~ setup.
 #+BEGIN_SRC emacs-lisp
@@ -486,7 +496,6 @@ These are somehow not part of the ~evil-colemak~ setup.
           ))
         ))
 #+END_SRC
-
 *** DONE Neotree --> Treemacs
 **** CANCELLED Toggle pane
 This remaps ~SPC o N~ to use ~treemacs~.
