@@ -20,6 +20,8 @@
 # Suppress section numbers
 #+OPTIONS: num:nil
 # Load first
+#+LATEX_HEADER: \\usepackage{amsmath}
+#+LATEX_HEADER: \\usepackage{unicode-math}
 #+LATEX_HEADER: \\usepackage{mathtools}
 #+LATEX_HEADER: \\usepackage{mathspec}
 #+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
@@ -61,7 +63,7 @@
 
 * References
 
-\printbibliography
+\\printbibliography[heading=none]
 
 # Local Variables:
 # after-save-hook: haozeke/org-save-and-export-pdf
