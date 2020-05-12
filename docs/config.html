@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-05-11 Mon 01:11 -->
+<!-- 2020-05-12 Tue 00:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate doom-emacs config</title>
@@ -279,12 +279,11 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org0e3aa5f">0.4.5. Markdown Improvements</a></li>
 <li><a href="#org1d99a6a">0.4.6. Org Noter</a></li>
 <li><a href="#org895b329">0.4.7. Org Mode additions</a></li>
-<li><a href="#orgdb85c69">0.4.8. Anki Editor</a></li>
-<li><a href="#org812c717">0.4.9. CC Mode</a></li>
-<li><a href="#org6c5782f">0.4.10. Evil Movement</a></li>
-<li><a href="#org5febf0b">0.4.11. Evil Colemak</a></li>
-<li><a href="#orgbb4b191">0.4.12. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
-<li><a href="#org00ae80b">0.4.13. TeX Mode</a></li>
+<li><a href="#orgfc184e8">0.4.8. Anki Editor</a></li>
+<li><a href="#org4dcda9c">0.4.9. CC Mode</a></li>
+<li><a href="#org5febf0b">0.4.10. Evil Colemak</a></li>
+<li><a href="#orgbb4b191">0.4.11. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
+<li><a href="#org00ae80b">0.4.12. TeX Mode</a></li>
 </ul>
 </li>
 <li><a href="#org71f494b">0.5. Safe Evals and Variables</a>
@@ -302,7 +301,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#orgfc27cf9">0.6.3. PDF Tools</a></li>
 </ul>
 </li>
-<li><a href="#orgfc184e8">0.7. Anki Editor</a></li>
+<li><a href="#orga6c35dc">0.7. Anki Editor</a></li>
 <li><a href="#org1a32a8d">0.8. Org Additions</a>
 <ul>
 <li><a href="#org442ceef">0.8.1. File Handling</a></li>
@@ -337,13 +336,13 @@ org_html_manager.setup();  // activate after the parameters are set
 </ul>
 </li>
 <li><a href="#org43ea918">0.11. Dockerfile Mode</a></li>
-<li><a href="#orgf95609e">0.12. Functions</a>
+<li><a href="#orgaabbf60">0.12. Functions</a>
 <ul>
 <li><a href="#org7116331">0.12.1. Org-Export HTML with useful IDs</a></li>
 <li><a href="#org4c01b77">0.12.2. Org-mode export pdf when saved</a></li>
 <li><a href="#org1b18652">0.12.3. Org-mode export koma-letter</a></li>
 <li><a href="#org13eed8a">0.12.4. Org-mode export TeX</a></li>
-<li><a href="#org9614979">0.12.5. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org46484ad">0.12.5. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org886e9cc">0.12.6. Helper function</a></li>
 <li><a href="#org4387b03">0.12.7. Async Command without Buffers</a></li>
 <li><a href="#org94a9690">0.12.8. Smarter Clang Formatting</a></li>
@@ -358,7 +357,7 @@ org_html_manager.setup();  // activate after the parameters are set
 </li>
 <li><a href="#orgb749e3e">0.14. Hooks</a>
 <ul>
-<li><a href="#org1fb8f27">0.14.1. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org7553447">0.14.1. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org5f292ef">0.14.2. Before Save Hooks</a></li>
 <li><a href="#org5b0d52f">0.14.3. Disable Auto RDM</a></li>
 </ul>
@@ -387,7 +386,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org8570f5d">2.1. Shared Preferences</a>
 <ul>
 <li><a href="#org9329351">2.1.1. Compiler</a></li>
-<li><a href="#orgeae7033">2.1.2. Packages</a></li>
+<li><a href="#org54bfbf2">2.1.2. Packages</a></li>
 </ul>
 </li>
 <li><a href="#org63c51db">2.2. Export Templates</a>
@@ -424,7 +423,7 @@ org_html_manager.setup();  // activate after the parameters are set
 </li>
 <li><a href="#org7441d83">3.2. Org Capture</a>
 <ul>
-<li><a href="#orgaabbf60">3.2.1. Functions</a></li>
+<li><a href="#orgc795532">3.2.1. Functions</a></li>
 <li><a href="#org192d796">3.2.2. Templates</a></li>
 </ul>
 </li>
@@ -949,8 +948,8 @@ are a part of <code>org-mode</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb85c69" class="outline-4">
-<h4 id="orgdb85c69"><span class="section-number-4">0.4.8</span> Anki Editor</h4>
+<div id="outline-container-orgfc184e8" class="outline-4">
+<h4 id="orgfc184e8"><span class="section-number-4">0.4.8</span> Anki Editor</h4>
 <div class="outline-text-4" id="text-0-4-8">
 <p>
 These are only relevant to <code>org-mode</code>. Nevertheless they are not part of
@@ -973,8 +972,8 @@ These are only relevant to <code>org-mode</code>. Nevertheless they are not part
 </div>
 </div>
 </div>
-<div id="outline-container-org812c717" class="outline-4">
-<h4 id="org812c717"><span class="section-number-4">0.4.9</span> CC Mode</h4>
+<div id="outline-container-org4dcda9c" class="outline-4">
+<h4 id="org4dcda9c"><span class="section-number-4">0.4.9</span> CC Mode</h4>
 <div class="outline-text-4" id="text-0-4-9">
 <p>
 These are basically wrappers around various <code>rtags</code> functions.
@@ -1002,26 +1001,9 @@ These are basically wrappers around various <code>rtags</code> functions.
 </div>
 </div>
 </div>
-<div id="outline-container-org6c5782f" class="outline-4">
-<h4 id="org6c5782f"><span class="section-number-4">0.4.10</span> Evil Movement</h4>
-<div class="outline-text-4" id="text-0-4-10">
-<p>
-These are mostly for convinience. I know that the upper cased versions of
-commands are usually for the reverse action, but unless I get a 60% keyboard
-these seem comfortable.
-</p>
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">nmap</span>
-  <span style="color: #98be65;">"K"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">nil</span>
-  <span style="color: #98be65;">"K"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">evil-scroll-page-up</span>
-  <span style="color: #98be65;">"J"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">evil-scroll-page-down</span><span style="color: #51afef;">)</span>
-</pre>
-</div>
-</div>
-</div>
 <div id="outline-container-org5febf0b" class="outline-4">
-<h4 id="org5febf0b"><span class="section-number-4">0.4.11</span> Evil Colemak</h4>
-<div class="outline-text-4" id="text-0-4-11">
+<h4 id="org5febf0b"><span class="section-number-4">0.4.10</span> Evil Colemak</h4>
+<div class="outline-text-4" id="text-0-4-10">
 <p>
 These are mostly because movement without <code>hnei</code> is horrible. Read about it
 <a href="https://rgoswami.me/posts/colemak-dots-refactor/">here</a>.
@@ -1036,8 +1018,24 @@ These are mostly because movement without <code>hnei</code> is horrible. Read ab
 </div>
 </div>
 <ol class="org-ol">
+<li><a id="org97ebb63"></a>Search<br />
+<div class="outline-text-5" id="text-0-4-10-1">
+<p>
+Harmonizing with Vimium.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">after!</span> evil <span style="color: #c678dd;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:map</span> <span style="color: #dcaeea;">evil-motion-state-map</span>
+                   <span style="color: #98be65;">(</span><span style="color: #c678dd;">:n</span> <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Previous match"</span> <span style="color: #98be65;">"K"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">evil-ex-search-previous</span>
+                    <span style="color: #c678dd;">:n</span> <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Next match"</span> <span style="color: #98be65;">"k"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">evil-ex-search-next</span>
+                    <span style="color: #c678dd;">:n</span> <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Forward search"</span> <span style="color: #98be65;">"/"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">evil-search-forward</span>
+                    <span style="color: #98be65;">)</span>
+                   <span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</li>
 <li><a id="org377959d"></a>Window Bindings<br />
-<div class="outline-text-5" id="text-0-4-11-1">
+<div class="outline-text-5" id="text-0-4-10-2">
 <p>
 These are somehow not part of the <code>evil-colemak</code> setup.
 </p>
@@ -1058,14 +1056,13 @@ These are somehow not part of the <code>evil-colemak</code> setup.
 </li>
 </ol>
 </div>
-
 <div id="outline-container-orgbb4b191" class="outline-4">
-<h4 id="orgbb4b191"><span class="section-number-4">0.4.12</span> <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</h4>
-<div class="outline-text-4" id="text-0-4-12">
+<h4 id="orgbb4b191"><span class="section-number-4">0.4.11</span> <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</h4>
+<div class="outline-text-4" id="text-0-4-11">
 </div>
 <ol class="org-ol">
 <li><a id="org34a39fb"></a>CANCELLED Toggle pane<br />
-<div class="outline-text-5" id="text-0-4-12-1">
+<div class="outline-text-5" id="text-0-4-11-1">
 <p>
 This remaps <code>SPC o N</code> to use <code>treemacs</code>.
 I guess this doesn&rsquo;t make all that much sense, but <code>t</code> and <code>T</code> and bound to
@@ -1092,8 +1089,8 @@ Cancelled since <a href="https://github.com/hlissner/doom-emacs/commit/287460cb0
 </ol>
 </div>
 <div id="outline-container-org00ae80b" class="outline-4">
-<h4 id="org00ae80b"><span class="section-number-4">0.4.13</span> TeX Mode</h4>
-<div class="outline-text-4" id="text-0-4-13">
+<h4 id="org00ae80b"><span class="section-number-4">0.4.12</span> TeX Mode</h4>
+<div class="outline-text-4" id="text-0-4-12">
 <p>
 These are more semantic for me.
 </p>
@@ -1179,7 +1176,7 @@ This is a catch all for the eventual <code>org-mode</code> based multiple target
 </div>
 </div>
 </li>
-<li><a id="org5388d2d"></a><span class="todo TODO">TODO</span> Caveats<br />
+<li><a id="org1fb8f27"></a><span class="todo TODO">TODO</span> Caveats<br />
 <div class="outline-text-5" id="text-0-5-2-3">
 <ul class="org-ul">
 <li>This actually forms it relative to the exact path.
@@ -1329,8 +1326,8 @@ need to be bound in <code>org-mode</code> files. Also updated to have <code>evil
 </div>
 </div>
 
-<div id="outline-container-orgfc184e8" class="outline-3">
-<h3 id="orgfc184e8"><span class="section-number-3">0.7</span> Anki Editor</h3>
+<div id="outline-container-orga6c35dc" class="outline-3">
+<h3 id="orga6c35dc"><span class="section-number-3">0.7</span> Anki Editor</h3>
 <div class="outline-text-3" id="text-0-7">
 <p>
 This is for my favorite <a href="https://github.com/louietan/anki-editor">anki interaction</a> mechanism.
@@ -1767,8 +1764,8 @@ highlighting Dockerfiles.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf95609e" class="outline-3">
-<h3 id="orgf95609e"><span class="section-number-3">0.12</span> Functions</h3>
+<div id="outline-container-orgaabbf60" class="outline-3">
+<h3 id="orgaabbf60"><span class="section-number-3">0.12</span> Functions</h3>
 <div class="outline-text-3" id="text-0-12">
 </div>
 <div id="outline-container-org7116331" class="outline-4">
@@ -1918,8 +1915,8 @@ keep editing my files without waiting for it to finish creating the <code>pdf</c
 </div>
 </div>
 </div>
-<div id="outline-container-org9614979" class="outline-4">
-<h4 id="org9614979"><span class="section-number-4">0.12.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org46484ad" class="outline-4">
+<h4 id="org46484ad"><span class="section-number-4">0.12.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-12-5">
 <ul class="org-ul">
 <li>Minted needs to be setup.</li>
@@ -2135,8 +2132,8 @@ LTR order of preference.
 <h3 id="orgb749e3e"><span class="section-number-3">0.14</span> Hooks</h3>
 <div class="outline-text-3" id="text-0-14">
 </div>
-<div id="outline-container-org1fb8f27" class="outline-4">
-<h4 id="org1fb8f27"><span class="section-number-4">0.14.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org7553447" class="outline-4">
+<h4 id="org7553447"><span class="section-number-4">0.14.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-0-14-1">
 <p>
 Move all the hooks to this section if possible.
@@ -2148,7 +2145,7 @@ Move all the hooks to this section if possible.
 <div class="outline-text-4" id="text-0-14-2">
 </div>
 <ol class="org-ol">
-<li><a id="org4dcda9c"></a>CC Mode<br />
+<li><a id="org245a67a"></a>CC Mode<br />
 <div class="outline-text-5" id="text-0-14-2-1">
 <p>
 Currently I only need to use the clang formatting hook here.
@@ -2401,8 +2398,8 @@ It makes sense to use <code>latexmk</code> anyway. This way I can set sane defau
 </div>
 </div>
 </div>
-<div id="outline-container-orgeae7033" class="outline-4">
-<h4 id="orgeae7033"><span class="section-number-4">2.1.2</span> Packages</h4>
+<div id="outline-container-org54bfbf2" class="outline-4">
+<h4 id="org54bfbf2"><span class="section-number-4">2.1.2</span> Packages</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Some of these are damn near universal given my set up, so they are declared here.
@@ -2522,7 +2519,7 @@ stackexchange</a> question.
 </div>
 </div>
 </li>
-<li><a id="org54bfbf2"></a>Packages<br />
+<li><a id="orgab8d850"></a>Packages<br />
 <div class="outline-text-5" id="text-2-3-0-2">
 <p>
 These are required to view math properly.
@@ -2800,8 +2797,8 @@ required for the <a href="https://github.com/sprig/org-capture-extension#set-up-
 article thing.
 </p>
 </div>
-<div id="outline-container-orgaabbf60" class="outline-4">
-<h4 id="orgaabbf60"><span class="section-number-4">3.2.1</span> Functions</h4>
+<div id="outline-container-orgc795532" class="outline-4">
+<h4 id="orgc795532"><span class="section-number-4">3.2.1</span> Functions</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <p>
 These are needed for <code>org-capture</code> alone for now.
@@ -2862,7 +2859,7 @@ This might get complicated but I am only trying to get the bare minimum for
 <div id="postamble" class="status">
 <p class="date">Date: 2020:04:09</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2020-05-11 Mon 01:11</p>
+<p class="date">Created: 2020-05-12 Tue 00:43</p>
 </div>
 </body>
 </html>
