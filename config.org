@@ -111,6 +111,7 @@
     - [[#org-roam][Org-Roam]]
     - [[#org-noter-1][Org-Noter]]
   - [[#org-capture][Org Capture]]
+    - [[#buffer-size][Buffer Size]]
     - [[#functions-1][Functions]]
     - [[#templates][Templates]]
 
@@ -1595,6 +1596,10 @@ tasks...
 I am not really sure how to use these correctly, but I have the bare minimum
 required for the [[https://github.com/sprig/org-capture-extension#set-up-handlers-in-emacs][Firefox browser extension]] (setup [[http://www.mediaonfire.com/blog/2017_07_21_org_protocol_firefox.html][from here]]), and a random
 article thing.
+*** Buffer Size
+#+BEGIN_SRC emacs-lisp :results none
+(set-popup-rule! "^CAPTURE-.*\\.org$" :size 0.5 :quit nil :select t :autosave t)
+#+END_SRC
 *** Functions
 These are needed for ~org-capture~ alone for now.
 #+BEGIN_SRC emacs-lisp
@@ -1607,7 +1612,7 @@ These are needed for ~org-capture~ alone for now.
 #+END_SRC
 *** Templates
 This might get complicated but I am only trying to get the bare minimum for
-~org-protocol~ right now.
+~org-protocol~ right now. Will look into [[https://github.com/abo-abo/orca][orca]] and [[https://github.com/progfolio/doct/][doct]].
 #+BEGIN_SRC emacs-lisp
 ;; Actually start using templates
 (after! org-capture
