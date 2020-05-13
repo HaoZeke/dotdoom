@@ -715,8 +715,8 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
                                                  ;; '((julia . t))
                                                  '((mathematica . t))
                                                  ))
-            (setq org-babel-mathematica-command "~/.local/bin/mash")
             )
+(setq org-babel-mathematica-command "~/.local/bin/mash")
 #+END_SRC
 *** Org Config
 These are just variables I need to set to prevent things from dying.
