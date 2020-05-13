@@ -4,7 +4,7 @@
 #+HTML_LINK_HOME: https://rgoswami.me
 #+HTML_HEAD_EXTRA: <script> window.goatcounter = { path: '/dotdoomhome', }; </script>
 #+HTML_HEAD_EXTRA: <script data-goatcounter="https://rgoswami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-#+PROPERTY: header-args :tangle yes
+#+PROPERTY: header-args :tangle yes :results none
 #+OPTIONS: toc:nil
 
 ** Table of Contents :noexport:TOC_3_gh:
