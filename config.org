@@ -719,10 +719,57 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
 #+END_SRC
 *** Org Config
 These are just variables I need to set to prevent things from dying.
+**** Switching to XeLaTeX
+Since I use a lot of unicode math; it makes sense to switch from LaTeX to
+XeLaTeX everywhere. This section borrows heavily from [[https://github.com/david-sawatzke/dotfiles/blob/80f9ffb265bf664623f5ad39f3a64771e90a402e/doom.d/config.el][here]] and [[https://github.com/isfootaken/.emacs.d/blob/f2a3cd64c62ec1be544bdb8e2427a0e2fafcaf02/conf.org][here]]. Might
+possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f770d7427665fa1f8e691fd4c2316febcb41d/conf.org#org-latex-preview][at this]] later too.
+#+BEGIN_SRC emacs-lisp
+;; Set after the default-packages list anyway
+(setq org-latex-packages-alist 'nil)
+(setq org-latex-default-packages-alist
+  '(("AUTO" "inputenc"  t ("pdflatex"))
+    ("T1"   "fontenc"   t ("pdflatex"))
+    (""     "graphicx"  t)
+    (""     "grffile"   t)
+    (""     "minted"   t)
+    (""     "xcolor"   t)
+    (""     "longtable" nil)
+    (""     "wrapfig"   nil)
+    (""     "rotating"  nil)
+    ("normalem" "ulem"  t)
+    (""     "amsmath"   t)
+    (""     "amssymb"   t)
+    (""     "unicode-math"   t)
+    (""     "mathtools"   t)
+    (""     "textcomp"  t)
+    (""     "capt-of"   nil)
+    (""     "hyperref"  nil)))
+;; (add-to-list 'org-latex-default-packages-alist '("" "fontspec" t))
+;; (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
+;; (add-to-list 'org-latex-packages-alist '("" "unicode-math"))
+(plist-put org-format-latex-options :scale 2.2)
+(add-to-list 'org-preview-latex-process-alist '(dvixelatex :programs
+         ("xetex" "convert")
+         :description "pdf > png" :message "you need to install the programs: xetex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+         (1.0 . 1.0)
+         :latex-compiler
+         ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
+         :image-converter
+         ("dvisvgm %f -n -b min -c %S -o %O")))
+
+(add-to-list 'org-preview-latex-process-alist '(imagexetex :programs
+         ("xelatex" "convert")
+         :description "pdf > png" :message "you need to install the programs: xelatex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+         (1.0 . 1.0)
+         :latex-compiler
+         ("xelatex -interaction nonstopmode -output-directory %o %f")
+         :image-converter
+         ("convert -density %D -trim -antialias %f -quality 100 %O")))
+#+END_SRC
 **** Inline images
 These need to be disabled by default otherwise ~emacs~ stalls often. Also, it turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better, once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
 #+BEGIN_SRC emacs-lisp
-(setq org-preview-latex-default-process 'imagemagick)
+(setq org-preview-latex-default-process 'imagexetex)
 (setq org-startup-with-inline-images 'nil)
 (setq org-image-actual-width 500)
 #+END_SRC
