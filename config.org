@@ -1525,6 +1525,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
    (concat
     "#+TITLE: ${title}\n"
     "#+ROAM_KEY: cite:${=key=}\n"
+    "#+ROAM_TAGS: ${keywords}\n"
     "* TODO Notes\n"
     ":PROPERTIES:\n"
     ":Custom_ID: ${=key=}\n"
@@ -1556,9 +1557,8 @@ modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
         '(("r" "ref" plain (function org-roam-capture--get-point)
            ""
            :file-name "${slug}"
-           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}
+           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS: 
 
-- tags ::
 - keywords :: ${keywords}
 
 \n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
