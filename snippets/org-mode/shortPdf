@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: short-pdf
 # contributor: Rohit Goswami (HaoZeke)
-# key:  <spdf
+# key:  <spdf                                                   
 # --
 
 #+TITLE: ${1:Statement of Purpose}
@@ -23,7 +23,7 @@
 #+LATEX_HEADER: \\usepackage{amsmath}
 #+LATEX_HEADER: \\usepackage{unicode-math}
 #+LATEX_HEADER: \\usepackage{mathtools}
-#+LATEX_HEADER: \\usepackage{mathspec}
+#+LATEX_HEADER: # \\usepackage{mathspec} Either this or mathtools
 #+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
 #+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{HoeflerText} % If Hoefler is missing replace with Crimson
 #+LATEX_HEADER: \\setsansfont[Scale=0.8]{Roboto} % Used to be Helvetica Neue LT Com -> Nimbus Sans
@@ -66,5 +66,5 @@
 \\printbibliography[heading=none]
 
 # Local Variables:
-# after-save-hook: haozeke/org-save-and-export-pdf
+# after-save-hook: haozeke/org-save-and-export-latex
 # End:
