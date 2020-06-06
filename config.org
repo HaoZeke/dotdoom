@@ -249,14 +249,8 @@ Actually this might not be ported over so I'm just going to put this elsewhere.
 (general-auto-unbind-keys)
 #+END_SRC
 *** Spacemacs Equivalency
-**** Escape
-I find the default ~jk~ evil escape key sequence to be distracting as I am
-unable to navigate with one hand on the mouse anymore.
-#+BEGIN_SRC emacs-lisp
-(setq-default evil-escape-key-sequence "fd")
-#+END_SRC
 **** Kill buffer
-Also it's inconvinient to have a key chord requiring two hands to close a
+Also it's inconvenient to have a key chord requiring two hands to close a
 buffer.
 #+BEGIN_SRC emacs-lisp
 ; Compatibility, delete when fully migrated
