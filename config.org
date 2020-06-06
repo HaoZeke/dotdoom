@@ -85,7 +85,8 @@
     - [[#disable-auto-rdm][Disable Auto RDM]]
   - [[#troubleshooting][Troubleshooting]]
 - [[#r-helpers][R Helpers]]
-    - [[#polymode][Polymode]]
+    - [[#r-markdown][R Markdown]]
+    - [[#rmd-to-rorg][Rmd to Rorg]]
 - [[#org-latex][Org LaTeX]]
     - [[#async-config][Async Config]]
     - [[#path-additions][Path Additions]]
@@ -1251,7 +1252,21 @@ Basically only ~poly-markdown~ for ~rmd~ files.
       ;;   :desc "Mark-Extend" "m" . 'polymode-mark-or-extend-chunk)
       ))
   )
-
+#+END_SRC
+*** LATER Rmd to Rorg
+The idea is to replace ~md~ completely with ~org~.
+#+BEGIN_SRC emacs-lisp
+(use-package! poly-org
+:config
+(add-to-list 'auto-mode-alist '("\\.Rorg" . poly-org-mode))
+(add-to-list 'auto-mode-alist '("\\.org" . org-mode))
+(map! (:localleader
+      :map polymode-mode-map
+      :desc "Export"   "E" 'polymode-export
+      :desc "Errors" "$" 'polymode-show-process-buffer
+      :desc "Weave" "w" 'polymode-weave
+      ))
+  )
 #+END_SRC
 * Org LaTeX
 Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's
