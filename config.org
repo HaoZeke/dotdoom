@@ -1336,8 +1336,8 @@ Due to my recent switch to using ~tlmgr~, I had to make some modifications to
 the ~emacs~ path.
 #+NAME: orgPaths
 #+BEGIN_SRC emacs-lisp
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2019/bin/x86_64-linux"))
-(setq exec-path (append exec-path '("/usr/local/texlive/2019/bin/x86_64-linux")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
 #+END_SRC
 *** Config
 This is the part which is exported normally.

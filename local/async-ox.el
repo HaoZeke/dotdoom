@@ -31,8 +31,8 @@
 (require 'org-ref)
 
 ;; Path addtion
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2019/bin/x86_64-linux"))
-(setq exec-path (append exec-path '("/usr/local/texlive/2019/bin/x86_64-linux")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
+(setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
 
 ;; Functions
 ;; this function is used to append multiple elements to the list 'ox-latex
