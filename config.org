@@ -507,8 +507,8 @@ Harmonizing with Zathura.
 #+BEGIN_SRC emacs-lisp
 (after! evil
   (map! :map evil-colemak-basics-keymap
-      :n "N" 'evil-scroll-page-up
-      :n "E" 'evil-scroll-page-down)
+      :n "N" 'evil-scroll-page-down
+      :n "E" 'evil-scroll-page-up)
   )
 #+END_SRC
 *** DONE Neotree --> Treemacs
