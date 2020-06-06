@@ -18,6 +18,7 @@
     - [[#kill-over-eager-literate-after-save-hook][Kill over-eager literate after-save-hook]]
     - [[#kill-orgmode-template][Kill Orgmode template]]
     - [[#variables][Variables]]
+    - [[#do-not-format-on-save][Do not Format on Save]]
   - [[#keybindings][Keybindings]]
     - [[#general][General]]
     - [[#evil-setup-and-error-handling][Evil Setup and Error Handling]]
@@ -211,7 +212,16 @@ These conflict with my other templates.
    org-roam-directory org_notes
    )
 #+end_src
-
+*** Do not Format on Save
+Formatting with ~styler~ takes forever.
+#+BEGIN_SRC emacs-lisp
+(setq +format-on-save-enabled-modes '(not emacs-lisp-mode ; works well enough without it
+                                          sql-mode        ; sqlformat is broken
+                                          tex-mode        ; latexindent is broken
+                                          latex-mode      ; latexindent is broken
+                                          ess-r-mode        ; styler takes forever
+                                          ))
+#+END_SRC
 ** Keybindings
 These are eventually going to with [[https://github.com/noctuid/general.el][general]] anyway. So it's better to load that
 for now and carry on. Later this block can be prevented from being tangled.
