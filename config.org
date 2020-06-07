@@ -1258,7 +1258,7 @@ upstream.
 * R Helpers
 This section is essentially to configure working with ~R~ above and beyond the
 default ~ess~ configuration supplied by ~doom-emacs~.
-*** Polymode
+*** R Markdown
 Basically only ~poly-markdown~ for ~rmd~ files.
 #+BEGIN_SRC emacs-lisp
 ;; Load
@@ -1279,13 +1279,13 @@ Basically only ~poly-markdown~ for ~rmd~ files.
       ))
   )
 #+END_SRC
-*** LATER Rmd to Rorg
-The idea is to replace ~md~ completely with ~org~.
+*** DONE Rmd to Rorg
+The idea is to replace ~md~ completely with ~org~. Since ~polymode~ is pretty finicky for most of my ~org~ files, I will ensure it is only enabled for ~Rorg~ files.
 #+BEGIN_SRC emacs-lisp
 (use-package! poly-org
 :config
-(add-to-list 'auto-mode-alist '("\\.Rorg" . poly-org-mode))
 (add-to-list 'auto-mode-alist '("\\.org" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.Rorg" . poly-org-mode))
 (map! (:localleader
       :map polymode-mode-map
       :desc "Export"   "E" 'polymode-export

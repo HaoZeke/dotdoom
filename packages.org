@@ -280,9 +280,10 @@ Actually ~wolfram-mode~ seems to be able to do more than just syntax highlightin
 (package! wolfram-mode)
 #+END_SRC
 *** Polymode
-For working with ~.rmd~ files.
+For working with ~.Rmd~ files and better ~orgmode~ R support.
 #+BEGIN_SRC emacs-lisp
 (package! poly-R)
+(package! poly-org)
 #+END_SRC
 ** Flycheck Additions
 *** MELPA Helper

@@ -91,6 +91,7 @@
 
 ;; [[file:~/.config/doom/packages.org::*Polymode][Polymode:1]]
 (package! poly-R)
+(package! poly-org)
 ;; Polymode:1 ends here
 
 ;; [[file:~/.config/doom/packages.org::*MELPA Helper][MELPA Helper:1]]
