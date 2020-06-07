@@ -30,6 +30,10 @@
 (package! helm-org-rifle)
 ;; Org Rifle:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Org Async][Org Async:1]]
+(package! org-babel-eval-in-repl)
+;; Org Async:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Org Roam Bibtex][Org Roam Bibtex:1]]
 (package! org-roam-bibtex)
 ;; Org Roam Bibtex:1 ends here

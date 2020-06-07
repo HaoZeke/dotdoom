@@ -47,6 +47,7 @@
     - [[#kill-ob-julia][KILL Ob-Julia]]
     - [[#org-download][Org Download]]
     - [[#org-babel][Org Babel]]
+    - [[#async-org-babel][Async Org Babel]]
     - [[#org-config][Org Config]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-mind-map][Org Mind Map]]
@@ -398,6 +399,7 @@ are a part of ~org-mode~.
 #+BEGIN_SRC emacs-lisp
 (after! org (map! :localleader
       :map org-mode-map
+      :desc "Eval Block" "e" 'ober-eval-block-in-repl
       (:prefix "o"
         :desc "Tags" "t" 'org-set-tags
         :desc "Roam Bibtex" "b" 'orb-note-actions
@@ -745,6 +747,15 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
             )
 (setq org-babel-mathematica-command "~/.local/bin/mash")
 #+END_SRC
+*** Async Org Babel
+From [[https://github.com/diadochos/org-babel-eval-in-repl][here]]. Now we can configure this.
+#+BEGIN_SRC emacs-lisp
+(use-package! org-babel-eval-in-repl
+  :after org
+  :config
+  (setq eir-jump-after-eval nil)
+  )
+#+END_SRC
 *** Org Config
 These are just variables I need to set to prevent things from dying.
 **** Switching to XeLaTeX
@@ -1071,7 +1082,7 @@ This one is to generate pdfs whenever a buffer is saved. Mainly taken from
 ; Pdf
 (defun haozeke/org-save-and-export-pdf ()
   (if (eq major-mode 'org-mode)
-    (org-latex-export-to-pdf t)))
+    (org-latex-export-to-pdf :async t)))
 #+END_SRC
 
 *** Org-mode export koma-letter
@@ -1079,7 +1090,7 @@ Since the ~koma-letter~ backend is separate, this needs a function as well.
 #+BEGIN_SRC emacs-lisp
 (defun haozeke/org-save-and-export-koma-letter-pdf ()
   (if (eq major-mode 'org-mode)
-    (org-koma-letter-export-to-pdf t)))
+    (org-koma-letter-export-to-pdf :async t)))
 #+END_SRC
 *** Org-mode export TeX
 Similar to the one above, but ~tex~ generation is much faster and this way I can
@@ -1088,10 +1099,10 @@ keep editing my files without waiting for it to finish creating the ~pdf~.
 ; LaTeX
 (defun haozeke/org-save-and-export-latex ()
   (if (eq major-mode 'org-mode)
-    (org-latex-export-to-latex t)))
+    (org-latex-export-to-latex :async t)))
 (defun haozeke/org-save-and-export-beamer ()
   (if (eq major-mode 'org-mode)
-    (org-beamer-export-to-latex  t)))
+    (org-beamer-export-to-latex :async t)))
 #+END_SRC
 *** TODO Caveats
 - Minted needs to be setup.
