@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <!-- 2020-05-10 Sun 16:54 -->
+    <!-- 2020-06-07 Sun 13:37 -->
     <meta http-equiv="Content-Type"
     content="text/html;charset=utf-8" />
     <meta name="viewport"
@@ -304,26 +304,33 @@ org_html_manager.setup();  // activate after the parameters are set
                   <a href="#orgd098e05">6.2. LATER Org Drill</a>
                 </li>
                 <li>
-                  <a href="#orga0b0f49">6.3. 
+                  <a href="#org6416d1a">6.3. Org Protocol
+                  Updates</a>
+                </li>
+                <li>
+                  <a href="#orga0b0f49">6.4. 
                   <span class="todo TODO">TODO</span>Org Noter</a>
                 </li>
                 <li>
-                  <a href="#orgbec21de">6.4. Org Ref</a>
+                  <a href="#orgbec21de">6.5. Org Ref</a>
                 </li>
                 <li>
-                  <a href="#org49c54fe">6.5. Org Mind Map</a>
+                  <a href="#org49c54fe">6.6. Org Mind Map</a>
                 </li>
                 <li>
-                  <a href="#org60dd72b">6.6. Org Rifle</a>
+                  <a href="#org60dd72b">6.7. Org Rifle</a>
                 </li>
                 <li>
-                  <a href="#org0b4c8a6">6.7. Anki Mode</a>
+                  <a href="#org9fcc958">6.8. Org Async</a>
                 </li>
                 <li>
-                  <a href="#orgfb35e15">6.8. Org Re-Reveal Ref</a>
+                  <a href="#org0b4c8a6">6.9. Anki Mode</a>
                 </li>
                 <li>
-                  <a href="#org621250e">6.9. Org Roam Bibtex</a>
+                  <a href="#orgfb35e15">6.10. Org Re-Reveal Ref</a>
+                </li>
+                <li>
+                  <a href="#org621250e">6.11. Org Roam Bibtex</a>
                 </li>
               </ul>
             </li>
@@ -646,11 +653,38 @@ org_html_manager.setup();  // activate after the parameters are set
             </div>
           </div>
         </div>
+        <div id="outline-container-org6416d1a" class="outline-3">
+          <h3 id="org6416d1a">
+          <span class="section-number-3">6.3</span>Org Protocol
+          Updates</h3>
+          <div class="outline-text-3" id="text-6-3">
+            <p>This needs to be installed specially, 
+            <a href="https://github.com/alphapapa/org-protocol-capture-html">
+            from this repo</a>.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span>
+org-protocol-capture-html
+  
+<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #c678dd;">(</span>
+<span style="color: #c678dd;">:host</span> github
+           
+<span style="color: #c678dd;">:repo</span> 
+<span style="color: #98be65;">
+"alphapapa/org-protocol-capture-html"</span>
+<span style="color: #c678dd;">)</span>
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
         <div id="outline-container-orga0b0f49" class="outline-3">
           <h3 id="orga0b0f49">
-          <span class="section-number-3">6.3</span>
+          <span class="section-number-3">6.4</span>
           <span class="todo TODO">TODO</span>Org Noter</h3>
-          <div class="outline-text-3" id="text-6-3">
+          <div class="outline-text-3" id="text-6-4">
             <p>This is sort of more of a 
             <code>pdf-tools</code>extension and it needs it’s own 
             <code>biblatex</code>setup and stuff as well so this
@@ -668,8 +702,8 @@ org_html_manager.setup();  // activate after the parameters are set
         </div>
         <div id="outline-container-orgbec21de" class="outline-3">
           <h3 id="orgbec21de">
-          <span class="section-number-3">6.4</span>Org Ref</h3>
-          <div class="outline-text-3" id="text-6-4">
+          <span class="section-number-3">6.5</span>Org Ref</h3>
+          <div class="outline-text-3" id="text-6-5">
             <p>This is probably not the best thing in my current
             setup.. Now part of the 
             <code>init.el</code>setup.</p>
@@ -684,9 +718,9 @@ org_html_manager.setup();  // activate after the parameters are set
         </div>
         <div id="outline-container-org49c54fe" class="outline-3">
           <h3 id="org49c54fe">
-          <span class="section-number-3">6.5</span>Org Mind
+          <span class="section-number-3">6.6</span>Org Mind
           Map</h3>
-          <div class="outline-text-3" id="text-6-5">
+          <div class="outline-text-3" id="text-6-6">
             <p>Not on MELPA yet. From 
             <a href="https://github.com/theodorewiles/org-mind-map">
             here</a>.</p>
@@ -709,8 +743,8 @@ org_html_manager.setup();  // activate after the parameters are set
         </div>
         <div id="outline-container-org60dd72b" class="outline-3">
           <h3 id="org60dd72b">
-          <span class="section-number-3">6.6</span>Org Rifle</h3>
-          <div class="outline-text-3" id="text-6-6">
+          <span class="section-number-3">6.7</span>Org Rifle</h3>
+          <div class="outline-text-3" id="text-6-7">
             <p>Technically a helm addition. Perfect for monolithic 
             <code>org</code>files. More details 
             <a href="https://github.com/alphapapa/helm-org-rifle">
@@ -724,10 +758,25 @@ org_html_manager.setup();  // activate after the parameters are set
             </div>
           </div>
         </div>
+        <div id="outline-container-org9fcc958" class="outline-3">
+          <h3 id="org9fcc958">
+          <span class="section-number-3">6.8</span>Org Async</h3>
+          <div class="outline-text-3" id="text-6-8">
+            <p>We will use this.</p>
+            <div class="org-src-container">
+              <pre class="src src-emacs-lisp">
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span>
+org-babel-eval-in-repl
+<span style="color: #51afef;">)</span>
+</pre>
+            </div>
+          </div>
+        </div>
         <div id="outline-container-org0b4c8a6" class="outline-3">
           <h3 id="org0b4c8a6">
-          <span class="section-number-3">6.7</span>Anki Mode</h3>
-          <div class="outline-text-3" id="text-6-7">
+          <span class="section-number-3">6.9</span>Anki Mode</h3>
+          <div class="outline-text-3" id="text-6-9">
             <p>This is put here since it only works with 
             <code>org-mode</code>stuff.</p>
             <div class="org-src-container">
@@ -741,9 +790,9 @@ org_html_manager.setup();  // activate after the parameters are set
         </div>
         <div id="outline-container-orgfb35e15" class="outline-3">
           <h3 id="orgfb35e15">
-          <span class="section-number-3">6.8</span>Org Re-Reveal
+          <span class="section-number-3">6.10</span>Org Re-Reveal
           Ref</h3>
-          <div class="outline-text-3" id="text-6-8">
+          <div class="outline-text-3" id="text-6-10">
             <p>An 
             <a href="https://gitlab.com/oer/org-re-reveal-ref">
             extension</a>to 
@@ -759,9 +808,9 @@ org_html_manager.setup();  // activate after the parameters are set
         </div>
         <div id="outline-container-org621250e" class="outline-3">
           <h3 id="org621250e">
-          <span class="section-number-3">6.9</span>Org Roam
+          <span class="section-number-3">6.11</span>Org Roam
           Bibtex</h3>
-          <div class="outline-text-3" id="text-6-9">
+          <div class="outline-text-3" id="text-6-11">
             <p>This should be a part of the main 
             <code>+roam</code>setup, but until then.</p>
             <div class="org-src-container">
@@ -1054,11 +1103,15 @@ org_html_manager.setup();  // activate after the parameters are set
           <span class="section-number-3">9.11</span>Polymode</h3>
           <div class="outline-text-3" id="text-9-11">
             <p>For working with 
-            <code>.rmd</code>files.</p>
+            <code>.Rmd</code>files and better 
+            <code>orgmode</code>R support.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
 <span style="color: #51afef;">(</span>
 <span style="color: #51afef;">package!</span> poly-R
+<span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span>
+<span style="color: #51afef;">package!</span> poly-org
 <span style="color: #51afef;">)</span>
 </pre>
             </div>
@@ -1175,7 +1228,7 @@ org_html_manager.setup();  // activate after the parameters are set
       <p class="date">Date: 2020:04:09</p>
       <p class="author">Author: Rohit Goswami (HaoZeke)
       &lt;rohit.goswami@aol.com&gt;</p>
-      <p class="date">Created: 2020-05-10 Sun 16:54</p>
+      <p class="date">Created: 2020-06-07 Sun 13:37</p>
     </div>
   </body>
 </html>
