@@ -771,7 +771,7 @@ possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f
     (""     "graphicx"  t)
     (""     "grffile"   t)
     (""     "minted"   t)
-    (""     "xcolor"   t)
+    ;; ("dvipsnames,svgnames*,x11names*,table"     "xcolor"   t)
     (""     "longtable" nil)
     (""     "wrapfig"   nil)
     (""     "rotating"  nil)
