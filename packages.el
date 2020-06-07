@@ -12,6 +12,12 @@
             :repo "abo-abo/org-download"))
 ;; Org Download:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Org Protocol Updates][Org Protocol Updates:1]]
+(package! org-protocol-capture-html
+  :recipe (:host github
+           :repo "alphapapa/org-protocol-capture-html"))
+;; Org Protocol Updates:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Org Noter][Org Noter:1]]
 (package! org-noter)
 ;; Org Noter:1 ends here

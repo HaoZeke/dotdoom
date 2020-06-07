@@ -141,6 +141,13 @@ The [[https://bitbucket.org/eeeickythump/org-drill/src][actual repo]] has not be
   :recipe (:host github
             :repo "hakanserce/org-drill"))
 #+END_SRC
+*** Org Protocol Updates
+This needs to be installed specially, [[https://github.com/alphapapa/org-protocol-capture-html][from this repo]].
+#+BEGIN_SRC emacs-lisp
+(package! org-protocol-capture-html
+  :recipe (:host github
+           :repo "alphapapa/org-protocol-capture-html"))
+#+END_SRC
 *** TODO Org Noter
 This is sort of more of a ~pdf-tools~ extension and it needs it's own ~biblatex~
 setup and stuff as well so this might move into a tree of it's own.

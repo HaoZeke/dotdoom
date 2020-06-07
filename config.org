@@ -1694,3 +1694,31 @@ This might get complicated but I am only trying to get the bare minimum for
            ))
 )
 #+END_SRC
+**** HTML Parsing
+The standard capture method isn't too great, but [[https://github.com/alphapapa/org-protocol-capture-html][this]] makes it better.
+
+#+BEGIN_SRC emacs-lisp
+(use-package! org-protocol-capture-html
+  :after org-protocol
+  :config
+  (add-to-list 'org-capture-templates
+               '("w"
+                 "Web site"
+                 entry
+                 (file+headline +org-capture-notes-file "Website")  ; target
+                 "* %a :website:\n\n%U %?\n\n%:initial")
+               )
+  )
+#+END_SRC
+
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(setq org-roam-ref-capture-templates
+        '(("r" "ref" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "websites/${slug}"
+           :head "#+SETUPFILE:./hugo_setup.org
+#+ROAM_KEY: ${ref}
+#+HUGO_SLUG: ${slug}
+#+TITLE: ${title}
+#+END_SRC
