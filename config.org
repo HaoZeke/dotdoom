@@ -513,7 +513,8 @@ Harmonizing with Zathura.
 #+END_SRC
 **** Evil Org
 Annoyingly, ~evil-org-mode~ had a map which kept overriding all my other
-settings. Thankfully it has a helper variable to set movement. I also do not need this anyway, at-least not by default.
+settings. Thankfully it has a helper variable to set movement. I also do not
+need this anyway, at-least not by default.
 #+BEGIN_SRC emacs-lisp
 (after! org
   (remove-hook 'org-mode-hook 'evil-org-mode)
