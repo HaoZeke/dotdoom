@@ -11,7 +11,7 @@
   - [[#about][About]]
     - [[#about-that-toc][About that TOC..]]
   - [[#personal-information][Personal Information]]
-  - [[#doom-emacs-stuff][Doom Emacs Stuff]]
+- [[#doom-emacs-stuff][Doom Emacs Stuff]]
     - [[#visual-tweaks][Visual tweaks]]
     - [[#helm-changes][Helm changes]]
     - [[#kill-spellcheck][Kill spellcheck]]
@@ -137,7 +137,7 @@ Let's set some variables with basic user information.
 (setq user-full-name "Rohit Goswami (HaoZeke)"
       user-mail-address "rohit.goswami@aol.com")
 #+END_SRC
-** Doom Emacs Stuff
+* Doom Emacs Stuff
 *** Visual tweaks
 **** Font Face
 Honestly the basic font setting is simply not pretty enough.
