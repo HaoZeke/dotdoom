@@ -6,6 +6,10 @@
 (package! evil-colemak-basics)
 ;; Evil Colemak:1 ends here
 
+;; [[file:~/.config/doom/packages.org::*Firestarter][Firestarter:1]]
+(package! firestarter)
+;; Firestarter:1 ends here
+
 ;; [[file:~/.config/doom/packages.org::*Org Download][Org Download:1]]
 (package! org-download
   :recipe (:host github

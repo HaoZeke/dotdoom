@@ -25,6 +25,7 @@
   - [[#later-magit-additions][LATER Magit Additions]]
   - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
   - [[#evil-colemak][Evil Colemak]]
+  - [[#firestarter][Firestarter]]
   - [[#org-additions][Org Additions]]
     - [[#org-download][Org Download]]
     - [[#later-org-drill][LATER Org Drill]]
@@ -123,6 +124,13 @@ I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from 
 #+begin_src emacs-lisp :tangle yes
 (package! evil-colemak-basics)
 #+end_src
+** Firestarter
+For running shell commands on-save.
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! firestarter)
+#+END_SRC
+
 ** Org Additions
 The new ones need to be covered in the ~config.org~ file with the appropriate
 keybindings. The notes are [[https://rgoswami.me/posts/org-note-workflow][described here]].

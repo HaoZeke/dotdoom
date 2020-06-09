@@ -81,6 +81,7 @@
     - [[#smartparens-wrapping][Smartparens Wrapping]]
   - [[#projects][Projects]]
     - [[#dotdoom][dotDoom]]
+    - [[#firestarter][Firestarter]]
   - [[#hooks][Hooks]]
     - [[#caveats-1][Caveats]]
     - [[#before-save-hooks][Before Save Hooks]]
@@ -1237,6 +1238,19 @@ LTR order of preference.
       `("dotdoom"
         :components ("dotdoom-org" "dotdoom-static")
         ))
+#+END_SRC
+*** Firestarter
+Since I switched to [[https://rgoswami.me/posts/nix-r-devtools/][using Nix for R]] I needed a way to reload my systemwide
+~config.nix~ [[https://depp.brause.cc/firestarter/][firestarter]] is the best of the auto-exec in my opinion, and would
+probably replace a lot of my other hooks eventually as well.
+#+BEGIN_SRC emacs-lisp
+(use-package! firestarter
+  :ensure t
+  :init
+  (firestarter-mode)
+  :config
+  (setq firestarter-default-type t)
+)
 #+END_SRC
 ** Hooks
 *** TODO Caveats
