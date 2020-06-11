@@ -1091,7 +1091,7 @@ Since the ~koma-letter~ backend is separate, this needs a function as well.
 #+BEGIN_SRC emacs-lisp
 (defun haozeke/org-save-and-export-koma-letter-pdf ()
   (if (eq major-mode 'org-mode)
-    (org-koma-letter-export-to-pdf :async t)))
+    (org-koma-letter-export-to-pdf)))
 #+END_SRC
 *** Org-mode export TeX
 Similar to the one above, but ~tex~ generation is much faster and this way I can
@@ -1100,10 +1100,10 @@ keep editing my files without waiting for it to finish creating the ~pdf~.
 ; LaTeX
 (defun haozeke/org-save-and-export-latex ()
   (if (eq major-mode 'org-mode)
-    (org-latex-export-to-latex :async t)))
+    (org-latex-export-to-latex)))
 (defun haozeke/org-save-and-export-beamer ()
   (if (eq major-mode 'org-mode)
-    (org-beamer-export-to-latex :async t)))
+    (org-beamer-export-to-latex)))
 #+END_SRC
 *** TODO Caveats
 - Minted needs to be setup.
