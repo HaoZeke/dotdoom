@@ -1240,7 +1240,7 @@ LTR order of preference.
         ))
 #+END_SRC
 *** Firestarter
-Since I switched to [[https://rgoswami.me/posts/nix-r-devtools/][using Nix for R]] I needed a way to reload my systemwide
+Since I switched to [[https://rgoswami.me/posts/nix-r-devtools/][using Nix for R]] I needed a way to reload my system-wide
 ~config.nix~ [[https://depp.brause.cc/firestarter/][firestarter]] is the best of the auto-exec in my opinion, and would
 probably replace a lot of my other hooks eventually as well.
 #+BEGIN_SRC emacs-lisp
@@ -1338,7 +1338,6 @@ This is essentially the same, only some extra packages are added.
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-mode/contrib/lisp/")
 (require 'ox-koma-letter)
 (require 'ox-beamer)
-(require 'cl)
 
 ;; Org-Ref Stuff
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-ref/")
