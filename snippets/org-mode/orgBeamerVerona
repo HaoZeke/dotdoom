@@ -1,0 +1,107 @@
+# -*- mode: snippet -*-
+# name: org-beamer Verona
+# contributor: Rohit Goswami (HaoZeke)
+# key: <orgbbmrvero                  
+# --
+
+#+TITLE:     ${1:Presentation Title}
+#+SUBTITLE:  ${2: Subtitle}
+#+AUTHOR:    ${3:Author},\\textsc{\\scriptsize\\ ${5:PostNominals}}
+#+EMAIL:     ${4:Email}
+#+DATE:      \\today
+#+BEAMER_HEADER: \titlegraphic[height=1.5cm]{${8:images/physUoI.png}}{}
+#+BEAMER_HEADER: \institute{Presented to the ${7:\\textbf{LIF223F group}}}
+#+BEAMER_HEADER: \\mail{$4}
+
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS:   TeX:t LaTeX:t skip:nil d:nil todo:t pri:nil tags:not-in-toc toc:nil
+#+INFOJS_OPT: view:nil toc:nil ltoc:t mouse:underline buttons:0 path:https://orgmode.org/org-info.js
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+LINK_UP:
+#+LINK_HOME:
+
+#+LATEX_COMPILER: xelatex
+#+LATEX_HEADER: \\PassOptionsToPackage{unicode=true}{hyperref}
+#+LATEX_HEADER: \\PassOptionsToPackage{hyphens}{url}
+#+LATEX_HEADER: \\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
+#+LATEX_HEADER: \\usepackage{amssymb,amsmath}
+#+LATEX_HEADER: \\usepackage{mathtools}
+#+LATEX_HEADER: \\usepackage{physics}
+#+LATEX_HEADER: \\usepackage{hyperref}
+#+LATEX_HEADER: \\hypersetup{
+#+LATEX_HEADER:             pdftitle={$1},
+#+LATEX_HEADER:             pdfauthor={$3},
+#+LATEX_HEADER:             pdfborder={0 0 0},
+#+LATEX_HEADER:             breaklinks=true}
+#+LATEX_HEADER: % Make use of float-package and set default placement for figures to H
+#+LATEX_HEADER: \\usepackage{float}
+#+LATEX_HEADER: \\floatplacement{figure}{H}
+
+#+LATEX_HEADER: \\usepackage{fontspec}
+#+LATEX_HEADER: \\setromanfont{EB Garamond}
+#+LATEX_HEADER: \\usefonttheme{serif}
+
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger,unknownkeysallowed,aspectratio=169,red,colorblocks]
+#+startup: beamer
+#+BEAMER_THEME: Verona
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+
+#+LATEX_HEADER: \\usepackage[absolute,overlay]{textpos}
+
+#+LATEX_HEADER: \\newcommand*{\\XOffsetFromBottomLeft}{32.5em}%
+#+LATEX_HEADER: \\newcommand*{\\YOffsetFromBottomLeft}{2.7ex}%
+#+LATEX_HEADER: \\newcommand*{\\BottomLeftText}[1]{%
+#+LATEX_HEADER:     \\par%
+    #+LATEX_HEADER: \\scriptsize\\begin{textblock*}{17.0cm}(\\dimexpr\\textwidth-\\XOffsetFromBottomLeft\\relax,\\dimexpr\\textheight-\\YOffsetFromBottomLeft\\relax)
+#+LATEX_HEADER:         #1%
+#+LATEX_HEADER:     \\end{textblock*}%
+#+LATEX_HEADER: }%
+
+# References
+#+LATEX_HEADER: \\usepackage[natbib]{biblatex}
+#+LATEX_HEADER: \\bibliography{${9:~/GDrive/zotLib.bib}}
+
+* Slide Title
+** A block :B_ignoreheading:BMCOL:
+:PROPERTIES:
+:BEAMER_col: 0.6
+:END:
+- $0
+
+** A screenshot :BMCOL:B_example:
+:PROPERTIES:
+:BEAMER_col: 0.4
+:END:
+
+** No Column :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+
+* References
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+
+\printbibliography
+
+* End
+:PROPERTIES:
+:BEAMER_opt: standout
+:END:
+#+BEGIN_EXPORT latex
+\begin{center}
+\Huge Thank you
+\end{center}
+#+END_EXPORT
+
+
+# Local Variables:
+# after-save-hook: haozeke/org-save-and-export-beamer
+# End:

@@ -1,14 +1,15 @@
 # -*- mode: snippet -*-
-# name: orgBeamer
+# name: org-beamer Metropolis
 # contributor: Rohit Goswami (HaoZeke)
-# key: <orgbbmr
+# key: <orgbbmrmetro                               
 # --
 
-#+TITLE:     ${1: Presentation Title}
-#+SUBTITLE: ${2: Subtitle}
-#+AUTHOR:    ${3:Author},\\textsc{\\scriptsize\\ ${4:PostNominals}}
+#+TITLE:     ${1:Presentation Title}
+#+SUBTITLE:  ${2:Subtitle}
+#+AUTHOR:    ${3:Author},\\textsc{\\scriptsize\\ ${5:PostNominals}}
 #+EMAIL:     ${4:Email}
-#+DATE:      \today
+#+DATE:      \\today
+
 #+DESCRIPTION:
 #+KEYWORDS:
 #+LANGUAGE:  en
@@ -40,8 +41,7 @@
 #+LaTeX_CLASS: beamer
 #+LaTeX_CLASS_OPTIONS: [bigger,unknownkeysallowed]
 #+startup: beamer
-#+BEAMER_THEME: ${5:metropolis}
-# % Verona,metropolis are both good
+#+BEAMER_THEME: metropolis
 #+BEAMER_FRAME_LEVEL: 2
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 
@@ -65,7 +65,7 @@
 
 # References
 #+LATEX_HEADER: \\usepackage[natbib]{biblatex}
-#+LATEX_HEADER: \\bibliography{${6:refs}}
+#+LATEX_HEADER: \\bibliography{${6:~/GDrive/zotLib.bib}}
 
 * Callout
 ** Slide
