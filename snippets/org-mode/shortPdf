@@ -20,7 +20,7 @@
 # Suppress section numbers
 #+OPTIONS: num:nil
 # Load first
-#+LATEX_HEADER: \\usepackage{amsmath}
+#+LATEX_HEADER: \\usepackage{amssymb,amsmath,MnSymbol}
 #+LATEX_HEADER: \\usepackage{unicode-math}
 #+LATEX_HEADER: \\usepackage{mathtools}
 #+LATEX_HEADER: # \\usepackage{mathspec} Either this or mathtools
