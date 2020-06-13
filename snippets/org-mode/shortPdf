@@ -32,6 +32,9 @@
 # References
 #+LATEX_HEADER: \\usepackage[natbib]{biblatex}
 #+LATEX_HEADER: \\bibliography{${5:refs}}
+# Check-boxes
+#LATEX_HEADER: \setbox0=\hbox{\large$\square$}
+#+BIND: org-export-latex-list-parameters (:cbon "[{\\parbox[][][c]{\\wd0}{\\large$\\boxtimes$}}]" :cboff "[{\\parbox[][][c]{\\wd0}{\\large$\\square$}}]")
 # Nicer Fonts
 #+LATEX_HEADER: \\usepackage{xunicode}
 #+LATEX_HEADER: \\usepackage{xltxtra}
