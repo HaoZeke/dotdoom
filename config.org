@@ -477,9 +477,24 @@ These are mostly because movement without ~hnei~ is horrible. Read about it
 #+BEGIN_SRC emacs-lisp
 (use-package! evil-colemak-basics
   :after evil
-  :config (setq evil-colemak-basics-rotate-t-f-j t)
+  :config
+  (setq evil-colemak-basics-rotate-t-f-j t)
+  (global-evil-colemak-basics-mode)
   )
-(after! evil (global-evil-colemak-basics-mode))
+#+END_SRC
+**** Visual Lines
+Since I tend to keep ~visual-line-mode~ all the time, [[https://github.com/YourFin/evil-better-visual-line/][evil-better-visual-line]] is a natural choice.
+#+BEGIN_SRC emacs-lisp
+(use-package! evil-better-visual-line
+  :after evil-colemak-basics
+  :config
+  (evil-better-visual-line-on)
+  (map! :map evil-colemak-basics-keymap
+        (:nvm "n" 'evil-better-visual-line-next-line
+         :nvm "e" 'evil-better-visual-line-previous-line
+         :nvm "g n" 'evil-next-line
+         :nvm "g e" 'evil-previous-line))
+)
 #+END_SRC
 **** Search
 Harmonizing with Vimium.
