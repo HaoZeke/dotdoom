@@ -53,6 +53,7 @@
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-drill][Org Drill]]
     - [[#org-re-reveal-refs][Org Re-Reveal Refs]]
+    - [[#hugo-settings][Hugo Settings]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -872,6 +873,15 @@ This is apparently the ~org-ref~ for ~org-re-reveal~.
 #+begin_src emacs-lisp :tangle no
 (use-package! org-re-reveal-ref)
 #+end_src
+*** Hugo Settings
+This should be set for everything. I like to keep the last modified date, but only consider things to be modified if 12 hours have passed.
+#+BEGIN_SRC emacs-lisp
+(setq org-hugo-auto-set-lastmod 't
+      org-hugo-section "posts"
+      org-hugo-suppress-lastmod-period 43200.0
+      org-hugo-export-creator-string "Emacs 26.3 (Org mode 9.4 + ox-hugo + HaoZeke)"
+)
+#+END_SRC
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
 typically non-standard. These are matched by extensions.
