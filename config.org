@@ -43,6 +43,7 @@
     - [[#pdf-tools][PDF Tools]]
   - [[#anki-editor-1][Anki Editor]]
   - [[#org-additions][Org Additions]]
+    - [[#modifications][Modifications]]
     - [[#file-handling][File Handling]]
     - [[#kill-ob-julia][KILL Ob-Julia]]
     - [[#org-download][Org Download]]
@@ -716,6 +717,12 @@ This is for my favorite [[https://github.com/louietan/anki-editor][anki interact
 #+END_SRC
 ** Org Additions
 These are numerous and complicated enough to be in a segment of their own.
+*** todo Modifications
+I like having the date on my TODO items.
+#+begin_src emacs-lisp :tangle yes
+(setq org-log-done "time"
+      org-log-done-with-time 't)
+#+end_src
 *** File Handling
 This controls what is used to open links in ~org~ documents. Since there are
 only a few defaults defined, I am just prepending them to my changes instead of
