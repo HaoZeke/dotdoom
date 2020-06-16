@@ -23,9 +23,10 @@
 #+LATEX_HEADER: \\usepackage{amssymb,amsmath,MnSymbol}
 #+LATEX_HEADER: \\usepackage{unicode-math}
 #+LATEX_HEADER: \\usepackage{mathtools}
-#+LATEX_HEADER: # \\usepackage{mathspec} Either this or mathtools
+#+LATEX_HEADER: \\usepackage{hyperref}
+#+LATEX_HEADER: % \\usepackage{mathspec} Either this or mathtools
 #+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
-#+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{HoeflerText} % If Hoefler is missing replace with Crimson
+#+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{Crimson} % If Hoefler is missing replace with Crimson
 #+LATEX_HEADER: \\setsansfont[Scale=0.8]{Roboto} % Used to be Helvetica Neue LT Com -> Nimbus Sans
 #+LATEX_HEADER: \\setmonofont[Scale=0.8]{Fira Mono} % Used to be MesloLGSDZ Nerd Font
 #+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Crimson} % Used to be Minion Pro
@@ -33,7 +34,7 @@
 #+LATEX_HEADER: \\usepackage[natbib]{biblatex}
 #+LATEX_HEADER: \\bibliography{${5:refs}}
 # Check-boxes
-#LATEX_HEADER: \setbox0=\hbox{\large$\square$}
+#+LATEX_HEADER: \setbox0=\hbox{\large$\square$}
 #+BIND: org-export-latex-list-parameters (:cbon "[{\\parbox[][][c]{\\wd0}{\\large$\\boxtimes$}}]" :cboff "[{\\parbox[][][c]{\\wd0}{\\large$\\square$}}]")
 # Nicer Fonts
 #+LATEX_HEADER: \\usepackage{xunicode}
