@@ -4,7 +4,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-06-14 Sun 16:05 -->
+<!-- 2020-07-05 Sun 16:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate doom-emacs config</title>
@@ -284,8 +284,8 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org0e3aa5f">1.1.5. Markdown Improvements</a></li>
 <li><a href="#org1d99a6a">1.1.6. Org Noter</a></li>
 <li><a href="#org895b329">1.1.7. Org Mode additions</a></li>
-<li><a href="#orgff89fdb">1.1.8. Anki Editor</a></li>
-<li><a href="#orgdd0d9ca">1.1.9. CC Mode</a></li>
+<li><a href="#org481c706">1.1.8. Anki Editor</a></li>
+<li><a href="#org442bbc4">1.1.9. CC Mode</a></li>
 <li><a href="#org5febf0b">1.1.10. Evil Colemak</a></li>
 <li><a href="#orgbb4b191">1.1.11. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
 <li><a href="#org00ae80b">1.1.12. TeX Mode</a></li>
@@ -306,7 +306,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#orgfc27cf9">1.3.3. PDF Tools</a></li>
 </ul>
 </li>
-<li><a href="#org481c706">1.4. Anki Editor</a></li>
+<li><a href="#orgd2c3958">1.4. Anki Editor</a></li>
 <li><a href="#org1a32a8d">1.5. Org Additions</a>
 <ul>
 <li><a href="#org1bd77b3">1.5.1. todo Modifications</a></li>
@@ -344,13 +344,13 @@ org_html_manager.setup();  // activate after the parameters are set
 </ul>
 </li>
 <li><a href="#org43ea918">1.8. Dockerfile Mode</a></li>
-<li><a href="#orge6799a3">1.9. Functions</a>
+<li><a href="#orgac8c024">1.9. Functions</a>
 <ul>
 <li><a href="#org7116331">1.9.1. Org-Export HTML with useful IDs</a></li>
 <li><a href="#org4c01b77">1.9.2. Org-mode export pdf when saved</a></li>
 <li><a href="#org1b18652">1.9.3. Org-mode export koma-letter</a></li>
 <li><a href="#org13eed8a">1.9.4. Org-mode export TeX</a></li>
-<li><a href="#orgc35d354">1.9.5. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#orgad7c5cd">1.9.5. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org886e9cc">1.9.6. Helper function</a></li>
 <li><a href="#org4387b03">1.9.7. Async Command without Buffers</a></li>
 <li><a href="#org94a9690">1.9.8. Smarter Clang Formatting</a></li>
@@ -366,7 +366,7 @@ org_html_manager.setup();  // activate after the parameters are set
 </li>
 <li><a href="#orgb749e3e">1.11. Hooks</a>
 <ul>
-<li><a href="#org3288015">1.11.1. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org9ef7e05">1.11.1. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org5f292ef">1.11.2. Before Save Hooks</a></li>
 <li><a href="#org5b0d52f">1.11.3. Disable Auto RDM</a></li>
 </ul>
@@ -396,7 +396,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org8570f5d">3.1. Shared Preferences</a>
 <ul>
 <li><a href="#org9329351">3.1.1. Compiler</a></li>
-<li><a href="#orgca3ec49">3.1.2. Packages</a></li>
+<li><a href="#orgafb6273">3.1.2. Packages</a></li>
 </ul>
 </li>
 <li><a href="#org63c51db">3.2. Export Templates</a>
@@ -434,7 +434,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org7441d83">4.2. Org Capture</a>
 <ul>
 <li><a href="#orgb5723e5">4.2.1. Buffer Size</a></li>
-<li><a href="#orgac8c024">4.2.2. Functions</a></li>
+<li><a href="#org0aac2cc">4.2.2. Functions</a></li>
 <li><a href="#org192d796">4.2.3. Templates</a></li>
 </ul>
 </li>
@@ -625,7 +625,7 @@ These conflict with my other templates.
    org_notes <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">(</span><span style="color: #c678dd;">getenv</span> <span style="color: #98be65;">"HOME"</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">"/Git/Gitlab/Mine/Notes/"</span><span style="color: #c678dd;">)</span>
    zot_bib <span style="color: #c678dd;">(</span><span style="color: #a9a1e1;">concat</span> <span style="color: #98be65;">(</span><span style="color: #c678dd;">getenv</span> <span style="color: #98be65;">"HOME"</span><span style="color: #98be65;">)</span> <span style="color: #98be65;">"/GDrive/zotLib.bib"</span><span style="color: #c678dd;">)</span>
    <span style="color: #dcaeea;">org-directory</span> org_notes
-   deft-directory org_notes
+   <span style="color: #dcaeea;">deft-directory</span> org_notes
    <span style="color: #dcaeea;">org-roam-directory</span> org_notes
    <span style="color: #51afef;">)</span>
 </pre>
@@ -643,7 +643,8 @@ Formatting with <code>styler</code> takes forever.
                                           sql-mode        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">sqlformat is broken</span>
                                           tex-mode        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">latexindent is broke</span><span style="color: #51afef;">n</span>
                                           latex-mode      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">latexindent is broke</span><span style="color: #51afef;">n</span>
-                                          ess-r-mode        <span style="color: #5B6268;">; </span><span style="color: #5B6268;">styler takes forev</span><span style="color: #51afef;">e</span><span style="color: #5B6268;">r</span>
+                                          ess-r-mode      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">styler takes forever</span>
+                                          web-mode      <span style="color: #5B6268;">; </span><span style="color: #5B6268;">dunno who this is for</span>
                                           <span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
@@ -800,8 +801,17 @@ There are way too many of these to keep using <code>helm</code>.
 </div>
 </div>
 </li>
-<li><a id="org39a1be6"></a>Insert Unicode<br />
+<li><a id="org102c015"></a>Spelling<br />
 <div class="outline-text-5" id="text-1-1-4-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:leader</span>
+ <span style="color: #c678dd;">:n</span> <span style="color: #98be65;">"z"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">flyspell-correct-at-point</span><span style="color: #51afef;">)</span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org39a1be6"></a>Insert Unicode<br />
+<div class="outline-text-5" id="text-1-1-4-4">
 <p>
 This should hopefully propogate across all modes.
 </p>
@@ -819,7 +829,7 @@ This should hopefully propogate across all modes.
 </div>
 </li>
 <li><a id="orga3c7f1b"></a>Wrap Words<br />
-<div class="outline-text-5" id="text-1-1-4-4">
+<div class="outline-text-5" id="text-1-1-4-5">
 <ul class="org-ul">
 <li class="off"><code>[&#xa0;]</code> Load conditionally</li>
 </ul>
@@ -838,7 +848,7 @@ This is for working with the various options enabled by <code>+smartparens</code
 </div>
 </li>
 <li><a id="org1d2611b"></a>Lookup<br />
-<div class="outline-text-5" id="text-1-1-4-5">
+<div class="outline-text-5" id="text-1-1-4-6">
 <p>
 These were bound to really weird things.
 </p>
@@ -855,7 +865,7 @@ These were bound to really weird things.
 </div>
 </li>
 <li><a id="org9701d11"></a>No ESC<br />
-<div class="outline-text-5" id="text-1-1-4-6">
+<div class="outline-text-5" id="text-1-1-4-7">
 <p>
 The escape key for exiting things seems very painful.
 </p>
@@ -909,7 +919,7 @@ These bindings should probably be after <code>org-noter</code> is loaded.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">map!</span> <span style="color: #c678dd;">:localleader</span>
-      <span style="color: #c678dd;">:map</span> <span style="color: #c678dd;">(</span><span style="color: #dcaeea;">org-mode-map</span> <span style="color: #dcaeea;">pdf-view-mode-map</span><span style="color: #c678dd;">)</span>
+      <span style="color: #c678dd;">:map</span> <span style="color: #c678dd;">(</span><span style="color: #dcaeea;">org-mode-map</span> pdf-view-mode-map<span style="color: #c678dd;">)</span>
       <span style="color: #c678dd;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #98be65;">(</span><span style="color: #98be65;">"o"</span> . <span style="color: #98be65;">"Org"</span><span style="color: #98be65;">)</span>
         <span style="color: #98be65;">(</span><span style="color: #c678dd;">:prefix</span> <span style="color: #51afef;">(</span><span style="color: #98be65;">"n"</span> . <span style="color: #98be65;">"Noter"</span><span style="color: #51afef;">)</span>
           <span style="color: #c678dd;">:desc</span> <span style="color: #98be65;">"Noter"</span> <span style="color: #98be65;">"n"</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-noter</span>
@@ -963,8 +973,8 @@ are a part of <code>org-mode</code>.
 </div>
 </div>
 </div>
-<div id="outline-container-orgff89fdb" class="outline-4">
-<h4 id="orgff89fdb"><span class="section-number-4">1.1.8</span> Anki Editor</h4>
+<div id="outline-container-org481c706" class="outline-4">
+<h4 id="org481c706"><span class="section-number-4">1.1.8</span> Anki Editor</h4>
 <div class="outline-text-4" id="text-1-1-8">
 <p>
 These are only relevant to <code>org-mode</code>. Nevertheless they are not part of
@@ -987,8 +997,8 @@ These are only relevant to <code>org-mode</code>. Nevertheless they are not part
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd0d9ca" class="outline-4">
-<h4 id="orgdd0d9ca"><span class="section-number-4">1.1.9</span> CC Mode</h4>
+<div id="outline-container-org442bbc4" class="outline-4">
+<h4 id="org442bbc4"><span class="section-number-4">1.1.9</span> CC Mode</h4>
 <div class="outline-text-4" id="text-1-1-9">
 <p>
 These are basically wrappers around various <code>rtags</code> functions.
@@ -996,7 +1006,7 @@ These are basically wrappers around various <code>rtags</code> functions.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">nmap</span>
 <span style="color: #c678dd;">:prefix</span> <span style="color: #dcaeea;">my-leader</span>
-<span style="color: #c678dd;">:keymaps</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">c-mode-base-map</span>
+<span style="color: #c678dd;">:keymaps</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">c-mode-base-map</span>
 <span style="color: #98be65;">"m"</span> <span style="color: #51afef;">'</span><span style="color: #c678dd;">(</span><span style="color: #c678dd;">:ignore</span> t <span style="color: #c678dd;">:wk</span> <span style="color: #98be65;">"Local Commands"</span><span style="color: #c678dd;">)</span>
 <span style="color: #98be65;">"m r"</span> <span style="color: #51afef;">'</span><span style="color: #c678dd;">(</span><span style="color: #c678dd;">:ignore</span> t <span style="color: #c678dd;">:wk</span> <span style="color: #98be65;">"Rtags"</span><span style="color: #c678dd;">)</span>
 <span style="color: #98be65;">"m r c"</span> <span style="color: #51afef;">'</span><span style="color: #c678dd;">(</span>rtags-check-includes <span style="color: #c678dd;">:wk</span> <span style="color: #98be65;">"Check Includes"</span><span style="color: #c678dd;">)</span>
@@ -1246,7 +1256,7 @@ This is a catch all for the eventual <code>org-mode</code> based multiple target
 </div>
 </div>
 </li>
-<li><a id="orgb41d95f"></a><span class="todo TODO">TODO</span> Caveats<br />
+<li><a id="org3288015"></a><span class="todo TODO">TODO</span> Caveats<br />
 <div class="outline-text-5" id="text-1-2-2-3">
 <ul class="org-ul">
 <li>This actually forms it relative to the exact path.
@@ -1370,14 +1380,14 @@ need to be bound in <code>org-mode</code> files. Also updated to have <code>evil
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #51afef;">(</span><span style="color: #51afef;">after!</span> pdf-view
   <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">open pdfs scaled to fit page</span>
-  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq-default</span> <span style="color: #dcaeea;">pdf-view-display-size</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">fit-width</span><span style="color: #c678dd;">)</span>
-  <span style="color: #c678dd;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">pdf-view-mode-hook</span> <span style="color: #98be65;">(</span><span style="color: #dcaeea;">evil-colemak-basics-mode</span> <span style="color: #da8548; font-weight: bold;">-1</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq-default</span> pdf-view-display-size <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">fit-width</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">add-hook!</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">pdf-view-mode-hook</span> <span style="color: #98be65;">(</span><span style="color: #dcaeea;">evil-colemak-basics-mode</span> <span style="color: #da8548; font-weight: bold;">-1</span><span style="color: #98be65;">)</span><span style="color: #c678dd;">)</span>
   <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">automatically annotate highlights</span>
-  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> <span style="color: #dcaeea;">pdf-annot-activate-created-annotations</span> t
-        <span style="color: #dcaeea;">pdf-view-resize-factor</span> <span style="color: #da8548; font-weight: bold;">1.1</span><span style="color: #c678dd;">)</span>
+  <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> pdf-annot-activate-created-annotations t
+        pdf-view-resize-factor <span style="color: #da8548; font-weight: bold;">1.1</span><span style="color: #c678dd;">)</span>
    <span style="color: #5B6268;">;; </span><span style="color: #5B6268;">faster motion</span>
  <span style="color: #c678dd;">(</span><span style="color: #51afef;">map!</span>
-   <span style="color: #c678dd;">:map</span> <span style="color: #dcaeea;">pdf-view-mode-map</span>
+   <span style="color: #c678dd;">:map</span> pdf-view-mode-map
    <span style="color: #c678dd;">:n</span> <span style="color: #98be65;">"g g"</span>          <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">pdf-view-first-page</span>
    <span style="color: #c678dd;">:n</span> <span style="color: #98be65;">"G"</span>            <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">pdf-view-last-page</span>
    <span style="color: #c678dd;">:n</span> <span style="color: #98be65;">"N"</span>            <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">pdf-view-next-page-command</span>
@@ -1396,8 +1406,8 @@ need to be bound in <code>org-mode</code> files. Also updated to have <code>evil
 </div>
 </div>
 
-<div id="outline-container-org481c706" class="outline-3">
-<h3 id="org481c706"><span class="section-number-3">1.4</span> Anki Editor</h3>
+<div id="outline-container-orgd2c3958" class="outline-3">
+<h3 id="orgd2c3958"><span class="section-number-3">1.4</span> Anki Editor</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 This is for my favorite <a href="https://github.com/louietan/anki-editor">anki interaction</a> mechanism.
@@ -1932,8 +1942,8 @@ highlighting Dockerfiles.
 </div>
 </div>
 </div>
-<div id="outline-container-orge6799a3" class="outline-3">
-<h3 id="orge6799a3"><span class="section-number-3">1.9</span> Functions</h3>
+<div id="outline-container-orgac8c024" class="outline-3">
+<h3 id="orgac8c024"><span class="section-number-3">1.9</span> Functions</h3>
 <div class="outline-text-3" id="text-1-9">
 </div>
 <div id="outline-container-org7116331" class="outline-4">
@@ -2038,7 +2048,7 @@ This minor mode <a href="https://github.com/alphapapa/unpackaged.el#export-to-ht
 <div class="outline-text-4" id="text-1-9-2">
 <p>
 This one is to generate pdfs whenever a buffer is saved. Mainly taken from
-<a href="https:https://emacs.stackexchange.com/questions/9893/how-can-i-export-to-latex-every-time-i-save-an-org-mode-buffer">this stack exchange question</a>.
+<a href="https:emacs.stackexchange.com/questions/9893/how-can-i-export-to-latex-every-time-i-save-an-org-mode-buffer">this stack exchange question</a>.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5B6268;">; </span><span style="color: #5B6268;">Pdf</span>
@@ -2083,8 +2093,8 @@ keep editing my files without waiting for it to finish creating the <code>pdf</c
 </div>
 </div>
 </div>
-<div id="outline-container-orgc35d354" class="outline-4">
-<h4 id="orgc35d354"><span class="section-number-4">1.9.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-orgad7c5cd" class="outline-4">
+<h4 id="orgad7c5cd"><span class="section-number-4">1.9.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-1-9-5">
 <ul class="org-ul">
 <li>Minted needs to be setup.</li>
@@ -2320,8 +2330,8 @@ probably replace a lot of my other hooks eventually as well.
 <h3 id="orgb749e3e"><span class="section-number-3">1.11</span> Hooks</h3>
 <div class="outline-text-3" id="text-1-11">
 </div>
-<div id="outline-container-org3288015" class="outline-4">
-<h4 id="org3288015"><span class="section-number-4">1.11.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org9ef7e05" class="outline-4">
+<h4 id="org9ef7e05"><span class="section-number-4">1.11.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-1-11-1">
 <p>
 Move all the hooks to this section if possible.
@@ -2333,7 +2343,7 @@ Move all the hooks to this section if possible.
 <div class="outline-text-4" id="text-1-11-2">
 </div>
 <ol class="org-ol">
-<li><a id="org442bbc4"></a>CC Mode<br />
+<li><a id="org052aac7"></a>CC Mode<br />
 <div class="outline-text-5" id="text-1-11-2-1">
 <p>
 Currently I only need to use the clang formatting hook here.
@@ -2360,7 +2370,7 @@ This conflicts with the ArchLinux <code>systemctl --user start rdm</code> thing.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5B6268;">; </span><span style="color: #5B6268;">Do not automatically try to run rdm</span>
-<span style="color: #51afef;">(</span><span style="color: #c678dd;">remove-hook</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">c-mode-common-hook</span> <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">+cc|init-rtags</span><span style="color: #51afef;">)</span>
+<span style="color: #51afef;">(</span><span style="color: #c678dd;">remove-hook</span> <span style="color: #51afef;">'</span><span style="color: #dcaeea;">c-mode-common-hook</span> <span style="color: #51afef;">#'</span><span style="color: #ECBE7B;">+cc|init-rtags</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 </div>
@@ -2607,8 +2617,8 @@ It makes sense to use <code>latexmk</code> anyway. This way I can set sane defau
 </div>
 </div>
 </div>
-<div id="outline-container-orgca3ec49" class="outline-4">
-<h4 id="orgca3ec49"><span class="section-number-4">3.1.2</span> Packages</h4>
+<div id="outline-container-orgafb6273" class="outline-4">
+<h4 id="orgafb6273"><span class="section-number-4">3.1.2</span> Packages</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 Some of these are damn near universal given my set up, so they are declared here.
@@ -2728,7 +2738,7 @@ stackexchange</a> question.
 </div>
 </div>
 </li>
-<li><a id="orgafb6273"></a>Packages<br />
+<li><a id="org815fdba"></a>Packages<br />
 <div class="outline-text-5" id="text-3-3-0-2">
 <p>
 These are required to view math properly.
@@ -2758,7 +2768,7 @@ This is from <a href="https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and
     <span style="color: #c678dd;">(</span><span style="color: #c678dd;">set-company-backend!</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">org-mode</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">company-latex-commands</span><span style="color: #c678dd;">)</span>
     <span style="color: #c678dd;">(</span><span style="color: #c678dd;">set-company-backend!</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">TeX-mode</span> <span style="color: #51afef;">'</span><span style="color: #ECBE7B;">company-latex-commands</span><span style="color: #c678dd;">)</span>
     <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> <span style="color: #dcaeea;">company-tooltip-align-annotations</span> t<span style="color: #c678dd;">)</span>
-    <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> company-math-allow-latex-symbols-in-faces t<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
+    <span style="color: #c678dd;">(</span><span style="color: #51afef;">setq</span> <span style="color: #dcaeea;">company-math-allow-latex-symbols-in-faces</span> t<span style="color: #c678dd;">)</span><span style="color: #51afef;">)</span>
 </pre>
 </div>
 </div>
@@ -3015,8 +3025,8 @@ article thing.
 </div>
 </div>
 </div>
-<div id="outline-container-orgac8c024" class="outline-4">
-<h4 id="orgac8c024"><span class="section-number-4">4.2.2</span> Functions</h4>
+<div id="outline-container-org0aac2cc" class="outline-4">
+<h4 id="org0aac2cc"><span class="section-number-4">4.2.2</span> Functions</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 These are needed for <code>org-capture</code> alone for now.
@@ -3114,7 +3124,7 @@ The standard capture method isn&rsquo;t too great, but <a href="https://github.c
 <div id="postamble" class="status">
 <p class="date">Date: 2020:04:09</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2020-06-14 Sun 16:05</p>
+<p class="date">Created: 2020-07-05 Sun 16:31</p>
 </div>
 </body>
 </html>
