@@ -321,6 +321,11 @@ There are way too many of these to keep using ~helm~.
       )
       )
 #+END_SRC
+**** Spelling
+#+BEGIN_SRC emacs-lisp
+(map! :leader
+ :n "z" 'flyspell-correct-at-point)
+#+END_SRC
 **** Insert Unicode
 This should hopefully propogate across all modes.
 #+BEGIN_SRC emacs-lisp
