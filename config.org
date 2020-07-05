@@ -1116,7 +1116,7 @@ made unique when necessary."
 #+END_SRC
 *** Org-mode export pdf when saved
 This one is to generate pdfs whenever a buffer is saved. Mainly taken from
-[[https:https://emacs.stackexchange.com/questions/9893/how-can-i-export-to-latex-every-time-i-save-an-org-mode-buffer][this stack exchange question]].
+[[https:emacs.stackexchange.com/questions/9893/how-can-i-export-to-latex-every-time-i-save-an-org-mode-buffer][this stack exchange question]].
 #+BEGIN_SRC emacs-lisp
 ; Pdf
 (defun haozeke/org-save-and-export-pdf ()
