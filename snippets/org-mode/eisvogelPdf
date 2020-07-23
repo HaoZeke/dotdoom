@@ -11,7 +11,16 @@
 #+OPTIONS: toc:nil title:nil
 # I need the footnotes to be inlined
 #+STARTUP: fninline
+#+EXCLUDE_TAGS: noexport
 
+* Configuration :ignoreheading:ignore:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
+#+BEGIN_SRC emacs-lisp :exports none :eval always
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+#+END_SRC
 #
 # LaTeX Stuff (from eisvogel https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)
 #
@@ -225,10 +234,12 @@
 \\tableofcontents
 \\newpage
 
-# Start Here
+
+* Start Here :ignoreheading:ignore:
 
 $0
 
 # Local Variables:
+# before-save-hook: org-babel-execute-buffer
 # after-save-hook: haozeke/org-save-and-export-pdf
 # End:
