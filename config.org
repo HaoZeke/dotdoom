@@ -35,7 +35,6 @@
   - [[#safe-evals-and-variables][Safe Evals and Variables]]
     - [[#private-variables][Private Variables]]
     - [[#safe-variables][Safe Variables]]
-    - [[#safe-evals][Safe Evals]]
     - [[#asynchronous-exports][Asynchronous Exports]]
   - [[#package-settings][Package Settings]]
     - [[#word-wrap][Word wrap]]
@@ -599,38 +598,23 @@ These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
   (load custom-file)
 )
 #+END_SRC
-
 *** Safe Variables
 The problem is that ~packages.el~ isn't being produced by the clever little ugly
 commit I tried so, this is a workaround to tangle *any* file to be produced in
 ~.el~ format in the same location.
 **** Tangle
 So adding the automatic tangling code doesn't mangle things up everytime you
-open emacs. Basically this is adapted from [[https://www.reddit.com/r/emacs/comments/5d4hqq/using_babel_to_put_your_init_file_in_org/][this reddit thread]].
+open emacs.
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'safe-local-variable-values
-             '(eval add-hook 'after-save-hook
-	                (lambda () (org-babel-tangle))
-	                nil t))
+(setq safe-local-variable-values '((after-save-hook . haozeke/org-save-and-export-latex)
+ (before-save-hook . org-babel-execute-buffer)))
 #+END_SRC
-**** TODO Export
-This is a catch all for the eventual ~org-mode~ based multiple target exports.
-#+BEGIN_SRC emacs-lisp
-(add-to-list 'safe-local-variable-values
-                '(eval add-hook 'after-save-hook 'haozeke/org-save-and-export-tex nil t)
-                '(eval add-hook 'after-save-hook 'haozeke/org-save-and-export-pdf nil t))
-#+END_SRC
-**** TODO Caveats
+**** KILL Caveats
+CLOSED: [2020-07-24 Fri 01:17]
 - This actually forms it relative to the exact path.
   (Gotta move it to the config folder)
 - The actual code is much more elegant in every way possible.
 - Seriously there has to be  a way to not have to do this.
-*** TODO Safe Evals
-This enables the evaluation of these forms. Read more about this via
-~docstrings~ sometime.
-#+BEGIN_SRC emacs-lisp :tangle no
-(add-to-list 'safe-local-eval-forms (eval add-hook 'after-save-hook haozeke/org-save-and-export))
-#+END_SRC
 *** Asynchronous Exports
 As per this [[https://superuser.com/a/898717/899764][interesting answer on the superuser forums]], I need to set
 ~org-export-async-init-file~.
