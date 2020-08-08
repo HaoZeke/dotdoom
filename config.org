@@ -36,6 +36,7 @@
     - [[#private-variables][Private Variables]]
     - [[#safe-variables][Safe Variables]]
     - [[#asynchronous-exports][Asynchronous Exports]]
+    - [[#tramp-settings][TRAMP Settings]]
   - [[#package-settings][Package Settings]]
     - [[#word-wrap][Word wrap]]
     - [[#magit-aids][Magit Aids]]
@@ -620,6 +621,15 @@ As per this [[https://superuser.com/a/898717/899764][interesting answer on the s
 ~org-export-async-init-file~.
 #+BEGIN_SRC emacs-lisp
 (setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
+#+END_SRC
+*** TRAMP Settings
+I use some paths on my remote machines, which are non-standard.
+#+BEGIN_SRC emacs-lisp
+  (after! tramp
+    (add-to-list 'tramp-remote-path "~/.local/bin")
+    (add-to-list 'tramp-remote-path "~/.cargo/bin")
+    (add-to-list 'tramp-remote-path "~/.hpc/bin")
+    )
 #+END_SRC
 ** Package Settings
 These should eventually go into a different module.
