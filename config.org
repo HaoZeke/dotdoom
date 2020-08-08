@@ -595,9 +595,9 @@ These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
   :demand
   :config
   (epa-file-enable)
-  (setq custom-file (concat doom-private-dir "local/private.el.gpg"))
-  (load custom-file)
-)
+  (let ((file-name-handler-alist doom--initial-file-name-handler-alist))
+    (load (concat doom-private-dir "local/private.el.gpg")))
+  )
 #+END_SRC
 *** Safe Variables
 The problem is that ~packages.el~ isn't being produced by the clever little ugly
