@@ -307,6 +307,12 @@ they are redefined here for mnemonic usage. Also to add the ~which-key~ hints.
   "z" '(+evil/mc-make-cursor-here :wk "Place frozen cursor")
   )
 #+END_SRC
+**** Move around with Links
+Useful for navigating files and what not.
+#+BEGIN_SRC emacs-lisp
+(map! :leader
+      :desc "Follow thing"  "RET" 'org-open-at-point)
+#+END_SRC
 **** Replace Stuff
 There are way too many of these to keep using ~helm~.
 #+BEGIN_SRC emacs-lisp
