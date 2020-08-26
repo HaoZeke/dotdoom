@@ -18,6 +18,7 @@
     - [[#kill-over-eager-literate-after-save-hook][Kill over-eager literate after-save-hook]]
     - [[#kill-orgmode-template][Kill Orgmode template]]
     - [[#variables][Variables]]
+    - [[#theme][Theme]]
     - [[#do-not-format-on-save][Do not Format on Save]]
   - [[#keybindings][Keybindings]]
     - [[#general][General]]
@@ -216,6 +217,11 @@ These conflict with my other templates.
    org-roam-directory org_notes
    )
 #+end_src
+*** Theme
+Sometimes I do tire of the defaults.
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-Iosvkem)
+#+END_SRC
 *** Do not Format on Save
 Formatting with ~styler~ takes forever.
 #+BEGIN_SRC emacs-lisp
