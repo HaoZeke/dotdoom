@@ -199,7 +199,7 @@
 #+LATEX_HEADER: \\usepackage[margin=2.5cm,includehead=true,includefoot=true,centering]{geometry}
 
 # Check-boxes
-#LATEX_HEADER: \setbox0=\hbox{\large$\square$}
+#+LATEX_HEADER: \setbox0=\hbox{\large$\square$}
 #+BIND: org-export-latex-list-parameters (:cbon "[{\\parbox[][][c]{\\wd0}{\\large$\\boxtimes$}}]" :cboff "[{\\parbox[][][c]{\\wd0}{\\large$\\square$}}]")
 
 \\begin{titlepage}
