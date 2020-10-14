@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: New Seminar
+# key: <nsemin
+# --
+
+* TODO ${1:Title} @${2:serieskey}:${3:tag}:
+:PROPERTIES:
+:DESCRIPTION: ${4:Name (Location)}
+:END:
+
+By $4. Part of this ${5:$$(yas-choose-value '("seminar series" "workshop" "conference"))}.
+
+$0
