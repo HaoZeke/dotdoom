@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# name: Beamer Section
+# contributor: Rohit Goswami (HaoZeke)
+# key: <bsec  
+# --
+
+
+* Section ${1:Section Number}
+:PROPERTIES:
+:BEAMER_opt: standout
+:END:
+#+BEGIN_EXPORT latex
+\section{$2}
+\begin{center}
+  \Huge $2
+\end{center}
+#+END_EXPORT
+$0
