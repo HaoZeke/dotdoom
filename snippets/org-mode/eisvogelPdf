@@ -21,6 +21,7 @@
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 #+END_SRC
+
 #
 # LaTeX Stuff (from eisvogel https://raw.githubusercontent.com/Wandmalfarbe/pandoc-latex-template/master/eisvogel.tex)
 #
