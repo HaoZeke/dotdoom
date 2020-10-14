@@ -760,14 +760,37 @@ So ~julia~ support is inbuilt, however the process variable needs to be set:
 This is already included in the standard doom setup. However, I was having
 trouble with relative exports so I have this one instead. Partially kanged from
 ~doom-emacs~.
+Before setting this up, a new function is defined to call the screenshot process, this setup is [[https://github.com/poligen/dotfiles/blob/25785810f9bf98f6eec93e400c686a4ad65ac310/doom.d/config.el][kanged from here]].
+#+BEGIN_SRC emacs-lisp
+;; From https://github.com/poligen/dotfiles/blob/25785810f9bf98f6eec93e400c686a4ad65ac310/doom.d/config.el
+;; My customized org-download to incorporate flameshot gui Workaround to setup flameshot, which enables annotation.
+;; In flameshot, set filename as "screenshot", and the command as "flameshot gui -p /tmp", so that we always ends up
+;; with /tmp/screenshot.png. Nullify org-download-screenshot-method by setting it to `echo', so that essentially we
+;; are only calling (org-download-image org-download-screenshot-file).
+(defun hz-org-download-screenshot ()
+  "Capture screenshot and insert the resulting file.
+The screenshot tool is determined by `org-download-screenshot-method'."
+  (interactive)
+  (let ((tmp-file "/tmp/screenshot.png"))
+    (delete-file tmp-file)
+    (call-process-shell-command "flameshot gui -p /tmp/")
+    ;; Because flameshot exit immediately, keep polling to check file existence
+    (while (not (file-exists-p tmp-file))
+      (sleep-for 2))
+    (org-download-image tmp-file)))
+#+END_SRC
+Now we can configure the package itself.
 #+BEGIN_SRC emacs-lisp
 (use-package! org-download
   :after org
   :config
   (setq-default org-download-image-dir "./images/"
-                org-download-screenshot-method "gnome-screenshot -a -f %s"
+                ;; org-download-screenshot-method "flameshot gui --raw > %s"
+                org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s"
+                org-download-delete-image-after-download t
                 org-download-method 'directory
                 org-download-heading-lvl 1
+                org-download-screenshot-file "/tmp/screenshot.png"
                 )
   )
 #+END_SRC
