@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # name: org-beamer Verona
 # contributor: Rohit Goswami (HaoZeke)
-# key: <orgbbmrvero                  
+# key: <orgbbmrvero                                    
 # --
 
 #+TITLE:     ${1:Presentation Title}
@@ -12,6 +12,20 @@
 #+BEAMER_HEADER: \titlegraphic[height=1.5cm]{${8:images/physUoI.png}}{}
 #+BEAMER_HEADER: \institute{Presented to the ${7:\\textbf{LIF223F group}}}
 #+BEAMER_HEADER: \\mail{$4}
+
+* Configuration :ignoreheading:ignore:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
+
+#+BEGIN_SRC emacs-lisp :exports none :eval always
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+#+END_SRC
+
+#
+# LaTeX Stuff
+#
 
 #+DESCRIPTION:
 #+KEYWORDS:
@@ -62,9 +76,19 @@
 #+LATEX_HEADER:     \\end{textblock*}%
 #+LATEX_HEADER: }%
 
+
+# From https://tex.stackexchange.com/questions/477784/adjust-spacing-between-main-text-and-footnote-in-beamer-slides
+#+LATEX_HEADER: \\setbeamertemplate{footnote}{%
+#+LATEX_HEADER:  \\makebox[1em][l]{\\insertfootnotemark}%
+#+LATEX_HEADER:  \\begin{minipage}{\\dimexpr\\linewidth-1em}
+#+LATEX_HEADER:    \\footnotesize\\linespread{0.84}\\selectfont\\insertfootnotetext
+#+LATEX_HEADER:  \\end{minipage}\\vskip 0pt}%
+
 # References
-#+LATEX_HEADER: \\usepackage[natbib]{biblatex}
+#+LATEX_HEADER: \\usepackage[doi=false,isbn=false,url=false,eprint=false]{biblatex}
 #+LATEX_HEADER: \\bibliography{${9:~/GDrive/zotLib.bib}}
+
+* Start Here :ignoreheading:ignore:
 
 * Slide Title
 ** A block :B_ignoreheading:BMCOL:
@@ -101,7 +125,7 @@
 \end{center}
 #+END_EXPORT
 
-
 # Local Variables:
+# before-save-hook: org-babel-execute-buffer
 # after-save-hook: haozeke/org-save-and-export-beamer
 # End:
