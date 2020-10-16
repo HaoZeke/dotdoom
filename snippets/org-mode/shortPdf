@@ -20,6 +20,8 @@
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 #+END_SRC
+
+** LaTeX :ignoreheading:ignore:
 #
 # LaTeX Stuff
 #
@@ -67,10 +69,12 @@
 # Suppress the abstract heading
 #+LATEX_HEADER: \\renewcommand{\\abstractname}{\\vspace{-\\baselineskip}}
 
+* Abstract :ignoreheading:ignore:
 #+begin_abstract
 \\noindent This is an abstract
 #+end_abstract
 
+* Begin :ignoreheading:ignore:
 \\vspace{0.7em}
 \\noindent $0
 
