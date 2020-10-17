@@ -437,6 +437,10 @@ are a part of ~org-mode~.
         :desc "Footnote" "f" 'org-footnote-action
         :desc "Table" "t" 'org-table-create-or-convert-from-region
         :desc "Screenshot" "s" 'org-download-screenshot
+        (:prefix ("b" . "Math")
+         :desc "Bold" "f" 'org-make-bold-math
+         :desc "Blackboard" "b" 'org-make-blackboard-math
+         )
         (:prefix ("h" . "Headings")
           :desc "Normal" "h" 'org-insert-heading
           :desc "Todo" "t" 'org-insert-todo-heading
