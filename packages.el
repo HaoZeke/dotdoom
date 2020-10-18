@@ -45,6 +45,10 @@
 (package! org-babel-eval-in-repl)
 ;; Org Async:1 ends here
 
+;; [[file:packages.org::*Org Re-Reveal Extensions][Org Re-Reveal Extensions:1]]
+(package! org-re-reveal-ref)
+;; Org Re-Reveal Extensions:1 ends here
+
 ;; [[file:packages.org::*Org Roam Bibtex][Org Roam Bibtex:1]]
 (package! org-roam-bibtex)
 ;; Org Roam Bibtex:1 ends here

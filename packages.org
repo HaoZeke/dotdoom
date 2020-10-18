@@ -36,7 +36,7 @@
     - [[#org-rifle][Org Rifle]]
     - [[#org-async][Org Async]]
     - [[#anki-mode][Anki Mode]]
-    - [[#org-re-reveal-ref][Org Re-Reveal Ref]]
+    - [[#org-re-reveal-extensions][Org Re-Reveal Extensions]]
     - [[#org-roam-bibtex][Org Roam Bibtex]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
@@ -197,9 +197,9 @@ This is put here since it only works with ~org-mode~ stuff.
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! anki-editor)
 #+END_SRC
-*** Org Re-Reveal Ref
-An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref~.
-#+begin_src emacs-lisp :tangle no
+*** Org Re-Reveal Extensions
+An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref~. Also [[https://gitlab.com/oer/oer-reveal][this]].
+#+begin_src emacs-lisp :tangle yes
 (package! org-re-reveal-ref)
 #+end_src
 *** Org Roam Bibtex

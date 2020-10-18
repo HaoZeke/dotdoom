@@ -54,7 +54,7 @@
     - [[#org-rifle][Org Rifle]]
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-drill][Org Drill]]
-    - [[#org-re-reveal-refs][Org Re-Reveal Refs]]
+    - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
     - [[#hugo-settings][Hugo Settings]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#direnv-highlighting][Direnv Highlighting]]
@@ -914,10 +914,15 @@ This is much easier to work with compared to the Anki mode stuff.
 (use-package! org-drill
   :after org)
 #+END_SRC
-*** Org Re-Reveal Refs
-This is apparently the ~org-ref~ for ~org-re-reveal~.
-#+begin_src emacs-lisp :tangle no
-(use-package! org-re-reveal-ref)
+*** Org Re-Reveal Additions
+We will load a couple of helpers to get functionality closer to [[https://gitlab.com/oer/emacs-reveal/][emacs-reveal]].
+This is apparently the ~org-ref~ for ~org-re-reveal~. For themes (e.g.
+[[https://revealjs-themes.dzello.com/robot-lung.html][robot-lung]]), we have a new directory.
+#+begin_src emacs-lisp :tangle yes
+(after! org-re-reveal
+  (use-package! org-re-reveal-ref) ; fixes org-ref
+  (setq reveal-extras (concat doom-private-dir "revealExtras/"))
+)
 #+end_src
 *** Hugo Settings
 This should be set for everything. I like to keep the last modified date, but only consider things to be modified if 12 hours have passed.
