@@ -1,0 +1,77 @@
+/**
+ * SPDX-FileCopyrightText: 2014-2016 Hakim El Hattab
+ * SPDX-FileCopyrightText: 2017-2020 Jens Lechtenbörger
+ *
+ * SPDX-License-Identifier: LicenseRef-MIT-HEH-JL
+ *
+ * Simple presentation theme, based on 'white' theme for reveal.js
+ * by Hakim El Hattab, http://hakim.se
+ *
+ * Note that this CSS file is meant to be used with source-sans-pro.css, which
+ * was imported here previously.  Imports lead to additional round-trips
+ * upon loading, though.  Thus, source-sans-pro.css is now added via
+ * REVEAL_EXTRA_CSS in org/config.org.
+ */
+
+/*********************************************
+ * SLIDES
+ *********************************************/
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal .floatright {
+  float: right;
+  text-align: right;
+}
+
+.reveal .leftcol {
+  float: left;
+  width: 48%;
+}
+
+.reveal .rightcol {
+  float: right;
+  width: 48%;
+}
+
+.reveal .leftcol30 {
+  float: left;
+  width: 28%;
+}
+
+.reveal .rightcol30 {
+  float: right;
+  width: 28%;
+}
+
+.reveal .leftcol40 {
+  float: left;
+  width: 38%;
+}
+
+.reveal .rightcol40 {
+  float: right;
+  width: 38%;
+}
+
+.reveal .leftcol60 {
+  float: left;
+  width: 58%;
+}
+
+.reveal .rightcol60 {
+  float: right;
+  width: 58%;
+}
+
+.reveal .leftcol70 {
+  float: left;
+  width: 68%;
+}
+
+.reveal .rightcol70 {
+  float: right;
+  width: 68%;
+}

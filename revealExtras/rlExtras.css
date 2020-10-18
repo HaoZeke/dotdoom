@@ -1,0 +1,9 @@
+.line {
+  background: #005ab6;
+}
+.reveal {
+  display: flex;
+}
+.col {
+  flex: 1;
+}

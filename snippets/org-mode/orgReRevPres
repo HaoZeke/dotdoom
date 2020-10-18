@@ -1,0 +1,174 @@
+# -*- mode: snippet -*-
+# name: org-re-reveal presentation
+# key: <orrp
+# contributor: Rohit Goswami (HaoZeke)                                          
+# --
+
+
+#+TITLE: ${1:Awesome Title}
+#+SUBTITLE: ${2:Tongue-in-cheek subtitle}
+#+AUTHOR: ${3:Author},\\textsc{\\scriptsize\\ ${4:MInstP AMIE AMIChemE}}
+# I need the footnotes to be inlined
+#+STARTUP: fninline
+#+EXCLUDE_TAGS: noexport
+
+#+BEGIN_SRC emacs-lisp :exports none :eval always
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+#+END_SRC
+
+* Configuration :ignoreheading:ignore:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
+
+# Kanged from https://gitlab.com/oer/oer-reveal/blob/master/org/config.org
+# Also https://gitlab.com/oer/emacs-reveal-howto/-/blob/master/howto.org
+** General Options :ignoreheading:ignore:
+# No Table of contents, no section numbers
+#+OPTIONS: toc:nil num:nil
+
+# Enable smart quotes
+#+OPTIONS: ':t
+** RevealJS Options :ignoreheading:ignore:
+
+# Enable: browser history, fragment IDs in URLs, mouse wheel, links between presentations
+#+OPTIONS: reveal_history:t reveal_fragmentinurl:t
+#+OPTIONS: reveal_mousewheel:t reveal_inter_presentation_links:t
+
+# Disable separate PDF pages for each fragment.  Just use one per slide.
+#+OPTIONS: reveal_pdfseparatefragments:nil
+
+# Display notes on separate page for PDF export.
+#+REVEAL_EXPORT_NOTES_TO_PDF: separate-page
+
+# Transition styles: none/fade/slide/convex/concave/zoom/cube
+#+REVEAL_TRANS: fade
+# Set a base theme, then override
+#+REVEAL_THEME: white
+#+REVEAL_EXTRA_CSS: `(concat reveal-extras "robot-lung.css")`
+#+REVEAL_EXTRA_CSS: `(concat reveal-extras "oerFragments.css")`
+#+REVEAL_MARGIN: 0.2
+#+REVEAL_PREAMBLE: <div class="line top"></div> <div class="line bottom"></div> <div class="line left"></div> <div class="line right"></div>
+
+#+REVEAL_PLUGINS: (notes search zoom)
+# The following variables are non-standard.
+# Do not display TOC-progress on title slide.
+
+#+REVEAL_TITLE_SLIDE_STATE: no-toc-progress
+# Do not display TOC-progress on TOC slide.
+#+REVEAL_TOC_SLIDE_STATE: no-toc-progress
+# Do not include TOC slide in TOC-progress.
+#+REVEAL_TOC_SLIDE_CLASS: no-toc-progress
+# Use different heading for TOC.
+#+REVEAL_TOC_SLIDE_TITLE: Agenda
+
+** External Resources :ignoreheading:ignore:
+# Note that doom-emacs sets this variable
+# https://github.com/hlissner/doom-emacs/blob/develop/modules/lang/org/contrib/present.el
+#+REVEAL_EXTRA_CSS: `(concat org-re-reveal-root "plugin/accessibility/helper.css")`
+#+REVEAL_EXTRA_CSS: `(concat org-re-reveal-root "plugin/toc-progress/toc-progress.css")`
+#+REVEAL_EXTRA_CSS: `(concat org-re-reveal-root "dist/theme/toc-style.css")`
+#+REVEAL_EXTRA_CSS: `(concat org-re-reveal-root "dist/theme/fonts/source-sans-pro/source-sans-pro.css")`
+
+# Allow to selectively hide links.
+#+REVEAL_EXTRA_SCRIPTS: ("`(concat org-re-reveal-root "dist/theme/hidelinks.js")`")
+
+# The following creates an empty footer, for which the css style defines
+# a height that agrees with the TOC-progress footer’s height.
+# In this way, the footer’s height is taken into account by reveal.js’s
+# size calculations.
+#+REVEAL_SLIDE_FOOTER: <br>
+#+OPTIONS: reveal_toc_footer:t
+
+** Macros :ignoreheading:ignore:
+# Set a default bib file.
+
+# Macros to display square brackets (in texts of hyperlinks).
+# Based on: https://emacs.stackexchange.com/questions/7792/can-i-make-links-in-org-mode-that-contain-brackets-or
+# Square Bracket Open [
+#+MACRO: BO @@latex:\\char91{}@@@@html:&#91;@@
+# Square Bracket Close ]
+#+MACRO: BC @@latex:\\char93{}@@@@html:&#93;@@
+
+# Macro for forced line break, e.g., in titles.
+#+MACRO: BR @@latex:\\\\@@@@html:<br />@@
+
+# Macro to generate abbr element in HTML.  If a second argument is given, it
+# defines the title attribute.  For LaTeX, output first attribute as is and
+# ignore second one.
+#+MACRO: abbr (eval (concat "@@latex:" $1 "@@@@html:<abbr" (if (< 0 (length $2)) (concat " title=\\"" $2 "\\"") "") ">" $1 "</abbr>@@"))
+
+# Macros to display code in different colors.
+#+MACRO: blackcode (eval (format "@@html:<code><span style=\\"color:black; font-size:smaller;\\">%s</span></code>@@ @@latex:\\\\verb|%s|@@" (org-html-encode-plain-text $1) $1))
+#+MACRO: redcode (eval (format "@@html:<code><span style=\\"color:darkred; font-size:smaller;\\">%s</span></code>@@ @@latex:\\\\rverb|%s|@@" (org-html-encode-plain-text $1) $1))
+#+MACRO: greencode (eval (format "@@html:<code><span style=\\"color:darkgreen; font-size:smaller;\\">%s</span></code>@@ @@latex:\\\\gverb|%s|@@" (org-html-encode-plain-text $1) $1))
+#+MACRO: bluecode (eval (format "@@html:<code><span style=\\"color:darkblue; font-size:smaller;\\">%s</span></code>@@ @@latex:\\\\bverb|%s|@@" (org-html-encode-plain-text $1) $1))
+
+** LaTeX Options :ignoreheading:ignore:
+# Setup for PDF generation via LaTeX export.
+#+LATEX_CLASS_OPTIONS: [a4paper]
+#+LATEX_HEADER: \\usepackage[backend=biber,style=alphabetic]{biblatex}
+#+LATEX_HEADER: \\addbibresource{${6:refs}}
+#+LATEX_HEADER: \\newenvironment{notes}{\\par\\footnotesize}{\\par}
+#+LATEX_HEADER: \\newenvironment{NOTES}{\\par\\footnotesize}{\\par}
+#+LATEX_HEADER: \\newenvironment{leftcol}{\\begin{minipage}{.49\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{rightcol}{\\begin{minipage}{.49\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{leftcol30}{\\begin{minipage}{.29\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{leftcol40}{\\begin{minipage}{.39\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{leftcol60}{\\begin{minipage}{.59\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{leftcol70}{\\begin{minipage}{.69\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{rightcol30}{\\begin{minipage}{.29\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{rightcol40}{\\begin{minipage}{.39\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{rightcol60}{\\begin{minipage}{.59\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\newenvironment{rightcol70}{\\begin{minipage}{.69\\textwidth}}{\\end{minipage}}
+#+LATEX_HEADER: \\usepackage{newunicodechar}
+#+LATEX_HEADER: \\newunicodechar{≈}{$\\approx$}
+#+LATEX_HEADER: \\newunicodechar{⋮}{\\vdots}
+#+LATEX_HEADER: \\newunicodechar{ }{~}
+#+LATEX_HEADER: \\usepackage{xcolor}
+#+LATEX_HEADER: \\definecolor{darkred}{rgb}{0.3, 0.0, 0.0}
+#+LATEX_HEADER: \\definecolor{darkgreen}{rgb}{0.0, 0.3, 0.1}
+#+LATEX_HEADER: \\definecolor{darkblue}{rgb}{0.0, 0.1, 0.3}
+#+LATEX_HEADER: \\definecolor{darkorange}{rgb}{1.0, 0.55, 0.0}
+#+LATEX_HEADER: \\definecolor{sienna}{rgb}{0.53, 0.18, 0.09}
+#+LATEX_HEADER: \\hypersetup{colorlinks,linkcolor=darkblue,citecolor=darkblue,urlcolor=darkgreen}
+#+LATEX_HEADER: \\usepackage{newverbs}
+#+LATEX_HEADER: \\newverbcommand{\\rverb}{\\color{darkred}}{}
+#+LATEX_HEADER: \\newverbcommand{\\gverb}{\\color{darkgreen}}{}
+#+LATEX_HEADER: \\newverbcommand{\\bverb}{\\color{darkblue}}{}
+
+* Start Here :ignoreheading:ignore:
+* $0
+
+** Two Columns: Pro/Con of emacs-reveal
+   #+ATTR_REVEAL: :frag appear
+   #+BEGIN_leftcol
+   Pro
+   #+ATTR_REVEAL: :frag (appear)
+   - Free/libre open source software
+   - Device-independent presentations
+     - Also mobile and offline
+     - Generated from simple text format
+       - Easy to learn
+   #+END_leftcol
+   #+ATTR_REVEAL: :frag appear
+   #+BEGIN_rightcol
+   Con
+   #+ATTR_REVEAL: :frag (appear)
+   - No [[https://en.wikipedia.org/wiki/WYSIWYG][WYSIWYG]]
+   - (Need to learn something new)
+   #+END_rightcol
+
+
+** Bibliography
+   :PROPERTIES:
+   :CUSTOM_ID: bibliography
+   :END:
+
+\\printbibliography[heading=none]
+
+# Local Variables:
+# indent-tabs-mode: nil
+# org-src-preserve-indentation: t
+# End:
