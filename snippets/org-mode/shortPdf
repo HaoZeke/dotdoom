@@ -12,24 +12,22 @@
 #+STARTUP: fninline
 #+EXCLUDE_TAGS: noexport
 
-* Configuration :ignoreheading:ignore:
-  :PROPERTIES:
-  :VISIBILITY: folded
-  :END:
 #+BEGIN_SRC emacs-lisp :exports none :eval always
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 #+END_SRC
 
+* Configuration :ignoreheading:ignore:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
 ** LaTeX :ignoreheading:ignore:
-#
-# LaTeX Stuff
-#
 #+LATEX_COMPILER: xelatex
 #+LATEX_CLASS: koma-article
 #+LATEX_CLASS_OPTIONS: [12pt,a4paper]
 # Suppress section numbers
 #+OPTIONS: num:nil
+*** Preamble :ignoreheading:ignore:
 # Load first
 #+LATEX_HEADER: \\usepackage{amssymb,amsmath,MnSymbol}
 #+LATEX_HEADER: \\usepackage{unicode-math}
@@ -68,16 +66,13 @@
 #+LATEX_HEADER: \\makeatother% resets the meaning of the at-sign (@)
 # Suppress the abstract heading
 #+LATEX_HEADER: \\renewcommand{\\abstractname}{\\vspace{-\\baselineskip}}
-
 * Abstract :ignoreheading:ignore:
 #+begin_abstract
 \\noindent This is an abstract
 #+end_abstract
-
 * Begin :ignoreheading:ignore:
 \\vspace{0.7em}
 \\noindent $0
-
 * References
 
 \\printbibliography[heading=none]
