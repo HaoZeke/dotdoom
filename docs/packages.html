@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <!-- 2020-08-09 Sun 02:35 -->
+    <!-- 2020-10-19 Mon 13:18 -->
     <meta http-equiv="Content-Type"
     content="text/html;charset=utf-8" />
     <meta name="viewport"
@@ -44,7 +44,7 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
+    overflow: auto;
     padding-top: 1.2em;
   }
   pre.src:before {
@@ -226,27 +226,25 @@ org_html_manager.setup();  // activate after the parameters are set
 /*]]>
 *///--&gt; // @license-end</script>
     <script type="text/javascript">// @license
-    magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt
-    GPL-v3-or-Later 
+    magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&amp;dn=public-domain.txt
+    Public Domain 
     <!--/*-->
 <![CDATA[/*><!--*/
      function CodeHighlightOn(elem, id)
      {
        var target = document.getElementById(id);
        if(null != target) {
-         elem.cacheClassElem = elem.className;
-         elem.cacheClassTarget = target.className;
-         target.className = "code-highlighted";
-         elem.className   = "code-highlighted";
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
        }
      }
      function CodeHighlightOff(elem, id)
      {
        var target = document.getElementById(id);
-       if(elem.cacheClassElem)
-         elem.className = elem.cacheClassElem;
-       if(elem.cacheClassTarget)
-         target.className = elem.cacheClassTarget;
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
      }
     /*]]>
 *///--&gt; // @license-end</script>
@@ -330,7 +328,8 @@ org_html_manager.setup();  // activate after the parameters are set
                   <a href="#org0b4c8a6">7.9. Anki Mode</a>
                 </li>
                 <li>
-                  <a href="#orgfb35e15">7.10. Org Re-Reveal Ref</a>
+                  <a href="#org2d26f79">7.10. Org Re-Reveal
+                  Extensions</a>
                 </li>
                 <li>
                   <a href="#org621250e">7.11. Org Roam Bibtex</a>
@@ -438,10 +437,10 @@ org_html_manager.setup();  // activate after the parameters are set
           <code>doom-emacs</code>let’s add their comments.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #5B6268;">;; </span>
-<span style="color: #5B6268;">-*- no-byte-compile: t; -*-</span>
-<span style="color: #5B6268;">;;; </span>
-<span style="color: #5B6268;">~/.config/doom/packages.el</span>
+<span style="color: #65737E;">;; </span>
+<span style="color: #65737E;">-*- no-byte-compile: t; -*-</span>
+<span style="color: #65737E;">;;; </span>
+<span style="color: #65737E;">~/.config/doom/packages.el</span>
 </pre>
           </div>
         </div>
@@ -492,9 +491,9 @@ org_html_manager.setup();  // activate after the parameters are set
             all-the-icons wiki</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> all-the-icons-dired
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> all-the-icons-dired
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -506,10 +505,10 @@ org_html_manager.setup();  // activate after the parameters are set
             <p>Not exactly aesthetic, but yeah, for stats.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> 
-<span style="color: #dcaeea;">wakatime-mode</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> 
+<span style="color: #BF616A;">wakatime-mode</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -526,19 +525,19 @@ org_html_manager.setup();  // activate after the parameters are set
           <code>develop</code>.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> magit-org-todos
-<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> magithub
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> magit-org-todos
+<span style="color: #8FA1B3;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> magithub
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> magit-todos
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> magit-todos
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
           <p>Actually 
@@ -566,9 +565,9 @@ org_html_manager.setup();  // activate after the parameters are set
           a stop gap solution.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> general
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> general
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
           <ul class="org-ul">
@@ -589,13 +588,13 @@ org_html_manager.setup();  // activate after the parameters are set
           this package</a>.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> evil-colemak-basics
-<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> evil-colemak-basics
+<span style="color: #8FA1B3;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span>
 evil-better-visual-line
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
         </div>
@@ -607,10 +606,10 @@ evil-better-visual-line
           <p>For running shell commands on-save.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> 
-<span style="color: #dcaeea;">firestarter</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> 
+<span style="color: #BF616A;">firestarter</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
         </div>
@@ -634,17 +633,17 @@ evil-better-visual-line
             <code>+attach</code>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-download
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-download
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
             
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"abo-abo/org-download"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"abo-abo/org-download"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -662,17 +661,17 @@ evil-better-visual-line
             fork</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-drill
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-drill
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
             
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"hakanserce/org-drill"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"hakanserce/org-drill"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -687,19 +686,19 @@ evil-better-visual-line
             from this repo</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span>
 org-protocol-capture-html
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
            
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">
 "alphapapa/org-protocol-capture-html"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -715,9 +714,9 @@ org-protocol-capture-html
             might move into a tree of it’s own.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-noter
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-noter
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
             <p>This actually breaks the 
@@ -733,9 +732,9 @@ org-protocol-capture-html
             <code>init.el</code>setup.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-ref
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-ref
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -750,17 +749,17 @@ org-protocol-capture-html
             here</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-mind-map
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-mind-map
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
             
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"theodorewiles/org-mind-map"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"theodorewiles/org-mind-map"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -775,9 +774,9 @@ org-protocol-capture-html
             here</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> helm-org-rifle
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> helm-org-rifle
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -789,10 +788,10 @@ org-protocol-capture-html
             <p>We will use this.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span>
 org-babel-eval-in-repl
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -805,27 +804,29 @@ org-babel-eval-in-repl
             <code>org-mode</code>stuff.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> anki-editor
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> anki-editor
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
         </div>
-        <div id="outline-container-orgfb35e15" class="outline-3">
-          <h3 id="orgfb35e15">
+        <div id="outline-container-org2d26f79" class="outline-3">
+          <h3 id="org2d26f79">
           <span class="section-number-3">7.10</span>Org Re-Reveal
-          Ref</h3>
+          Extensions</h3>
           <div class="outline-text-3" id="text-7-10">
             <p>An 
             <a href="https://gitlab.com/oer/org-re-reveal-ref">
             extension</a>to 
-            <code>org-re-reveal-ref</code>.</p>
+            <code>org-re-reveal-ref</code>. Also 
+            <a href="https://gitlab.com/oer/oer-reveal">
+            this</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-re-reveal-ref
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-re-reveal-ref
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -839,9 +840,9 @@ org-babel-eval-in-repl
             <code>+roam</code>setup, but until then.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> org-roam-bibtex
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> org-roam-bibtex
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -858,9 +859,9 @@ org-babel-eval-in-repl
           -*-</code>can be used to specify the image name.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> dockerfile-mode
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> dockerfile-mode
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
         </div>
@@ -883,9 +884,9 @@ org-babel-eval-in-repl
             Zotxt</a>seems to be updated pretty often though.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> zotxt
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> zotxt
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -912,16 +913,16 @@ org-babel-eval-in-repl
             scales with the eye of Mordor</a>?</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> tup-mode
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> tup-mode
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
            
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"ejmr/tup-mode"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"ejmr/tup-mode"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -945,16 +946,16 @@ org-babel-eval-in-repl
             be used for working on multiple systems.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> salt-mode
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> salt-mode
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
          
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"glynnforrest/salt-mode"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"glynnforrest/salt-mode"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -972,17 +973,17 @@ org-babel-eval-in-repl
             the like.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> pkgbuild-mode
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> pkgbuild-mode
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
             
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"juergenhoetzel/pkgbuild-mode"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"juergenhoetzel/pkgbuild-mode"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1001,17 +1002,17 @@ org-babel-eval-in-repl
             me</a>now.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> lammps-mode
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> lammps-mode
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
                     
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"HaoZeke/lammps-mode"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"HaoZeke/lammps-mode"</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1023,9 +1024,9 @@ org-babel-eval-in-repl
             <p>I just like pugs.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> pug-mode
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> pug-mode
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1041,9 +1042,9 @@ org-babel-eval-in-repl
             nix-emacs</a>as well.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> nix-mode
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> nix-mode
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1057,16 +1058,16 @@ org-babel-eval-in-repl
             Java) are:</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #5B6268;">; </span>
-<span style="color: #5B6268;">Kotlin &gt; Java</span>
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> kotlin-mode
-<span style="color: #51afef;">)</span>
-<span style="color: #5B6268;">; </span>
-<span style="color: #5B6268;">Groovy -&gt; Testing</span>
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> groovy-mode
-<span style="color: #51afef;">)</span>
+<span style="color: #65737E;">; </span>
+<span style="color: #65737E;">Kotlin &gt; Java</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> kotlin-mode
+<span style="color: #8FA1B3;">)</span>
+<span style="color: #65737E;">; </span>
+<span style="color: #65737E;">Groovy -&gt; Testing</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> groovy-mode
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1080,9 +1081,9 @@ org-babel-eval-in-repl
             sense to have pretty highlighting.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> systemd
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> systemd
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1098,9 +1099,9 @@ org-babel-eval-in-repl
             <code>prettier</code>has anything for it.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> dart-mode
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> dart-mode
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1116,9 +1117,9 @@ org-babel-eval-in-repl
             need font-locking.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> wolfram-mode
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> wolfram-mode
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1132,12 +1133,12 @@ org-babel-eval-in-repl
             <code>orgmode</code>R support.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> poly-R
-<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> poly-org
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> poly-R
+<span style="color: #8FA1B3;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> poly-org
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1157,12 +1158,12 @@ org-babel-eval-in-repl
             MELPA.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> package-lint
-<span style="color: #51afef;">)</span>
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> flycheck-package
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> package-lint
+<span style="color: #8FA1B3;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> flycheck-package
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1181,22 +1182,22 @@ org-babel-eval-in-repl
           <div class="outline-text-3" id="text-12-1">
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> emacs-snippets
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> emacs-snippets
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
            
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">"hlissner/emacs-snippets"</span>
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">"hlissner/emacs-snippets"</span>
            
-<span style="color: #c678dd;">:files</span> 
-<span style="color: #98be65;">(</span>
-<span style="color: #98be65;">"*"</span>
-<span style="color: #98be65;">)</span>
+<span style="color: #D08770;">:files</span> 
+<span style="color: #A3BE8C;">(</span>
+<span style="color: #A3BE8C;">"*"</span>
+<span style="color: #A3BE8C;">)</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1210,23 +1211,23 @@ org-babel-eval-in-repl
             official snippets repo</a>.</p>
             <div class="org-src-container">
               <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> yasnippet-snippets
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> yasnippet-snippets
   
-<span style="color: #c678dd;">:recipe</span> 
+<span style="color: #D08770;">:recipe</span> 
 <span style="color: #c678dd;">(</span>
-<span style="color: #c678dd;">:host</span> github
+<span style="color: #D08770;">:host</span> github
            
-<span style="color: #c678dd;">:repo</span> 
-<span style="color: #98be65;">
+<span style="color: #D08770;">:repo</span> 
+<span style="color: #A3BE8C;">
 "AndreaCrotti/yasnippet-snippets"</span>
            
-<span style="color: #c678dd;">:files</span> 
-<span style="color: #98be65;">(</span>
-<span style="color: #98be65;">"*"</span>
-<span style="color: #98be65;">)</span>
+<span style="color: #D08770;">:files</span> 
+<span style="color: #A3BE8C;">(</span>
+<span style="color: #A3BE8C;">"*"</span>
+<span style="color: #A3BE8C;">)</span>
 <span style="color: #c678dd;">)</span>
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">)</span>
 </pre>
             </div>
           </div>
@@ -1241,9 +1242,9 @@ org-babel-eval-in-repl
           cdlatex</a>.</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #51afef;">(</span>
-<span style="color: #51afef;">package!</span> cdlatex
-<span style="color: #51afef;">)</span>
+<span style="color: #8FA1B3;">(</span>
+<span style="color: #b48ead;">package!</span> cdlatex
+<span style="color: #8FA1B3;">)</span>
 </pre>
           </div>
         </div>
@@ -1253,7 +1254,7 @@ org-babel-eval-in-repl
       <p class="date">Date: 2020:04:09</p>
       <p class="author">Author: Rohit Goswami (HaoZeke)
       &lt;rohit.goswami@aol.com&gt;</p>
-      <p class="date">Created: 2020-08-09 Sun 02:35</p>
+      <p class="date">Created: 2020-10-19 Mon 13:18</p>
     </div>
   </body>
 </html>
