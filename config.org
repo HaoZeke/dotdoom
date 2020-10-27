@@ -440,6 +440,7 @@ are a part of ~org-mode~.
         (:prefix ("b" . "Math")
          :desc "Bold" "f" 'org-make-bold-math
          :desc "Blackboard" "b" 'org-make-blackboard-math
+         :desc "Vert" "v" 'org-make-vert-math
          )
         (:prefix ("h" . "Headings")
           :desc "Normal" "h" 'org-insert-heading
@@ -456,6 +457,37 @@ are a part of ~org-mode~.
       )
   )
 #+END_SRC
+**** Math Environments
+Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auctex-that-breqn-is-a-math-environment][this TeXSE answer]].
+#+begin_src elisp
+(add-hook 'LaTeX-mode-hook 'add-my-latex-environments)
+(defun add-my-latex-environments ()
+  (LaTeX-add-environments
+   '("thm" LaTeX-env-label)
+   '("prop" LaTeX-env-label)
+   '("lem" LaTeX-env-label)
+   '("cor" LaTeX-env-label)
+   '("defn" LaTeX-env-label)
+   '("not" LaTeX-env-label)
+   '("rem" LaTeX-env-label)
+   '("ex" LaTeX-env-label)
+   '("align" LaTeX-env-label)
+   '("notation" LaTeX-env-label)
+   '("dmath" LaTeX-env-label)
+     ))
+
+;; Code I added to make syntax highlighting work in Auctex
+
+(custom-set-variables
+ '(font-latex-math-environments (quote
+     ("display" "displaymath" "equation" "eqnarray" "gather" "multline"
+      "align" "alignat" "xalignat" "dmath")))
+  '(TeX-insert-braces nil)) ;;Stops putting {} on argumentless commands to "save" whitespace
+
+;; Additionally, reftex code to recognize this environment as an equation
+(setq reftex-label-alist
+  '(("dmath" ?e nil nil t)))
+#+end_src
 **** Bold Math
 Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]].
 #+begin_src emacs-lisp
@@ -541,11 +573,52 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
         )
       )
 ))
+
+(defun org-make-vert-math ()
+  "If there's a selection -- wrap this with '\mathbb{' and '}'
+   and put the point to the end.  Otherwise -- put the point
+   between '\mathbb{' and '}'
+
+   Also: when not in math mode -- enclose the thing in dollars."
+
+  (interactive)
+
+  (let (start end
+              (delim "")
+              (jump 1)
+              )
+
+    (when (not (texmathp))
+      (setq delim "$")
+      (setq jump 2)
+      )
+
+    (if (use-region-p)
+        (progn
+          (setq start (region-beginning))
+          (setq end (region-end))
+
+          (narrow-to-region start end)
+
+          (goto-char (point-min))
+          (insert (concat delim "‖"))
+
+          (goto-char (point-max))
+          (insert (concat "‖" delim))
+          (widen)
+          )
+
+      (progn
+        (insert (concat delim "‖‖" delim))
+        (backward-char jump)
+        )
+      )
+))
 #+end_src
 *** Anki Editor
 These are only relevant to ~org-mode~. Nevertheless they are not part of
 ~org-mode~ so semantically it makes no sense to use ~o~ after the localleader.
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle yes
 (map! :localleader
       :map org-mode-map
       (:prefix ("a" . "Anki")
@@ -810,7 +883,7 @@ need to be bound in ~org-mode~ files. Also updated to have ~evil-colemak~ bindin
 ** Anki Editor
 # TODO Add to doom as a module
 This is for my favorite [[https://github.com/louietan/anki-editor][anki interaction]] mechanism.
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! anki-editor
   :after org-noter
   :config
@@ -996,7 +1069,7 @@ The keymaps are defined in the following way:
 #+END_SRC
 *** Org Drill
 This is much easier to work with compared to the Anki mode stuff.
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! org-drill
   :after org)
 #+END_SRC
