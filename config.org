@@ -220,7 +220,7 @@ These conflict with my other templates.
 *** Theme
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-tomorrow-night)
 #+END_SRC
 *** Do not Format on Save
 Formatting with ~styler~ takes forever.
