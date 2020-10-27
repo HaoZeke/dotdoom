@@ -1035,9 +1035,14 @@ These need to be disabled by default otherwise ~emacs~ stalls often. Also, it tu
 (setq org-image-actual-width 500)
 #+END_SRC
 **** Prevent invisible area modifications
-First [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][discussed here]].
+First [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][discussed here]]. The invisible area modifications are a plague. I can't imagine why this is not set by default.
 #+begin_src elisp
 (setq org-catch-invisible-edits 'show-and-error)
+#+end_src
+**** Compact subtrees
+We would like to not have additional newlines between trees.
+#+begin_src elisp
+(setq org-cycle-separator-lines 0)
 #+end_src
 *** Org Rifle
 This probably needs to be refactored later. Or loaded elsewhere.
