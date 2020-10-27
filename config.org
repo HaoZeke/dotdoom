@@ -1034,6 +1034,11 @@ These need to be disabled by default otherwise ~emacs~ stalls often. Also, it tu
 (setq org-startup-with-inline-images 'nil)
 (setq org-image-actual-width 500)
 #+END_SRC
+**** Prevent invisible area modifications
+First [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][discussed here]].
+#+begin_src elisp
+(setq org-catch-invisible-edits 'show-and-error)
+#+end_src
 *** Org Rifle
 This probably needs to be refactored later. Or loaded elsewhere.
 The keymaps are defined in the following way:
