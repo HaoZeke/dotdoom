@@ -3,7 +3,7 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head>
-    <!-- 2020-10-19 Mon 13:18 -->
+    <!-- 2020-10-27 Tue 02:46 -->
     <meta http-equiv="Content-Type"
     content="text/html;charset=utf-8" />
     <meta name="viewport"
@@ -358,13 +358,13 @@ org_html_manager.setup();  // activate after the parameters are set
           <code>doom</code>expects config files.</p>
           <div class="org-src-container">
             <pre class="src src-bash">
-<span style="color: #65737E;"># </span>
-<span style="color: #65737E;">Honestly, this should be
+<span style="color: #579C4C;"># </span>
+<span style="color: #579C4C;">Honestly, this should be
 $HOME/.config</span>
-<span style="color: #ECBE7B;">git</span> clone 
-<span style="color: #ECBE7B;">git</span>@github.com:HaoZeke/dotDoom
+<span style="color: #35CDAF;">git</span> clone 
+<span style="color: #35CDAF;">git</span>@github.com:HaoZeke/dotDoom
 $
-<span style="color: #BF616A;">XDG_CONFIG_DIR</span>/doom
+<span style="color: #85DDFF;">XDG_CONFIG_DIR</span>/doom
 </pre>
           </div>
         </div>
@@ -378,775 +378,775 @@ $
           simply included below:</p>
           <div class="org-src-container">
             <pre class="src src-emacs-lisp">
-<span style="color: #65737E;">;;; </span>
-<span style="color: #65737E;">init.el -*- lexical-binding: t;
+<span style="color: #579C4C;">;;; </span>
+<span style="color: #579C4C;">init.el -*- lexical-binding: t;
 -*-</span>
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">This file controls what Doom modules
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">This file controls what Doom modules
 are enabled and what order they load in.</span>
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">Remember to run 'doom sync' after
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">Remember to run 'doom sync' after
 modifying it!</span>
 
-<span style="color: #65737E;">;; </span>
-<span style="color: #A3BE8C; font-weight: bold;">NOTE</span>
-<span style="color: #65737E;"> Press 'SPC h d h' (or 'C-h d h' for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C; font-weight: bold;">NOTE</span>
+<span style="color: #579C4C;"> Press 'SPC h d h' (or 'C-h d h' for
 non-vim users) to access Doom's</span>
-<span style="color: #65737E;">;;      </span>
-<span style="color: #65737E;">documentation. There you'll find
+<span style="color: #579C4C;">;;      </span>
+<span style="color: #579C4C;">documentation. There you'll find
 information about all of Doom's modules</span>
-<span style="color: #65737E;">;;      </span>
-<span style="color: #65737E;">and what flags they support.</span>
+<span style="color: #579C4C;">;;      </span>
+<span style="color: #579C4C;">and what flags they support.</span>
 
-<span style="color: #65737E;">;; </span>
-<span style="color: #A3BE8C; font-weight: bold;">NOTE</span>
-<span style="color: #65737E;"> Move your cursor over a module's
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C; font-weight: bold;">NOTE</span>
+<span style="color: #579C4C;"> Move your cursor over a module's
 name (or its flags) and press 'K' (or</span>
-<span style="color: #65737E;">;;      </span>
-<span style="color: #65737E;">'C-c g k' for non-vim users) to view
+<span style="color: #579C4C;">;;      </span>
+<span style="color: #579C4C;">'C-c g k' for non-vim users) to view
 its documentation. This works on</span>
-<span style="color: #65737E;">;;      </span>
-<span style="color: #65737E;">flags as well (those symbols that
+<span style="color: #579C4C;">;;      </span>
+<span style="color: #579C4C;">flags as well (those symbols that
 start with a plus).</span>
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">;;      </span>
-<span style="color: #65737E;">Alternatively, press 'gd' (or 'C-c g
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">;;      </span>
+<span style="color: #579C4C;">Alternatively, press 'gd' (or 'C-c g
 d') on a module to browse its</span>
-<span style="color: #65737E;">;;      </span>
-<span style="color: #65737E;">directory (for easy access to its
+<span style="color: #579C4C;">;;      </span>
+<span style="color: #579C4C;">directory (for easy access to its
 source code).</span>
 
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">Copy me to ~/.doom.d/init.el or
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">Copy me to ~/.doom.d/init.el or
 ~/.config/doom/init.el, then edit me!</span>
 
-<span style="color: #8FA1B3;">(</span>
-<span style="color: #b48ead;">doom!</span> 
-<span style="color: #D08770;">:input</span>
+<span style="color: #C586C0;">(</span>
+<span style="color: #339CDB;">doom!</span> 
+<span style="color: #C586C0;">:input</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">chinese</span>
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">chinese</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">japanese</span>
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">japanese</span>
 
        
-<span style="color: #D08770;">:completion</span>
+<span style="color: #C586C0;">:completion</span>
        
-<span style="color: #c678dd;">(</span>company          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">the ultimate code completion
+<span style="color: #DB8E73;">(</span>company          
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">the ultimate code completion
 backend</span>
         +childframe
-<span style="color: #c678dd;">)</span>      
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a better UI for company (Emacs
+<span style="color: #DB8E73;">)</span>      
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a better UI for company (Emacs
 26+)</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">(helm             ; the *other*
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">(helm             ; the *other*
 search engine for love and life</span>
       
-<span style="color: #65737E;">;;   </span>
-<span style="color: #65737E;">+childframe      ; a better UI for
+<span style="color: #579C4C;">;;   </span>
+<span style="color: #579C4C;">+childframe      ; a better UI for
 helm (Emacs 26+)</span>
       
-<span style="color: #65737E;">;;   </span>
-<span style="color: #65737E;">+fuzzy)          ; enable fuzzy
+<span style="color: #579C4C;">;;   </span>
+<span style="color: #579C4C;">+fuzzy)          ; enable fuzzy
 search backend for helm</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">ido               ; the other *other*
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">ido               ; the other *other*
 search engine...</span>
        
-<span style="color: #c678dd;">(</span>ivy              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a search engine for love and
+<span style="color: #DB8E73;">(</span>ivy              
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a search engine for love and
 life</span>
         +childframe      
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a better UI for ivy (Emacs
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a better UI for ivy (Emacs
 26+)</span>
         +prescient       
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">better? filtering and sorting?</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">better? filtering and sorting?</span>
         +icons           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">enables file icons</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">enables file icons</span>
         +fuzzy
-<span style="color: #c678dd;">)</span>          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">enable fuzzy search backend for
+<span style="color: #DB8E73;">)</span>          
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">enable fuzzy search backend for
 ivy</span>
 
       
-<span style="color: #D08770;">:ui</span>
+<span style="color: #C586C0;">:ui</span>
       deft              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">notational velocity for Emacs</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">notational velocity for Emacs</span>
       doom              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">what makes DOOM look the way it
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">what makes DOOM look the way it
 does</span>
       doom-dashboard    
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a nifty splash screen for
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a nifty splash screen for
 Emacs</span>
       doom-quit         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">DOOM quit-message prompts when you
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">DOOM quit-message prompts when you
 quit Emacs</span>
       
-<span style="color: #BF616A;">fill-column</span>       
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a `</span>
-<span style="color: #D08770;">fill-column</span>
-<span style="color: #65737E;">' indicator</span>
+<span style="color: #85DDFF;">fill-column</span>       
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a `</span>
+<span style="color: #339CDB;">fill-column</span>
+<span style="color: #579C4C;">' indicator</span>
       hl-todo           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">highlight </span>
-<span style="color: #ECBE7B; font-weight: bold;">TODO</span>
-<span style="color: #65737E;">/</span>
-<span style="color: #BF616A; font-weight: bold;">FIXME</span>
-<span style="color: #65737E;">/</span>
-<span style="color: #A3BE8C; font-weight: bold;">NOTE</span>
-<span style="color: #65737E;"> tags</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">highlight </span>
+<span style="color: #D7BA7D; font-weight: bold;">TODO</span>
+<span style="color: #579C4C;">/</span>
+<span style="color: #D16969; font-weight: bold;">FIXME</span>
+<span style="color: #579C4C;">/</span>
+<span style="color: #579C4C; font-weight: bold;">NOTE</span>
+<span style="color: #579C4C;"> tags</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">hydra</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">hydra</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">indent-guides  ; highlighted indent
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">indent-guides  ; highlighted indent
 columns</span>
       modeline          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">snazzy, Atom-inspired modeline, plus
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">snazzy, Atom-inspired modeline, plus
 API</span>
       nav-flash         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">blink the current line after
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">blink the current line after
 jumping</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">neotree        ; a project drawer,
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">neotree        ; a project drawer,
 like NERDTree for vim</span>
       ophints           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">highlight the region an operation
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">highlight the region an operation
 acts on</span>
       
-<span style="color: #c678dd;">(</span>popup            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">tame sudden yet inevitable temporary
+<span style="color: #DB8E73;">(</span>popup            
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">tame sudden yet inevitable temporary
 windows</span>
         +all            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">catch all popups that start with an
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">catch all popups that start with an
 asterix</span>
         +defaults
-<span style="color: #c678dd;">)</span>      
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">default popup rules</span>
+<span style="color: #DB8E73;">)</span>      
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">default popup rules</span>
       ligatures         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">replace bits of code with
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">replace bits of code with
 prettymbols</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">tabs           ; a tab bar for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">tabs           ; a tab bar for
 Emacs</span>
       treemacs          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a project drawer, like neotree but
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a project drawer, like neotree but
 cooler</span>
       unicode           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">extended unicode support for various
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">extended unicode support for various
 languages</span>
       vc-gutter         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">vcs diff in the fringe</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">vcs diff in the fringe</span>
       vi-tilde-fringe   
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">fringe tildes to mark beyond
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">fringe tildes to mark beyond
 EOB</span>
       window-select     
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">visually switch windows</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">visually switch windows</span>
       workspaces        
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">tab emulation, persistence &amp;
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">tab emulation, persistence &amp;
 separate workspaces</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">zen              ; distraction-free
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">zen              ; distraction-free
 coding or writing</span>
 
       
-<span style="color: #D08770;">:editor</span>
+<span style="color: #C586C0;">:editor</span>
       
-<span style="color: #c678dd;">(</span>evil +everywhere
-<span style="color: #c678dd;">)</span> 
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">come to the dark side, we have
+<span style="color: #DB8E73;">(</span>evil +everywhere
+<span style="color: #DB8E73;">)</span> 
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">come to the dark side, we have
 cookies</span>
       file-templates     
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">auto-snippets for empty files</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">auto-snippets for empty files</span>
       fold               
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">(nigh) universal code folding</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">(nigh) universal code folding</span>
       
-<span style="color: #c678dd;">(</span>
-<span style="color: #D08770;">format</span> +onsave
-<span style="color: #c678dd;">)</span>   
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">Automated prettiness</span>
+<span style="color: #DB8E73;">(</span>
+<span style="color: #339CDB;">format</span> +onsave
+<span style="color: #DB8E73;">)</span>   
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">Automated prettiness</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">god             ; run Emacs commands
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">god             ; run Emacs commands
 without modifier keys</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">lispy           ; vim for lisp, for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">lispy           ; vim for lisp, for
 people who dont like vim</span>
       multiple-cursors   
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">editing in many places at once</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">editing in many places at once</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">objed           ; text object editing
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">objed           ; text object editing
 for the innocent</span>
       
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">parinfer        ; turn lisp into
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">parinfer        ; turn lisp into
 python, sort of</span>
       rotate-text        
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">cycle region at point between text
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">cycle region at point between text
 candidates</span>
       snippets           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">my elves. They type so I don't have
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">my elves. They type so I don't have
 to</span>
       
-<span style="color: #BF616A;">word-wrap</span>       
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">soft wrapping with language aware
+<span style="color: #85DDFF;">word-wrap</span>       
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">soft wrapping with language aware
 indent</span>
 
 
        
-<span style="color: #D08770;">:emacs</span>
+<span style="color: #C586C0;">:emacs</span>
        
-<span style="color: #c678dd;">(</span>
-<span style="color: #8FA1B3;">dired</span>            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">making dired pretty
+<span style="color: #DB8E73;">(</span>
+<span style="color: #D9DAA2;">dired</span>            
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">making dired pretty
 [functional]</span>
         +ranger           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">bringing the goodness of ranger to
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">bringing the goodness of ranger to
 dired</span>
         +icons
-<span style="color: #c678dd;">)</span>            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">colorful icons for dired-mode</span>
+<span style="color: #DB8E73;">)</span>            
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">colorful icons for dired-mode</span>
        electric          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">smarter, keyword-based
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">smarter, keyword-based
 electric-indent</span>
        ibuffer           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">interactive buffer management</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">interactive buffer management</span>
        vc                
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">version-control and Emacs, sitting in
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">version-control and Emacs, sitting in
 a tree</span>
        
-<span style="color: #c678dd;">(</span>
-<span style="color: #8FA1B3;">undo</span>             
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">persistent, smarter undo for your
+<span style="color: #DB8E73;">(</span>
+<span style="color: #D9DAA2;">undo</span>             
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">persistent, smarter undo for your
 inevitable mistakes</span>
         +tree
-<span style="color: #c678dd;">)</span>           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">bit more unstable, but has pretty
+<span style="color: #DB8E73;">)</span>           
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">bit more unstable, but has pretty
 visuals</span>
 
        
-<span style="color: #D08770;">:term</span>
+<span style="color: #C586C0;">:term</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">eshell            ; a consistent,
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">eshell            ; a consistent,
 cross-platform shell (WIP)</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">shell           ; a terminal REPL for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">shell           ; a terminal REPL for
 Emacs</span>
        term              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">terminals in Emacs</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">terminals in Emacs</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">vterm             ; another terminal
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">vterm             ; another terminal
 in Emacs</span>
       
        
-<span style="color: #D08770;">:checkers</span>
+<span style="color: #C586C0;">:checkers</span>
        
-<span style="color: #c678dd;">(</span>syntax             
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">tasing you for every semicolon you
+<span style="color: #DB8E73;">(</span>syntax             
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">tasing you for every semicolon you
 forget</span>
         +childframe
-<span style="color: #c678dd;">)</span>       
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">use childframes for error popups
+<span style="color: #DB8E73;">)</span>       
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">use childframes for error popups
 (Emacs 26+ only)</span>
        spell             
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">tasing you for misspelling
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">tasing you for misspelling
 mispelling</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">grammar           ; tasing grammar
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">grammar           ; tasing grammar
 mistake every you make</span>
 
        
-<span style="color: #D08770;">:tools</span>
+<span style="color: #C586C0;">:tools</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">ansible</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">ansible</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">debugger          ; </span>
-<span style="color: #BF616A; font-weight: bold;">FIXME</span>
-<span style="color: #65737E;"> stepping through code, to help you
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">debugger          ; </span>
+<span style="color: #D16969; font-weight: bold;">FIXME</span>
+<span style="color: #579C4C;"> stepping through code, to help you
 add bugs</span>
        direnv
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">docker</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">docker</span>
        editorconfig      
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">let someone else argue about tabs vs
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">let someone else argue about tabs vs
 spaces</span>
        ein            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">tame Jupyter notebooks with
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">tame Jupyter notebooks with
 emacs</span>
        
-<span style="color: #c678dd;">(</span>
-<span style="color: #D08770;">eval</span> +overlay
-<span style="color: #c678dd;">)</span>   
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">run code, run (also, repls)</span>
+<span style="color: #DB8E73;">(</span>
+<span style="color: #339CDB;">eval</span> +overlay
+<span style="color: #DB8E73;">)</span>   
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">run code, run (also, repls)</span>
        gist              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">interacting with github gists</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">interacting with github gists</span>
        
-<span style="color: #c678dd;">(</span>lookup           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">helps you navigate your code and
+<span style="color: #DB8E73;">(</span>lookup           
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">helps you navigate your code and
 documentation</span>
         +dictionary      
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">enable word definitions and thesaurus
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">enable word definitions and thesaurus
 lookup</span>
         +offline         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">install and prefer offline
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">install and prefer offline
 dictionary/thesaurus</span>
         +docsets
-<span style="color: #c678dd;">)</span>        
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">...on in Dash docsets locally</span>
+<span style="color: #DB8E73;">)</span>        
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">...on in Dash docsets locally</span>
        lsp
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">macos            ; MacOS-specific
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">macos            ; MacOS-specific
 commands</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">make             ; run make tasks
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">make             ; run make tasks
 from Emacs</span>
        magit             
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a git porcelain for Emacs</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a git porcelain for Emacs</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">pass           ;password manager for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">pass           ;password manager for
 nerds</span>
        pdf               
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">pdf enhancements</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">pdf enhancements</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">prodigy          ; </span>
-<span style="color: #BF616A; font-weight: bold;">FIXME</span>
-<span style="color: #65737E;"> managing external services &amp;
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">prodigy          ; </span>
+<span style="color: #D16969; font-weight: bold;">FIXME</span>
+<span style="color: #579C4C;"> managing external services &amp;
 code builders</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">rgb              ; creating color
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">rgb              ; creating color
 strings</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">terraform         ; infrastructure as
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">terraform         ; infrastructure as
 code</span>
        tmux              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">an API for interacting with
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">an API for interacting with
 tmux</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">upload           ; map local to
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">upload           ; map local to
 remote projects via ssh/ftp</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">biblio          ; prioritize native
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">biblio          ; prioritize native
 implementations</span>
 
        
-<span style="color: #D08770;">:lang</span>
+<span style="color: #C586C0;">:lang</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">agda              ; types of types of
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">agda              ; types of types of
 types of types...</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">assembly          ; assembly for fun
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">assembly          ; assembly for fun
 or debugging</span>
        
-<span style="color: #c678dd;">(</span>cc +lsp
-<span style="color: #c678dd;">)</span>                   
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">C/C++/Obj-C madness</span>
+<span style="color: #DB8E73;">(</span>cc +lsp
+<span style="color: #DB8E73;">)</span>                   
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">C/C++/Obj-C madness</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">clojure           ; java with a
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">clojure           ; java with a
 lisp</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">common-lisp       ; if you've seen
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">common-lisp       ; if you've seen
 one lisp, you've seen them all</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">coq               ;
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">coq               ;
 proofs-as-programs</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">crystal           ; ruby at the speed
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">crystal           ; ruby at the speed
 of c</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">csharp            ; unity, .NET, and
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">csharp            ; unity, .NET, and
 mono shenanigans</span>
        data                 
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">config/data formats</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">config/data formats</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">elixir            ; erlang done
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">elixir            ; erlang done
 right</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">elm               ; care for a cup of
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">elm               ; care for a cup of
 TEA?</span>
        emacs-lisp           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">drown in parentheses</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">drown in parentheses</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">erlang            ; an elegant
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">erlang            ; an elegant
 language for a more civilized age</span>
        ess                  
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">emacs speaks statistics</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">emacs speaks statistics</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">faust              ; dsp, but you get
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">faust              ; dsp, but you get
 to keep your soul</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">fsharp             ; ML stands for
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">fsharp             ; ML stands for
 Microsoft's Language</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">go                   ; the hipster
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">go                   ; the hipster
 dialect</span>
        
-<span style="color: #c678dd;">(</span>haskell +dante
-<span style="color: #c678dd;">)</span>   
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">a language that's lazier than I
+<span style="color: #DB8E73;">(</span>haskell +dante
+<span style="color: #DB8E73;">)</span>   
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">a language that's lazier than I
 am</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">hy                 ; readability of
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">hy                 ; readability of
 scheme w/ speed of python</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">idris</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">idris</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">(java +meghanada)  ; the poster child
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">(java +meghanada)  ; the poster child
 for carpal tunnel syndrome</span>
        javascript          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">
 all(hope(abandon(ye(who(enter(here))))))</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">julia            ; a better, faster
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">julia            ; a better, faster
 MATLAB</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">kotlin           ; a better, slicker
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">kotlin           ; a better, slicker
 Java(Script)</span>
        
-<span style="color: #c678dd;">(</span>latex              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">writing papers in Emacs has never
+<span style="color: #DB8E73;">(</span>latex              
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">writing papers in Emacs has never
 been so fun</span>
         +latexmk           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">no other option TBH</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">no other option TBH</span>
         +cdlatex           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">for better math</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">for better math</span>
         +fold
-<span style="color: #c678dd;">)</span>             
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">neat folding things</span>
+<span style="color: #DB8E73;">)</span>             
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">neat folding things</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">lean</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">lean</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">factor</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">factor</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">ledger             ; an accounting
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">ledger             ; an accounting
 system in Emacs</span>
        lua               
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">one-based indices? one-based
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">one-based indices? one-based
 indices</span>
        markdown         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">writing docs for people to
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">writing docs for people to
 ignore</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">nim               ; python + lisp at
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">nim               ; python + lisp at
 the speed of c</span>
        nix                
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">I hereby declare "nix geht
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">I hereby declare "nix geht
 mehr!"</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">ocaml             ; an objective
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">ocaml             ; an objective
 camel</span>
        
-<span style="color: #c678dd;">(</span>org              
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">organize your plain life in plain
+<span style="color: #DB8E73;">(</span>org              
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">organize your plain life in plain
 text</span>
         
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">+brain           ; for org-brain
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">+brain           ; for org-brain
 support</span>
         
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">+dragndrop       ; file drag &amp;
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">+dragndrop       ; file drag &amp;
 drop support</span>
         +gnuplot         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">render gnuplot</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">render gnuplot</span>
         +hugo            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">use Emacs for hugo blogging</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">use Emacs for hugo blogging</span>
         
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">+ipython         ; So much more
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">+ipython         ; So much more
 asynchronous, overshadowed by jupyter</span>
         
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">+journal      ; journaling in
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">+journal      ; journaling in
 org</span>
         +jupyter         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">enable jupyter integration</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">enable jupyter integration</span>
         +pandoc          
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">pandoc integration into org's
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">pandoc integration into org's
 exporter</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">+pomodoro       ; be fruitful with
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">+pomodoro       ; be fruitful with
 the tomato technique</span>
         +present         
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">using Emacs for presentations</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">using Emacs for presentations</span>
         +roam
-<span style="color: #c678dd;">)</span>           
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">some sort of faster note
+<span style="color: #DB8E73;">)</span>           
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">some sort of faster note
 system</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">perl            ; write code no one
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">perl            ; write code no one
 else can comprehend</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">php             ; perl's insecure
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">php             ; perl's insecure
 younger brother</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">plantuml        ; diagrams for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">plantuml        ; diagrams for
 confusing people more</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">purescript      ; javascript, but
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">purescript      ; javascript, but
 functional</span>
        python            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">beautiful is better than ugly</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">beautiful is better than ugly</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">qt              ; the 'cutest' gui
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">qt              ; the 'cutest' gui
 framework ever</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">racket          ; a DSL for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">racket          ; a DSL for
 DSLs</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">rest            ; Emacs as a REST
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">rest            ; Emacs as a REST
 client</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">rst             ; ReST in
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">rst             ; ReST in
 peace</span>
        ruby               
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">1.step do {|i| p "Ruby is #{i.even? ?
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">1.step do {|i| p "Ruby is #{i.even? ?
 'love' : 'life'}"}</span>
        rust            
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">
 Fe2O3.unwrap().unwrap().unwrap().unwrap()</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">scala           ; java, but
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">scala           ; java, but
 good</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">scheme            ; a fully conniving
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">scheme            ; a fully conniving
 family of lisps</span>
        sh                
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">she sells (ba|z)sh shells on the C
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">she sells (ba|z)sh shells on the C
 xor</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">solidity          ; do you need a
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">solidity          ; do you need a
 blockchain? No.</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">swift             ; who asked for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">swift             ; who asked for
 emoji variables?</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">terra           ; Earth and Moon in
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">terra           ; Earth and Moon in
 alignment for performance.</span>
        web                
-<span style="color: #65737E;">; </span>
-<span style="color: #65737E;">the tubes</span>
+<span style="color: #579C4C;">; </span>
+<span style="color: #579C4C;">the tubes</span>
 
        
-<span style="color: #D08770;">:email</span>
+<span style="color: #C586C0;">:email</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">(mu4e +gmail)</span>
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">(mu4e +gmail)</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">notmuch</span>
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">notmuch</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">(wanderlust +gmail)</span>
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">(wanderlust +gmail)</span>
 
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">Applications are complex and
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">Applications are complex and
 opinionated modules that transform Emacs</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">toward a specific purpose. They may
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">toward a specific purpose. They may
 have additional dependencies and</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">should be loaded late.</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">should be loaded late.</span>
 
        
-<span style="color: #D08770;">:app</span>
+<span style="color: #C586C0;">:app</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">calendar</span>
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">calendar</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">irc               ; how neckbeards
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">irc               ; how neckbeards
 socialize</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">(rss +org)        ; emacs as an RSS
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">(rss +org)        ; emacs as an RSS
 reader</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">twitter           ; twitter client
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">twitter           ; twitter client
 https://twitter.com/vnought</span>
        
-<span style="color: #65737E;">;;</span>
-<span style="color: #65737E;">write             ; emacs for writers
+<span style="color: #579C4C;">;;</span>
+<span style="color: #579C4C;">write             ; emacs for writers
 (fiction, notes, papers, etc.)</span>
       
        
-<span style="color: #D08770;">:config</span>
+<span style="color: #C586C0;">:config</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">For literate config users. This will
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">For literate config users. This will
 tangle+compile a config.org</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">literate config in your `</span>
-<span style="color: #D08770;">doom-private-dir</span>
-<span style="color: #65737E;">' whenever it changes.</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">literate config in your `</span>
+<span style="color: #339CDB;">doom-private-dir</span>
+<span style="color: #579C4C;">' whenever it changes.</span>
        literate
 
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">The default module set reasonable
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">The default module set reasonable
 defaults for Emacs. It also provides</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">a Spacemacs-inspired keybinding
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">a Spacemacs-inspired keybinding
 scheme, a custom yasnippet library,</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">and additional ex commands for
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">and additional ex commands for
 evil-mode. Use it as a reference for</span>
        
-<span style="color: #65737E;">;; </span>
-<span style="color: #65737E;">your own modules.</span>
+<span style="color: #579C4C;">;; </span>
+<span style="color: #579C4C;">your own modules.</span>
        
-<span style="color: #c678dd;">(</span>default +bindings
+<span style="color: #DB8E73;">(</span>default +bindings
 +smartparens
-<span style="color: #c678dd;">)</span>
-<span style="color: #8FA1B3;">)</span>
+<span style="color: #DB8E73;">)</span>
+<span style="color: #C586C0;">)</span>
 </pre>
           </div>
         </div>
@@ -1164,7 +1164,7 @@ evil-mode. Use it as a reference for</span>
     <div id="postamble" class="status">
       <p class="date">Date: 2020:04:09</p>
       <p class="author">Author: Rohit Goswami</p>
-      <p class="date">Created: 2020-10-19 Mon 13:18</p>
+      <p class="date">Created: 2020-10-27 Tue 02:46</p>
     </div>
   </body>
 </html>
