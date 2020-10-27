@@ -145,15 +145,14 @@ Let's set some variables with basic user information.
 **** Font Face
 Honestly the basic font setting is simply not pretty enough.
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Attribute Mono" :size 20))
+(setq doom-font (font-spec :family "Attribute Mono" :size 26))
 (unless (find-font doom-font)
-  (setq doom-font (font-spec :family "FuraCode Nerd Font" :size 20)))
+  (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 26)))
 #+END_SRC
 **** Unicode Fonts
 This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
 #+BEGIN_SRC emacs-lisp
-(setq doom-unicode-font (font-spec :name "DejaVu Sans Mono" :size 20))
-
+(setq doom-unicode-font (font-spec :name "DejaVu Sans Mono" :size 26))
 #+END_SRC
 **** Helm and Childframes
 I prefer the regular diminished font size, even for the childframes.
