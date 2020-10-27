@@ -146,11 +146,12 @@ Now I load it here since I don't use ~+attach~.
 
 *** LATER Org Drill
 The [[https://bitbucket.org/eeeickythump/org-drill/src][actual repo]] has not been updated in 3 years, so I must use [[https://github.com/hakanserce/org-drill][this fork]].
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-drill
   :recipe (:host github
             :repo "hakanserce/org-drill"))
 #+END_SRC
+
 *** Org Protocol Updates
 This needs to be installed specially, [[https://github.com/alphapapa/org-protocol-capture-html][from this repo]].
 #+BEGIN_SRC emacs-lisp
@@ -194,9 +195,10 @@ We will use this.
 #+end_src
 *** Anki Mode
 This is put here since it only works with ~org-mode~ stuff.
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp
 (package! anki-editor)
 #+END_SRC
+
 *** Org Re-Reveal Extensions
 An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref~. Also [[https://gitlab.com/oer/oer-reveal][this]].
 #+begin_src emacs-lisp :tangle yes

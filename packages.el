@@ -17,6 +17,12 @@
             :repo "abo-abo/org-download"))
 ;; Org Download:1 ends here
 
+;; [[file:packages.org::*LATER Org Drill][LATER Org Drill:1]]
+(package! org-drill
+  :recipe (:host github
+            :repo "hakanserce/org-drill"))
+;; LATER Org Drill:1 ends here
+
 ;; [[file:packages.org::*Org Protocol Updates][Org Protocol Updates:1]]
 (package! org-protocol-capture-html
   :recipe (:host github
@@ -44,6 +50,10 @@
 ;; [[file:packages.org::*Org Async][Org Async:1]]
 (package! org-babel-eval-in-repl)
 ;; Org Async:1 ends here
+
+;; [[file:packages.org::*Anki Mode][Anki Mode:1]]
+(package! anki-editor)
+;; Anki Mode:1 ends here
 
 ;; [[file:packages.org::*Org Re-Reveal Extensions][Org Re-Reveal Extensions:1]]
 (package! org-re-reveal-ref)
