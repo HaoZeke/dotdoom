@@ -1738,6 +1738,24 @@ This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_genera
     (setq company-tooltip-align-annotations t)
     (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
+** Prettier TeX buffers
+From [[https://endlessparentheses.com/improving-latex-equations-with-font-lock.html][here]]. Reduces the size of inessential ~tex~.
+#+begin_src elisp
+(defface endless/unimportant-latex-face
+  '((t :height 0.7
+       :inherit font-lock-comment-face))
+  "Face used on less relevant math commands.")
+
+(font-lock-add-keywords
+ 'latex-mode
+ `((,(rx (or (and "\\" (or (any ",.!;")
+                           (and (or "left" "right"
+                                    "big" "Big")
+                                symbol-end)))
+             (any "_^")))
+    0 'endless/unimportant-latex-face prepend))
+ 'end)
+#+end_src
 ** Babel Tabs
 Evidently there was [[https://emacs.stackexchange.com/questions/24283/org-mode-converting-spaces-to-tabs-when-evaluating-source][some sort of re-indentation]] going on during the export
 process which was breaking a lot of ~python~, this should fix that:
