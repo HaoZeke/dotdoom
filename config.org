@@ -106,6 +106,7 @@
     - [[#tufte-book][Tufte Book]]
   - [[#latex-preview-for-org-mode][LaTeX Preview for Org mode]]
   - [[#math-support][Math support]]
+  - [[#prettier-tex-buffers][Prettier TeX buffers]]
   - [[#babel-tabs][Babel Tabs]]
   - [[#pandoc-babel][Pandoc Babel]]
     - [[#restructured-text][Restructured Text]]
