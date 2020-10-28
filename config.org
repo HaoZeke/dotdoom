@@ -1,7 +1,7 @@
 #+TITLE: Literate doom-emacs config
 #+AUTHOR: Rohit Goswami (HaoZeke) <rohit.goswami@aol.com>
 #+DATE: 2020:04:09
-#+HTML_LINK_HOME: https://rgoswami.me
+#+HTML_LINK_HOME: https://dotdoom.rgoswami.me
 #+HTML_HEAD_EXTRA: <script> window.goatcounter = { path: '/dotdoomhome', }; </script>
 #+HTML_HEAD_EXTRA: <script data-goatcounter="https://rgoswami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 #+PROPERTY: header-args :tangle yes :results none
