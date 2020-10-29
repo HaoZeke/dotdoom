@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-10-28 Wed 16:15 -->
+<!-- 2020-10-29 Thu 03:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Literate doom-emacs config</title>
@@ -282,8 +282,8 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org0e3aa5f">1.1.5. Markdown Improvements</a></li>
 <li><a href="#org1d99a6a">1.1.6. Org Noter</a></li>
 <li><a href="#org895b329">1.1.7. Org Mode additions</a></li>
-<li><a href="#org8a0000e">1.1.8. Anki Editor</a></li>
-<li><a href="#orgb3f0227">1.1.9. CC Mode</a></li>
+<li><a href="#orge92ea30">1.1.8. Anki Editor</a></li>
+<li><a href="#org38741ed">1.1.9. CC Mode</a></li>
 <li><a href="#org5febf0b">1.1.10. Evil Colemak</a></li>
 <li><a href="#orgbb4b191">1.1.11. <span class="done DONE">DONE</span> Neotree &#x2013;&gt; Treemacs</a></li>
 <li><a href="#org00ae80b">1.1.12. TeX Mode</a></li>
@@ -304,7 +304,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#orgfc27cf9">1.3.3. PDF Tools</a></li>
 </ul>
 </li>
-<li><a href="#orge92ea30">1.4. Anki Editor</a></li>
+<li><a href="#orgbca8625">1.4. Anki Editor</a></li>
 <li><a href="#org1a32a8d">1.5. Org Additions</a>
 <ul>
 <li><a href="#org1bd77b3">1.5.1. todo Modifications</a></li>
@@ -342,13 +342,13 @@ org_html_manager.setup();  // activate after the parameters are set
 </ul>
 </li>
 <li><a href="#org43ea918">1.8. Dockerfile Mode</a></li>
-<li><a href="#orgcbc1846">1.9. Functions</a>
+<li><a href="#orgab01be0">1.9. Functions</a>
 <ul>
 <li><a href="#org7116331">1.9.1. Org-Export HTML with useful IDs</a></li>
 <li><a href="#org4c01b77">1.9.2. Org-mode export pdf when saved</a></li>
 <li><a href="#org1b18652">1.9.3. Org-mode export koma-letter</a></li>
 <li><a href="#org13eed8a">1.9.4. Org-mode export TeX</a></li>
-<li><a href="#orgd2af2be">1.9.5. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org1bf6409">1.9.5. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org886e9cc">1.9.6. Helper function</a></li>
 <li><a href="#org4387b03">1.9.7. Async Command without Buffers</a></li>
 <li><a href="#org94a9690">1.9.8. Smarter Clang Formatting</a></li>
@@ -364,7 +364,7 @@ org_html_manager.setup();  // activate after the parameters are set
 </li>
 <li><a href="#orgb749e3e">1.11. Hooks</a>
 <ul>
-<li><a href="#org387f612">1.11.1. <span class="todo TODO">TODO</span> Caveats</a></li>
+<li><a href="#org5d63054">1.11.1. <span class="todo TODO">TODO</span> Caveats</a></li>
 <li><a href="#org5f292ef">1.11.2. Before Save Hooks</a></li>
 <li><a href="#org5b0d52f">1.11.3. Disable Auto RDM</a></li>
 </ul>
@@ -394,7 +394,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org8570f5d">3.1. Shared Preferences</a>
 <ul>
 <li><a href="#org9329351">3.1.1. Compiler</a></li>
-<li><a href="#orgd0903bc">3.1.2. Packages</a></li>
+<li><a href="#org1881a86">3.1.2. Packages</a></li>
 </ul>
 </li>
 <li><a href="#org63c51db">3.2. Export Templates</a>
@@ -433,7 +433,7 @@ org_html_manager.setup();  // activate after the parameters are set
 <li><a href="#org7441d83">4.2. Org Capture</a>
 <ul>
 <li><a href="#orgb5723e5">4.2.1. Buffer Size</a></li>
-<li><a href="#orgab01be0">4.2.2. Functions</a></li>
+<li><a href="#orga3398d1">4.2.2. Functions</a></li>
 <li><a href="#org192d796">4.2.3. Templates</a></li>
 </ul>
 </li>
@@ -508,7 +508,7 @@ Honestly the basic font setting is simply not pretty enough.
 This should be implemented as fallback font once <a href="https://github.com/hlissner/doom-emacs/pull/861">this</a> is merged.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">doom-unicode-font</span> <span style="color: #81a2be;">(</span><span style="color: #de935f;">font-spec</span> <span style="color: #81a2be;">:name</span> <span style="color: #b5bd68;">"DejaVu Sans Mono"</span> <span style="color: #81a2be;">:size</span> <span style="color: #de935f; font-weight: bold;">26</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">doom-unicode-font</span> <span style="color: #81a2be;">(</span><span style="color: #de935f;">font-spec</span> <span style="color: #81a2be;">:family</span> <span style="color: #b5bd68;">"Symbola"</span> <span style="color: #81a2be;">:size</span> <span style="color: #de935f; font-weight: bold;">26</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
 </div>
@@ -563,7 +563,7 @@ This is really really really excruciatingly slow for LaTeX mode and maybe even
 for other random buffers.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">setq-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">LaTeX-mode-hook</span> +spellcheck-immediately nil<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">setq-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">LaTeX-mode-hook</span> +spellcheck-immediately nil<span style="color: #b294bb;">)</span>
 </pre>
 </div>
 </div>
@@ -910,7 +910,7 @@ more.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">map!</span> <span style="color: #81a2be;">:localleader</span>
-      <span style="color: #81a2be;">:map</span> markdown-mode-map
+      <span style="color: #81a2be;">:map</span> <span style="color: #cc6666;">markdown-mode-map</span>
       <span style="color: #81a2be;">:prefix</span> <span style="color: #81a2be;">(</span><span style="color: #b5bd68;">"i"</span> . <span style="color: #b5bd68;">"Insert"</span><span style="color: #81a2be;">)</span>
       <span style="color: #81a2be;">:desc</span> <span style="color: #b5bd68;">"Blockquote"</span>    <span style="color: #b5bd68;">"q"</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">markdown-insert-blockquote</span>
       <span style="color: #81a2be;">:desc</span> <span style="color: #b5bd68;">"Bold"</span>          <span style="color: #b5bd68;">"b"</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">markdown-insert-bold</span>
@@ -1006,9 +1006,9 @@ are a part of <code>org-mode</code>.
 Modified from <a href="https://tex.stackexchange.com/questions/22573/how-can-i-tell-auctex-that-breqn-is-a-math-environment">this TeXSE answer</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #b294bb;">(</span><span style="color: #81a2be;">add-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">LaTeX-mode-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">add-my-latex-environments</span><span style="color: #b294bb;">)</span>
+<pre class="src src-elisp"><span style="color: #b294bb;">(</span><span style="color: #81a2be;">add-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">LaTeX-mode-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">add-my-latex-environments</span><span style="color: #b294bb;">)</span>
 <span style="color: #b294bb;">(</span><span style="color: #b294bb;">defun</span> <span style="color: #81a2be;">add-my-latex-environments</span> <span style="color: #81a2be;">()</span>
-  <span style="color: #81a2be;">(</span><span style="color: #81a2be;">LaTeX-add-environments</span>
+  <span style="color: #81a2be;">(</span>LaTeX-add-environments
    <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b5bd68;">"thm"</span> LaTeX-env-label<span style="color: #de935f;">)</span>
    <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b5bd68;">"prop"</span> LaTeX-env-label<span style="color: #de935f;">)</span>
    <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b5bd68;">"lem"</span> LaTeX-env-label<span style="color: #de935f;">)</span>
@@ -1025,10 +1025,10 @@ Modified from <a href="https://tex.stackexchange.com/questions/22573/how-can-i-t
 <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">Code I added to make syntax highlighting work in Auctex</span>
 
 <span style="color: #b294bb;">(</span><span style="color: #81a2be;">custom-set-variables</span>
- <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #cc6666;">font-latex-math-environments</span> <span style="color: #de935f;">(</span><span style="color: #b294bb;">quote</span>
+ <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span>font-latex-math-environments <span style="color: #de935f;">(</span><span style="color: #b294bb;">quote</span>
      <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"display"</span> <span style="color: #b5bd68;">"displaymath"</span> <span style="color: #b5bd68;">"equation"</span> <span style="color: #b5bd68;">"eqnarray"</span> <span style="color: #b5bd68;">"gather"</span> <span style="color: #b5bd68;">"multline"</span>
       <span style="color: #b5bd68;">"align"</span> <span style="color: #b5bd68;">"alignat"</span> <span style="color: #b5bd68;">"xalignat"</span> <span style="color: #b5bd68;">"dmath"</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
-  <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #cc6666;">TeX-insert-braces</span> nil<span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span> <span style="color: #5a5b5a;">;;</span><span style="color: #5a5b5a;">Stops putting {} on argumentless commands to "save" whitespace</span>
+  <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span>TeX-insert-braces nil<span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span> <span style="color: #5a5b5a;">;;</span><span style="color: #5a5b5a;">Stops putting {} on argumentless commands to "save" whitespace</span>
 
 <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">Additionally, reftex code to recognize this environment as an equation</span>
 <span style="color: #b294bb;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">reftex-label-alist</span>
@@ -1172,8 +1172,8 @@ Stolen <a href="https://tex.stackexchange.com/questions/45712/faster-way-of-writ
 </li>
 </ol>
 </div>
-<div id="outline-container-org8a0000e" class="outline-4">
-<h4 id="org8a0000e"><span class="section-number-4">1.1.8</span> Anki Editor</h4>
+<div id="outline-container-orge92ea30" class="outline-4">
+<h4 id="orge92ea30"><span class="section-number-4">1.1.8</span> Anki Editor</h4>
 <div class="outline-text-4" id="text-1-1-8">
 <p>
 These are only relevant to <code>org-mode</code>. Nevertheless they are not part of
@@ -1196,8 +1196,8 @@ These are only relevant to <code>org-mode</code>. Nevertheless they are not part
 </div>
 </div>
 </div>
-<div id="outline-container-orgb3f0227" class="outline-4">
-<h4 id="orgb3f0227"><span class="section-number-4">1.1.9</span> CC Mode</h4>
+<div id="outline-container-org38741ed" class="outline-4">
+<h4 id="org38741ed"><span class="section-number-4">1.1.9</span> CC Mode</h4>
 <div class="outline-text-4" id="text-1-1-9">
 <p>
 These are basically wrappers around various <code>rtags</code> functions.
@@ -1205,7 +1205,7 @@ These are basically wrappers around various <code>rtags</code> functions.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">nmap</span>
 <span style="color: #81a2be;">:prefix</span> <span style="color: #cc6666;">my-leader</span>
-<span style="color: #81a2be;">:keymaps</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">c-mode-base-map</span>
+<span style="color: #81a2be;">:keymaps</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">c-mode-base-map</span>
 <span style="color: #b5bd68;">"m"</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #81a2be;">:ignore</span> t <span style="color: #81a2be;">:wk</span> <span style="color: #b5bd68;">"Local Commands"</span><span style="color: #81a2be;">)</span>
 <span style="color: #b5bd68;">"m r"</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #81a2be;">:ignore</span> t <span style="color: #81a2be;">:wk</span> <span style="color: #b5bd68;">"Rtags"</span><span style="color: #81a2be;">)</span>
 <span style="color: #b5bd68;">"m r c"</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span>rtags-check-includes <span style="color: #81a2be;">:wk</span> <span style="color: #b5bd68;">"Check Includes"</span><span style="color: #81a2be;">)</span>
@@ -1376,7 +1376,7 @@ These are more semantic for me.
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">nmap</span>
   <span style="color: #81a2be;">:prefix</span> <span style="color: #cc6666;">my-leader</span>
-  <span style="color: #81a2be;">:keymaps</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #cc6666;">latex-mode-map</span> <span style="color: #cc6666;">tex-mode-map</span> <span style="color: #cc6666;">LaTeX-mode-map</span><span style="color: #81a2be;">)</span>
+  <span style="color: #81a2be;">:keymaps</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span>latex-mode-map tex-mode-map LaTeX-mode-map<span style="color: #81a2be;">)</span>
   <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">Folding Stuff</span>
   <span style="color: #b5bd68;">"m f"</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #81a2be;">:ignore</span> t <span style="color: #81a2be;">:wk</span> <span style="color: #b5bd68;">"Fold Things"</span><span style="color: #81a2be;">)</span>
   <span style="color: #b5bd68;">"m f c"</span> <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span>TeX-fold-comment <span style="color: #81a2be;">:wk</span> <span style="color: #b5bd68;">"Comment"</span><span style="color: #81a2be;">)</span>
@@ -1409,7 +1409,7 @@ These are encrypted with <code>gpg</code> and are essentially set mostly by <cod
   <span style="color: #81a2be;">:demand</span>
   <span style="color: #81a2be;">:config</span>
   <span style="color: #81a2be;">(</span><span style="color: #81a2be;">epa-file-enable</span><span style="color: #81a2be;">)</span>
-  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">let</span> <span style="color: #de935f;">(</span><span style="color: #b294bb;">(</span><span style="color: #cc6666;">file-name-handler-alist</span> doom--initial-file-name-handler-alist<span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span>
+  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">let</span> <span style="color: #de935f;">(</span><span style="color: #b294bb;">(</span><span style="color: #cc6666;">file-name-handler-alist</span> <span style="color: #cc6666;">doom--initial-file-name-handler-alist</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span>
     <span style="color: #de935f;">(</span><span style="color: #de935f;">load</span> <span style="color: #b294bb;">(</span><span style="color: #de935f;">concat</span> <span style="color: #cc6666;">doom-private-dir</span> <span style="color: #b5bd68;">"local/private.el.gpg"</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
   <span style="color: #b294bb;">)</span>
 </pre>
@@ -1439,7 +1439,7 @@ open emacs.
 </div>
 </div>
 </li>
-<li><a id="org490e345"></a><span class="done KILL">KILL</span> Caveats<br />
+<li><a id="org387f612"></a><span class="done KILL">KILL</span> Caveats<br />
 <div class="outline-text-5" id="text-1-2-2-2">
 <ul class="org-ul">
 <li>This actually forms it relative to the exact path.
@@ -1497,9 +1497,9 @@ This section is to work with the settings for the <code>word-wrap</code> <code>d
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">enable word-wrap in C/C++/ObjC/Java</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">add-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">markdown-mode-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #cc6666;">+word-wrap-mode</span><span style="color: #b294bb;">)</span>
+<span style="color: #b294bb;">(</span><span style="color: #b294bb;">add-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">markdown-mode-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #cc6666;">+word-wrap-mode</span><span style="color: #b294bb;">)</span>
 <span style="color: #b294bb;">(</span><span style="color: #b294bb;">add-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">text-mode-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #cc6666;">+word-wrap-mode</span><span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">add-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">tex-mode-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #cc6666;">+word-wrap-mode</span><span style="color: #b294bb;">)</span>
+<span style="color: #b294bb;">(</span><span style="color: #b294bb;">add-hook!</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">tex-mode-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #cc6666;">+word-wrap-mode</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
 </div>
@@ -1592,8 +1592,8 @@ need to be bound in <code>org-mode</code> files. Also updated to have <code>evil
 </div>
 </div>
 
-<div id="outline-container-orge92ea30" class="outline-3">
-<h3 id="orge92ea30"><span class="section-number-3">1.4</span> Anki Editor</h3>
+<div id="outline-container-orgbca8625" class="outline-3">
+<h3 id="orgbca8625"><span class="section-number-3">1.4</span> Anki Editor</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
 This is for my favorite <a href="https://github.com/louietan/anki-editor">anki interaction</a> mechanism.
@@ -1688,7 +1688,7 @@ Before setting this up, a new function is defined to call the screenshot process
     <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">Because flameshot exit immediately, keep polling to check file existence</span>
     <span style="color: #de935f;">(</span><span style="color: #b294bb;">while</span> <span style="color: #b294bb;">(</span><span style="color: #de935f;">not</span> <span style="color: #81a2be;">(</span><span style="color: #de935f;">file-exists-p</span> tmp-file<span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
       <span style="color: #b294bb;">(</span><span style="color: #de935f;">sleep-for</span> <span style="color: #de935f; font-weight: bold;">2</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span>
-    <span style="color: #de935f;">(</span>org-download-image tmp-file<span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+    <span style="color: #de935f;">(</span><span style="color: #81a2be;">org-download-image</span> tmp-file<span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
 <p>
@@ -1698,13 +1698,13 @@ Now we can configure the package itself.
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> org-download
   <span style="color: #81a2be;">:after</span> org
   <span style="color: #81a2be;">:config</span>
-  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq-default</span> org-download-image-dir <span style="color: #b5bd68;">"./images/"</span>
+  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq-default</span> <span style="color: #cc6666;">org-download-image-dir</span> <span style="color: #b5bd68;">"./images/"</span>
                 <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">org-download-screenshot-method "flameshot gui --raw &gt; %s"</span>
-                org-download-screenshot-method <span style="color: #b5bd68;">"xclip -selection clipboard -t image/png -o &gt; %s"</span>
-                org-download-delete-image-after-download t
-                org-download-method <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">directory</span>
-                org-download-heading-lvl <span style="color: #de935f; font-weight: bold;">1</span>
-                org-download-screenshot-file <span style="color: #b5bd68;">"/tmp/screenshot.png"</span>
+                <span style="color: #cc6666;">org-download-screenshot-method</span> <span style="color: #b5bd68;">"xclip -selection clipboard -t image/png -o &gt; %s"</span>
+                <span style="color: #cc6666;">org-download-delete-image-after-download</span> t
+                <span style="color: #cc6666;">org-download-method</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">directory</span>
+                <span style="color: #cc6666;">org-download-heading-lvl</span> <span style="color: #de935f; font-weight: bold;">1</span>
+                <span style="color: #cc6666;">org-download-screenshot-file</span> <span style="color: #b5bd68;">"/tmp/screenshot.png"</span>
                 <span style="color: #81a2be;">)</span>
   <span style="color: #b294bb;">)</span>
 </pre>
@@ -1740,7 +1740,7 @@ From <a href="https://github.com/diadochos/org-babel-eval-in-repl">here</a>. Now
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> org-babel-eval-in-repl
   <span style="color: #81a2be;">:after</span> org
   <span style="color: #81a2be;">:config</span>
-  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> eir-jump-after-eval nil<span style="color: #81a2be;">)</span>
+  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">eir-jump-after-eval</span> nil<span style="color: #81a2be;">)</span>
   <span style="color: #b294bb;">)</span>
 </pre>
 </div>
@@ -2123,7 +2123,7 @@ I like having spell checks for everything.
 <span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> salt-mode
   <span style="color: #81a2be;">:config</span>
 <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">Flyspell</span>
-<span style="color: #81a2be;">(</span><span style="color: #81a2be;">add-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">salt-mode-hook</span>
+<span style="color: #81a2be;">(</span><span style="color: #81a2be;">add-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">salt-mode-hook</span>
         <span style="color: #de935f;">(</span><span style="color: #b294bb;">lambda</span> <span style="color: #b294bb;">()</span>
             <span style="color: #b294bb;">(</span><span style="color: #cc6666;">flyspell-mode</span> <span style="color: #de935f; font-weight: bold;">1</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
 </pre>
@@ -2158,7 +2158,7 @@ Apparently, <a href="https://github.com/kawabata/wolfram-mode">wolfram-mode</a> 
 Was removed from the core <code>modules</code> of <code>doom-emacs</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> wakatime-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> <span style="color: #cc6666;">wakatime-mode</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
 </div>
@@ -2181,8 +2181,8 @@ highlighting Dockerfiles.
 </div>
 </div>
 </div>
-<div id="outline-container-orgcbc1846" class="outline-3">
-<h3 id="orgcbc1846"><span class="section-number-3">1.9</span> Functions</h3>
+<div id="outline-container-orgab01be0" class="outline-3">
+<h3 id="orgab01be0"><span class="section-number-3">1.9</span> Functions</h3>
 <div class="outline-text-3" id="text-1-9">
 </div>
 <div id="outline-container-org7116331" class="outline-4">
@@ -2192,12 +2192,12 @@ highlighting Dockerfiles.
 This minor mode <a href="https://github.com/alphapapa/unpackaged.el#export-to-html-with-useful-anchors">from here</a> is crucial to having sane <code>reveal-js</code> slides which don&rsquo;t keep jumping back to the title slide on every export.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">define-minor-mode</span> <span style="color: #81a2be;">unpackaged/org-export-html-with-useful-ids-mode</span>
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">define-minor-mode</span> <span style="color: #cc6666;">unpackaged/org-export-html-with-useful-ids-mode</span>
   <span style="color: #717171;">"Attempt to export Org as HTML with useful link IDs.</span>
 <span style="color: #717171;">Instead of random IDs like \"#orga1b2c3\", use heading titles,</span>
 <span style="color: #717171;">made unique when necessary."</span>
   <span style="color: #81a2be;">:global</span> t
-  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">if</span> unpackaged/org-export-html-with-useful-ids-mode
+  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">if</span> <span style="color: #cc6666;">unpackaged/org-export-html-with-useful-ids-mode</span>
       <span style="color: #de935f;">(</span><span style="color: #81a2be;">advice-add</span> <span style="color: #c5c8c6;">#'</span><span style="color: #f0c674;">org-export-get-reference</span> <span style="color: #81a2be;">:override</span> <span style="color: #c5c8c6;">#'</span><span style="color: #f0c674;">unpackaged/org-export-get-reference</span><span style="color: #de935f;">)</span>
     <span style="color: #de935f;">(</span><span style="color: #81a2be;">advice-remove</span> <span style="color: #c5c8c6;">#'</span><span style="color: #f0c674;">org-export-get-reference</span> <span style="color: #c5c8c6;">#'</span><span style="color: #f0c674;">unpackaged/org-export-get-reference</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
 
@@ -2229,7 +2229,7 @@ This minor mode <a href="https://github.com/alphapapa/unpackaged.el#export-to-ht
                          cells<span style="color: #81a2be;">)</span>
                         <span style="color: #81a2be;">(</span><span style="color: #b294bb;">when</span> <span style="color: #de935f;">(</span><span style="color: #81a2be;">org-element-property</span> <span style="color: #81a2be;">:raw-value</span> datum<span style="color: #de935f;">)</span>
                           <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">Heading with a title</span>
-                          <span style="color: #de935f;">(</span>unpackaged/org-export-new-title-reference datum cache<span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
+                          <span style="color: #de935f;">(</span><span style="color: #81a2be;">unpackaged/org-export-new-title-reference</span> datum cache<span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
                         <span style="color: #5a5b5a;">;; </span><span style="color: #b5bd68; font-weight: bold;">NOTE:</span><span style="color: #5a5b5a;"> This probably breaks some Org Export</span>
                         <span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">feature, but if it does what I need, fine.</span>
                         <span style="color: #81a2be;">(</span><span style="color: #81a2be;">org-export-format-reference</span>
@@ -2332,8 +2332,8 @@ keep editing my files without waiting for it to finish creating the <code>pdf</c
 </div>
 </div>
 </div>
-<div id="outline-container-orgd2af2be" class="outline-4">
-<h4 id="orgd2af2be"><span class="section-number-4">1.9.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org1bf6409" class="outline-4">
+<h4 id="org1bf6409"><span class="section-number-4">1.9.5</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-1-9-5">
 <ul class="org-ul">
 <li>Minted needs to be setup.</li>
@@ -2410,7 +2410,7 @@ This is a convinience function for working with <code>nanoc</code>.
   <span style="color: #717171;">"A wrapper to generate yaml metadata markdown files. Takes the output</span>
 <span style="color: #717171;">  directory followed by pandoc arguments"</span>
   <span style="color: #81a2be;">(</span><span style="color: #b294bb;">if</span> <span style="color: #de935f;">(</span><span style="color: #de935f;">not</span> <span style="color: #b294bb;">(</span><span style="color: #de935f;">file-exists-p</span> dir<span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span> <span style="color: #de935f;">(</span><span style="color: #81a2be;">make-directory</span> dir<span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
-  <span style="color: #81a2be;">(</span>async-shell-command-no-window
+  <span style="color: #81a2be;">(</span><span style="color: #81a2be;">async-shell-command-no-window</span>
    <span style="color: #de935f;">(</span><span style="color: #de935f;">concat</span> <span style="color: #b5bd68;">"pandoc -f org -t markdown -s "</span> pargs <span style="color: #b5bd68;">" "</span> <span style="color: #b294bb;">(</span><span style="color: #de935f;">buffer-name</span><span style="color: #b294bb;">)</span> <span style="color: #b5bd68;">" -o "</span>
            dir <span style="color: #b5bd68;">"/"</span> <span style="color: #b294bb;">(</span><span style="color: #81a2be;">file-name-sans-extension</span> <span style="color: #81a2be;">(</span><span style="color: #de935f;">buffer-name</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span> <span style="color: #b5bd68;">".md"</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
     <span style="color: #b294bb;">)</span>
@@ -2553,12 +2553,12 @@ Since I switched to <a href="https://rgoswami.me/posts/nix-r-devtools/">using Ni
 probably replace a lot of my other hooks eventually as well.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> firestarter
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> <span style="color: #cc6666;">firestarter</span>
   <span style="color: #81a2be;">:ensure</span> t
   <span style="color: #81a2be;">:init</span>
   <span style="color: #81a2be;">(</span><span style="color: #cc6666;">firestarter-mode</span><span style="color: #81a2be;">)</span>
   <span style="color: #81a2be;">:config</span>
-  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> firestarter-default-type t<span style="color: #81a2be;">)</span>
+  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">firestarter-default-type</span> t<span style="color: #81a2be;">)</span>
 <span style="color: #b294bb;">)</span>
 </pre>
 </div>
@@ -2569,8 +2569,8 @@ probably replace a lot of my other hooks eventually as well.
 <h3 id="orgb749e3e"><span class="section-number-3">1.11</span> Hooks</h3>
 <div class="outline-text-3" id="text-1-11">
 </div>
-<div id="outline-container-org387f612" class="outline-4">
-<h4 id="org387f612"><span class="section-number-4">1.11.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
+<div id="outline-container-org5d63054" class="outline-4">
+<h4 id="org5d63054"><span class="section-number-4">1.11.1</span> <span class="todo TODO">TODO</span> Caveats</h4>
 <div class="outline-text-4" id="text-1-11-1">
 <p>
 Move all the hooks to this section if possible.
@@ -2582,7 +2582,7 @@ Move all the hooks to this section if possible.
 <div class="outline-text-4" id="text-1-11-2">
 </div>
 <ol class="org-ol">
-<li><a id="org38741ed"></a>CC Mode<br />
+<li><a id="org7968553"></a>CC Mode<br />
 <div class="outline-text-5" id="text-1-11-2-1">
 <p>
 Currently I only need to use the clang formatting hook here.
@@ -2609,7 +2609,7 @@ This conflicts with the ArchLinux <code>systemctl --user start rdm</code> thing.
 </p>
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #5a5b5a;">; </span><span style="color: #5a5b5a;">Do not automatically try to run rdm</span>
-<span style="color: #b294bb;">(</span><span style="color: #81a2be;">remove-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">c-mode-common-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #f0c674;">+cc|init-rtags</span><span style="color: #b294bb;">)</span>
+<span style="color: #b294bb;">(</span><span style="color: #81a2be;">remove-hook</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">c-mode-common-hook</span> <span style="color: #c5c8c6;">#'</span><span style="color: #f0c674;">+cc|init-rtags</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
 </div>
@@ -2761,7 +2761,7 @@ This is essentially the same, only some extra packages are added.
   <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">org-latex-listings</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">minted</span><span style="color: #81a2be;">)</span>
   <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">org-latex-minted-options</span>
     <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"bgcolor"</span> <span style="color: #b5bd68;">"white"</span><span style="color: #b294bb;">)</span> <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"breaklines"</span> <span style="color: #b5bd68;">"true"</span><span style="color: #b294bb;">)</span> <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"linenos"</span> <span style="color: #b5bd68;">"true"</span><span style="color: #b294bb;">)</span> <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"style"</span> <span style="color: #b5bd68;">"tango"</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
-  <span style="color: #81a2be;">(</span>append-to-list
+  <span style="color: #81a2be;">(</span><span style="color: #81a2be;">append-to-list</span>
    <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">org-latex-classes</span>
    <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"tufte-book"</span>
       <span style="color: #b5bd68;">"\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}"</span>
@@ -2816,7 +2816,7 @@ This is the part which is exported normally.
   <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">org-latex-listings</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">minted</span><span style="color: #81a2be;">)</span>
   <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">org-latex-minted-options</span>
     <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"bgcolor"</span> <span style="color: #b5bd68;">"white"</span><span style="color: #b294bb;">)</span> <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"breaklines"</span> <span style="color: #b5bd68;">"true"</span><span style="color: #b294bb;">)</span> <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"linenos"</span> <span style="color: #b5bd68;">"true"</span><span style="color: #b294bb;">)</span> <span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"style"</span> <span style="color: #b5bd68;">"tango"</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
-  <span style="color: #81a2be;">(</span>append-to-list
+  <span style="color: #81a2be;">(</span><span style="color: #81a2be;">append-to-list</span>
    <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">org-latex-classes</span>
    <span style="color: #c5c8c6;">'</span><span style="color: #de935f;">(</span><span style="color: #b294bb;">(</span><span style="color: #b5bd68;">"tufte-book"</span>
       <span style="color: #b5bd68;">"\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}"</span>
@@ -2856,8 +2856,8 @@ It makes sense to use <code>latexmk</code> anyway. This way I can set sane defau
 </div>
 </div>
 </div>
-<div id="outline-container-orgd0903bc" class="outline-4">
-<h4 id="orgd0903bc"><span class="section-number-4">3.1.2</span> Packages</h4>
+<div id="outline-container-org1881a86" class="outline-4">
+<h4 id="org1881a86"><span class="section-number-4">3.1.2</span> Packages</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 Some of these are damn near universal given my set up, so they are declared here.
@@ -2921,7 +2921,7 @@ Inspired by the post <a href="https://tex.stackexchange.com/a/364982/130845">her
 This is really ad-hoc right now and from <a href="https://www.reddit.com/r/emacs/comments/54g578/anyone_go_from_using_latex_to_org_mode/">this reddit thread</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp" id="orgbe5be73"><span style="color: #b294bb;">(</span>append-to-list
+<pre class="src src-emacs-lisp" id="orgbe5be73"><span style="color: #b294bb;">(</span><span style="color: #81a2be;">append-to-list</span>
  <span style="color: #c5c8c6;">'</span><span style="color: #cc6666;">org-latex-classes</span>
  <span style="color: #c5c8c6;">'</span><span style="color: #81a2be;">(</span><span style="color: #de935f;">(</span><span style="color: #b5bd68;">"tufte-book"</span>
     <span style="color: #b5bd68;">"\\documentclass[a4paper, sfsidenotes, openany, justified]{tufte-book}"</span>
@@ -2977,7 +2977,7 @@ stackexchange</a> question.
 </div>
 </div>
 </li>
-<li><a id="org1881a86"></a>Packages<br />
+<li><a id="org7bd3076"></a>Packages<br />
 <div class="outline-text-5" id="text-3-3-0-2">
 <p>
 These are required to view math properly.
@@ -3008,6 +3008,26 @@ This is from <a href="https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and
     <span style="color: #81a2be;">(</span><span style="color: #81a2be;">set-company-backend!</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">TeX-mode</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">company-latex-commands</span><span style="color: #81a2be;">)</span>
     <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> <span style="color: #cc6666;">company-tooltip-align-annotations</span> t<span style="color: #81a2be;">)</span>
     <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span> company-math-allow-latex-symbols-in-faces t<span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+</pre>
+</div>
+<p>
+We would also like to set up the <code>math-symbol-list</code> unicode input <a href="https://www.emacswiki.org/emacs/TeXInputMethod">from here</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">use-package!</span> math-symbol-lists
+  <span style="color: #81a2be;">:config</span>
+  <span style="color: #81a2be;">(</span><span style="color: #81a2be;">quail-define-package</span> <span style="color: #b5bd68;">"math"</span> <span style="color: #b5bd68;">"UTF-8"</span> <span style="color: #b5bd68;">"&#937;"</span> t<span style="color: #81a2be;">)</span>
+  <span style="color: #81a2be;">(</span><span style="color: #b294bb;">quail-define-rules</span> <span style="color: #5a5b5a;">; </span><span style="color: #5a5b5a;">add whatever extra rules you want to define here...</span>
+   <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"\\from"</span>    <span style="color: #de935f; font-weight: bold;">#X2190</span><span style="color: #de935f;">)</span>
+   <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"\\to"</span>      <span style="color: #de935f; font-weight: bold;">#X2192</span><span style="color: #de935f;">)</span>
+   <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"\\lhd"</span>     <span style="color: #de935f; font-weight: bold;">#X22B2</span><span style="color: #de935f;">)</span>
+   <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"\\rhd"</span>     <span style="color: #de935f; font-weight: bold;">#X22B3</span><span style="color: #de935f;">)</span>
+   <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"\\unlhd"</span>   <span style="color: #de935f; font-weight: bold;">#X22B4</span><span style="color: #de935f;">)</span>
+   <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"\\unrhd"</span>   <span style="color: #de935f; font-weight: bold;">#X22B5</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span>
+  <span style="color: #81a2be;">(</span><span style="color: #de935f;">mapc</span> <span style="color: #de935f;">(</span><span style="color: #b294bb;">lambda</span> <span style="color: #b294bb;">(</span>x<span style="color: #b294bb;">)</span>
+          <span style="color: #b294bb;">(</span><span style="color: #b294bb;">if</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">cddr</span> x<span style="color: #81a2be;">)</span>
+              <span style="color: #81a2be;">(</span><span style="color: #81a2be;">quail-defrule</span> <span style="color: #de935f;">(</span><span style="color: #81a2be;">cadr</span> x<span style="color: #de935f;">)</span> <span style="color: #de935f;">(</span><span style="color: #de935f;">car</span> <span style="color: #b294bb;">(</span><span style="color: #81a2be;">cddr</span> x<span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span><span style="color: #de935f;">)</span>
+        <span style="color: #de935f;">(</span><span style="color: #de935f;">append</span> <span style="color: #cc6666;">math-symbol-list-basic</span> <span style="color: #cc6666;">math-symbol-list-extended</span> <span style="color: #cc6666;">math-symbol-list-subscripts</span> <span style="color: #cc6666;">math-symbol-list-superscripts</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
 </div>
@@ -3141,13 +3161,13 @@ sections are set in my <code>private</code> config.
     <span style="color: #5a5b5a;">; </span><span style="color: #5a5b5a;">code to run before loading org-ref</span>
     <span style="color: #81a2be;">:config</span>
     <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span>
-         org-ref-completion-library <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">org-ref-ivy-cite</span>
-         org-ref-get-pdf-filename-function <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">org-ref-get-pdf-filename-helm-bibtex</span>
-         org-ref-default-bibliography <span style="color: #de935f;">(</span><span style="color: #de935f;">list</span> <span style="color: #b5bd68;">"/home/haozeke/GDrive/zotLib.bib"</span><span style="color: #de935f;">)</span>
-         org-ref-bibliography-notes <span style="color: #b5bd68;">"/home/haozeke/Git/Gitlab/Mine/Notes/bibnotes.org"</span>
-         org-ref-note-title-format <span style="color: #b5bd68;">"* </span><span style="color: #f0c674; font-weight: bold;">TODO</span><span style="color: #b5bd68;"> %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"</span>
-         org-ref-notes-directory <span style="color: #b5bd68;">"/home/haozeke/Git/Gitlab/Mine/Notes/"</span>
-         org-ref-notes-function <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">orb-edit-notes</span>
+         <span style="color: #cc6666;">org-ref-completion-library</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">org-ref-ivy-cite</span>
+         <span style="color: #cc6666;">org-ref-get-pdf-filename-function</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">org-ref-get-pdf-filename-helm-bibtex</span>
+         <span style="color: #cc6666;">org-ref-default-bibliography</span> <span style="color: #de935f;">(</span><span style="color: #de935f;">list</span> <span style="color: #b5bd68;">"/home/haozeke/GDrive/zotLib.bib"</span><span style="color: #de935f;">)</span>
+         <span style="color: #cc6666;">org-ref-bibliography-notes</span> <span style="color: #b5bd68;">"/home/haozeke/Git/Gitlab/Mine/Notes/bibnotes.org"</span>
+         <span style="color: #cc6666;">org-ref-note-title-format</span> <span style="color: #b5bd68;">"* </span><span style="color: #f0c674; font-weight: bold;">TODO</span><span style="color: #b5bd68;"> %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"</span>
+         <span style="color: #cc6666;">org-ref-notes-directory</span> <span style="color: #b5bd68;">"/home/haozeke/Git/Gitlab/Mine/Notes/"</span>
+         <span style="color: #cc6666;">org-ref-notes-function</span> <span style="color: #c5c8c6;">'</span><span style="color: #f0c674;">orb-edit-notes</span>
     <span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
 </pre>
 </div>
@@ -3177,10 +3197,10 @@ For some reason, <code>org-ref-notes</code> isn&rsquo;t working very nicely, so 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">after!</span> org-ref
   <span style="color: #81a2be;">(</span><span style="color: #b294bb;">setq</span>
-   bibtex-completion-notes-path <span style="color: #b5bd68;">"/home/haozeke/Git/Gitlab/Mine/Notes/"</span>
-   bibtex-completion-bibliography <span style="color: #b5bd68;">"/home/haozeke/GDrive/zotLib.bib"</span>
-   bibtex-completion-pdf-field <span style="color: #b5bd68;">"file"</span>
-   bibtex-completion-notes-template-multiple-files
+   <span style="color: #cc6666;">bibtex-completion-notes-path</span> <span style="color: #b5bd68;">"/home/haozeke/Git/Gitlab/Mine/Notes/"</span>
+   <span style="color: #cc6666;">bibtex-completion-bibliography</span> <span style="color: #b5bd68;">"/home/haozeke/GDrive/zotLib.bib"</span>
+   <span style="color: #cc6666;">bibtex-completion-pdf-field</span> <span style="color: #b5bd68;">"file"</span>
+   <span style="color: #cc6666;">bibtex-completion-notes-template-multiple-files</span>
    <span style="color: #de935f;">(</span><span style="color: #de935f;">concat</span>
     <span style="color: #b5bd68;">"#+TITLE: ${title}\n"</span>
     <span style="color: #b5bd68;">"#+ROAM_KEY: cite:${=key=}\n"</span>
@@ -3289,8 +3309,8 @@ article thing.
 </div>
 </div>
 </div>
-<div id="outline-container-orgab01be0" class="outline-4">
-<h4 id="orgab01be0"><span class="section-number-4">4.2.2</span> Functions</h4>
+<div id="outline-container-orga3398d1" class="outline-4">
+<h4 id="orga3398d1"><span class="section-number-4">4.2.2</span> Functions</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <p>
 These are needed for <code>org-capture</code> alone for now.
@@ -3388,7 +3408,7 @@ The standard capture method isn&rsquo;t too great, but <a href="https://github.c
 <div id="postamble" class="status">
 <p class="date">Date: 2020:04:09</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2020-10-28 Wed 16:15</p>
+<p class="date">Created: 2020-10-29 Thu 03:41</p>
 </div>
 </body>
 </html>
