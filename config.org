@@ -153,7 +153,7 @@ Honestly the basic font setting is simply not pretty enough.
 **** Unicode Fonts
 This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
 #+BEGIN_SRC emacs-lisp
-(setq doom-unicode-font (font-spec :name "DejaVu Sans Mono" :size 26))
+(setq doom-unicode-font (font-spec :family "Symbola" :size 26))
 #+END_SRC
 **** Helm and Childframes
 I prefer the regular diminished font size, even for the childframes.
@@ -1743,6 +1743,23 @@ This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_genera
     (setq company-tooltip-align-annotations t)
     (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
+We would also like to set up the ~math-symbol-list~ unicode input [[https://www.emacswiki.org/emacs/TeXInputMethod][from here]].
+#+begin_src elisp
+(use-package! math-symbol-lists
+  :config
+  (quail-define-package "math" "UTF-8" "Ω" t)
+  (quail-define-rules ; add whatever extra rules you want to define here...
+   ("\\from"    #X2190)
+   ("\\to"      #X2192)
+   ("\\lhd"     #X22B2)
+   ("\\rhd"     #X22B3)
+   ("\\unlhd"   #X22B4)
+   ("\\unrhd"   #X22B5))
+  (mapc (lambda (x)
+          (if (cddr x)
+              (quail-defrule (cadr x) (car (cddr x)))))
+        (append math-symbol-list-basic math-symbol-list-extended math-symbol-list-subscripts math-symbol-list-superscripts)))
+#+end_src
 ** Prettier TeX buffers
 From [[https://endlessparentheses.com/improving-latex-equations-with-font-lock.html][here]]. Reduces the size of inessential ~tex~.
 #+begin_src elisp

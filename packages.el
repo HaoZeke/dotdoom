@@ -145,3 +145,7 @@
 ;; [[file:packages.org::*Math support][Math support:1]]
 (package! cdlatex)
 ;; Math support:1 ends here
+
+;; [[file:packages.org::*Math support][Math support:2]]
+(package! math-symbol-lists)
+;; Math support:2 ends here
