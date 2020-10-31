@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: Anki Card
+# key: <acrd
+# contributor: Rohit Goswami (HaoZeke)
+# --
+
+** ${1:Short Title} :${2:Tags}:
+:properties:
+:anki_deck: ${3:Deck}
+:anki_note_type: ${4:myTex}
+:end:
+*** Front
+$0
+*** Back
+*** Context
