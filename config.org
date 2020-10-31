@@ -1078,7 +1078,7 @@ The keymaps are defined in the following way:
             "m e m" '(org-mind-map-write :wk "Export mind-map") ))
 #+END_SRC
 *** Org Drill
-This is much easier to work with compared to the Anki mode stuff.
+It makes sense to keep this around so as to leverage existing resources.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! org-drill
   :after org)
