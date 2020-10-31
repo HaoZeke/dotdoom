@@ -898,6 +898,15 @@ I like having the date on my TODO items.
 (setq org-log-done "time"
       org-log-done-with-time 't)
 #+end_src
+*** Ignore Support
+For the longest time I was setting this per file for bizarre reasons. This makes much more sense.
+#+begin_src elisp
+(use-package! ox-extra
+  :after org
+  :config
+  (ox-extras-activate '(ignore-headlines))
+  )
+#+end_src
 *** File Handling
 This controls what is used to open links in ~org~ documents. Since there are
 only a few defaults defined, I am just prepending them to my changes instead of
