@@ -1,0 +1,49 @@
+# -*- mode: snippet -*-
+# name: R Markdown Analysis
+# key: <rmda
+# contributor: Rohit Goswami (HaoZeke)
+# --
+
+---
+title: "${1:Title}"
+author: "${2:Rohit Goswami}"
+output:
+  tufte::tufte_html: default
+bibliography: ${3:refs.bib}
+---
+
+```{css, echo=FALSE}
+pre {
+  width: 90vw
+}
+```
+
+```{r setup, echo=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+libsUsed<-c("tidymodels", "orgutils", "xtable", "skimr", "stargazer",
+            "ggplot2", "kableExtra", "dplyr", "broom", "tidyverse",
+            "lme4", "nlme", "emmeans", "car", "lmerTest", "lattice",
+            "sjPlot", "sjmisc", "latex2exp", "data.table", "printr",
+            "devtools", "dotwhisker", "gridExtra", "grid", "simr",
+            "haven","GGally", "merTools", "broom.mixed")
+invisible(lapply(libsUsed, library, character.only = TRUE));
+theme_set(theme_grey(base_size=24))
+set.seed(1995)
+```
+
+```{r}
+library("ascii")
+options(asciiType = "pandoc")
+options(width = 80)
+```
+
+# Data
+
+$0
+
+# Analysis
+
+# References
