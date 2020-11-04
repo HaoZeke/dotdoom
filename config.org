@@ -235,7 +235,7 @@ Formatting with ~styler~ takes forever.
 #+END_SRC
 *** Better Buffers
 [[https://github.com/alphapapa/bufler.el][bufler.el]] should be a better fit than the default.
-#+begin_src elisp
+#+begin_src emacs-lisp
   (use-package! bufler
   :general
   (:keymaps 'doom-leader-map
@@ -472,7 +472,7 @@ are a part of ~org-mode~.
 #+END_SRC
 **** Math Environments
 Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auctex-that-breqn-is-a-math-environment][this TeXSE answer]].
-#+begin_src elisp
+#+begin_src emacs-lisp
 (add-hook 'LaTeX-mode-hook 'add-my-latex-environments)
 (defun add-my-latex-environments ()
   (LaTeX-add-environments
@@ -913,7 +913,7 @@ I like having the date on my TODO items.
 #+end_src
 *** Ignore Support
 For the longest time I was setting this per file for bizarre reasons. This makes much more sense.
-#+begin_src elisp
+#+begin_src emacs-lisp
 (use-package! ox-extra
   :after org
   :config
@@ -1060,12 +1060,12 @@ These need to be disabled by default otherwise ~emacs~ stalls often. Also, it tu
 #+END_SRC
 **** Prevent invisible area modifications
 First [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][discussed here]]. The invisible area modifications are a plague. I can't imagine why this is not set by default.
-#+begin_src elisp
+#+begin_src emacs-lisp
 (setq org-catch-invisible-edits 'show-and-error)
 #+end_src
 **** Compact subtrees
 We would like to not have additional newlines between trees.
-#+begin_src elisp
+#+begin_src emacs-lisp
 (setq org-cycle-separator-lines 0)
 #+end_src
 *** Org Rifle
@@ -1768,7 +1768,7 @@ This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_genera
     (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
 We would also like to set up the ~math-symbol-list~ unicode input [[https://www.emacswiki.org/emacs/TeXInputMethod][from here]].
-#+begin_src elisp
+#+begin_src emacs-lisp
 (use-package! math-symbol-lists
   :config
   (quail-define-package "math" "UTF-8" "Ω" t)
@@ -1786,7 +1786,7 @@ We would also like to set up the ~math-symbol-list~ unicode input [[https://www.
 #+end_src
 ** Prettier TeX buffers
 From [[https://endlessparentheses.com/improving-latex-equations-with-font-lock.html][here]]. Reduces the size of inessential ~tex~.
-#+begin_src elisp
+#+begin_src emacs-lisp
 (defface endless/unimportant-latex-face
   '((t :height 0.7
        :inherit font-lock-comment-face))
