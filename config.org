@@ -1052,9 +1052,11 @@ possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f
 **** Inline images
 These need to be disabled by default otherwise ~emacs~ stalls often. Also, it turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better, once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
 #+BEGIN_SRC emacs-lisp
-(setq org-preview-latex-default-process 'imagexetex)
-(setq org-startup-with-inline-images 'nil)
-(setq org-image-actual-width 500)
+  (after! org
+    (setq org-preview-latex-default-process 'imagexetex)
+    (setq org-startup-with-inline-images 'nil)
+    (setq org-image-actual-width 400)
+    )
 #+END_SRC
 **** Prevent invisible area modifications
 First [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][discussed here]]. The invisible area modifications are a plague. I can't imagine why this is not set by default.
