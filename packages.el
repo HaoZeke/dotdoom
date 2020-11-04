@@ -146,6 +146,10 @@
 (package! cdlatex)
 ;; Math support:1 ends here
 
+;; [[file:packages.org::*Bufler][Bufler:1]]
+(package! bufler)
+;; Bufler:1 ends here
+
 ;; [[file:packages.org::*Math support][Math support:2]]
 (package! math-symbol-lists)
 ;; Math support:2 ends here
