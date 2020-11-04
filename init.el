@@ -39,7 +39,7 @@
       doom-quit         ; DOOM quit-message prompts when you quit Emacs
       fill-column       ; a `fill-column' indicator
       hl-todo           ; highlight TODO/FIXME/NOTE tags
-      ;; hydra
+      hydra
       ;; indent-guides  ; highlighted indent columns
       modeline          ; snazzy, Atom-inspired modeline, plus API
       nav-flash         ; blink the current line after jumping
@@ -174,7 +174,8 @@
        ;; php             ; perl's insecure younger brother
        ;; plantuml        ; diagrams for confusing people more
        ;; purescript      ; javascript, but functional
-       python            ; beautiful is better than ugly
+       (python            ; beautiful is better than ugly
+        +poetry)          ; the future of the written word
        ;; qt              ; the 'cutest' gui framework ever
        ;; racket          ; a DSL for DSLs
        ;; rest            ; Emacs as a REST client
