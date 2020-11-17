@@ -41,6 +41,7 @@
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
+    - [[#sphinx-and-rst][Sphinx and RsT]]
     - [[#tup-mode][Tup Mode]]
     - [[#saltstack-mode][SaltStack Mode]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -233,6 +234,17 @@ often though.
 ** Syntax Highlighting
 These are additionally required to work with the sort of files I use often.
 The configuration and settings are as usual in ~config.org~
+*** Sphinx and RsT
+Though reStructured Text is supported natively, there are some quality of life exporters and packages which should be more useful.
+#+begin_src emacs-lisp
+(package! ox-rst
+  :recipe (:host github
+           :repo "msnoigrs/ox-rst"))
+(package! sphinx-mode
+  :recipe (:host github
+           :repo "Fuco1/sphinx-mode"
+           :files ("*.el")))
+#+end_src
 *** Tup Mode
 Because honestly there isn't anything better than [[http://gittup.org/tup/][tup]]. Who doesn't need a build
 system which [[http://gittup.org/tup/tup_vs_mordor.html][scales with the eye of Mordor]]?

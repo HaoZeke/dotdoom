@@ -71,6 +71,16 @@
 (package! zotxt)
 ;; Zotero:1 ends here
 
+;; [[file:packages.org::*Sphinx and RsT][Sphinx and RsT:1]]
+(package! ox-rst
+  :recipe (:host github
+           :repo "msnoigrs/ox-rst"))
+(package! sphinx-mode
+  :recipe (:host github
+           :repo "Fuco1/sphinx-mode"
+           :files ("*.el")))
+;; Sphinx and RsT:1 ends here
+
 ;; [[file:packages.org::*Tup Mode][Tup Mode:1]]
 (package! tup-mode
 :recipe (:host github

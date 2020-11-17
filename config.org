@@ -1549,6 +1549,13 @@ upstream.
 (after! doom-themes
   (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
 #+END_SRC
+* Sphinx and RsT
+As mentioned in [[file:packages.org]], we have some packages which make life easier.
+#+begin_src emacs-lisp
+(use-package! ox-rst
+:after org)
+(use-package! sphinx-mode)
+#+end_src
 * R Helpers
 This section is essentially to configure working with ~R~ above and beyond the
 default ~ess~ configuration supplied by ~doom-emacs~.
