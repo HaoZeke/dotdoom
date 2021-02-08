@@ -1136,6 +1136,20 @@ proper font locking mode for it, this should suffice.
 (setq auto-mode-alist (append '(("\\.envrc$" . shell-script-mode))
                               auto-mode-alist))
 #+END_SRC
+**** C++
+~inl~ files are often used for extended header definitions.
+#+begin_src emacs-lisp
+(setq auto-mode-alist (append '(
+                                ("\\.C$" . c++-mode)
+                                ("\\.cc$" . c++-mode)
+                                ("\\.cpp$" . c++-mode)
+                                ("\\.inl$" . c++-mode)
+                                ("\\.H$" . c++-mode)
+                                ("\\.hh$" . c++-mode)
+                                ("\\.hpp$" . c++-mode)
+                                )
+                              auto-mode-alist))
+#+end_src
 *** PKGBUILD Mode
 This is the non ~doom~ way of loading this.
 #+BEGIN_SRC emacs-lisp :tangle no
