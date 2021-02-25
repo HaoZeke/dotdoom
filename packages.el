@@ -81,6 +81,10 @@
            :files ("*.el")))
 ;; Sphinx and RsT:1 ends here
 
+;; [[file:packages.org::*CPP Additions][CPP Additions:1]]
+(package! highlight-doxygen)
+;; CPP Additions:1 ends here
+
 ;; [[file:packages.org::*Tup Mode][Tup Mode:1]]
 (package! tup-mode
 :recipe (:host github

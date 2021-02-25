@@ -57,7 +57,8 @@
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
     - [[#hugo-settings][Hugo Settings]]
   - [[#syntax-highlighting][Syntax Highlighting]]
-    - [[#direnv-highlighting][Direnv Highlighting]]
+    - [[#misc-highlighting][Misc Highlighting]]
+    - [[#cpp-additions][CPP Additions]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
     - [[#lammps-mode][LAMMPS Mode]]
     - [[#pug-mode][Pug Mode]]
@@ -1129,14 +1130,21 @@ This should be set for everything. I like to keep the last modified date, but on
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
 typically non-standard. These are matched by extensions.
-*** TODO Direnv Highlighting
+*** TODO Misc Highlighting
+**** Direnv
 ~direnv~ is essentially a specialized bash script. Until I have time to make a
 proper font locking mode for it, this should suffice.
 #+BEGIN_SRC emacs-lisp
 (setq auto-mode-alist (append '(("\\.envrc$" . shell-script-mode))
                               auto-mode-alist))
 #+END_SRC
-**** C++
+*** CPP Additions
+**** Doxygen Support
+#+begin_src emacs-lisp
+(use-package! highlight-doxygen
+  :hook ((c-mode c++-mode) . highlight-doxygen-mode))
+#+end_src
+**** More Files
 ~inl~ files are often used for extended header definitions.
 #+begin_src emacs-lisp
 (setq auto-mode-alist (append '(

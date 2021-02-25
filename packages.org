@@ -42,6 +42,7 @@
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#sphinx-and-rst][Sphinx and RsT]]
+    - [[#cpp-additions][CPP Additions]]
     - [[#tup-mode][Tup Mode]]
     - [[#saltstack-mode][SaltStack Mode]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -244,6 +245,11 @@ Though reStructured Text is supported natively, there are some quality of life e
   :recipe (:host github
            :repo "Fuco1/sphinx-mode"
            :files ("*.el")))
+#+end_src
+*** CPP Additions
+Though the standard ~doom-emacs~ module configuration is a sane set of defaults, there are some glaring omissions, most egregious of is the lack of ~doxygen~ highlighting.
+#+begin_src emacs-lisp
+(package! highlight-doxygen)
 #+end_src
 *** Tup Mode
 Because honestly there isn't anything better than [[http://gittup.org/tup/][tup]]. Who doesn't need a build
