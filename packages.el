@@ -63,6 +63,10 @@
 (package! org-roam-bibtex)
 ;; Org Roam Bibtex:1 ends here
 
+;; [[file:packages.org::*Org GCal][Org GCal:1]]
+(package! org-gcal)
+;; Org GCal:1 ends here
+
 ;; [[file:packages.org::*Dockerfile Mode][Dockerfile Mode:1]]
 (package! dockerfile-mode)
 ;; Dockerfile Mode:1 ends here

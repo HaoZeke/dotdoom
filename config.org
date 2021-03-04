@@ -55,6 +55,7 @@
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-drill][Org Drill]]
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
+    - [[#org-gcal][Org GCal]]
     - [[#hugo-settings][Hugo Settings]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#misc-highlighting][Misc Highlighting]]
@@ -1117,6 +1118,11 @@ This is apparently the ~org-ref~ for ~org-re-reveal~. For themes (e.g.
   (use-package! org-re-reveal-ref) ; fixes org-ref
   (setq reveal-extras (concat doom-private-dir "revealExtras/"))
 )
+#+end_src
+*** Org GCal
+Note that we configure this [[https://github.com/kidd/org-gcal.el][as per the README]] in the private configuration since all of these are very personal.
+#+begin_src emacs-lisp :tangle yes
+(use-package! org-gcal)
 #+end_src
 *** Hugo Settings
 This should be set for everything. I like to keep the last modified date, but only consider things to be modified if 12 hours have passed.

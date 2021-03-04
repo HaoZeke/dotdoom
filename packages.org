@@ -38,6 +38,7 @@
     - [[#anki-mode][Anki Mode]]
     - [[#org-re-reveal-extensions][Org Re-Reveal Extensions]]
     - [[#org-roam-bibtex][Org Roam Bibtex]]
+    - [[#org-gcal][Org GCal]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
@@ -215,6 +216,11 @@ An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref
 This should be a part of the main ~+roam~ setup, but until then.
 #+begin_src emacs-lisp :tangle yes
 (package! org-roam-bibtex)
+#+end_src
+*** Org GCal
+This extension seems to be a maintained fork.
+#+begin_src emacs-lisp :tangle yes
+(package! org-gcal)
 #+end_src
 ** Dockerfile Mode
 For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
