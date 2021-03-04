@@ -22,6 +22,7 @@
   - [[#aesthetic-packages][Aesthetic Packages]]
     - [[#dired-icons][Dired Icons]]
     - [[#wakatime][Wakatime]]
+    - [[#bufler][Bufler]]
   - [[#later-magit-additions][LATER Magit Additions]]
   - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
   - [[#evil-colemak][Evil Colemak]]
