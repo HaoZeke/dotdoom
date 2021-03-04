@@ -1877,6 +1877,30 @@ This function is called by `org-babel-execute-src-block'."
   "Return an error because rst does not support sessions."
   (error "rst does not support sessions"))
 #+end_src
+*** Markdown HTML
+A helper execution method mostly for better formatting with ~org-gcal~, the method is described in [[https://rgoswami.me/posts/org-pandoc-babel/][this post]].
+#+begin_src emacs-lisp :tangle yes
+(defun org-babel-execute:mdhtml (body params)
+  "Execute a block of rst code with org-babel.
+This function is called by `org-babel-execute-src-block'."
+  (let* ((result-params (split-string (or (cdr (assoc :results params)) "")))
+         (in-file (org-babel-temp-file "mdhtml-"))
+         (cmdline (cdr (assoc :cmdline params)))
+         (to (cdr (assoc :to params)))
+         (template (cdr (assoc :template params)))
+         (cmd (concat "pandoc"
+                      " -t  html"
+                      " -i " (org-babel-process-file-name in-file)
+                      " -f gfm "
+                      " " cmdline)))
+    (with-temp-file in-file (insert body))
+    (message cmd)
+    (shell-command-to-string cmd))) ;; Send to results
+
+(defun org-babel-prep-session:mdhtml (session params)
+  "Return an error because mdhtml does not support sessions."
+  (error "mdhtml does not support sessions"))
+#+end_src
 ** Flycheck Additions
 These are basically meant to aid in development. The relevant linters are also
 added here.
