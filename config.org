@@ -1545,7 +1545,6 @@ Since I switched to [[https://rgoswami.me/posts/nix-r-devtools/][using Nix for R
 probably replace a lot of my other hooks eventually as well.
 #+BEGIN_SRC emacs-lisp
 (use-package! firestarter
-  :ensure t
   :init
   (firestarter-mode)
   :config
