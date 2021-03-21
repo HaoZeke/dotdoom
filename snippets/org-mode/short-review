@@ -1,0 +1,83 @@
+# -*- mode: snippet -*-
+# name: review
+# contributor: Rohit Goswami (HaoZeke)
+# key: <srev
+# --
+
+#+TITLE: ${1:AAAAAA} Review
+#+SUBTITLE: Version ${2:I}
+#+AUTHOR: ${3:Reviewer}
+#+OPTIONS: toc:nil
+# I need the footnotes to be inlined
+#+STARTUP: fninline
+#+EXCLUDE_TAGS: noexport
+
+#+BEGIN_SRC emacs-lisp :exports none :eval always
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+#+END_SRC
+
+* Configuration :ignoreheading:ignore:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
+** LaTeX :ignoreheading:ignore:
+#+LATEX_COMPILER: xelatex
+#+LATEX_CLASS: koma-article
+#+LATEX_CLASS_OPTIONS: [12pt,a4paper]
+# Suppress section numbers
+#+OPTIONS: num:nil
+*** Preamble :ignoreheading:ignore:
+# Load first
+#+LATEX_HEADER: \\usepackage{amssymb,amsmath,MnSymbol}
+#+LATEX_HEADER: \\usepackage{unicode-math}
+#+LATEX_HEADER: \\usepackage{mathtools}
+#+LATEX_HEADER: \\usepackage{hyperref}
+#+LATEX_HEADER: % \\usepackage{mathspec} Either this or mathtools
+#+LATEX_HEADER: \\defaultfontfeatures{Mapping=tex-text}
+#+LATEX_HEADER: \\setromanfont[Ligatures={Common}, Numbers={OldStyle}, ItalicFont={Crimson-Italic}, BoldFont={Crimson-Bold}]{Crimson} % If Hoefler is missing replace with Crimson
+#+LATEX_HEADER: \\setsansfont[Scale=0.8]{Roboto} % Used to be Helvetica Neue LT Com -> Nimbus Sans
+#+LATEX_HEADER: \\setmonofont[Scale=0.8]{Fira Mono} % Used to be MesloLGSDZ Nerd Font
+#+LATEX_HEADER: \\newfontfamily\\scfont[Scale=1.2]{Crimson} % Used to be Minion Pro
+# References
+#+LATEX_HEADER: \\usepackage[natbib]{biblatex}
+#+LATEX_HEADER: \\bibliography{${5:refs}}
+# Check-boxes
+#+LATEX_HEADER: \setbox0=\hbox{\large$\square$}
+#+BIND: org-export-latex-list-parameters (:cbon "[{\\parbox[][][c]{\\wd0}{\\large$\\boxtimes$}}]" :cboff "[{\\parbox[][][c]{\\wd0}{\\large$\\square$}}]")
+# Nicer Fonts
+#+LATEX_HEADER: \\usepackage{xunicode}
+#+LATEX_HEADER: \\usepackage{xltxtra}
+#+LATEX_HEADER: \\usepackage[protrusion=true,final]{microtype}
+# Wider Text
+# #+LATEX_HEADER: \\usepackage[textwidth=7in,textheight=9in]{geometry}
+# Better Heading (from this [[https://github.com/tatlicioglu/SoP/blob/master/SoP.tex][minimal template]])
+#+LATEX_HEADER: \\newcommand{\\HRule}{\\rule{\\linewidth}{0.5mm}}
+#+LATEX_HEADER: \\newcommand{\\Hrule}{\\rule{\\linewidth}{0.3mm}}
+#+LATEX_HEADER: \\makeatletter% since there's an at-sign (@) in the command name
+#+LATEX_HEADER: \\renewcommand{\\@maketitle}{%
+#+LATEX_HEADER:   \\parindent=0pt% don't indent paragraphs in the title block
+#+LATEX_HEADER:   \\centering
+#+LATEX_HEADER:   {\\Large \\bfseries\\scfont\\textsc{\\@title}}
+#+LATEX_HEADER:   \\HRule\\par%
+#+LATEX_HEADER:   \\textit{\\@author \\hfill \\@date}
+#+LATEX_HEADER:   \\par
+#+LATEX_HEADER: }
+#+LATEX_HEADER: \\makeatother% resets the meaning of the at-sign (@)
+# Suppress the abstract heading
+#+LATEX_HEADER: \\renewcommand{\\abstractname}{\\vspace{-\\baselineskip}}
+* Abstract :ignoreheading:ignore:
+#+begin_abstract
+\\noindent This is an abstract
+#+end_abstract
+* Begin :ignoreheading:ignore:
+\\vspace{0.7em}
+\\noindent $0
+* References
+
+\\printbibliography[heading=none]
+
+# Local Variables:
+# before-save-hook: org-babel-execute-buffer
+# after-save-hook: haozeke/org-save-and-export-latex
+# End:
