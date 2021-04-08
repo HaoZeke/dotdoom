@@ -115,6 +115,7 @@
   - [[#babel-tabs][Babel Tabs]]
   - [[#pandoc-babel][Pandoc Babel]]
     - [[#restructured-text][Restructured Text]]
+    - [[#markdown-html][Markdown HTML]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
 - [[#notes][Notes]]
@@ -151,9 +152,9 @@ Let's set some variables with basic user information.
 **** Font Face
 Honestly the basic font setting is simply not pretty enough.
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Attribute Mono" :size 26))
+(setq doom-font (font-spec :family "Attribute Mono" :size 16))
 (unless (find-font doom-font)
-  (setq doom-font (font-spec :family "FiraCode Nerd Font Mono" :size 26)))
+  (setq doom-font (font-spec :family "Cascadia Code PL" :size 16)))
 #+END_SRC
 **** Unicode Fonts
 This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
