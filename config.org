@@ -1274,7 +1274,12 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 *** Wakatime
 Was removed from the core ~modules~ of ~doom-emacs~.
 #+BEGIN_SRC emacs-lisp
-(use-package! wakatime-mode)
+(use-package! wakatime-mode
+  :config
+  (cond (IS-LINUX (setq wakatime-cli-path "/usr/bin/wakatime"))
+        (IS-MAC (setq wakatime-cli-path "/run/current-system/sw/bin/wakatime")) ;; We assume nix-darwin
+        )
+  )
 #+END_SRC
 ** Dockerfile Mode
 [[https://github.com/spotify/dockerfile-mode][This]] package from spotify has support for building things as well as
