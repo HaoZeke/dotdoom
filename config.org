@@ -977,12 +977,13 @@ Now we can configure the package itself.
   :config
   (setq-default org-download-image-dir "./images/"
                 ;; org-download-screenshot-method "flameshot gui --raw > %s"
-                org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s"
                 org-download-delete-image-after-download t
                 org-download-method 'directory
                 org-download-heading-lvl 1
                 org-download-screenshot-file "/tmp/screenshot.png"
                 )
+  (cond (IS-LINUX (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s"))
+        (IS-MAC (setq-default org-download-screenshot-method "screencapture -i %s")))
   )
 #+END_SRC
 *** Org Babel
