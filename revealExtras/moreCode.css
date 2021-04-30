@@ -1,0 +1,16 @@
+.reveal pre {
+    font-size: 0.8em;
+    box-shadow: none;
+    font-family: "CaskaydiaCove Nerd Font";
+}
+
+.gcid {
+    font-size: small;
+    font-family: "CaskaydiaCove Nerd Font";
+}
+
+.gcid a::before {
+  content: "sha256:";
+  color: black;
+  font-weight: bold;
+}
