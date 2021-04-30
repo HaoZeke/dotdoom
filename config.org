@@ -789,8 +789,7 @@ These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
   :demand
   :config
   (epa-file-enable)
-  (let ((file-name-handler-alist doom--initial-file-name-handler-alist))
-    (load (concat doom-private-dir "local/private.el.gpg")))
+    (load (concat doom-private-dir "local/private.el.gpg"))
   )
 #+END_SRC
 *** Safe Variables
