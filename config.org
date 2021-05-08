@@ -1153,6 +1153,18 @@ proper font locking mode for it, this should suffice.
 (setq auto-mode-alist (append '(("\\.envrc$" . shell-script-mode))
                               auto-mode-alist))
 #+END_SRC
+**** Fortran
+By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
+#+BEGIN_SRC emacs-lisp
+(setq auto-mode-alist (append '(("\\.f90" . f90-mode))
+                              auto-mode-alist))
+#+END_SRC
+**** Vim
+I still keep my ~vim~ dotfiles up to date...
+#+BEGIN_SRC emacs-lisp
+(use-package! vimrc-mode
+  :mode "\\.vimrc\\'")
+#+END_SRC
 *** CPP Additions
 **** Doxygen Support
 #+begin_src emacs-lisp

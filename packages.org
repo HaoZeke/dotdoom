@@ -51,6 +51,7 @@
     - [[#lammps-mode][LAMMPS Mode]]
     - [[#pug-mode][Pug Mode]]
     - [[#nix-mode][Nix Mode]]
+    - [[#vim-mode][VIM mode]]
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd-mode][Systemd Mode]]
     - [[#dart-mode][Dart Mode]]
@@ -309,6 +310,11 @@ into binding and using [[https://github.com/travisbhartwell/nix-emacs][nix-emacs
 #+BEGIN_SRC emacs-lisp
 (package! nix-mode)
 #+END_SRC
+*** VIM mode
+I like ~vim-script~... well no I don't but I still use it.
+#+begin_src emacs-lisp
+(package! vimrc-mode)
+#+end_src
 *** JVM Languages
 Currently the languages I care about (apart from Java) are:
 #+BEGIN_SRC emacs-lisp
