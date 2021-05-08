@@ -236,6 +236,7 @@ Formatting with ~styler~ takes forever.
                                           sql-mode        ; sqlformat is broken
                                           tex-mode        ; latexindent is broken
                                           latex-mode      ; latexindent is broken
+                                          bibtex-mode     ; is broken
                                           ess-r-mode      ; styler takes forever
                                           web-mode      ; dunno who this is for
                                           ))
