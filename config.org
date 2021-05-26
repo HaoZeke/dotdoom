@@ -88,6 +88,8 @@
     - [[#smarter-clang-formatting][Smarter Clang Formatting]]
     - [[#org-mode-export-to-markdown][Org-mode export to Markdown]]
     - [[#smartparens-wrapping][Smartparens Wrapping]]
+  - [[#chat-clients][Chat Clients]]
+    - [[#matrix][Matrix]]
   - [[#projects][Projects]]
     - [[#dotdoom][dotDoom]]
     - [[#firestarter][Firestarter]]
@@ -1526,6 +1528,14 @@ org-mode inline code):
   (interactive)
   (sp-wrap-with-pair "~"))
 #+END_SRC
+** Chat Clients
+*** Matrix
+Configuring the only ~emacs~ chat client I use.
+#+begin_src emacs-lisp
+;; (use-package! matrix-client
+;;   :init
+;;   :commands matrix-client-connect)
+#+end_src
 ** Projects
 These are to help setup org-mode workflows.
 #+BEGIN_SRC emacs-lisp

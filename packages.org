@@ -40,6 +40,7 @@
     - [[#org-re-reveal-extensions][Org Re-Reveal Extensions]]
     - [[#org-roam-bibtex][Org Roam Bibtex]]
     - [[#org-gcal][Org GCal]]
+    - [[#citeproc-org][Citeproc Org]]
   - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
@@ -57,6 +58,7 @@
     - [[#dart-mode][Dart Mode]]
     - [[#wolfram-mode][Wolfram Mode]]
     - [[#polymode][Polymode]]
+  - [[#matrix-clients][Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
   - [[#snippets][Snippets]]
@@ -352,6 +354,12 @@ For working with ~.Rmd~ files and better ~orgmode~ R support.
 (package! poly-R)
 (package! poly-org)
 #+END_SRC
+** Matrix Clients
+Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
+#+begin_src emacs-lisp
+(package! pretty-hydra)
+(package! matrix-client :recipe (:host github :repo "alphapapa/matrix-client.el"))
+#+end_src
 ** Flycheck Additions
 *** MELPA Helper
 This is for linting files before submitting to MELPA.
