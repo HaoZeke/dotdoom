@@ -60,6 +60,7 @@
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
     - [[#org-gcal][Org GCal]]
     - [[#hugo-settings][Hugo Settings]]
+    - [[#citeproc][Citeproc]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#misc-highlighting][Misc Highlighting]]
     - [[#cpp-additions][CPP Additions]]
@@ -1142,6 +1143,34 @@ This should be set for everything. I like to keep the last modified date, but on
       org-hugo-export-creator-string "Emacs 26.3 (Org mode 9.4 + ox-hugo + HaoZeke)"
 )
 #+END_SRC
+*** Citeproc
+I also like to have rational and numbered citations.
+#+begin_src emacs-lisp
+(after! ox-hugo
+  (use-package! citeproc-org
+    :config
+    (citeproc-org-setup)
+    (setq citeproc-org-org-bib-header "* References\n")
+    )
+  )
+#+end_src
+We will now lower the heading to the appropriate level. This is [[https://github.com/TimQuelch/emacs.d/blob/5c7b80890830d6833031a197801b7c6246f2e50e/config.org][kanged from TimQuelch]].
+#+begin_src emacs-lisp
+(after! citeproc-org
+  (defun hz/min-headline-level ()
+    (--> (org-element-parse-buffer)
+         (org-element-map it 'headline (apply-partially #'org-element-property :level))
+         (or it '(0))
+         (-min it)))
+
+  (defadvice! hz/citeproc-org-render-references (orig &rest args)
+    :around 'citeproc-org-render-references
+    (let* ((minlevel (hz/min-headline-level))
+           (totallevel (max 1 minlevel))
+           (citeproc-org-org-bib-header (concat (make-string totallevel ?*)
+                                                (string-trim-left citeproc-org-org-bib-header "\\**"))))
+      (apply orig args))))
+#+end_src
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
 typically non-standard. These are matched by extensions.

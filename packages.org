@@ -224,6 +224,11 @@ This extension seems to be a maintained fork.
 #+begin_src emacs-lisp :tangle yes
 (package! org-gcal)
 #+end_src
+*** Citeproc Org
+Mainly used with ~ox-hugo~
+#+begin_src emacs-lisp :tangle yes
+(package! citeproc-org)
+#+end_src
 ** Dockerfile Mode
 For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
 ~## -*- docker-image-name: "your-image-name-here" -*-~ can be used to specify
