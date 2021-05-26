@@ -67,6 +67,10 @@
 (package! org-gcal)
 ;; Org GCal:1 ends here
 
+;; [[file:packages.org::*Citeproc Org][Citeproc Org:1]]
+(package! citeproc-org)
+;; Citeproc Org:1 ends here
+
 ;; [[file:packages.org::*Dockerfile Mode][Dockerfile Mode:1]]
 (package! dockerfile-mode)
 ;; Dockerfile Mode:1 ends here
@@ -121,6 +125,10 @@
 (package! nix-mode)
 ;; Nix Mode:1 ends here
 
+;; [[file:packages.org::*VIM mode][VIM mode:1]]
+(package! vimrc-mode)
+;; VIM mode:1 ends here
+
 ;; [[file:packages.org::*JVM Languages][JVM Languages:1]]
 ; Kotlin > Java
 (package! kotlin-mode)
@@ -140,6 +148,11 @@
 (package! poly-R)
 (package! poly-org)
 ;; Polymode:1 ends here
+
+;; [[file:packages.org::*Matrix Clients][Matrix Clients:1]]
+(package! pretty-hydra)
+(package! matrix-client :recipe (:host github :repo "alphapapa/matrix-client.el"))
+;; Matrix Clients:1 ends here
 
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
