@@ -1992,10 +1992,10 @@ sections are set in my ~private~ config.
     (setq
          org-ref-completion-library 'org-ref-ivy-cite
          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-         org-ref-default-bibliography (list "/home/haozeke/GDrive/zotLib.bib")
-         org-ref-bibliography-notes "/home/haozeke/Git/Gitlab/Mine/Notes/bibnotes.org"
+         org-ref-default-bibliography (list (concat (getenv "HOME") "/GDrive/zotLib.bib"))
+         org-ref-bibliography-notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-         org-ref-notes-directory "/home/haozeke/Git/Gitlab/Mine/Notes/"
+         org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
          org-ref-notes-function 'orb-edit-notes
     ))
 #+END_SRC
