@@ -37,7 +37,7 @@
       doom              ; what makes DOOM look the way it does
       doom-dashboard    ; a nifty splash screen for Emacs
       doom-quit         ; DOOM quit-message prompts when you quit Emacs
-      ;;(emoji +unicode)  ; 🙂
+      (emoji +unicode)  ; 🙂
       fill-column       ; a `fill-column' indicator
       hl-todo           ; highlight TODO/FIXME/NOTE tags
       hydra
@@ -96,8 +96,8 @@
        (syntax             ; tasing you for every semicolon you forget
         +childframe)       ; use childframes for error popups (Emacs 26+ only)
        (spell              ; tasing you for misspelling mispelling
-        +aspell            ; use the most supported backend
-        +everywhere)       ; spell check in programming modes as well (in comments)
+       +aspell            ; use the most supported backend
+       +everywhere)       ; spell check in programming modes as well (in comments)
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
