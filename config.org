@@ -1891,17 +1891,20 @@ From [[https://endlessparentheses.com/improving-latex-equations-with-font-lock.h
 (defface endless/unimportant-latex-face
   '((t :height 0.7
        :inherit font-lock-comment-face))
-  "Face used on less relevant math commands.")
+  "Face used on less relevant math commands."
+  :group 'LaTeX-math)
 
-(font-lock-add-keywords
- 'latex-mode
- `((,(rx (or (and "\\" (or (any ",.!;")
-                           (and (or "left" "right"
-                                    "big" "Big")
-                                symbol-end)))
-             (any "_^")))
-    0 'endless/unimportant-latex-face prepend))
- 'end)
+(setq font-latex-user-keyword-classes
+      '(("mathunimportant"
+         ("left" "right"
+          "big" "Big"
+          "bigl" "bigr"
+          "Bigl" "Bigr"
+          "biggl" "biggr"
+          "Biggl" "Biggr"
+          "," "." ";" "!")
+         endless/unimportant-latex-face
+         noarg)))
 #+end_src
 ** Babel Tabs
 Evidently there was [[https://emacs.stackexchange.com/questions/24283/org-mode-converting-spaces-to-tabs-when-evaluating-source][some sort of re-indentation]] going on during the export
