@@ -1451,11 +1451,13 @@ keep editing my files without waiting for it to finish creating the ~pdf~.
 #+BEGIN_SRC emacs-lisp
 ; LaTeX
 (defun haozeke/org-save-and-export-latex ()
+  (interactive)
   (if (eq major-mode 'org-mode)
-    (org-latex-export-to-latex)))
+    (org-latex-export-to-latex t)))
 (defun haozeke/org-save-and-export-beamer ()
+  (interactive)
   (if (eq major-mode 'org-mode)
-    (org-beamer-export-to-latex)))
+    (org-beamer-export-to-latex t)))
 #+END_SRC
 *** TODO Caveats
 - Minted needs to be setup.
