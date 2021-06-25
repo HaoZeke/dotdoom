@@ -156,7 +156,7 @@ Let's set some variables with basic user information.
 **** Font Face
 Honestly the basic font setting is simply not pretty enough.
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Attribute Mono" :size 20))
+(setq doom-font (font-spec :family "Attribute Mono" :size 22))
 (unless (find-font doom-font)
   (setq doom-font (font-spec :family "Cascadia Code PL" :size 20)))
 #+END_SRC
