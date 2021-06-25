@@ -45,9 +45,11 @@
 # Transition styles: none/fade/slide/convex/concave/zoom/cube
 #+REVEAL_TRANS: fade
 # Set a base theme, then override
-#+REVEAL_THEME: white
-#+REVEAL_EXTRA_CSS: `(concat reveal-extras "robot-lung.css")`
+#+REVEAL_THEME: robot-lung
+#+REVEAL_EXTRA_CSS: `(concat reveal-extras "rlExtras.css")`
 #+REVEAL_EXTRA_CSS: `(concat reveal-extras "oerFragments.css")`
+#+REVEAL_EXTRA_CSS: `(concat reveal-extras "noImgBoxes.css")`
+#+REVEAL_EXTRA_CSS: `(concat reveal-extras "moreCode.css")`
 #+REVEAL_MARGIN: 0.2
 #+REVEAL_PREAMBLE: <div class="line top"></div> <div class="line bottom"></div> <div class="line left"></div> <div class="line right"></div>
 
@@ -72,7 +74,8 @@
 #+REVEAL_EXTRA_CSS: `(concat org-re-reveal-root "dist/theme/fonts/source-sans-pro/source-sans-pro.css")`
 
 # Allow to selectively hide links.
-#+REVEAL_EXTRA_SCRIPTS: ("`(concat org-re-reveal-root "dist/theme/hidelinks.js")`")
+# #+REVEAL_EXTRA_SCRIPTS: ("`(concat org-re-reveal-root "dist/theme/hidelinks.js")`")
+#+REVEAL_EXTRA_SCRIPTS: ("`(concat org-re-reveal-root "dist/theme/hidelinks.js")`" "`(concat sfeir-root "dist/js/sfeir-theme.js")`")
 
 # The following creates an empty footer, for which the css style defines
 # a height that agrees with the TOC-progress footer’s height.
