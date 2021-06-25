@@ -782,7 +782,13 @@ These are more semantic for me.
 #+END_SRC
 ** Safe Evals and Variables
 *** Private Variables
-These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~
+On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
+#+begin_src emacs-lisp
+(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/run/current-system/sw/bin/gpg"))
+              (setq exec-path (append exec-path '("/run/current-system/sw/bin")))
+              ))
+#+end_src
+These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~.
 #+BEGIN_SRC emacs-lisp
 (use-package! epa-file
   :demand
