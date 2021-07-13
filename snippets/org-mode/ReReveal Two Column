@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: ReReveal Two Column
+# key: <rr2c
+# contributor: Rohit Goswami (HaoZeke)
+# --
+
+#+begin_leftcol
+$0
+#+end_leftcol
+
+#+begin_rightcol
+#+end_rightcol
