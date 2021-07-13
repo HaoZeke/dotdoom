@@ -1,8 +1,8 @@
 .org-ref-reference {
-    vertical-align: super;
-    font-size: small;
+    /* vertical-align: super; */
+    /* font-size: 1.2rem; */
 }
 
 .org-ref-bib {
-    font-size: small;
+    font-size: 0.7em;
 }

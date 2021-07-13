@@ -1,0 +1,4 @@
+html.print-pdf {
+table { width: 100%; }
+table td, table th { overflow-wrap: anywhere; }
+}
