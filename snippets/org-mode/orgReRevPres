@@ -15,6 +15,9 @@
 #+BEGIN_SRC emacs-lisp :exports none :eval always
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
+(eval unpackaged/org-export-html-with-useful-ids-mode)
+;; Stop using citeproc-org by default
+(setq org-export-before-parsing-hook '(org-ref-acronyms-before-parsing org-ref-glossary-before-parsing org-attach-expand-links))
 #+END_SRC
 
 * Configuration :ignoreheading:ignore:
@@ -49,6 +52,7 @@
 #+REVEAL_EXTRA_CSS: `(concat reveal-extras "rlExtras.css")`
 #+REVEAL_EXTRA_CSS: `(concat reveal-extras "oerFragments.css")`
 #+REVEAL_EXTRA_CSS: `(concat reveal-extras "noImgBoxes.css")`
+#+REVEAL_EXTRA_CSS: `(concat reveal-extras "betterCite.css")`
 #+REVEAL_EXTRA_CSS: `(concat reveal-extras "moreCode.css")`
 #+REVEAL_MARGIN: 0.2
 #+REVEAL_PREAMBLE: <div class="line top"></div> <div class="line bottom"></div> <div class="line left"></div> <div class="line right"></div>
