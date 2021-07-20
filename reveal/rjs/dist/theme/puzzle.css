@@ -306,7 +306,7 @@ section.intro.past {
   content: counter(section);
   background-color: white;
   display: table;
-  margin: 0 auto 40px;
+  margin: auto;
   border-radius: 50%;
   font-weight: bold;
   height: 1.5em;
