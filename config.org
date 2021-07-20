@@ -39,6 +39,7 @@
     - [[#safe-variables][Safe Variables]]
     - [[#asynchronous-exports][Asynchronous Exports]]
     - [[#tramp-settings][TRAMP Settings]]
+    - [[#language-servers][Language Servers]]
   - [[#package-settings][Package Settings]]
     - [[#word-wrap][Word wrap]]
     - [[#spellings][Spellings]]
@@ -827,8 +828,29 @@ I use some paths on my remote machines, which are non-standard.
     (add-to-list 'tramp-remote-path "~/.local/bin")
     (add-to-list 'tramp-remote-path "~/.cargo/bin")
     (add-to-list 'tramp-remote-path "~/.hpc/bin")
+    (add-to-list 'tramp-remote-path "~/.local/lsp/bin")
+    (add-to-list 'tramp-remote-path "~/.micromamba/envs/lsp/bin/")
     )
 #+END_SRC
+*** Language Servers
+Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better described here.
+#+begin_src emacs-lisp
+(after! eglot
+  :config
+  (add-hook 'nix-mode-hook 'eglot-ensure)
+  (add-hook 'f90-mode-hook 'eglot-ensure)
+  (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
+  (set-eglot-client! 'python-mode '("pylsp"))
+  (when (string= (system-name) "Rohits-MacBook-Pro.local")
+  (setq exec-path (append exec-path '(
+                                      (concat (getenv "HOME") "/.micromamba/envs/lsp/bin/") ;; python, fortran
+                                      (concat (getenv "HOME") "/.local/lsp/bin/") ;; clangd
+                                      (concat (getenv "HOME") "/.digestif/bin/") ;; tex
+                                      (concat (getenv "HOME") "/.nvm/versions/node/v16.1.0/bin/bash-language-server")
+                                      )))
+    )
+  )
+#+end_src
 ** Package Settings
 These should eventually go into a different module.
 Each of these.

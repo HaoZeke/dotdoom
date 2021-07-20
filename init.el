@@ -113,7 +113,7 @@
         +dictionary     ; enable word definitions and thesaurus lookup
         +offline        ; install and prefer offline dictionary/thesaurus
         +docsets)       ; ...on in Dash docsets locally
-       lsp              ;
+       (lsp +eglot)     ; M-x vscode
        magit            ; a git porcelain for Emacs
        ;;make           ; run make tasks from Emacs
        ;;pass           ;password manager for nerds
@@ -186,7 +186,7 @@
        ;;php                ; perl's insecure younger brother
        ;;plantuml           ; diagrams for confusing people more
        ;;purescript         ; javascript, but functional
-       python               ; beautiful is better than ugly
+       (python +lsp)               ; beautiful is better than ugly
        ;;+poetry)           ; the future of the written word
        ;; qt                ; the 'cutest' gui framework ever
        ;; racket            ; a DSL for DSLs
@@ -197,7 +197,7 @@
        rust                 ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala              ; java, but good
        ;;(scheme +guile)    ; a fully conniving family of lisps
-       sh                   ; she sells (ba|z)sh shells on the C xor
+       (sh  +lsp)           ; she sells (ba|z)sh shells on the C xor
        ;;sml
        ;;solidity           ; do you need a blockchain? No.
        ;;swift              ; who asked for emoji variables?
