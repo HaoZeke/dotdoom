@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-05-08 Sat 19:58 -->
+<!-- 2021-07-20 Tue 16:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Literate Package Additions</title>
 <meta name="author" content="Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;" />
 <meta name="generator" content="Org Mode" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -41,21 +42,21 @@
   pre.src {
     position: relative;
     overflow: auto;
-    padding-top: 1.2em;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
   pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -191,19 +192,17 @@
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { width: 90%; }
-  /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="https://thomasf.github.io/solarized-css/solarized-dark.min.css" />
 <script> window.goatcounter = { path: '/dotdoomhome', }; </script>
 <script data-goatcounter="https://rgoswami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-<script type="text/javascript" src="https://thomasf.github.io/solarized-css/org-info.min.js">
+<script src="https://thomasf.github.io/solarized-css/org-info.min.js">
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
 // @license-end
 </script>
 
-<script type="text/javascript">
+<script>
 // @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
-<!--/*--><![CDATA[/*><!--*/
 org_html_manager.set("TOC_DEPTH", "3");
 org_html_manager.set("LINK_HOME", "https://dotdoom.rgoswami.me");
 org_html_manager.set("LINK_UP", "");
@@ -214,29 +213,6 @@ org_html_manager.set("FIXED_TOC", "0");
 org_html_manager.set("TOC", "1");
 org_html_manager.set("VIEW", "1");
 org_html_manager.setup();  // activate after the parameters are set
-/*]]>*///-->
-// @license-end
-</script>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
 // @license-end
 </script>
 </head>
@@ -245,95 +221,97 @@ org_html_manager.setup();  // activate after the parameters are set
  <a accesskey="h" href=""> UP </a>
  |
  <a accesskey="H" href="https://dotdoom.rgoswami.me"> HOME </a>
-</div><div id="content">
+</div><div id="content" class="content">
 <h1 class="title">Emacs Literate Package Additions</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org36e5d07">1. About this file</a>
+<li><a href="#org81818b1">1. About this file</a>
 <ul>
-<li><a href="#org3bd5d5a">1.1. About that TOC..</a></li>
-<li><a href="#org236b75b">1.2. The properties</a></li>
+<li><a href="#org83c265a">1.1. About that TOC..</a></li>
+<li><a href="#org140edee">1.2. The properties</a></li>
 </ul>
 </li>
-<li><a href="#org77ffe9b">2. Aesthetic Packages</a>
+<li><a href="#org73a4c5b">2. Aesthetic Packages</a>
 <ul>
-<li><a href="#orgba62f9a">2.1. Dired Icons</a></li>
-<li><a href="#org9243f5d">2.2. Wakatime</a></li>
-<li><a href="#org4b98efa">2.3. Bufler</a></li>
+<li><a href="#org7a27684">2.1. Dired Icons</a></li>
+<li><a href="#org7834992">2.2. Wakatime</a></li>
+<li><a href="#org5f1cce3">2.3. Bufler</a></li>
 </ul>
 </li>
-<li><a href="#org32d2765">3. LATER Magit Additions</a></li>
-<li><a href="#orgd0e97b7">4. <span class="done DONE">DONE</span> Key Chords and Keybindings</a></li>
-<li><a href="#org6db02e8">5. Evil Colemak</a></li>
-<li><a href="#orgfd839bc">6. Firestarter</a></li>
-<li><a href="#orgca5f51c">7. Org Additions</a>
+<li><a href="#orgd1c2416">3. LATER Magit Additions</a></li>
+<li><a href="#org37e2e29">4. <span class="done DONE">DONE</span> Key Chords and Keybindings</a></li>
+<li><a href="#org855064b">5. Evil Colemak</a></li>
+<li><a href="#org7b3e3f2">6. Firestarter</a></li>
+<li><a href="#org1fc842c">7. Org Additions</a>
 <ul>
-<li><a href="#org8aeae38">7.1. Org Download</a></li>
-<li><a href="#org14c98d3">7.2. LATER Org Drill</a></li>
-<li><a href="#orgd6b3c75">7.3. Org Protocol Updates</a></li>
-<li><a href="#org41ec7e0">7.4. <span class="todo TODO">TODO</span> Org Noter</a></li>
-<li><a href="#org32985af">7.5. Org Ref</a></li>
-<li><a href="#org5f8ff43">7.6. Org Mind Map</a></li>
-<li><a href="#org0d6e007">7.7. Org Rifle</a></li>
-<li><a href="#orgd1f9ed5">7.8. Org Async</a></li>
-<li><a href="#orgdd9949b">7.9. Anki Mode</a></li>
-<li><a href="#org4ba0eed">7.10. Org Re-Reveal Extensions</a></li>
-<li><a href="#orgb2a8531">7.11. Org Roam Bibtex</a></li>
-<li><a href="#org0190734">7.12. Org GCal</a></li>
+<li><a href="#orgadbb762">7.1. Org Download</a></li>
+<li><a href="#org511322c">7.2. LATER Org Drill</a></li>
+<li><a href="#org2b71c0e">7.3. Org Protocol Updates</a></li>
+<li><a href="#org07e140b">7.4. <span class="todo TODO">TODO</span> Org Noter</a></li>
+<li><a href="#org5a78938">7.5. Org Ref</a></li>
+<li><a href="#org98cbd71">7.6. Org Mind Map</a></li>
+<li><a href="#orgc609eae">7.7. Org Rifle</a></li>
+<li><a href="#org6d37d23">7.8. Org Async</a></li>
+<li><a href="#org7bf4d77">7.9. Anki Mode</a></li>
+<li><a href="#org18d0c75">7.10. Org Re-Reveal Extensions</a></li>
+<li><a href="#org70e05f1">7.11. Org Roam Bibtex</a></li>
+<li><a href="#org2eed02e">7.12. Org GCal</a></li>
+<li><a href="#org7df5880">7.13. Citeproc Org</a></li>
 </ul>
 </li>
-<li><a href="#orga8a511f">8. Dockerfile Mode</a></li>
-<li><a href="#org4955f7b">9. Reference Management</a>
+<li><a href="#orgc2d14ec">8. Dockerfile Mode</a></li>
+<li><a href="#org0135566">9. Reference Management</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org0cbbf03">9.0.1. Zotero</a></li>
+<li><a href="#org3844f7d">9.0.1. Zotero</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgb74baf0">10. Syntax Highlighting</a>
+<li><a href="#org0720ea5">10. Syntax Highlighting</a>
 <ul>
-<li><a href="#orged0347d">10.1. Sphinx and RsT</a></li>
-<li><a href="#orgdda8da1">10.2. CPP Additions</a></li>
-<li><a href="#org7703c66">10.3. Tup Mode</a>
+<li><a href="#orge1ee1e6">10.1. Sphinx and RsT</a></li>
+<li><a href="#orgf3b68f6">10.2. CPP Additions</a></li>
+<li><a href="#org917dd31">10.3. Tup Mode</a>
 <ul>
-<li><a href="#org8e72d35">10.3.1. LATER Caveats</a></li>
+<li><a href="#orgeb44eda">10.3.1. LATER Caveats</a></li>
 </ul>
 </li>
-<li><a href="#org4d05f9c">10.4. SaltStack Mode</a></li>
-<li><a href="#orgcdd9130">10.5. PKGBUILD Mode</a></li>
-<li><a href="#org1035d66">10.6. LAMMPS Mode</a></li>
-<li><a href="#org4720f00">10.7. Pug Mode</a></li>
-<li><a href="#org5c69391">10.8. Nix Mode</a></li>
-<li><a href="#orgbfcf0d1">10.9. VIM mode</a></li>
-<li><a href="#org0648f1c">10.10. JVM Languages</a></li>
-<li><a href="#orga14d9cf">10.11. Systemd Mode</a></li>
-<li><a href="#org26fcb8c">10.12. Dart Mode</a></li>
-<li><a href="#orgf3fd1b5">10.13. Wolfram Mode</a></li>
-<li><a href="#org648e0d3">10.14. Polymode</a></li>
+<li><a href="#orge9f32f5">10.4. SaltStack Mode</a></li>
+<li><a href="#org75cb9d0">10.5. PKGBUILD Mode</a></li>
+<li><a href="#org11ae198">10.6. LAMMPS Mode</a></li>
+<li><a href="#org4624283">10.7. Pug Mode</a></li>
+<li><a href="#orgdccab1b">10.8. Nix Mode</a></li>
+<li><a href="#org5ccae28">10.9. VIM mode</a></li>
+<li><a href="#orga58cc1b">10.10. JVM Languages</a></li>
+<li><a href="#org4e6b8d9">10.11. Systemd Mode</a></li>
+<li><a href="#org193ab30">10.12. Dart Mode</a></li>
+<li><a href="#org3dd8576">10.13. Wolfram Mode</a></li>
+<li><a href="#org8a91ac9">10.14. Polymode</a></li>
 </ul>
 </li>
-<li><a href="#org673445b">11. Flycheck Additions</a>
+<li><a href="#org571680e">11. Matrix Clients</a></li>
+<li><a href="#orga46d7b7">12. Flycheck Additions</a>
 <ul>
-<li><a href="#org35b73cd">11.1. MELPA Helper</a></li>
+<li><a href="#org60dab1e">12.1. MELPA Helper</a></li>
 </ul>
 </li>
-<li><a href="#org15940d5">12. Snippets</a>
+<li><a href="#orgf56f49e">13. Snippets</a>
 <ul>
-<li><a href="#org1df665f">12.1. Doom</a></li>
-<li><a href="#org16357c1">12.2. Standard</a></li>
+<li><a href="#orgaba2d8c">13.1. Doom</a></li>
+<li><a href="#org1432e99">13.2. Standard</a></li>
 </ul>
 </li>
-<li><a href="#org8bcd8d1">13. Math support</a></li>
+<li><a href="#org3910169">14. Math support</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org36e5d07" class="outline-2">
-<h2 id="org36e5d07"><span class="section-number-2">1</span> About this file</h2>
+<div id="outline-container-org81818b1" class="outline-2">
+<h2 id="org81818b1"><span class="section-number-2">1.</span> About this file</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This is an Emacs literate package file and is meant to compliment <a href="config.html">my
@@ -353,8 +331,8 @@ Since it&rsquo;s primarily aimed at <code>doom-emacs</code> let&rsquo;s add thei
 </div>
 </div>
 
-<div id="outline-container-org3bd5d5a" class="outline-3">
-<h3 id="org3bd5d5a"><span class="section-number-3">1.1</span> About that TOC..</h3>
+<div id="outline-container-org83c265a" class="outline-3">
+<h3 id="org83c265a"><span class="section-number-3">1.1.</span> About that TOC..</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 So as mentioned <a href="https://github.com/snosov1/toc-org/issues/35">here</a> there is trouble when <code>org-export</code> tries to create files
@@ -367,8 +345,8 @@ files anyway.
 </p>
 </div>
 </div>
-<div id="outline-container-org236b75b" class="outline-3">
-<h3 id="org236b75b"><span class="section-number-3">1.2</span> The properties</h3>
+<div id="outline-container-org140edee" class="outline-3">
+<h3 id="org140edee"><span class="section-number-3">1.2.</span> The properties</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Basically, the properties set imply that the file is to be tangled for every
@@ -382,12 +360,12 @@ The filename is determined by the <code>SRC</code> block languages.
 </div>
 </div>
 </div>
-<div id="outline-container-org77ffe9b" class="outline-2">
-<h2 id="org77ffe9b"><span class="section-number-2">2</span> Aesthetic Packages</h2>
+<div id="outline-container-org73a4c5b" class="outline-2">
+<h2 id="org73a4c5b"><span class="section-number-2">2.</span> Aesthetic Packages</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-orgba62f9a" class="outline-3">
-<h3 id="orgba62f9a"><span class="section-number-3">2.1</span> Dired Icons</h3>
+<div id="outline-container-org7a27684" class="outline-3">
+<h3 id="org7a27684"><span class="section-number-3">2.1.</span> Dired Icons</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Since treemacs already uses <code>all-the-icons</code> it is silly to not use them in
@@ -399,8 +377,8 @@ dired, from the <a href="https://github.com/domtronn/all-the-icons.el/wiki">all-
 </div>
 </div>
 </div>
-<div id="outline-container-org9243f5d" class="outline-3">
-<h3 id="org9243f5d"><span class="section-number-3">2.2</span> Wakatime</h3>
+<div id="outline-container-org7834992" class="outline-3">
+<h3 id="org7834992"><span class="section-number-3">2.2.</span> Wakatime</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Not exactly aesthetic, but yeah, for stats.
@@ -411,8 +389,8 @@ Not exactly aesthetic, but yeah, for stats.
 </div>
 </div>
 </div>
-<div id="outline-container-org4b98efa" class="outline-3">
-<h3 id="org4b98efa"><span class="section-number-3">2.3</span> Bufler</h3>
+<div id="outline-container-org5f1cce3" class="outline-3">
+<h3 id="org5f1cce3"><span class="section-number-3">2.3.</span> Bufler</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 <a href="https://github.com/alphapapa/bufler.el">This package</a> seems to have better control of buffers than the default mess.
@@ -424,8 +402,8 @@ Not exactly aesthetic, but yeah, for stats.
 </div>
 </div>
 </div>
-<div id="outline-container-org32d2765" class="outline-2">
-<h2 id="org32d2765"><span class="section-number-2">3</span> LATER Magit Additions</h2>
+<div id="outline-container-orgd1c2416" class="outline-2">
+<h2 id="orgd1c2416"><span class="section-number-2">3.</span> LATER Magit Additions</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 These basically allow for TODOs in magit along with enhanced github integration.
@@ -450,8 +428,8 @@ displays a global <code>todo.org</code> file.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd0e97b7" class="outline-2">
-<h2 id="orgd0e97b7"><span class="section-number-2">4</span> <span class="done DONE">DONE</span> Key Chords and Keybindings</h2>
+<div id="outline-container-org37e2e29" class="outline-2">
+<h2 id="org37e2e29"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> Key Chords and Keybindings</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 It turns out that the switch to <a href="https://github.com/noctuid/general.el">general.el</a> is both inevitable (doom version 2.1)
@@ -466,8 +444,8 @@ and very rational. However, I really can&rsquo;t wait. So.. This is a stop gap s
 </ul>
 </div>
 </div>
-<div id="outline-container-org6db02e8" class="outline-2">
-<h2 id="org6db02e8"><span class="section-number-2">5</span> Evil Colemak</h2>
+<div id="outline-container-org855064b" class="outline-2">
+<h2 id="org855064b"><span class="section-number-2">5.</span> Evil Colemak</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 I guess I just gave up, <a href="https://github.com/wbolster/evil-colemak-basics">from here</a>. Read about why <a href="https://rgoswami.me/posts/colemak-dots-refactor/">here</a>. The visual line mode setup leverages <a href="https://github.com/YourFin/evil-better-visual-line/">this package</a>.
@@ -480,8 +458,8 @@ I guess I just gave up, <a href="https://github.com/wbolster/evil-colemak-basics
 </div>
 </div>
 
-<div id="outline-container-orgfd839bc" class="outline-2">
-<h2 id="orgfd839bc"><span class="section-number-2">6</span> Firestarter</h2>
+<div id="outline-container-org7b3e3f2" class="outline-2">
+<h2 id="org7b3e3f2"><span class="section-number-2">6.</span> Firestarter</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 For running shell commands on-save.
@@ -494,16 +472,16 @@ For running shell commands on-save.
 </div>
 </div>
 
-<div id="outline-container-orgca5f51c" class="outline-2">
-<h2 id="orgca5f51c"><span class="section-number-2">7</span> Org Additions</h2>
+<div id="outline-container-org1fc842c" class="outline-2">
+<h2 id="org1fc842c"><span class="section-number-2">7.</span> Org Additions</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 The new ones need to be covered in the <code>config.org</code> file with the appropriate
 keybindings. The notes are <a href="https://rgoswami.me/posts/org-note-workflow">described here</a>.
 </p>
 </div>
-<div id="outline-container-org8aeae38" class="outline-3">
-<h3 id="org8aeae38"><span class="section-number-3">7.1</span> Org Download</h3>
+<div id="outline-container-orgadbb762" class="outline-3">
+<h3 id="orgadbb762"><span class="section-number-3">7.1.</span> Org Download</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 Now I load it here since I don&rsquo;t use <code>+attach</code>.
@@ -517,8 +495,8 @@ Now I load it here since I don&rsquo;t use <code>+attach</code>.
 </div>
 </div>
 
-<div id="outline-container-org14c98d3" class="outline-3">
-<h3 id="org14c98d3"><span class="section-number-3">7.2</span> LATER Org Drill</h3>
+<div id="outline-container-org511322c" class="outline-3">
+<h3 id="org511322c"><span class="section-number-3">7.2.</span> LATER Org Drill</h3>
 <div class="outline-text-3" id="text-7-2">
 <p>
 The <a href="https://bitbucket.org/eeeickythump/org-drill/src">actual repo</a> has not been updated in 3 years, so I must use <a href="https://github.com/hakanserce/org-drill">this fork</a>.
@@ -532,8 +510,8 @@ The <a href="https://bitbucket.org/eeeickythump/org-drill/src">actual repo</a> h
 </div>
 </div>
 
-<div id="outline-container-orgd6b3c75" class="outline-3">
-<h3 id="orgd6b3c75"><span class="section-number-3">7.3</span> Org Protocol Updates</h3>
+<div id="outline-container-org2b71c0e" class="outline-3">
+<h3 id="org2b71c0e"><span class="section-number-3">7.3.</span> Org Protocol Updates</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 This needs to be installed specially, <a href="https://github.com/alphapapa/org-protocol-capture-html">from this repo</a>.
@@ -546,8 +524,8 @@ This needs to be installed specially, <a href="https://github.com/alphapapa/org-
 </div>
 </div>
 </div>
-<div id="outline-container-org41ec7e0" class="outline-3">
-<h3 id="org41ec7e0"><span class="section-number-3">7.4</span> <span class="todo TODO">TODO</span> Org Noter</h3>
+<div id="outline-container-org07e140b" class="outline-3">
+<h3 id="org07e140b"><span class="section-number-3">7.4.</span> <span class="todo TODO">TODO</span> Org Noter</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 This is sort of more of a <code>pdf-tools</code> extension and it needs it&rsquo;s own <code>biblatex</code>
@@ -565,8 +543,8 @@ This actually breaks the <code>pdf-tools</code> bindings.
 </div>
 </div>
 
-<div id="outline-container-org32985af" class="outline-3">
-<h3 id="org32985af"><span class="section-number-3">7.5</span> Org Ref</h3>
+<div id="outline-container-org5a78938" class="outline-3">
+<h3 id="org5a78938"><span class="section-number-3">7.5.</span> Org Ref</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 This is probably not the best thing in my current setup.. Now part of the <code>init.el</code> setup.
@@ -578,8 +556,8 @@ This is probably not the best thing in my current setup.. Now part of the <code>
 </div>
 </div>
 </div>
-<div id="outline-container-org5f8ff43" class="outline-3">
-<h3 id="org5f8ff43"><span class="section-number-3">7.6</span> Org Mind Map</h3>
+<div id="outline-container-org98cbd71" class="outline-3">
+<h3 id="org98cbd71"><span class="section-number-3">7.6.</span> Org Mind Map</h3>
 <div class="outline-text-3" id="text-7-6">
 <p>
 Not on MELPA yet. From <a href="https://github.com/theodorewiles/org-mind-map">here</a>.
@@ -592,8 +570,8 @@ Not on MELPA yet. From <a href="https://github.com/theodorewiles/org-mind-map">h
 </div>
 </div>
 </div>
-<div id="outline-container-org0d6e007" class="outline-3">
-<h3 id="org0d6e007"><span class="section-number-3">7.7</span> Org Rifle</h3>
+<div id="outline-container-orgc609eae" class="outline-3">
+<h3 id="orgc609eae"><span class="section-number-3">7.7.</span> Org Rifle</h3>
 <div class="outline-text-3" id="text-7-7">
 <p>
 Technically a helm addition. Perfect for monolithic <code>org</code> files. More details
@@ -605,8 +583,8 @@ Technically a helm addition. Perfect for monolithic <code>org</code> files. More
 </div>
 </div>
 </div>
-<div id="outline-container-orgd1f9ed5" class="outline-3">
-<h3 id="orgd1f9ed5"><span class="section-number-3">7.8</span> Org Async</h3>
+<div id="outline-container-org6d37d23" class="outline-3">
+<h3 id="org6d37d23"><span class="section-number-3">7.8.</span> Org Async</h3>
 <div class="outline-text-3" id="text-7-8">
 <p>
 We will use this.
@@ -617,8 +595,8 @@ We will use this.
 </div>
 </div>
 </div>
-<div id="outline-container-orgdd9949b" class="outline-3">
-<h3 id="orgdd9949b"><span class="section-number-3">7.9</span> Anki Mode</h3>
+<div id="outline-container-org7bf4d77" class="outline-3">
+<h3 id="org7bf4d77"><span class="section-number-3">7.9.</span> Anki Mode</h3>
 <div class="outline-text-3" id="text-7-9">
 <p>
 This is put here since it only works with <code>org-mode</code> stuff.
@@ -630,8 +608,8 @@ This is put here since it only works with <code>org-mode</code> stuff.
 </div>
 </div>
 
-<div id="outline-container-org4ba0eed" class="outline-3">
-<h3 id="org4ba0eed"><span class="section-number-3">7.10</span> Org Re-Reveal Extensions</h3>
+<div id="outline-container-org18d0c75" class="outline-3">
+<h3 id="org18d0c75"><span class="section-number-3">7.10.</span> Org Re-Reveal Extensions</h3>
 <div class="outline-text-3" id="text-7-10">
 <p>
 An <a href="https://gitlab.com/oer/org-re-reveal-ref">extension</a> to <code>org-re-reveal-ref</code>. Also <a href="https://gitlab.com/oer/oer-reveal">this</a>.
@@ -642,8 +620,8 @@ An <a href="https://gitlab.com/oer/org-re-reveal-ref">extension</a> to <code>org
 </div>
 </div>
 </div>
-<div id="outline-container-orgb2a8531" class="outline-3">
-<h3 id="orgb2a8531"><span class="section-number-3">7.11</span> Org Roam Bibtex</h3>
+<div id="outline-container-org70e05f1" class="outline-3">
+<h3 id="org70e05f1"><span class="section-number-3">7.11.</span> Org Roam Bibtex</h3>
 <div class="outline-text-3" id="text-7-11">
 <p>
 This should be a part of the main <code>+roam</code> setup, but until then.
@@ -654,8 +632,8 @@ This should be a part of the main <code>+roam</code> setup, but until then.
 </div>
 </div>
 </div>
-<div id="outline-container-org0190734" class="outline-3">
-<h3 id="org0190734"><span class="section-number-3">7.12</span> Org GCal</h3>
+<div id="outline-container-org2eed02e" class="outline-3">
+<h3 id="org2eed02e"><span class="section-number-3">7.12.</span> Org GCal</h3>
 <div class="outline-text-3" id="text-7-12">
 <p>
 This extension seems to be a maintained fork.
@@ -666,9 +644,21 @@ This extension seems to be a maintained fork.
 </div>
 </div>
 </div>
+<div id="outline-container-org7df5880" class="outline-3">
+<h3 id="org7df5880"><span class="section-number-3">7.13.</span> Citeproc Org</h3>
+<div class="outline-text-3" id="text-7-13">
+<p>
+Mainly used with <code>ox-hugo</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> citeproc-org<span style="color: #b294bb;">)</span>
+</pre>
 </div>
-<div id="outline-container-orga8a511f" class="outline-2">
-<h2 id="orga8a511f"><span class="section-number-2">8</span> Dockerfile Mode</h2>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc2d14ec" class="outline-2">
+<h2 id="orgc2d14ec"><span class="section-number-2">8.</span> Dockerfile Mode</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 For syntax highlighting and inline builds. <a href="https://github.com/spotify/dockerfile-mode">From spotify</a> weirdly.
@@ -681,12 +671,12 @@ the image name.
 </div>
 </div>
 </div>
-<div id="outline-container-org4955f7b" class="outline-2">
-<h2 id="org4955f7b"><span class="section-number-2">9</span> Reference Management</h2>
+<div id="outline-container-org0135566" class="outline-2">
+<h2 id="org0135566"><span class="section-number-2">9.</span> Reference Management</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org0cbbf03" class="outline-4">
-<h4 id="org0cbbf03"><span class="section-number-4">9.0.1</span> Zotero</h4>
+<div id="outline-container-org3844f7d" class="outline-4">
+<h4 id="org3844f7d"><span class="section-number-4">9.0.1.</span> Zotero</h4>
 <div class="outline-text-4" id="text-9-0-1">
 <p>
 There are a bunch of <code>zotero</code> integrations for emacs, most notably, <a href="https://github.com/vspinu/zotelo">zotelo</a>, but
@@ -701,16 +691,16 @@ often though.
 </div>
 </div>
 </div>
-<div id="outline-container-orgb74baf0" class="outline-2">
-<h2 id="orgb74baf0"><span class="section-number-2">10</span> Syntax Highlighting</h2>
+<div id="outline-container-org0720ea5" class="outline-2">
+<h2 id="org0720ea5"><span class="section-number-2">10.</span> Syntax Highlighting</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 These are additionally required to work with the sort of files I use often.
 The configuration and settings are as usual in <code>config.org</code>
 </p>
 </div>
-<div id="outline-container-orged0347d" class="outline-3">
-<h3 id="orged0347d"><span class="section-number-3">10.1</span> Sphinx and RsT</h3>
+<div id="outline-container-orge1ee1e6" class="outline-3">
+<h3 id="orge1ee1e6"><span class="section-number-3">10.1.</span> Sphinx and RsT</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 Though reStructured Text is supported natively, there are some quality of life exporters and packages which should be more useful.
@@ -727,8 +717,8 @@ Though reStructured Text is supported natively, there are some quality of life e
 </div>
 </div>
 </div>
-<div id="outline-container-orgdda8da1" class="outline-3">
-<h3 id="orgdda8da1"><span class="section-number-3">10.2</span> CPP Additions</h3>
+<div id="outline-container-orgf3b68f6" class="outline-3">
+<h3 id="orgf3b68f6"><span class="section-number-3">10.2.</span> CPP Additions</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 Though the standard <code>doom-emacs</code> module configuration is a sane set of defaults, there are some glaring omissions, most egregious of is the lack of <code>doxygen</code> highlighting.
@@ -739,8 +729,8 @@ Though the standard <code>doom-emacs</code> module configuration is a sane set o
 </div>
 </div>
 </div>
-<div id="outline-container-org7703c66" class="outline-3">
-<h3 id="org7703c66"><span class="section-number-3">10.3</span> Tup Mode</h3>
+<div id="outline-container-org917dd31" class="outline-3">
+<h3 id="org917dd31"><span class="section-number-3">10.3.</span> Tup Mode</h3>
 <div class="outline-text-3" id="text-10-3">
 <p>
 Because honestly there isn&rsquo;t anything better than <a href="http://gittup.org/tup/">tup</a>. Who doesn&rsquo;t need a build
@@ -755,8 +745,8 @@ system which <a href="http://gittup.org/tup/tup_vs_mordor.html">scales with the 
 </div>
 </div>
 
-<div id="outline-container-org8e72d35" class="outline-4">
-<h4 id="org8e72d35"><span class="section-number-4">10.3.1</span> LATER Caveats</h4>
+<div id="outline-container-orgeb44eda" class="outline-4">
+<h4 id="orgeb44eda"><span class="section-number-4">10.3.1.</span> LATER Caveats</h4>
 <div class="outline-text-4" id="text-10-3-1">
 <p>
 The repo is unmaintained so I ought to fork it and take a look into maintaining it.
@@ -764,8 +754,8 @@ The repo is unmaintained so I ought to fork it and take a look into maintaining 
 </div>
 </div>
 </div>
-<div id="outline-container-org4d05f9c" class="outline-3">
-<h3 id="org4d05f9c"><span class="section-number-3">10.4</span> SaltStack Mode</h3>
+<div id="outline-container-orge9f32f5" class="outline-3">
+<h3 id="orge9f32f5"><span class="section-number-3">10.4.</span> SaltStack Mode</h3>
 <div class="outline-text-3" id="text-10-4">
 <p>
 I have recently decided that <a href="https://saltstack.com/">saltstack</a> ought to be used for working on multiple
@@ -780,8 +770,8 @@ systems.
 </div>
 </div>
 </div>
-<div id="outline-container-orgcdd9130" class="outline-3">
-<h3 id="orgcdd9130"><span class="section-number-3">10.5</span> PKGBUILD Mode</h3>
+<div id="outline-container-org75cb9d0" class="outline-3">
+<h3 id="org75cb9d0"><span class="section-number-3">10.5.</span> PKGBUILD Mode</h3>
 <div class="outline-text-3" id="text-10-5">
 <p>
 No point using <code>emacs</code> if I can&rsquo;t get highlighting for all my needs. This needs
@@ -797,8 +787,8 @@ developer is very responsive to pull requests and the like.
 </div>
 </div>
 </div>
-<div id="outline-container-org1035d66" class="outline-3">
-<h3 id="org1035d66"><span class="section-number-3">10.6</span> LAMMPS Mode</h3>
+<div id="outline-container-org11ae198" class="outline-3">
+<h3 id="org11ae198"><span class="section-number-3">10.6.</span> LAMMPS Mode</h3>
 <div class="outline-text-3" id="text-10-6">
 <p>
 <del>This could do with some updates. Will look into this soon. Also it takesunbearably long this way. Must figure out how to stop it from downloading the
@@ -813,8 +803,8 @@ Mantained <a href="https://github.com/HaoZeke/lammps-mode">by me</a> now.
 </div>
 </div>
 </div>
-<div id="outline-container-org4720f00" class="outline-3">
-<h3 id="org4720f00"><span class="section-number-3">10.7</span> Pug Mode</h3>
+<div id="outline-container-org4624283" class="outline-3">
+<h3 id="org4624283"><span class="section-number-3">10.7.</span> Pug Mode</h3>
 <div class="outline-text-3" id="text-10-7">
 <p>
 I just like pugs.
@@ -825,8 +815,8 @@ I just like pugs.
 </div>
 </div>
 </div>
-<div id="outline-container-org5c69391" class="outline-3">
-<h3 id="org5c69391"><span class="section-number-3">10.8</span> Nix Mode</h3>
+<div id="outline-container-orgdccab1b" class="outline-3">
+<h3 id="orgdccab1b"><span class="section-number-3">10.8.</span> Nix Mode</h3>
 <div class="outline-text-3" id="text-10-8">
 <p>
 For building more cross-os stuff. This is the <a href="https://github.com/NixOS/nix-mode">official package</a>, but will look
@@ -838,8 +828,8 @@ into binding and using <a href="https://github.com/travisbhartwell/nix-emacs">ni
 </div>
 </div>
 </div>
-<div id="outline-container-orgbfcf0d1" class="outline-3">
-<h3 id="orgbfcf0d1"><span class="section-number-3">10.9</span> VIM mode</h3>
+<div id="outline-container-org5ccae28" class="outline-3">
+<h3 id="org5ccae28"><span class="section-number-3">10.9.</span> VIM mode</h3>
 <div class="outline-text-3" id="text-10-9">
 <p>
 I like <code>vim-script</code>&#x2026; well no I don&rsquo;t but I still use it.
@@ -850,8 +840,8 @@ I like <code>vim-script</code>&#x2026; well no I don&rsquo;t but I still use it.
 </div>
 </div>
 </div>
-<div id="outline-container-org0648f1c" class="outline-3">
-<h3 id="org0648f1c"><span class="section-number-3">10.10</span> JVM Languages</h3>
+<div id="outline-container-orga58cc1b" class="outline-3">
+<h3 id="orga58cc1b"><span class="section-number-3">10.10.</span> JVM Languages</h3>
 <div class="outline-text-3" id="text-10-10">
 <p>
 Currently the languages I care about (apart from Java) are:
@@ -865,8 +855,8 @@ Currently the languages I care about (apart from Java) are:
 </div>
 </div>
 </div>
-<div id="outline-container-orga14d9cf" class="outline-3">
-<h3 id="orga14d9cf"><span class="section-number-3">10.11</span> Systemd Mode</h3>
+<div id="outline-container-org4e6b8d9" class="outline-3">
+<h3 id="org4e6b8d9"><span class="section-number-3">10.11.</span> Systemd Mode</h3>
 <div class="outline-text-3" id="text-10-11">
 <p>
 Since I use a lot of user systemd units, it makes sense to have pretty
@@ -878,8 +868,8 @@ highlighting.
 </div>
 </div>
 </div>
-<div id="outline-container-org26fcb8c" class="outline-3">
-<h3 id="org26fcb8c"><span class="section-number-3">10.12</span> Dart Mode</h3>
+<div id="outline-container-org193ab30" class="outline-3">
+<h3 id="org193ab30"><span class="section-number-3">10.12.</span> Dart Mode</h3>
 <div class="outline-text-3" id="text-10-12">
 <p>
 Might eventually want to also get the companion <a href="https://github.com/bradyt/dart-server">dart server</a> sometime, but for
@@ -892,8 +882,8 @@ has anything for it.
 </div>
 </div>
 </div>
-<div id="outline-container-orgf3fd1b5" class="outline-3">
-<h3 id="orgf3fd1b5"><span class="section-number-3">10.13</span> Wolfram Mode</h3>
+<div id="outline-container-org3dd8576" class="outline-3">
+<h3 id="org3dd8576"><span class="section-number-3">10.13.</span> Wolfram Mode</h3>
 <div class="outline-text-3" id="text-10-13">
 <p>
 Actually <code>wolfram-mode</code> seems to be able to do more than just syntax highlighting, but at the moment I just need font-locking.
@@ -904,8 +894,8 @@ Actually <code>wolfram-mode</code> seems to be able to do more than just syntax 
 </div>
 </div>
 </div>
-<div id="outline-container-org648e0d3" class="outline-3">
-<h3 id="org648e0d3"><span class="section-number-3">10.14</span> Polymode</h3>
+<div id="outline-container-org8a91ac9" class="outline-3">
+<h3 id="org8a91ac9"><span class="section-number-3">10.14.</span> Polymode</h3>
 <div class="outline-text-3" id="text-10-14">
 <p>
 For working with <code>.Rmd</code> files and better <code>orgmode</code> R support.
@@ -918,13 +908,26 @@ For working with <code>.Rmd</code> files and better <code>orgmode</code> R suppo
 </div>
 </div>
 </div>
-<div id="outline-container-org673445b" class="outline-2">
-<h2 id="org673445b"><span class="section-number-2">11</span> Flycheck Additions</h2>
+<div id="outline-container-org571680e" class="outline-2">
+<h2 id="org571680e"><span class="section-number-2">11.</span> Matrix Clients</h2>
 <div class="outline-text-2" id="text-11">
+<p>
+Apparently Riot.im is now Element.io; and I could do with an <code>emacs</code> client&#x2026;
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> pretty-hydra<span style="color: #b294bb;">)</span>
+<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> matrix-client <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"alphapapa/matrix-client.el"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+</pre>
 </div>
-<div id="outline-container-org35b73cd" class="outline-3">
-<h3 id="org35b73cd"><span class="section-number-3">11.1</span> MELPA Helper</h3>
-<div class="outline-text-3" id="text-11-1">
+</div>
+</div>
+<div id="outline-container-orga46d7b7" class="outline-2">
+<h2 id="orga46d7b7"><span class="section-number-2">12.</span> Flycheck Additions</h2>
+<div class="outline-text-2" id="text-12">
+</div>
+<div id="outline-container-org60dab1e" class="outline-3">
+<h3 id="org60dab1e"><span class="section-number-3">12.1.</span> MELPA Helper</h3>
+<div class="outline-text-3" id="text-12-1">
 <p>
 This is for linting files before submitting to MELPA.
 </p>
@@ -936,16 +939,16 @@ This is for linting files before submitting to MELPA.
 </div>
 </div>
 </div>
-<div id="outline-container-org15940d5" class="outline-2">
-<h2 id="org15940d5"><span class="section-number-2">12</span> Snippets</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-orgf56f49e" class="outline-2">
+<h2 id="orgf56f49e"><span class="section-number-2">13.</span> Snippets</h2>
+<div class="outline-text-2" id="text-13">
 <p>
 These are from <a href="https://github.com/hlissner">hlissner</a>.
 </p>
 </div>
-<div id="outline-container-org1df665f" class="outline-3">
-<h3 id="org1df665f"><span class="section-number-3">12.1</span> Doom</h3>
-<div class="outline-text-3" id="text-12-1">
+<div id="outline-container-orgaba2d8c" class="outline-3">
+<h3 id="orgaba2d8c"><span class="section-number-3">13.1.</span> Doom</h3>
+<div class="outline-text-3" id="text-13-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> emacs-snippets
   <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
@@ -955,9 +958,9 @@ These are from <a href="https://github.com/hlissner">hlissner</a>.
 </div>
 </div>
 </div>
-<div id="outline-container-org16357c1" class="outline-3">
-<h3 id="org16357c1"><span class="section-number-3">12.2</span> Standard</h3>
-<div class="outline-text-3" id="text-12-2">
+<div id="outline-container-org1432e99" class="outline-3">
+<h3 id="org1432e99"><span class="section-number-3">13.2.</span> Standard</h3>
+<div class="outline-text-3" id="text-13-2">
 <p>
 These are from the <a href="https://github.com/AndreaCrotti/yasnippet-snippets">official snippets repo</a>.
 </p>
@@ -971,9 +974,9 @@ These are from the <a href="https://github.com/AndreaCrotti/yasnippet-snippets">
 </div>
 </div>
 </div>
-<div id="outline-container-org8bcd8d1" class="outline-2">
-<h2 id="org8bcd8d1"><span class="section-number-2">13</span> Math support</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-org3910169" class="outline-2">
+<h2 id="org3910169"><span class="section-number-2">14.</span> Math support</h2>
+<div class="outline-text-2" id="text-14">
 <p>
 I like <a href="https://github.com/cdominik/cdlatex">cdlatex</a>.
 </p>
@@ -994,7 +997,7 @@ However, better support for symbols can be found in <code>math-symbol-lists</cod
 <div id="postamble" class="status">
 <p class="date">Date: 2020:04:09</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2021-05-08 Sat 19:58</p>
+<p class="date">Created: 2021-07-20 Tue 16:29</p>
 </div>
 </body>
 </html>
