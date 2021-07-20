@@ -1134,8 +1134,9 @@ This is apparently the ~org-ref~ for ~org-re-reveal~. For themes (e.g.
 #+begin_src emacs-lisp :tangle yes
 (after! org-re-reveal
   (use-package! org-re-reveal-ref) ; fixes org-ref
-  (setq reveal-extras (concat doom-private-dir "revealExtras/"))
-  (setq org-re-reveal-root (concat doom-private-dir "reveal/rjs/"))
+  (setq reveal-extras (concat doom-private-dir "reveal/extras/")
+        org-re-reveal-root (concat doom-private-dir "reveal/rjs/")
+        sfeir-root (concat doom-private-dir "reveal/sfeir-school-theme/"))
 )
 #+end_src
 Note that this needs to be updated manually since themes change.
