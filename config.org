@@ -230,6 +230,7 @@ These conflict with my other templates.
 *** Theme
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
+;; Also like doom-city-lights
 (setq doom-theme 'doom-tomorrow-night)
 #+END_SRC
 *** Do not Format on Save
@@ -1218,7 +1219,8 @@ proper font locking mode for it, this should suffice.
 **** Fortran
 By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
 #+BEGIN_SRC emacs-lisp
-(add-to-list 'auto-mode-alist '("\\.f90\\'" . f90-mode))
+(setq auto-mode-alist (append '(("\\.f90\\'" . f90-mode))
+                              auto-mode-alist))
 #+END_SRC
 **** Vim
 I still keep my ~vim~ dotfiles up to date...
