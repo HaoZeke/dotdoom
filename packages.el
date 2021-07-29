@@ -1,6 +1,14 @@
+;; [[file:packages.org::*Dired Icons][Dired Icons:1]]
+(package! all-the-icons-dired)
+;; Dired Icons:1 ends here
+
 ;; [[file:packages.org::*Wakatime][Wakatime:1]]
 (package! wakatime-mode)
 ;; Wakatime:1 ends here
+
+;; [[file:packages.org::*Bufler][Bufler:1]]
+(package! bufler)
+;; Bufler:1 ends here
 
 ;; [[file:packages.org::*Evil Colemak][Evil Colemak:1]]
 (package! evil-colemak-basics)
@@ -153,11 +161,6 @@
 (package! poly-org)
 ;; Polymode:1 ends here
 
-;; [[file:packages.org::*Matrix Clients][Matrix Clients:1]]
-(package! pretty-hydra)
-(package! matrix-client :recipe (:host github :repo "alphapapa/matrix-client.el"))
-;; Matrix Clients:1 ends here
-
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
 (package! flycheck-package)
@@ -180,10 +183,6 @@
 ;; [[file:packages.org::*Math support][Math support:1]]
 (package! cdlatex)
 ;; Math support:1 ends here
-
-;; [[file:packages.org::*Bufler][Bufler:1]]
-(package! bufler)
-;; Bufler:1 ends here
 
 ;; [[file:packages.org::*Math support][Math support:2]]
 (package! math-symbol-lists)

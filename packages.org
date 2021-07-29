@@ -4,7 +4,7 @@
 #+HTML_LINK_HOME: https://dotdoom.rgoswami.me
 #+HTML_HEAD_EXTRA: <script> window.goatcounter = { path: '/dotdoomhome', }; </script>
 #+HTML_HEAD_EXTRA: <script data-goatcounter="https://rgoswami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-#+PROPERTY: header-args :tangle (concat doom-private-dir "packages.el")
+#+PROPERTY: header-args+ :tangle (concat doom-private-dir "packages.el")
 #+PROPERTY: header-args+ :comments link
 #+STARTUP: outline
 #+OPTIONS: toc:nil
@@ -96,7 +96,7 @@ The filename is determined by the ~SRC~ block languages.
 *** Dired Icons
 Since treemacs already uses ~all-the-icons~ it is silly to not use them in
 dired, from the [[https://github.com/domtronn/all-the-icons.el/wiki][all-the-icons wiki]].
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! all-the-icons-dired)
 #+END_SRC
 *** Wakatime
@@ -106,7 +106,7 @@ Not exactly aesthetic, but yeah, for stats.
 #+END_SRC
 *** Bufler
 [[https://github.com/alphapapa/bufler.el][This package]] seems to have better control of buffers than the default mess.
-#+begin_src elisp
+#+begin_src emacs-lisp :tangle yes
 (package! bufler)
 #+end_src
 ** LATER Magit Additions
@@ -151,7 +151,7 @@ The new ones need to be covered in the ~config.org~ file with the appropriate
 keybindings. The notes are [[https://rgoswami.me/posts/org-note-workflow][described here]].
 *** Org Download
 Now I load it here since I don't use ~+attach~.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-download
   :recipe (:host github
             :repo "abo-abo/org-download"))
@@ -167,7 +167,7 @@ The [[https://bitbucket.org/eeeickythump/org-drill/src][actual repo]] has not be
 
 *** Org Protocol Updates
 This needs to be installed specially, [[https://github.com/alphapapa/org-protocol-capture-html][from this repo]].
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-protocol-capture-html
   :recipe (:host github
            :repo "alphapapa/org-protocol-capture-html"))
@@ -176,7 +176,7 @@ This needs to be installed specially, [[https://github.com/alphapapa/org-protoco
 This is sort of more of a ~pdf-tools~ extension and it needs it's own ~biblatex~
 setup and stuff as well so this might move into a tree of it's own.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-noter)
 #+END_SRC
 
@@ -184,13 +184,12 @@ This actually breaks the ~pdf-tools~ bindings.
 
 *** Org Ref
 This is probably not the best thing in my current setup.. Now part of the ~init.el~ setup.
-
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-ref)
 #+END_SRC
 *** Org Mind Map
 Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-mind-map
   :recipe (:host github
             :repo "theodorewiles/org-mind-map"))
@@ -198,7 +197,7 @@ Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
 *** Org Rifle
 Technically a helm addition. Perfect for monolithic ~org~ files. More details
 [[https://github.com/alphapapa/helm-org-rifle][here]].
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! helm-org-rifle)
 #+END_SRC
 *** Org Async
@@ -208,7 +207,7 @@ We will use this.
 #+end_src
 *** Anki Mode
 This is put here since it only works with ~org-mode~ stuff.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! anki-editor)
 #+END_SRC
 
@@ -236,7 +235,7 @@ Mainly used with ~ox-hugo~
 For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
 ~## -*- docker-image-name: "your-image-name-here" -*-~ can be used to specify
 the image name.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! dockerfile-mode)
 #+END_SRC
 ** Reference Management
@@ -245,7 +244,7 @@ There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://gi
 they don't seem to be all that well mantained. [[https://github.com/emacsmirror/zotxt][Zotxt]] seems to be updated pretty
 often though.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! zotxt)
 #+END_SRC
 ** Syntax Highlighting
@@ -253,7 +252,7 @@ These are additionally required to work with the sort of files I use often.
 The configuration and settings are as usual in ~config.org~
 *** Sphinx and RsT
 Though reStructured Text is supported natively, there are some quality of life exporters and packages which should be more useful.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
 (package! ox-rst
   :recipe (:host github
            :repo "msnoigrs/ox-rst"))
@@ -288,7 +287,7 @@ The repo is unmaintained so I ought to fork it and take a look into maintaining 
 I have recently decided that [[https://saltstack.com/][saltstack]] ought to be used for working on multiple
 systems.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! salt-mode
 :recipe (:host github
          :repo "glynnforrest/salt-mode"))
@@ -298,7 +297,7 @@ No point using ~emacs~ if I can't get highlighting for all my needs. This needs
 some extra configuration. +Must figure out if this is well mantained+. The
 developer is very responsive to pull requests and the like.
 
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! pkgbuild-mode
   :recipe (:host github
             :repo "juergenhoetzel/pkgbuild-mode"))
@@ -307,30 +306,30 @@ developer is very responsive to pull requests and the like.
 +This could do with some updates. Will look into this soon. Also it takesunbearably long this way. Must figure out how to stop it from downloading the
 whole repo.+
 Mantained [[https://github.com/HaoZeke/lammps-mode][by me]] now.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! lammps-mode
   :recipe (:host github
                     :repo "HaoZeke/lammps-mode"))
 #+END_SRC
 *** Pug Mode
 I just like pugs.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! pug-mode)
 #+END_SRC
 *** Nix Mode
 For building more cross-os stuff. This is the [[https://github.com/NixOS/nix-mode][official package]], but will look
 into binding and using [[https://github.com/travisbhartwell/nix-emacs][nix-emacs]] as well.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! nix-mode)
 #+END_SRC
 *** VIM mode
 I like ~vim-script~... well no I don't but I still use it.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle yes
 (package! vimrc-mode)
 #+end_src
 *** JVM Languages
 Currently the languages I care about (apart from Java) are:
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 ; Kotlin > Java
 (package! kotlin-mode)
 ; Groovy -> Testing
@@ -339,7 +338,7 @@ Currently the languages I care about (apart from Java) are:
 *** Systemd Mode
 Since I use a lot of user systemd units, it makes sense to have pretty
 highlighting.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! systemd)
 #+END_SRC
 *** Dart Mode
@@ -351,32 +350,32 @@ has anything for it.
 #+END_SRC
 *** Wolfram Mode
 Actually ~wolfram-mode~ seems to be able to do more than just syntax highlighting, but at the moment I just need font-locking.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! wolfram-mode)
 #+END_SRC
 *** Polymode
 For working with ~.Rmd~ files and better ~orgmode~ R support.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! poly-R)
 (package! poly-org)
 #+END_SRC
 ** Matrix Clients
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (package! pretty-hydra)
 (package! matrix-client :recipe (:host github :repo "alphapapa/matrix-client.el"))
 #+end_src
 ** Flycheck Additions
 *** MELPA Helper
 This is for linting files before submitting to MELPA.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! package-lint)
 (package! flycheck-package)
 #+END_SRC
 ** Snippets
 These are from [[https://github.com/hlissner][hlissner]].
 *** Doom
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! emacs-snippets
   :recipe (:host github
            :repo "hlissner/emacs-snippets"
@@ -384,7 +383,7 @@ These are from [[https://github.com/hlissner][hlissner]].
 #+END_SRC
 *** Standard
 These are from the [[https://github.com/AndreaCrotti/yasnippet-snippets][official snippets repo]].
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! yasnippet-snippets
   :recipe (:host github
            :repo "AndreaCrotti/yasnippet-snippets"
@@ -392,11 +391,11 @@ These are from the [[https://github.com/AndreaCrotti/yasnippet-snippets][officia
 #+END_SRC
 ** Math support
 I like [[https://github.com/cdominik/cdlatex][cdlatex]].
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle yes
 (package! cdlatex)
 #+END_SRC
 However, better support for symbols can be found in ~math-symbol-lists~ as [[https://www.emacswiki.org/emacs/TeXInputMethod][discussed here]].
-#+begin_src elisp
+#+begin_src elisp :tangle yes
 (package! math-symbol-lists)
 #+end_src
 
