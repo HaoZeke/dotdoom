@@ -93,6 +93,10 @@
 (package! highlight-doxygen)
 ;; CPP Additions:1 ends here
 
+;; [[file:packages.org::*Meson Mode][Meson Mode:1]]
+(package! meson-mode)
+;; Meson Mode:1 ends here
+
 ;; [[file:packages.org::*Tup Mode][Tup Mode:1]]
 (package! tup-mode
 :recipe (:host github

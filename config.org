@@ -65,6 +65,7 @@
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#misc-highlighting][Misc Highlighting]]
     - [[#cpp-additions][CPP Additions]]
+    - [[#meson][Meson]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
     - [[#lammps-mode][LAMMPS Mode]]
     - [[#pug-mode][Pug Mode]]
@@ -1248,6 +1249,15 @@ I still keep my ~vim~ dotfiles up to date...
                                 ("\\.hpp$" . c++-mode)
                                 )
                               auto-mode-alist))
+#+end_src
+*** Meson
+Mostly used with ~cpp~ files.
+#+begin_src emacs-lisp
+(use-package! meson-mode
+  :mode "\\.build\\'"
+  :config
+  (add-hook!'meson-mode-hook 'company-mode)
+  )
 #+end_src
 *** PKGBUILD Mode
 This is the non ~doom~ way of loading this.
