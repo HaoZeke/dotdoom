@@ -786,8 +786,9 @@ These are more semantic for me.
 *** Private Variables
 On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
 #+begin_src emacs-lisp
-(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/run/current-system/sw/bin/gpg"))
-              (setq exec-path (append exec-path '("/run/current-system/sw/bin")))
+(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/usr/local/bin/gpg")) ;; brew
+              (setq exec-path (append exec-path '("/run/current-system/sw/bin"))) ;; nix
+              (setq exec-path (append exec-path '("/usr/local/bin/"))) ;; brew
               ))
 #+end_src
 These are encrypted with ~gpg~ and are essentially set mostly by ~custom-*~.
