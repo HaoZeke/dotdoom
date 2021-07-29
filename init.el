@@ -26,11 +26,13 @@
       ;;   +childframe      ; a better UI for helm (Emacs 26+)
       ;;   +fuzzy)          ; enable fuzzy search backend for helm
       ;; ido               ; the other *other* search engine...
-       (ivy              ; a search engine for love and life
-        +childframe      ; a better UI for ivy (Emacs 26+)
-        +prescient       ; better? filtering and sorting?
-        +icons           ; enables file icons
-        +fuzzy)          ; enable fuzzy search backend for ivy
+       ;; (ivy              ; a search engine for love and life
+       ;;  +childframe      ; a better UI for ivy (Emacs 26+)
+       ;;  +prescient       ; better? filtering and sorting?
+       ;;  +icons           ; enables file icons
+       ;;  +fuzzy)          ; enable fuzzy search backend for ivy
+       (vertico             ; the search engine of the future
+        +icons)             ; Icons for file and buffer category completions
 
       :ui
       deft              ; notational velocity for Emacs
