@@ -20,7 +20,6 @@
     - [[#variables][Variables]]
     - [[#theme][Theme]]
     - [[#do-not-format-on-save][Do not Format on Save]]
-    - [[#better-buffers][Better Buffers]]
   - [[#keybindings][Keybindings]]
     - [[#general][General]]
     - [[#evil-setup-and-error-handling][Evil Setup and Error Handling]]
@@ -247,19 +246,6 @@ Formatting with ~styler~ takes forever.
                                           web-mode      ; dunno who this is for
                                           ))
 #+END_SRC
-*** Better Buffers
-[[https://github.com/alphapapa/bufler.el][bufler.el]] should be a better fit than the default.
-#+begin_src emacs-lisp
-  (use-package! bufler
-  :general
-  (:keymaps 'doom-leader-map
-            "b b" 'bufler-workspace-switch-buffer
-            "b B" 'bufler-switch-buffer
-  )
-  :config
-  (setq bufler-workspace-switch-buffer-sets-workspace t)
-)
-#+end_src
 ** Keybindings
 These are eventually going to with [[https://github.com/noctuid/general.el][general]] anyway. So it's better to load that
 for now and carry on. Later this block can be prevented from being tangled.

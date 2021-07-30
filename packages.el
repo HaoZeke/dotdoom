@@ -6,10 +6,6 @@
 (package! wakatime-mode)
 ;; Wakatime:1 ends here
 
-;; [[file:packages.org::*Bufler][Bufler:1]]
-(package! bufler)
-;; Bufler:1 ends here
-
 ;; [[file:packages.org::*Evil Colemak][Evil Colemak:1]]
 (package! evil-colemak-basics)
 (package! evil-better-visual-line)

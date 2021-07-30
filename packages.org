@@ -22,7 +22,6 @@
   - [[#aesthetic-packages][Aesthetic Packages]]
     - [[#dired-icons][Dired Icons]]
     - [[#wakatime][Wakatime]]
-    - [[#bufler][Bufler]]
   - [[#later-magit-additions][LATER Magit Additions]]
   - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
   - [[#evil-colemak][Evil Colemak]]
@@ -104,11 +103,6 @@ Not exactly aesthetic, but yeah, for stats.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! wakatime-mode)
 #+END_SRC
-*** Bufler
-[[https://github.com/alphapapa/bufler.el][This package]] seems to have better control of buffers than the default mess.
-#+begin_src emacs-lisp :tangle yes
-(package! bufler)
-#+end_src
 ** LATER Magit Additions
 These basically allow for TODOs in magit along with enhanced github integration.
 These have been added upstream in ~develop~.
