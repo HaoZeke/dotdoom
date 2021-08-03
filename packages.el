@@ -1,3 +1,8 @@
+;; [[file:packages.org::*MacOS][MacOS:1]]
+(cond (IS-MAC (package! exec-path-from-shell)
+              ))
+;; MacOS:1 ends here
+
 ;; [[file:packages.org::*Dired Icons][Dired Icons:1]]
 (package! all-the-icons-dired)
 ;; Dired Icons:1 ends here

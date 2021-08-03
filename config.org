@@ -34,6 +34,7 @@
     - [[#neotree----treemacs][Neotree --> Treemacs]]
     - [[#tex-mode][TeX Mode]]
   - [[#safe-evals-and-variables][Safe Evals and Variables]]
+    - [[#macos-variables][MacOS Variables]]
     - [[#private-variables][Private Variables]]
     - [[#safe-variables][Safe Variables]]
     - [[#asynchronous-exports][Asynchronous Exports]]
@@ -771,6 +772,15 @@ These are more semantic for me.
   )
 #+END_SRC
 ** Safe Evals and Variables
+*** MacOS Variables
+To use ~path~ variables [[https://github.com/purcell/exec-path-from-shell][more easily]].
+#+begin_src emacs-lisp
+(cond (IS-MAC (use-package! exec-path-from-shell
+                :config
+                (exec-path-from-shell-initialize)
+                )
+              ))
+#+end_src
 *** Private Variables
 On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
 #+begin_src emacs-lisp

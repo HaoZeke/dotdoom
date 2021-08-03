@@ -19,6 +19,8 @@
   - [[#about-this-file][About this file]]
     - [[#about-that-toc][About that TOC..]]
     - [[#the-properties][The properties]]
+  - [[#os-specific-packages][OS Specific Packages]]
+    - [[#macos][MacOS]]
   - [[#aesthetic-packages][Aesthetic Packages]]
     - [[#dired-icons][Dired Icons]]
     - [[#wakatime][Wakatime]]
@@ -91,6 +93,13 @@ block and moreover the output directory is the ~doom-private-dir~. It's
 practically self explanatory but still. 
 
 The filename is determined by the ~SRC~ block languages.
+** OS Specific Packages
+*** MacOS
+Paths are a nightmare on ~darwin~ systems which necessitates a separate package [[https://github.com/purcell/exec-path-from-shell][for setting things up]].
+#+begin_src emacs-lisp :tangle yes
+(cond (IS-MAC (package! exec-path-from-shell)
+              ))
+#+end_src
 ** Aesthetic Packages
 *** Dired Icons
 Since treemacs already uses ~all-the-icons~ it is silly to not use them in
