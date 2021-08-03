@@ -70,13 +70,13 @@
       fold               ; (nigh) universal code folding
       format             ; Automated prettiness (no more +onsave)
       ;; god             ; run Emacs commands without modifier keys
-      ;; lispy           ; vim for lisp, for people who dont like vim
+      ;; lispy              ; vim for lisp, for people who dont like vim
       multiple-cursors   ; editing in many places at once
       ;; objed           ; text object editing for the innocent
-      ;; parinfer        ; turn lisp into python, sort of
+      ;; parinfer           ; turn lisp into python, sort of
       rotate-text        ; cycle region at point between text candidates
       snippets           ; my elves. They type so I don't have to
-      word-wrap       ; soft wrapping with language aware indent
+      word-wrap          ; soft wrapping with language aware indent
 
 
        :emacs
@@ -156,7 +156,7 @@
        ;;gdscript           ; the language you waited for
        (go +lsp)            ; the hipster dialect
        (haskell +dante)     ; a language that's lazier than I am
-       ;;hy                 ; readability of scheme w/ speed of python
+       hy                   ; readability of scheme w/ speed of python
        ;;idris              ; a language you can depend on
        json                 ; At least it ain't XML
        ;;(java +meghanada)  ; the poster child for carpal tunnel syndrome
