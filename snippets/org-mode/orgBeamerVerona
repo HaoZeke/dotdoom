@@ -18,9 +18,15 @@
   :VISIBILITY: folded
   :END:
 
-#+BEGIN_SRC emacs-lisp :exports none :eval always
+#+BEGIN_SRC emacs-lisp :exports none :eval always :results none
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
+;; Define Asynchronous Export
+(defun haozeke/org-save-and-export-pdf ()
+  (if (eq major-mode 'org-mode)
+    (org-latex-export-to-pdf :async t)))
+;; Add hook
+(add-hook 'after-save-hook 'haozeke/org-save-and-export-beamer)
 #+END_SRC
 
 #
@@ -127,5 +133,4 @@
 
 # Local Variables:
 # before-save-hook: org-babel-execute-buffer
-# after-save-hook: haozeke/org-save-and-export-beamer
 # End:

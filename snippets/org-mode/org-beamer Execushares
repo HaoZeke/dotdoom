@@ -23,6 +23,12 @@
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
 (org-babel-tangle)
+;; Define Asynchronous Export
+(defun haozeke/org-save-and-export-pdf ()
+  (if (eq major-mode 'org-mode)
+    (org-latex-export-to-pdf :async t)))
+;; Add hook
+(add-hook 'after-save-hook 'haozeke/org-save-and-export-beamer)
 #+END_SRC
 
 ** Beamer Theme :ignoreheading:ignore:
@@ -327,5 +333,4 @@
 
 # Local Variables:
 # before-save-hook: org-babel-execute-buffer
-# after-save-hook: haozeke/org-save-and-export-beamer
 # End:
