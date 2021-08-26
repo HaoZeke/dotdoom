@@ -90,6 +90,7 @@
     - [[#smarter-clang-formatting][Smarter Clang Formatting]]
     - [[#org-mode-export-to-markdown][Org-mode export to Markdown]]
     - [[#smartparens-wrapping][Smartparens Wrapping]]
+    - [[#sort-words][Sort words]]
   - [[#chat-clients][Chat Clients]]
     - [[#matrix][Matrix]]
   - [[#projects][Projects]]
@@ -97,6 +98,7 @@
     - [[#firestarter][Firestarter]]
   - [[#hooks][Hooks]]
     - [[#caveats-1][Caveats]]
+    - [[#out-of-focus-hook][Out of Focus Hook]]
     - [[#before-save-hooks][Before Save Hooks]]
     - [[#disable-auto-rdm][Disable Auto RDM]]
   - [[#troubleshooting][Troubleshooting]]
@@ -125,7 +127,6 @@
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
 - [[#notes][Notes]]
-  - [[#deft][Deft]]
   - [[#noteyoda][noteYoda]]
     - [[#org-ref][Org-Ref]]
     - [[#helm-bibtex][Helm Bibtex]]
@@ -1568,6 +1569,20 @@ org-mode inline code):
   (interactive)
   (sp-wrap-with-pair "~"))
 #+END_SRC
+*** Sort words
+From the Emacs Wiki.
+#+begin_src emacs-lisp
+(defun sort-words (reverse beg end)
+  "Sort words in region alphabetically, in REVERSE if negative.
+Prefixed with negative \\[universal-argument], sorts in reverse.
+
+The variable `sort-fold-case' determines whether alphabetic case
+affects the sort order.
+
+See `sort-regexp-fields'."
+  (interactive "*P\nr")
+  (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+#+end_src
 ** Chat Clients
 *** Matrix
 Configuring the only ~emacs~ chat client I use.
@@ -1658,6 +1673,17 @@ probably replace a lot of my other hooks eventually as well.
 ** Hooks
 *** TODO Caveats
 Move all the hooks to this section if possible.
+*** Out of Focus Hook
+Similar to ~neovim~ and its ~set autowrite~ and ~au FocusLost * update~:
+#+begin_src emacs-lisp :tangle yes
+;; Save on focus lost (The frame's focus that is...)
+(defun save-all ()
+  (interactive)
+  (save-some-buffers t))
+
+(add-hook 'focus-out-hook 'save-all)
+#+end_src
+From [[https://github.com/madstap/emacs/blob/master/customizations/editing.el][here]].
 *** Before Save Hooks
 **** CC Mode
 Currently I only need to use the clang formatting hook here.
@@ -2018,13 +2044,6 @@ This includes settings for both flycheck and the packages it needs.
   :config (flycheck-package-setup))
 #+END_SRC
 * Notes
-** Deft
-This copies the ~deft~ default configuration, bwith some additional variables.
-#+begin_src emacs-lisp
-(after! deft
-  :custom
-  (deft-file-limit 30))
-#+end_src
 ** noteYoda
 +This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility this will be broken down into a per-package configuration. The heart of this is an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]].+ Now described in [[https://rgoswami.me/posts/org-note-workflow][this post]].
 *** Org-Ref
