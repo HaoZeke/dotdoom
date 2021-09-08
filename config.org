@@ -450,6 +450,7 @@ are a part of ~org-mode~.
         (:prefix ("b" . "Math")
          :desc "Bold" "f" 'org-make-bold-math
          :desc "Blackboard" "b" 'org-make-blackboard-math
+         :desc "Remove" "r" 'org-make-mathrm-math
          :desc "Vert" "v" 'org-make-vert-math
          )
         (:prefix ("h" . "Headings")
@@ -498,7 +499,7 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
 (setq reftex-label-alist
   '(("dmath" ?e nil nil t)))
 #+end_src
-**** Bold Math
+**** Special Math Environments
 Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]].
 #+begin_src emacs-lisp
 (defun org-make-bold-math ()
@@ -584,10 +585,51 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
       )
 ))
 
-(defun org-make-vert-math ()
-  "If there's a selection -- wrap this with '\mathbb{' and '}'
+(defun org-make-mathrm-math ()
+  "If there's a selection -- wrap this with '\mathrm{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathbb{' and '}'
+   between '\mathrm{' and '}'
+
+   Also: when not in math mode -- enclose the thing in dollars."
+
+  (interactive)
+
+  (let (start end
+              (delim "")
+              (jump 1)
+              )
+
+    (when (not (texmathp))
+      (setq delim "$")
+      (setq jump 2)
+      )
+
+    (if (use-region-p)
+        (progn
+          (setq start (region-beginning))
+          (setq end (region-end))
+
+          (narrow-to-region start end)
+
+          (goto-char (point-min))
+          (insert (concat delim "\\mathrm{"))
+
+          (goto-char (point-max))
+          (insert (concat "}" delim))
+          (widen)
+          )
+
+      (progn
+        (insert (concat delim "\\mathrm{}" delim))
+        (backward-char jump)
+        )
+      )
+))
+
+(defun org-make-vert-math ()
+  "If there's a selection -- wrap this with '\vert{' and '}'
+   and put the point to the end.  Otherwise -- put the point
+   between '\vert{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
