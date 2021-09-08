@@ -1719,11 +1719,11 @@ Move all the hooks to this section if possible.
 Similar to ~neovim~ and its ~set autowrite~ and ~au FocusLost * update~:
 #+begin_src emacs-lisp :tangle yes
 ;; Save on focus lost (The frame's focus that is...)
-(defun save-all ()
-  (interactive)
-  (save-some-buffers t))
+;; (defun save-all ()
+;;   (interactive)
+;;   (save-some-buffers t))
 
-(add-hook 'focus-out-hook 'save-all)
+;; (add-hook 'focus-out-hook 'save-all)
 #+end_src
 From [[https://github.com/madstap/emacs/blob/master/customizations/editing.el][here]].
 *** Before Save Hooks
