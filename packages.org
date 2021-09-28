@@ -398,7 +398,7 @@ I like [[https://github.com/cdominik/cdlatex][cdlatex]].
 (package! cdlatex)
 #+END_SRC
 However, better support for symbols can be found in ~math-symbol-lists~ as [[https://www.emacswiki.org/emacs/TeXInputMethod][discussed here]].
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
 (package! math-symbol-lists)
 #+end_src
 
