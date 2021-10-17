@@ -450,7 +450,7 @@ are a part of ~org-mode~.
         (:prefix ("b" . "Math")
          :desc "Bold" "f" 'org-make-bold-math
          :desc "Blackboard" "b" 'org-make-blackboard-math
-         :desc "Remove" "r" 'org-make-mathrm-math
+         :desc "Remove" "r" 'org-make-symrm-math
          :desc "Vert" "v" 'org-make-vert-math
          )
         (:prefix ("h" . "Headings")
@@ -503,9 +503,9 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
 Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]].
 #+begin_src emacs-lisp
 (defun org-make-bold-math ()
-  "If there's a selection -- wrap this with '\mathbf{' and '}'
+  "If there's a selection -- wrap this with '\symbf{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathbf{' and '}'
+   between '\symbf{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
@@ -529,7 +529,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           (narrow-to-region start end)
 
           (goto-char (point-min))
-          (insert (concat delim "\\mathbf{"))
+          (insert (concat delim "\\symbf{"))
 
           (goto-char (point-max))
           (insert (concat "}" delim))
@@ -537,7 +537,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           )
 
       (progn
-        (insert (concat delim "\\mathbf{}" delim))
+        (insert (concat delim "\\symbf{}" delim))
         (backward-char jump)
         )
       )
@@ -545,9 +545,9 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
 
 
 (defun org-make-blackboard-math ()
-  "If there's a selection -- wrap this with '\mathbb{' and '}'
+  "If there's a selection -- wrap this with '\symbb{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathbb{' and '}'
+   between '\symbb{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
@@ -571,7 +571,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           (narrow-to-region start end)
 
           (goto-char (point-min))
-          (insert (concat delim "\\mathbb{"))
+          (insert (concat delim "\\symbb{"))
 
           (goto-char (point-max))
           (insert (concat "}" delim))
@@ -579,16 +579,16 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           )
 
       (progn
-        (insert (concat delim "\\mathbb{}" delim))
+        (insert (concat delim "\\symbb{}" delim))
         (backward-char jump)
         )
       )
 ))
 
-(defun org-make-mathrm-math ()
-  "If there's a selection -- wrap this with '\mathrm{' and '}'
+(defun org-make-symrm-math ()
+  "If there's a selection -- wrap this with '\symrm{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathrm{' and '}'
+   between '\symrm{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
@@ -612,7 +612,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           (narrow-to-region start end)
 
           (goto-char (point-min))
-          (insert (concat delim "\\mathrm{"))
+          (insert (concat delim "\\symrm{"))
 
           (goto-char (point-max))
           (insert (concat "}" delim))
@@ -620,7 +620,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           )
 
       (progn
-        (insert (concat delim "\\mathrm{}" delim))
+        (insert (concat delim "\\symrm{}" delim))
         (backward-char jump)
         )
       )
