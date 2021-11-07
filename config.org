@@ -234,7 +234,7 @@ These conflict with my other templates.
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
 ;; Also like doom-city-lights
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-spacegrey)
 #+END_SRC
 *** Do not Format on Save
 Formatting with ~styler~ takes forever.
