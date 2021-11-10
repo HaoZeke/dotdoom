@@ -909,9 +909,16 @@ This section is to work with the settings for the ~word-wrap~ ~doom~ module.
 #+begin_src emacs-lisp
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5 ; default is 0.25
+        ispell-program-name "hunspell"
+        ;; aspell -> "--sug-mode=ultra"
+        ;;ispell-extra-args '("-d en_US")
         ispell-dictionary "en_US" ; needed for MacOS in particular
         ispell-personal-dictionary "~/.aspell.en.pws" ; standard location
+        spell-fu-dictionary "~/.config/dict" ; standard location
         )
+  ;; use American English as ispell default dictionary
+  (ispell-change-dictionary "american" t)
+  (setq-default ispell-program-name "hunspell")
 )
 #+end_src
 *** Magit Aids
