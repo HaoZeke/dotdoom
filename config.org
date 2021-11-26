@@ -224,7 +224,7 @@ These conflict with my other templates.
 #+begin_src emacs-lisp
 (setq
    org_notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
-   zot_bib (concat (getenv "HOME") "/GDrive/zotLib.bib")
+   zot_bib (concat (getenv "HOME") "/Documents/zotLib.bib")
    org-directory org_notes
    deft-directory org_notes
    org-roam-directory org_notes
@@ -2107,7 +2107,7 @@ sections are set in my ~private~ config.
     (setq
          org-ref-completion-library 'org-ref-ivy-cite
          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-         org-ref-default-bibliography (list (concat (getenv "HOME") "/GDrive/zotLib.bib"))
+         org-ref-default-bibliography (list (concat (getenv "HOME") "/Documents/zotLib.bib"))
          org-ref-bibliography-notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
          org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
@@ -2130,8 +2130,8 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
 #+BEGIN_SRC emacs-lisp
 (after! org-ref
   (setq
-   bibtex-completion-notes-path "/home/haozeke/Git/Gitlab/Mine/Notes/"
-   bibtex-completion-bibliography "/home/haozeke/GDrive/zotLib.bib"
+   bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
+   bibtex-completion-bibliography (concat (getenv "HOME") "/Documents/zotLib.bib")
    bibtex-completion-pdf-field "file"
    bibtex-completion-notes-template-multiple-files
    (concat
