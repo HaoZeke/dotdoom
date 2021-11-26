@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: svg-tex
+# uuid:
+# key: trigger-key
+# condition: t
+# --
+
+#+begin_export latex
+\begin{figure}[H]
+    \caption{${1:Caption}}
+    \label{${2:reflabel}}
+    \centering
+    \includesvg[width=0.8\columnwidth]{img/${3:imgname}}
+\end{figure}
+#+end_export
+
+$0
