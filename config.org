@@ -1142,7 +1142,9 @@ possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f
          ("convert -density %D -trim -antialias %f -quality 100 %O")))
 #+END_SRC
 **** Inline images
-These need to be disabled by default otherwise ~emacs~ stalls often. Also, it turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better, once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
+These need to be disabled by default otherwise ~emacs~ stalls often. Also, it
+turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better,
+once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
 #+BEGIN_SRC emacs-lisp
   (after! org
     (setq org-preview-latex-default-process 'imagexetex)
