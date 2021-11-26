@@ -503,9 +503,9 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
 Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]].
 #+begin_src emacs-lisp
 (defun org-make-bold-math ()
-  "If there's a selection -- wrap this with '\mathbf{' and '}'
+  "If there's a selection -- wrap this with '\symbf{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathbf{' and '}'
+   between '\symbf{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
@@ -529,7 +529,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           (narrow-to-region start end)
 
           (goto-char (point-min))
-          (insert (concat delim "\\mathbf{"))
+          (insert (concat delim "\\symbf{"))
 
           (goto-char (point-max))
           (insert (concat "}" delim))
@@ -537,7 +537,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           )
 
       (progn
-        (insert (concat delim "\\mathbf{}" delim))
+        (insert (concat delim "\\symbf{}" delim))
         (backward-char jump)
         )
       )
