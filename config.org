@@ -2041,6 +2041,11 @@ stackexchange]] question.
 These are required to view math properly.
 ** Math support
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
+#+begin_src emacs-lisp
+(map! :map cdlatex-mode-map
+    :i "TAB" #'cdlatex-tab)
+#+end_src
+Also we need some more things.
 #+BEGIN_SRC emacs-lisp
 (use-package! cdlatex
     :after (:any org-mode LaTeX-mode)
@@ -2167,6 +2172,10 @@ This includes settings for both flycheck and the packages it needs.
   :after flycheck
   :config (flycheck-package-setup))
 #+END_SRC
+** Xenops Inspired
+[[https://github.com/dandavison/xenops/][Xenops]] is essentially a supercharged literate set of functions for using ~Mathematica~ and ~SymPy~. It is similar to my previous ~mash~ et. al. setup but automatically appends ~// TeXForm // ToString~ and other helpful conversions. Due to the many modifications of my default environment and setup; these functions are adapted for use from ~xenops~ but cannot be loaded directly with it. Also my use case here is more focused towards only working in ~orgmode~ as opposed to ~xenops~'s focus on ~TeX~.
+#+begin_src emacs-lisp
+#+end_src
 * Notes
 ** noteYoda
 +This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility this will be broken down into a per-package configuration. The heart of this is an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]].+ Now described in [[https://rgoswami.me/posts/org-note-workflow][this post]].
