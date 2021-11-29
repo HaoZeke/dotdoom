@@ -30,8 +30,13 @@
 (require 'org-ref)
 
 ;; Path addtion
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
-(setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
+(cond (IS-LINUX (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
+                (setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
+                )
+      (IS-MAC (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/universal-darwin"))
+              (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/universal-darwin")))
+              )
+      )
 
 ;; Functions
 ;; this function is used to append multiple elements to the list 'ox-latex
