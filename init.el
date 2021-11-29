@@ -90,7 +90,7 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;; eshell            ; a consistent, cross-platform shell (WIP)
+       eshell            ; a consistent, cross-platform shell (WIP)
        ;; shell           ; a terminal REPL for Emacs
        term              ; terminals in Emacs
        ;; vterm             ; another terminal in Emacs
@@ -189,7 +189,9 @@
        ;;php                ; perl's insecure younger brother
        ;;plantuml           ; diagrams for confusing people more
        ;;purescript         ; javascript, but functional
-       (python +lsp)               ; beautiful is better than ugly
+       (python              ; beautiful is better than ugly
+        +lsp                ; Language server protocol support
+        +cython)            ; Use faster, static type supported, creole python
        ;;+poetry)           ; the future of the written word
        ;; qt                ; the 'cutest' gui framework ever
        ;; racket            ; a DSL for DSLs
