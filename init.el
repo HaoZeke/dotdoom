@@ -99,7 +99,7 @@
        (syntax             ; tasing you for every semicolon you forget
         +childframe)       ; use childframes for error popups (Emacs 26+ only)
        (spell              ; tasing you for misspelling mispelling
-       +aspell            ; use the most supported backend
+       +hunspell           ; use a backend
        +everywhere)       ; spell check in programming modes as well (in comments)
        ;;grammar           ; tasing grammar mistake every you make
 
