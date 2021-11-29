@@ -62,6 +62,7 @@
     - [[#org-gcal][Org GCal]]
     - [[#hugo-settings][Hugo Settings]]
     - [[#citeproc][Citeproc]]
+    - [[#calctex][CalcTeX]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#misc-highlighting][Misc Highlighting]]
     - [[#cpp-additions][CPP Additions]]
@@ -126,6 +127,7 @@
     - [[#markdown-html][Markdown HTML]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
+  - [[#xenops-inspired][Xenops Inspired]]
 - [[#notes][Notes]]
   - [[#noteyoda][noteYoda]]
     - [[#org-ref][Org-Ref]]
@@ -500,7 +502,7 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
   '(("dmath" ?e nil nil t)))
 #+end_src
 **** Special Math Environments
-Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]].
+Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]]. Note that these are meant to work with ~unicode-math~.
 #+begin_src emacs-lisp
 (defun org-make-bold-math ()
   "If there's a selection -- wrap this with '\symbf{' and '}'
@@ -1246,6 +1248,78 @@ We will now lower the heading to the appropriate level. This is [[https://github
            (citeproc-org-org-bib-header (concat (make-string totallevel ?*)
                                                 (string-trim-left citeproc-org-org-bib-header "\\**"))))
       (apply orig args))))
+#+end_src
+*** CalcTeX
+Writing ~TeX~ math can be painful, in-spite of all the unicode and other fancy tricks. [[https://github.com/johnbcoughlin/calctex][This]] makes things a lot more feasible. Some of the configuration is directly lifted from [[https://tecosaur.github.io/emacs-config/config.html#calctex][Tecosaur's configuration]].
+#+begin_src emacs-lisp
+(use-package! calctex
+  :commands calctex-mode
+  :init
+  (add-hook 'calc-mode-hook #'calctex-mode)
+  :config
+  (setq calctex-additional-latex-packages "
+\\usepackage[usenames]{xcolor}
+\\usepackage{soul}
+\\usepackage{adjustbox}
+\\usepackage{amsmath}
+\\usepackage{amssymb}
+\\usepackage{siunitx}
+\\usepackage{cancel}
+\\usepackage{mathtools}
+\\usepackage{mathalpha}
+\\usepackage{xparse}
+\\usepackage{arevmath}"
+        calctex-additional-latex-macros
+        (concat calctex-additional-latex-macros
+                "\n\\let\\evalto\\Rightarrow"))
+  (defadvice! no-messaging-a (orig-fn &rest args)
+    :around #'calctex-default-dispatching-render-process
+    (let ((inhibit-message t) message-log-max)
+      (apply orig-fn args)))
+  ;; Fix hardcoded dvichop path (whyyyyyyy)
+  (let ((vendor-folder (concat (file-truename doom-local-dir)
+                               "straight/"
+                               (format "build-%s" emacs-version)
+                               "/calctex/vendor/")))
+    (setq calctex-dvichop-sty (concat vendor-folder "texd/dvichop")
+          calctex-dvichop-bin (concat vendor-folder "texd/dvichop")))
+  (unless (file-exists-p calctex-dvichop-bin)
+    (message "CalcTeX: Building dvichop binary")
+    (let ((default-directory (file-name-directory calctex-dvichop-bin)))
+      (call-process "make" nil nil nil))))
+#+end_src
+Now we would like also to have a sidebar for working in the embedded mode.
+#+begin_src emacs-lisp
+(defvar calc-embedded-trail-window nil)
+(defvar calc-embedded-calculator-window nil)
+
+(defadvice! calc-embedded-with-side-pannel (&rest _)
+  :after #'calc-do-embedded
+  (when calc-embedded-trail-window
+    (ignore-errors
+      (delete-window calc-embedded-trail-window))
+    (setq calc-embedded-trail-window nil))
+  (when calc-embedded-calculator-window
+    (ignore-errors
+      (delete-window calc-embedded-calculator-window))
+    (setq calc-embedded-calculator-window nil))
+  (when (and calc-embedded-info
+             (> (* (window-width) (window-height)) 1200))
+    (let ((main-window (selected-window))
+          (vertical-p (> (window-width) 80)))
+      (select-window
+       (setq calc-embedded-trail-window
+             (if vertical-p
+                 (split-window-horizontally (- (max 30 (/ (window-width) 3))))
+               (split-window-vertically (- (max 8 (/ (window-height) 4)))))))
+      (switch-to-buffer "*Calc Trail*")
+      (select-window
+       (setq calc-embedded-calculator-window
+             (if vertical-p
+                 (split-window-vertically -6)
+               (split-window-horizontally (- (/ (window-width) 2))))))
+      (switch-to-buffer "*Calculator*")
+      (select-window main-window))))
 #+end_src
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are

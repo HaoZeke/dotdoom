@@ -401,6 +401,12 @@ However, better support for symbols can be found in ~math-symbol-lists~ as [[htt
 #+begin_src emacs-lisp :tangle yes
 (package! math-symbol-lists)
 #+end_src
+Also, [[https://github.com/johnbcoughlin/calctex][CalcTeX]] makes life a lot easier, and is faster than calling SymPy or Mathematica.
+#+begin_src emacs-lisp :tangle yes
+(package! calctex :recipe (:host github :repo "johnbcoughlin/calctex"
+                           :files ("*.el" "calctex/*.el" "calctex-contrib/*.el" "org-calctex/*.el" "vendor"))
+  :pin "784cf911bc96aac0f47d529e8cee96ebd7cc31c9")
+#+end_src
 
 # Local Variables:
 # eval: (add-hook (quote after-save-hook) (lambda nil (org-babel-tangle)) nil t)
