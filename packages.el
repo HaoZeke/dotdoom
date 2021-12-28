@@ -20,6 +20,11 @@
 (package! firestarter)
 ;; Firestarter:1 ends here
 
+;; [[file:packages.org::*Mermaid][Mermaid:1]]
+(package! mermaid-mode)
+(package! ob-mermaid)
+;; Mermaid:1 ends here
+
 ;; [[file:packages.org::*Org Download][Org Download:1]]
 (package! org-download
   :recipe (:host github
@@ -188,3 +193,9 @@
 ;; [[file:packages.org::*Math support][Math support:2]]
 (package! math-symbol-lists)
 ;; Math support:2 ends here
+
+;; [[file:packages.org::*Math support][Math support:3]]
+(package! calctex :recipe (:host github :repo "johnbcoughlin/calctex"
+                           :files ("*.el" "calctex/*.el" "calctex-contrib/*.el" "org-calctex/*.el" "vendor"))
+  :pin "784cf911bc96aac0f47d529e8cee96ebd7cc31c9")
+;; Math support:3 ends here

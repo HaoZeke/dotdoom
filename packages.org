@@ -29,6 +29,7 @@
   - [[#evil-colemak][Evil Colemak]]
   - [[#firestarter][Firestarter]]
   - [[#org-additions][Org Additions]]
+    - [[#mermaid][Mermaid]]
     - [[#org-download][Org Download]]
     - [[#later-org-drill][LATER Org Drill]]
     - [[#org-protocol-updates][Org Protocol Updates]]
@@ -152,6 +153,12 @@ For running shell commands on-save.
 ** Org Additions
 The new ones need to be covered in the ~config.org~ file with the appropriate
 keybindings. The notes are [[https://rgoswami.me/posts/org-note-workflow][described here]].
+*** Mermaid
+Technically not only an org addition, [[https://mermaid-js.github.io/mermaid/#/][mermaid is kinda]] like a souped up ~ditaa~. Naturally there's an [[https://github.com/arnm/ob-mermaid][org mode addition]].
+#+begin_src emacs-lisp :tangle yes
+(package! mermaid-mode)
+(package! ob-mermaid)
+#+end_src
 *** Org Download
 Now I load it here since I don't use ~+attach~.
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -398,8 +405,14 @@ I like [[https://github.com/cdominik/cdlatex][cdlatex]].
 (package! cdlatex)
 #+END_SRC
 However, better support for symbols can be found in ~math-symbol-lists~ as [[https://www.emacswiki.org/emacs/TeXInputMethod][discussed here]].
-#+begin_src elisp :tangle yes
+#+begin_src emacs-lisp :tangle yes
 (package! math-symbol-lists)
+#+end_src
+Also, [[https://github.com/johnbcoughlin/calctex][CalcTeX]] makes life a lot easier, and is faster than calling SymPy or Mathematica.
+#+begin_src emacs-lisp :tangle yes
+(package! calctex :recipe (:host github :repo "johnbcoughlin/calctex"
+                           :files ("*.el" "calctex/*.el" "calctex-contrib/*.el" "org-calctex/*.el" "vendor"))
+  :pin "784cf911bc96aac0f47d529e8cee96ebd7cc31c9")
 #+end_src
 
 # Local Variables:

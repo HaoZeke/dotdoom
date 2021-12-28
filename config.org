@@ -56,6 +56,7 @@
     - [[#modifications][Modifications]]
     - [[#ignore-support][Ignore Support]]
     - [[#file-handling][File Handling]]
+    - [[#ob-mermaid][Ob-Mermaid]]
     - [[#kill-ob-julia][KILL Ob-Julia]]
     - [[#org-download][Org Download]]
     - [[#org-babel][Org Babel]]
@@ -69,6 +70,7 @@
     - [[#org-gcal][Org GCal]]
     - [[#hugo-settings][Hugo Settings]]
     - [[#citeproc][Citeproc]]
+    - [[#calctex][CalcTeX]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#misc-highlighting][Misc Highlighting]]
     - [[#cpp-additions][CPP Additions]]
@@ -133,6 +135,7 @@
     - [[#markdown-html][Markdown HTML]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
+  - [[#xenops-inspired][Xenops Inspired]]
 - [[#notes][Notes]]
   - [[#noteyoda][noteYoda]]
     - [[#org-ref][Org-Ref]]
@@ -250,8 +253,8 @@ These conflict with my other templates.
 *** Theme
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
-;; Also like doom-city-lights
-(setq doom-theme 'doom-spacegrey)
+;; Also like doom-city-lights, doom-oceanic-next, doom-tomorrow-night
+(setq doom-theme 'doom-oceanic-next)
 #+END_SRC
 *** Do not Format on Save
 Formatting with ~styler~ takes forever.
@@ -467,7 +470,7 @@ are a part of ~org-mode~.
         (:prefix ("b" . "Math")
          :desc "Bold" "f" 'org-make-bold-math
          :desc "Blackboard" "b" 'org-make-blackboard-math
-         :desc "Remove" "r" 'org-make-mathrm-math
+         :desc "Remove" "r" 'org-make-symrm-math
          :desc "Vert" "v" 'org-make-vert-math
          )
         (:prefix ("h" . "Headings")
@@ -517,7 +520,7 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
   '(("dmath" ?e nil nil t)))
 #+end_src
 **** Special Math Environments
-Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]].
+Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]]. Note that these are meant to work with ~unicode-math~.
 #+begin_src emacs-lisp
 (defun org-make-bold-math ()
   "If there's a selection -- wrap this with '\symbf{' and '}'
@@ -562,9 +565,9 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
 
 
 (defun org-make-blackboard-math ()
-  "If there's a selection -- wrap this with '\mathbb{' and '}'
+  "If there's a selection -- wrap this with '\symbb{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathbb{' and '}'
+   between '\symbb{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
@@ -588,7 +591,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           (narrow-to-region start end)
 
           (goto-char (point-min))
-          (insert (concat delim "\\mathbb{"))
+          (insert (concat delim "\\symbb{"))
 
           (goto-char (point-max))
           (insert (concat "}" delim))
@@ -596,16 +599,16 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           )
 
       (progn
-        (insert (concat delim "\\mathbb{}" delim))
+        (insert (concat delim "\\symbb{}" delim))
         (backward-char jump)
         )
       )
 ))
 
-(defun org-make-mathrm-math ()
-  "If there's a selection -- wrap this with '\mathrm{' and '}'
+(defun org-make-symrm-math ()
+  "If there's a selection -- wrap this with '\symrm{' and '}'
    and put the point to the end.  Otherwise -- put the point
-   between '\mathrm{' and '}'
+   between '\symrm{' and '}'
 
    Also: when not in math mode -- enclose the thing in dollars."
 
@@ -629,7 +632,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           (narrow-to-region start end)
 
           (goto-char (point-min))
-          (insert (concat delim "\\mathrm{"))
+          (insert (concat delim "\\symrm{"))
 
           (goto-char (point-max))
           (insert (concat "}" delim))
@@ -637,7 +640,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
           )
 
       (progn
-        (insert (concat delim "\\mathrm{}" delim))
+        (insert (concat delim "\\symrm{}" delim))
         (backward-char jump)
         )
       )
@@ -844,7 +847,7 @@ To use ~path~ variables [[https://github.com/purcell/exec-path-from-shell][more 
 *** Private Variables
 On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
 #+begin_src emacs-lisp
-(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/usr/local/bin/gpg")) ;; brew
+(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/run/current-system/sw/bin/gpg")) ;; nix
               (setq exec-path (append exec-path '("/run/current-system/sw/bin"))) ;; nix
               (setq exec-path (append exec-path '("/usr/local/bin/"))) ;; brew
               ))
@@ -1044,6 +1047,11 @@ dealing with ~append~ and stuff.
     ))
 #+END_SRC
 
+*** Ob-Mermaid
+#+begin_src emacs-lisp
+(use-package! mermaid-mode)
+(use-package! ob-mermaid)
+#+end_src
 *** KILL Ob-Julia
 So ~julia~ support is inbuilt, however the process variable needs to be set:
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -1096,9 +1104,12 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
                                          (append org-babel-load-languages
                                                  ;; '((julia . t))
                                                  '((mathematica . t))
+                                                 '((ditaa . t))
                                                  ))
             )
-(setq org-babel-mathematica-command "~/.local/bin/mash")
+(setq org-babel-mathematica-command "~/.local/bin/mash"
+      org-ditaa-jar-path (concat (getenv "HOME") "/.local/bin/ditaa0_9.jar")
+)
 #+END_SRC
 *** Async Org Babel
 From [[https://github.com/diadochos/org-babel-eval-in-repl][here]]. Now we can configure this.
@@ -1308,6 +1319,78 @@ We will now lower the heading to the appropriate level. This is [[https://github
            (citeproc-org-org-bib-header (concat (make-string totallevel ?*)
                                                 (string-trim-left citeproc-org-org-bib-header "\\**"))))
       (apply orig args))))
+#+end_src
+*** CalcTeX
+Writing ~TeX~ math can be painful, in-spite of all the unicode and other fancy tricks. [[https://github.com/johnbcoughlin/calctex][This]] makes things a lot more feasible. Some of the configuration is directly lifted from [[https://tecosaur.github.io/emacs-config/config.html#calctex][Tecosaur's configuration]].
+#+begin_src emacs-lisp
+(use-package! calctex
+  :commands calctex-mode
+  :init
+  (add-hook 'calc-mode-hook #'calctex-mode)
+  :config
+  (setq calctex-additional-latex-packages "
+\\usepackage[usenames]{xcolor}
+\\usepackage{soul}
+\\usepackage{adjustbox}
+\\usepackage{amsmath}
+\\usepackage{amssymb}
+\\usepackage{siunitx}
+\\usepackage{cancel}
+\\usepackage{mathtools}
+\\usepackage{mathalpha}
+\\usepackage{xparse}
+\\usepackage{arevmath}"
+        calctex-additional-latex-macros
+        (concat calctex-additional-latex-macros
+                "\n\\let\\evalto\\Rightarrow"))
+  (defadvice! no-messaging-a (orig-fn &rest args)
+    :around #'calctex-default-dispatching-render-process
+    (let ((inhibit-message t) message-log-max)
+      (apply orig-fn args)))
+  ;; Fix hardcoded dvichop path (whyyyyyyy)
+  (let ((vendor-folder (concat (file-truename doom-local-dir)
+                               "straight/"
+                               (format "build-%s" emacs-version)
+                               "/calctex/vendor/")))
+    (setq calctex-dvichop-sty (concat vendor-folder "texd/dvichop")
+          calctex-dvichop-bin (concat vendor-folder "texd/dvichop")))
+  (unless (file-exists-p calctex-dvichop-bin)
+    (message "CalcTeX: Building dvichop binary")
+    (let ((default-directory (file-name-directory calctex-dvichop-bin)))
+      (call-process "make" nil nil nil))))
+#+end_src
+Now we would like also to have a sidebar for working in the embedded mode.
+#+begin_src emacs-lisp
+(defvar calc-embedded-trail-window nil)
+(defvar calc-embedded-calculator-window nil)
+
+(defadvice! calc-embedded-with-side-pannel (&rest _)
+  :after #'calc-do-embedded
+  (when calc-embedded-trail-window
+    (ignore-errors
+      (delete-window calc-embedded-trail-window))
+    (setq calc-embedded-trail-window nil))
+  (when calc-embedded-calculator-window
+    (ignore-errors
+      (delete-window calc-embedded-calculator-window))
+    (setq calc-embedded-calculator-window nil))
+  (when (and calc-embedded-info
+             (> (* (window-width) (window-height)) 1200))
+    (let ((main-window (selected-window))
+          (vertical-p (> (window-width) 80)))
+      (select-window
+       (setq calc-embedded-trail-window
+             (if vertical-p
+                 (split-window-horizontally (- (max 30 (/ (window-width) 3))))
+               (split-window-vertically (- (max 8 (/ (window-height) 4)))))))
+      (switch-to-buffer "*Calc Trail*")
+      (select-window
+       (setq calc-embedded-calculator-window
+             (if vertical-p
+                 (split-window-vertically -6)
+               (split-window-horizontally (- (/ (window-width) 2))))))
+      (switch-to-buffer "*Calculator*")
+      (select-window main-window))))
 #+end_src
 ** Syntax Highlighting
 This section is for setting up major modes for various file formats which are
@@ -1913,8 +1996,13 @@ Due to my recent switch to using ~tlmgr~, I had to make some modifications to
 the ~emacs~ path.
 #+NAME: orgPaths
 #+BEGIN_SRC emacs-lisp
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
-(setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
+(cond (IS-LINUX (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
+                (setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
+                )
+      (IS-MAC (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/universal-darwin"))
+              (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/universal-darwin")))
+              )
+      )
 #+END_SRC
 *** Config
 This is the part which is exported normally.
@@ -2021,6 +2109,11 @@ stackexchange]] question.
 These are required to view math properly.
 ** Math support
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
+#+begin_src emacs-lisp
+(map! :map cdlatex-mode-map
+    :i "TAB" #'cdlatex-tab)
+#+end_src
+Also we need some more things.
 #+BEGIN_SRC emacs-lisp
 (use-package! cdlatex
     :after (:any org-mode LaTeX-mode)
@@ -2147,6 +2240,10 @@ This includes settings for both flycheck and the packages it needs.
   :after flycheck
   :config (flycheck-package-setup))
 #+END_SRC
+** Xenops Inspired
+[[https://github.com/dandavison/xenops/][Xenops]] is essentially a supercharged literate set of functions for using ~Mathematica~ and ~SymPy~. It is similar to my previous ~mash~ et. al. setup but automatically appends ~// TeXForm // ToString~ and other helpful conversions. Due to the many modifications of my default environment and setup; these functions are adapted for use from ~xenops~ but cannot be loaded directly with it. Also my use case here is more focused towards only working in ~orgmode~ as opposed to ~xenops~'s focus on ~TeX~.
+#+begin_src emacs-lisp
+#+end_src
 * Notes
 ** noteYoda
 +This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility this will be broken down into a per-package configuration. The heart of this is an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]].+ Now described in [[https://rgoswami.me/posts/org-note-workflow][this post]].
@@ -2162,8 +2259,8 @@ sections are set in my ~private~ config.
     (setq
          org-ref-completion-library 'org-ref-ivy-cite
          org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-         org-ref-default-bibliography (list (concat (getenv "HOME") "/Documents/zotLib.bib"))
-         org-ref-bibliography-notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
+         bibtex-completion-bibliography (list (concat (getenv "HOME") "/GDrive/zotLib.bib"))
+         bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
          org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
          org-ref-notes-function 'orb-edit-notes

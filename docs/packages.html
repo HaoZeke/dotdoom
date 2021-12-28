@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-07-20 Tue 16:29 -->
+<!-- 2021-11-29 Mon 19:20 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Literate Package Additions</title>
@@ -227,91 +227,96 @@ org_html_manager.setup();  // activate after the parameters are set
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org81818b1">1. About this file</a>
+<li><a href="#org99671d3">1. About this file</a>
 <ul>
-<li><a href="#org83c265a">1.1. About that TOC..</a></li>
-<li><a href="#org140edee">1.2. The properties</a></li>
+<li><a href="#orgbcc7cbc">1.1. About that TOC..</a></li>
+<li><a href="#org4373c09">1.2. The properties</a></li>
 </ul>
 </li>
-<li><a href="#org73a4c5b">2. Aesthetic Packages</a>
+<li><a href="#org493aa3f">2. OS Specific Packages</a>
 <ul>
-<li><a href="#org7a27684">2.1. Dired Icons</a></li>
-<li><a href="#org7834992">2.2. Wakatime</a></li>
-<li><a href="#org5f1cce3">2.3. Bufler</a></li>
+<li><a href="#org541ea2d">2.1. MacOS</a></li>
 </ul>
 </li>
-<li><a href="#orgd1c2416">3. LATER Magit Additions</a></li>
-<li><a href="#org37e2e29">4. <span class="done DONE">DONE</span> Key Chords and Keybindings</a></li>
-<li><a href="#org855064b">5. Evil Colemak</a></li>
-<li><a href="#org7b3e3f2">6. Firestarter</a></li>
-<li><a href="#org1fc842c">7. Org Additions</a>
+<li><a href="#org81e1d52">3. Aesthetic Packages</a>
 <ul>
-<li><a href="#orgadbb762">7.1. Org Download</a></li>
-<li><a href="#org511322c">7.2. LATER Org Drill</a></li>
-<li><a href="#org2b71c0e">7.3. Org Protocol Updates</a></li>
-<li><a href="#org07e140b">7.4. <span class="todo TODO">TODO</span> Org Noter</a></li>
-<li><a href="#org5a78938">7.5. Org Ref</a></li>
-<li><a href="#org98cbd71">7.6. Org Mind Map</a></li>
-<li><a href="#orgc609eae">7.7. Org Rifle</a></li>
-<li><a href="#org6d37d23">7.8. Org Async</a></li>
-<li><a href="#org7bf4d77">7.9. Anki Mode</a></li>
-<li><a href="#org18d0c75">7.10. Org Re-Reveal Extensions</a></li>
-<li><a href="#org70e05f1">7.11. Org Roam Bibtex</a></li>
-<li><a href="#org2eed02e">7.12. Org GCal</a></li>
-<li><a href="#org7df5880">7.13. Citeproc Org</a></li>
+<li><a href="#org26b75f9">3.1. Dired Icons</a></li>
+<li><a href="#org5731908">3.2. Wakatime</a></li>
 </ul>
 </li>
-<li><a href="#orgc2d14ec">8. Dockerfile Mode</a></li>
-<li><a href="#org0135566">9. Reference Management</a>
+<li><a href="#org4a63125">4. LATER Magit Additions</a></li>
+<li><a href="#orgd2294bf">5. <span class="done DONE">DONE</span> Key Chords and Keybindings</a></li>
+<li><a href="#org110978d">6. Evil Colemak</a></li>
+<li><a href="#org17f2843">7. Firestarter</a></li>
+<li><a href="#org560cfe5">8. Org Additions</a>
+<ul>
+<li><a href="#org29cff22">8.1. Org Download</a></li>
+<li><a href="#orgda1a69f">8.2. LATER Org Drill</a></li>
+<li><a href="#org610f032">8.3. Org Protocol Updates</a></li>
+<li><a href="#org52f9dfd">8.4. <span class="todo TODO">TODO</span> Org Noter</a></li>
+<li><a href="#orgf7dd545">8.5. Org Ref</a></li>
+<li><a href="#org6649a14">8.6. Org Mind Map</a></li>
+<li><a href="#orgd5416b0">8.7. Org Rifle</a></li>
+<li><a href="#org498cc23">8.8. Org Async</a></li>
+<li><a href="#org3688588">8.9. Anki Mode</a></li>
+<li><a href="#orgb08a7e6">8.10. Org Re-Reveal Extensions</a></li>
+<li><a href="#org945d688">8.11. Org Roam Bibtex</a></li>
+<li><a href="#org75a2f2f">8.12. Org GCal</a></li>
+<li><a href="#orga90f9bf">8.13. Citeproc Org</a></li>
+</ul>
+</li>
+<li><a href="#orgaff5d38">9. Dockerfile Mode</a></li>
+<li><a href="#org45604bb">10. Reference Management</a>
 <ul>
 <li>
 <ul>
-<li><a href="#org3844f7d">9.0.1. Zotero</a></li>
+<li><a href="#org69b1b74">10.0.1. Zotero</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org0720ea5">10. Syntax Highlighting</a>
+<li><a href="#org795106f">11. Syntax Highlighting</a>
 <ul>
-<li><a href="#orge1ee1e6">10.1. Sphinx and RsT</a></li>
-<li><a href="#orgf3b68f6">10.2. CPP Additions</a></li>
-<li><a href="#org917dd31">10.3. Tup Mode</a>
+<li><a href="#orga65d113">11.1. Sphinx and RsT</a></li>
+<li><a href="#org133858e">11.2. CPP Additions</a></li>
+<li><a href="#orge0b4466">11.3. Meson Mode</a></li>
+<li><a href="#orgffedb64">11.4. Tup Mode</a>
 <ul>
-<li><a href="#orgeb44eda">10.3.1. LATER Caveats</a></li>
+<li><a href="#orgc221ff7">11.4.1. LATER Caveats</a></li>
 </ul>
 </li>
-<li><a href="#orge9f32f5">10.4. SaltStack Mode</a></li>
-<li><a href="#org75cb9d0">10.5. PKGBUILD Mode</a></li>
-<li><a href="#org11ae198">10.6. LAMMPS Mode</a></li>
-<li><a href="#org4624283">10.7. Pug Mode</a></li>
-<li><a href="#orgdccab1b">10.8. Nix Mode</a></li>
-<li><a href="#org5ccae28">10.9. VIM mode</a></li>
-<li><a href="#orga58cc1b">10.10. JVM Languages</a></li>
-<li><a href="#org4e6b8d9">10.11. Systemd Mode</a></li>
-<li><a href="#org193ab30">10.12. Dart Mode</a></li>
-<li><a href="#org3dd8576">10.13. Wolfram Mode</a></li>
-<li><a href="#org8a91ac9">10.14. Polymode</a></li>
+<li><a href="#org560b862">11.5. SaltStack Mode</a></li>
+<li><a href="#org0d014d6">11.6. PKGBUILD Mode</a></li>
+<li><a href="#orgd05039f">11.7. LAMMPS Mode</a></li>
+<li><a href="#orgb5532e2">11.8. Pug Mode</a></li>
+<li><a href="#org2ad2666">11.9. Nix Mode</a></li>
+<li><a href="#org4dba0c7">11.10. VIM mode</a></li>
+<li><a href="#org89d9626">11.11. JVM Languages</a></li>
+<li><a href="#org1e0486f">11.12. Systemd Mode</a></li>
+<li><a href="#org802e817">11.13. Dart Mode</a></li>
+<li><a href="#org492d6e3">11.14. Wolfram Mode</a></li>
+<li><a href="#org50a5d4d">11.15. Polymode</a></li>
 </ul>
 </li>
-<li><a href="#org571680e">11. Matrix Clients</a></li>
-<li><a href="#orga46d7b7">12. Flycheck Additions</a>
+<li><a href="#org5400dfd">12. Matrix Clients</a></li>
+<li><a href="#org0bd4eed">13. Flycheck Additions</a>
 <ul>
-<li><a href="#org60dab1e">12.1. MELPA Helper</a></li>
+<li><a href="#orgece00e2">13.1. MELPA Helper</a></li>
 </ul>
 </li>
-<li><a href="#orgf56f49e">13. Snippets</a>
+<li><a href="#org1a4f099">14. Snippets</a>
 <ul>
-<li><a href="#orgaba2d8c">13.1. Doom</a></li>
-<li><a href="#org1432e99">13.2. Standard</a></li>
+<li><a href="#org29ca8a9">14.1. Doom</a></li>
+<li><a href="#orgea0623f">14.2. Standard</a></li>
 </ul>
 </li>
-<li><a href="#org3910169">14. Math support</a></li>
+<li><a href="#org07d6808">15. Math support</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org81818b1" class="outline-2">
-<h2 id="org81818b1"><span class="section-number-2">1.</span> About this file</h2>
+<div id="outline-container-org99671d3" class="outline-2">
+<h2 id="org99671d3"><span class="section-number-2">1.</span> About this file</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This is an Emacs literate package file and is meant to compliment <a href="config.html">my
@@ -325,14 +330,14 @@ Since it&rsquo;s primarily aimed at <code>doom-emacs</code> let&rsquo;s add thei
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #5a5b5a;">;; </span><span style="color: #5a5b5a;">-*- no-byte-compile: t; -*-</span>
-<span style="color: #5a5b5a;">;;; </span><span style="color: #5a5b5a;">~/.config/doom/packages.el</span>
+<pre class="src src-emacs-lisp"><span style="color: #65737E;">;; </span><span style="color: #65737E;">-*- no-byte-compile: t; -*-</span>
+<span style="color: #65737E;">;;; </span><span style="color: #65737E;">~/.config/doom/packages.el</span>
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org83c265a" class="outline-3">
-<h3 id="org83c265a"><span class="section-number-3">1.1.</span> About that TOC..</h3>
+<div id="outline-container-orgbcc7cbc" class="outline-3">
+<h3 id="orgbcc7cbc"><span class="section-number-3">1.1.</span> About that TOC..</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 So as mentioned <a href="https://github.com/snosov1/toc-org/issues/35">here</a> there is trouble when <code>org-export</code> tries to create files
@@ -345,8 +350,8 @@ files anyway.
 </p>
 </div>
 </div>
-<div id="outline-container-org140edee" class="outline-3">
-<h3 id="org140edee"><span class="section-number-3">1.2.</span> The properties</h3>
+<div id="outline-container-org4373c09" class="outline-3">
+<h3 id="org4373c09"><span class="section-number-3">1.2.</span> The properties</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 Basically, the properties set imply that the file is to be tangled for every
@@ -360,64 +365,70 @@ The filename is determined by the <code>SRC</code> block languages.
 </div>
 </div>
 </div>
-<div id="outline-container-org73a4c5b" class="outline-2">
-<h2 id="org73a4c5b"><span class="section-number-2">2.</span> Aesthetic Packages</h2>
+<div id="outline-container-org493aa3f" class="outline-2">
+<h2 id="org493aa3f"><span class="section-number-2">2.</span> OS Specific Packages</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org7a27684" class="outline-3">
-<h3 id="org7a27684"><span class="section-number-3">2.1.</span> Dired Icons</h3>
+<div id="outline-container-org541ea2d" class="outline-3">
+<h3 id="org541ea2d"><span class="section-number-3">2.1.</span> MacOS</h3>
 <div class="outline-text-3" id="text-2-1">
+<p>
+Paths are a nightmare on <code>darwin</code> systems which necessitates a separate package <a href="https://github.com/purcell/exec-path-from-shell">for setting things up</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">cond</span> <span style="color: #E27E8D;">(</span><span style="color: #F99157;">IS-MAC</span> <span style="color: #99C794;">(</span><span style="color: #C594C5;">package!</span> exec-path-from-shell<span style="color: #99C794;">)</span>
+              <span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org81e1d52" class="outline-2">
+<h2 id="org81e1d52"><span class="section-number-2">3.</span> Aesthetic Packages</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org26b75f9" class="outline-3">
+<h3 id="org26b75f9"><span class="section-number-3">3.1.</span> Dired Icons</h3>
+<div class="outline-text-3" id="text-3-1">
 <p>
 Since treemacs already uses <code>all-the-icons</code> it is silly to not use them in
 dired, from the <a href="https://github.com/domtronn/all-the-icons.el/wiki">all-the-icons wiki</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> all-the-icons-dired<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> all-the-icons-dired<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7834992" class="outline-3">
-<h3 id="org7834992"><span class="section-number-3">2.2.</span> Wakatime</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-org5731908" class="outline-3">
+<h3 id="org5731908"><span class="section-number-3">3.2.</span> Wakatime</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 Not exactly aesthetic, but yeah, for stats.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> <span style="color: #cc6666;">wakatime-mode</span><span style="color: #b294bb;">)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org5f1cce3" class="outline-3">
-<h3 id="org5f1cce3"><span class="section-number-3">2.3.</span> Bufler</h3>
-<div class="outline-text-3" id="text-2-3">
-<p>
-<a href="https://github.com/alphapapa/bufler.el">This package</a> seems to have better control of buffers than the default mess.
-</p>
-<div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> bufler<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> <span style="color: #F99157;">wakatime-mode</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd1c2416" class="outline-2">
-<h2 id="orgd1c2416"><span class="section-number-2">3.</span> LATER Magit Additions</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-org4a63125" class="outline-2">
+<h2 id="org4a63125"><span class="section-number-2">4.</span> LATER Magit Additions</h2>
+<div class="outline-text-2" id="text-4">
 <p>
 These basically allow for TODOs in magit along with enhanced github integration.
 These have been added upstream in <code>develop</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> magit-org-todos<span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> magithub<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> magit-org-todos<span style="color: #6699CC;">)</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> magithub<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> magit-todos<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> magit-todos<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 
@@ -428,15 +439,15 @@ displays a global <code>todo.org</code> file.
 </p>
 </div>
 </div>
-<div id="outline-container-org37e2e29" class="outline-2">
-<h2 id="org37e2e29"><span class="section-number-2">4.</span> <span class="done DONE">DONE</span> Key Chords and Keybindings</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgd2294bf" class="outline-2">
+<h2 id="orgd2294bf"><span class="section-number-2">5.</span> <span class="done DONE">DONE</span> Key Chords and Keybindings</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 It turns out that the switch to <a href="https://github.com/noctuid/general.el">general.el</a> is both inevitable (doom version 2.1)
 and very rational. However, I really can&rsquo;t wait. So.. This is a stop gap solution.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> general<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> general<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -444,96 +455,96 @@ and very rational. However, I really can&rsquo;t wait. So.. This is a stop gap s
 </ul>
 </div>
 </div>
-<div id="outline-container-org855064b" class="outline-2">
-<h2 id="org855064b"><span class="section-number-2">5.</span> Evil Colemak</h2>
-<div class="outline-text-2" id="text-5">
+<div id="outline-container-org110978d" class="outline-2">
+<h2 id="org110978d"><span class="section-number-2">6.</span> Evil Colemak</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 I guess I just gave up, <a href="https://github.com/wbolster/evil-colemak-basics">from here</a>. Read about why <a href="https://rgoswami.me/posts/colemak-dots-refactor/">here</a>. The visual line mode setup leverages <a href="https://github.com/YourFin/evil-better-visual-line/">this package</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> evil-colemak-basics<span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> evil-better-visual-line<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> evil-colemak-basics<span style="color: #6699CC;">)</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> evil-better-visual-line<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org7b3e3f2" class="outline-2">
-<h2 id="org7b3e3f2"><span class="section-number-2">6.</span> Firestarter</h2>
-<div class="outline-text-2" id="text-6">
+<div id="outline-container-org17f2843" class="outline-2">
+<h2 id="org17f2843"><span class="section-number-2">7.</span> Firestarter</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 For running shell commands on-save.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> <span style="color: #cc6666;">firestarter</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> <span style="color: #F99157;">firestarter</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org1fc842c" class="outline-2">
-<h2 id="org1fc842c"><span class="section-number-2">7.</span> Org Additions</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org560cfe5" class="outline-2">
+<h2 id="org560cfe5"><span class="section-number-2">8.</span> Org Additions</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 The new ones need to be covered in the <code>config.org</code> file with the appropriate
 keybindings. The notes are <a href="https://rgoswami.me/posts/org-note-workflow">described here</a>.
 </p>
 </div>
-<div id="outline-container-orgadbb762" class="outline-3">
-<h3 id="orgadbb762"><span class="section-number-3">7.1.</span> Org Download</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-org29cff22" class="outline-3">
+<h3 id="org29cff22"><span class="section-number-3">8.1.</span> Org Download</h3>
+<div class="outline-text-3" id="text-8-1">
 <p>
 Now I load it here since I don&rsquo;t use <code>+attach</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-download
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-            <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"abo-abo/org-download"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-download
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+            <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"abo-abo/org-download"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org511322c" class="outline-3">
-<h3 id="org511322c"><span class="section-number-3">7.2.</span> LATER Org Drill</h3>
-<div class="outline-text-3" id="text-7-2">
+<div id="outline-container-orgda1a69f" class="outline-3">
+<h3 id="orgda1a69f"><span class="section-number-3">8.2.</span> LATER Org Drill</h3>
+<div class="outline-text-3" id="text-8-2">
 <p>
 The <a href="https://bitbucket.org/eeeickythump/org-drill/src">actual repo</a> has not been updated in 3 years, so I must use <a href="https://github.com/hakanserce/org-drill">this fork</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-drill
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-            <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"hakanserce/org-drill"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-drill
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+            <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"hakanserce/org-drill"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org2b71c0e" class="outline-3">
-<h3 id="org2b71c0e"><span class="section-number-3">7.3.</span> Org Protocol Updates</h3>
-<div class="outline-text-3" id="text-7-3">
+<div id="outline-container-org610f032" class="outline-3">
+<h3 id="org610f032"><span class="section-number-3">8.3.</span> Org Protocol Updates</h3>
+<div class="outline-text-3" id="text-8-3">
 <p>
 This needs to be installed specially, <a href="https://github.com/alphapapa/org-protocol-capture-html">from this repo</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-protocol-capture-html
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-           <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"alphapapa/org-protocol-capture-html"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-protocol-capture-html
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+           <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"alphapapa/org-protocol-capture-html"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org07e140b" class="outline-3">
-<h3 id="org07e140b"><span class="section-number-3">7.4.</span> <span class="todo TODO">TODO</span> Org Noter</h3>
-<div class="outline-text-3" id="text-7-4">
+<div id="outline-container-org52f9dfd" class="outline-3">
+<h3 id="org52f9dfd"><span class="section-number-3">8.4.</span> <span class="todo TODO">TODO</span> Org Noter</h3>
+<div class="outline-text-3" id="text-8-4">
 <p>
 This is sort of more of a <code>pdf-tools</code> extension and it needs it&rsquo;s own <code>biblatex</code>
 setup and stuff as well so this might move into a tree of it&rsquo;s own.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-noter<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-noter<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 
@@ -543,141 +554,140 @@ This actually breaks the <code>pdf-tools</code> bindings.
 </div>
 </div>
 
-<div id="outline-container-org5a78938" class="outline-3">
-<h3 id="org5a78938"><span class="section-number-3">7.5.</span> Org Ref</h3>
-<div class="outline-text-3" id="text-7-5">
+<div id="outline-container-orgf7dd545" class="outline-3">
+<h3 id="orgf7dd545"><span class="section-number-3">8.5.</span> Org Ref</h3>
+<div class="outline-text-3" id="text-8-5">
 <p>
 This is probably not the best thing in my current setup.. Now part of the <code>init.el</code> setup.
 </p>
-
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-ref<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-ref<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org98cbd71" class="outline-3">
-<h3 id="org98cbd71"><span class="section-number-3">7.6.</span> Org Mind Map</h3>
-<div class="outline-text-3" id="text-7-6">
+<div id="outline-container-org6649a14" class="outline-3">
+<h3 id="org6649a14"><span class="section-number-3">8.6.</span> Org Mind Map</h3>
+<div class="outline-text-3" id="text-8-6">
 <p>
 Not on MELPA yet. From <a href="https://github.com/theodorewiles/org-mind-map">here</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-mind-map
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-            <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"theodorewiles/org-mind-map"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-mind-map
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+            <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"theodorewiles/org-mind-map"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc609eae" class="outline-3">
-<h3 id="orgc609eae"><span class="section-number-3">7.7.</span> Org Rifle</h3>
-<div class="outline-text-3" id="text-7-7">
+<div id="outline-container-orgd5416b0" class="outline-3">
+<h3 id="orgd5416b0"><span class="section-number-3">8.7.</span> Org Rifle</h3>
+<div class="outline-text-3" id="text-8-7">
 <p>
 Technically a helm addition. Perfect for monolithic <code>org</code> files. More details
 <a href="https://github.com/alphapapa/helm-org-rifle">here</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> helm-org-rifle<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> helm-org-rifle<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org6d37d23" class="outline-3">
-<h3 id="org6d37d23"><span class="section-number-3">7.8.</span> Org Async</h3>
-<div class="outline-text-3" id="text-7-8">
+<div id="outline-container-org498cc23" class="outline-3">
+<h3 id="org498cc23"><span class="section-number-3">8.8.</span> Org Async</h3>
+<div class="outline-text-3" id="text-8-8">
 <p>
 We will use this.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-babel-eval-in-repl<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-babel-eval-in-repl<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7bf4d77" class="outline-3">
-<h3 id="org7bf4d77"><span class="section-number-3">7.9.</span> Anki Mode</h3>
-<div class="outline-text-3" id="text-7-9">
+<div id="outline-container-org3688588" class="outline-3">
+<h3 id="org3688588"><span class="section-number-3">8.9.</span> Anki Mode</h3>
+<div class="outline-text-3" id="text-8-9">
 <p>
 This is put here since it only works with <code>org-mode</code> stuff.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> anki-editor<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> anki-editor<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org18d0c75" class="outline-3">
-<h3 id="org18d0c75"><span class="section-number-3">7.10.</span> Org Re-Reveal Extensions</h3>
-<div class="outline-text-3" id="text-7-10">
+<div id="outline-container-orgb08a7e6" class="outline-3">
+<h3 id="orgb08a7e6"><span class="section-number-3">8.10.</span> Org Re-Reveal Extensions</h3>
+<div class="outline-text-3" id="text-8-10">
 <p>
 An <a href="https://gitlab.com/oer/org-re-reveal-ref">extension</a> to <code>org-re-reveal-ref</code>. Also <a href="https://gitlab.com/oer/oer-reveal">this</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-re-reveal-ref<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-re-reveal-ref<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org70e05f1" class="outline-3">
-<h3 id="org70e05f1"><span class="section-number-3">7.11.</span> Org Roam Bibtex</h3>
-<div class="outline-text-3" id="text-7-11">
+<div id="outline-container-org945d688" class="outline-3">
+<h3 id="org945d688"><span class="section-number-3">8.11.</span> Org Roam Bibtex</h3>
+<div class="outline-text-3" id="text-8-11">
 <p>
 This should be a part of the main <code>+roam</code> setup, but until then.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-roam-bibtex<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-roam-bibtex<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org2eed02e" class="outline-3">
-<h3 id="org2eed02e"><span class="section-number-3">7.12.</span> Org GCal</h3>
-<div class="outline-text-3" id="text-7-12">
+<div id="outline-container-org75a2f2f" class="outline-3">
+<h3 id="org75a2f2f"><span class="section-number-3">8.12.</span> Org GCal</h3>
+<div class="outline-text-3" id="text-8-12">
 <p>
 This extension seems to be a maintained fork.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> org-gcal<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> org-gcal<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org7df5880" class="outline-3">
-<h3 id="org7df5880"><span class="section-number-3">7.13.</span> Citeproc Org</h3>
-<div class="outline-text-3" id="text-7-13">
+<div id="outline-container-orga90f9bf" class="outline-3">
+<h3 id="orga90f9bf"><span class="section-number-3">8.13.</span> Citeproc Org</h3>
+<div class="outline-text-3" id="text-8-13">
 <p>
 Mainly used with <code>ox-hugo</code>
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> citeproc-org<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> citeproc-org <span style="color: #EC5f67;">:pin</span> <span style="color: #99C794;">"0fb4c96f48b3..."</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgc2d14ec" class="outline-2">
-<h2 id="orgc2d14ec"><span class="section-number-2">8.</span> Dockerfile Mode</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-orgaff5d38" class="outline-2">
+<h2 id="orgaff5d38"><span class="section-number-2">9.</span> Dockerfile Mode</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 For syntax highlighting and inline builds. <a href="https://github.com/spotify/dockerfile-mode">From spotify</a> weirdly.
 <code>## -*- docker-image-name: "your-image-name-here" -*-</code> can be used to specify
 the image name.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> dockerfile-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> dockerfile-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org0135566" class="outline-2">
-<h2 id="org0135566"><span class="section-number-2">9.</span> Reference Management</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-org45604bb" class="outline-2">
+<h2 id="org45604bb"><span class="section-number-2">10.</span> Reference Management</h2>
+<div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-org3844f7d" class="outline-4">
-<h4 id="org3844f7d"><span class="section-number-4">9.0.1.</span> Zotero</h4>
-<div class="outline-text-4" id="text-9-0-1">
+<div id="outline-container-org69b1b74" class="outline-4">
+<h4 id="org69b1b74"><span class="section-number-4">10.0.1.</span> Zotero</h4>
+<div class="outline-text-4" id="text-10-0-1">
 <p>
 There are a bunch of <code>zotero</code> integrations for emacs, most notably, <a href="https://github.com/vspinu/zotelo">zotelo</a>, but
 they don&rsquo;t seem to be all that well mantained. <a href="https://github.com/emacsmirror/zotxt">Zotxt</a> seems to be updated pretty
@@ -685,94 +695,106 @@ often though.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> zotxt<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> zotxt<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org0720ea5" class="outline-2">
-<h2 id="org0720ea5"><span class="section-number-2">10.</span> Syntax Highlighting</h2>
-<div class="outline-text-2" id="text-10">
+<div id="outline-container-org795106f" class="outline-2">
+<h2 id="org795106f"><span class="section-number-2">11.</span> Syntax Highlighting</h2>
+<div class="outline-text-2" id="text-11">
 <p>
 These are additionally required to work with the sort of files I use often.
 The configuration and settings are as usual in <code>config.org</code>
 </p>
 </div>
-<div id="outline-container-orge1ee1e6" class="outline-3">
-<h3 id="orge1ee1e6"><span class="section-number-3">10.1.</span> Sphinx and RsT</h3>
-<div class="outline-text-3" id="text-10-1">
+<div id="outline-container-orga65d113" class="outline-3">
+<h3 id="orga65d113"><span class="section-number-3">11.1.</span> Sphinx and RsT</h3>
+<div class="outline-text-3" id="text-11-1">
 <p>
 Though reStructured Text is supported natively, there are some quality of life exporters and packages which should be more useful.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> ox-rst
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-           <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"msnoigrs/ox-rst"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> <span style="color: #cc6666;">sphinx-mode</span>
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-           <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"Fuco1/sphinx-mode"</span>
-           <span style="color: #81a2be;">:files</span> <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"*.el"</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> ox-rst
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+           <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"msnoigrs/ox-rst"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> <span style="color: #F99157;">sphinx-mode</span>
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+           <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"Fuco1/sphinx-mode"</span>
+           <span style="color: #EC5f67;">:files</span> <span style="color: #99C794;">(</span><span style="color: #99C794;">"*.el"</span><span style="color: #99C794;">)</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf3b68f6" class="outline-3">
-<h3 id="orgf3b68f6"><span class="section-number-3">10.2.</span> CPP Additions</h3>
-<div class="outline-text-3" id="text-10-2">
+<div id="outline-container-org133858e" class="outline-3">
+<h3 id="org133858e"><span class="section-number-3">11.2.</span> CPP Additions</h3>
+<div class="outline-text-3" id="text-11-2">
 <p>
 Though the standard <code>doom-emacs</code> module configuration is a sane set of defaults, there are some glaring omissions, most egregious of is the lack of <code>doxygen</code> highlighting.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> highlight-doxygen<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> highlight-doxygen<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org917dd31" class="outline-3">
-<h3 id="org917dd31"><span class="section-number-3">10.3.</span> Tup Mode</h3>
-<div class="outline-text-3" id="text-10-3">
+<div id="outline-container-orge0b4466" class="outline-3">
+<h3 id="orge0b4466"><span class="section-number-3">11.3.</span> Meson Mode</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+Recently gotten into <code>meson</code> as a nice <code>cmake</code> alternative for smaller projects (maybe larger ones too).
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> meson-mode<span style="color: #6699CC;">)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgffedb64" class="outline-3">
+<h3 id="orgffedb64"><span class="section-number-3">11.4.</span> Tup Mode</h3>
+<div class="outline-text-3" id="text-11-4">
 <p>
 Because honestly there isn&rsquo;t anything better than <a href="http://gittup.org/tup/">tup</a>. Who doesn&rsquo;t need a build
 system which <a href="http://gittup.org/tup/tup_vs_mordor.html">scales with the eye of Mordor</a>?
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> tup-mode
-<span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-           <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"ejmr/tup-mode"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> tup-mode
+<span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+           <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"ejmr/tup-mode"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 
-<div id="outline-container-orgeb44eda" class="outline-4">
-<h4 id="orgeb44eda"><span class="section-number-4">10.3.1.</span> LATER Caveats</h4>
-<div class="outline-text-4" id="text-10-3-1">
+<div id="outline-container-orgc221ff7" class="outline-4">
+<h4 id="orgc221ff7"><span class="section-number-4">11.4.1.</span> LATER Caveats</h4>
+<div class="outline-text-4" id="text-11-4-1">
 <p>
 The repo is unmaintained so I ought to fork it and take a look into maintaining it.
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orge9f32f5" class="outline-3">
-<h3 id="orge9f32f5"><span class="section-number-3">10.4.</span> SaltStack Mode</h3>
-<div class="outline-text-3" id="text-10-4">
+<div id="outline-container-org560b862" class="outline-3">
+<h3 id="org560b862"><span class="section-number-3">11.5.</span> SaltStack Mode</h3>
+<div class="outline-text-3" id="text-11-5">
 <p>
 I have recently decided that <a href="https://saltstack.com/">saltstack</a> ought to be used for working on multiple
 systems.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> salt-mode
-<span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-         <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"glynnforrest/salt-mode"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> salt-mode
+<span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+         <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"glynnforrest/salt-mode"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org75cb9d0" class="outline-3">
-<h3 id="org75cb9d0"><span class="section-number-3">10.5.</span> PKGBUILD Mode</h3>
-<div class="outline-text-3" id="text-10-5">
+<div id="outline-container-org0d014d6" class="outline-3">
+<h3 id="org0d014d6"><span class="section-number-3">11.6.</span> PKGBUILD Mode</h3>
+<div class="outline-text-3" id="text-11-6">
 <p>
 No point using <code>emacs</code> if I can&rsquo;t get highlighting for all my needs. This needs
 some extra configuration. <del>Must figure out if this is well mantained</del>. The
@@ -780,215 +802,224 @@ developer is very responsive to pull requests and the like.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> pkgbuild-mode
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-            <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"juergenhoetzel/pkgbuild-mode"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> pkgbuild-mode
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+            <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"juergenhoetzel/pkgbuild-mode"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org11ae198" class="outline-3">
-<h3 id="org11ae198"><span class="section-number-3">10.6.</span> LAMMPS Mode</h3>
-<div class="outline-text-3" id="text-10-6">
+<div id="outline-container-orgd05039f" class="outline-3">
+<h3 id="orgd05039f"><span class="section-number-3">11.7.</span> LAMMPS Mode</h3>
+<div class="outline-text-3" id="text-11-7">
 <p>
 <del>This could do with some updates. Will look into this soon. Also it takesunbearably long this way. Must figure out how to stop it from downloading the
 whole repo.</del>
 Mantained <a href="https://github.com/HaoZeke/lammps-mode">by me</a> now.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> lammps-mode
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-                    <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"HaoZeke/lammps-mode"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> lammps-mode
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+                    <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"HaoZeke/lammps-mode"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4624283" class="outline-3">
-<h3 id="org4624283"><span class="section-number-3">10.7.</span> Pug Mode</h3>
-<div class="outline-text-3" id="text-10-7">
+<div id="outline-container-orgb5532e2" class="outline-3">
+<h3 id="orgb5532e2"><span class="section-number-3">11.8.</span> Pug Mode</h3>
+<div class="outline-text-3" id="text-11-8">
 <p>
 I just like pugs.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> pug-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> pug-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgdccab1b" class="outline-3">
-<h3 id="orgdccab1b"><span class="section-number-3">10.8.</span> Nix Mode</h3>
-<div class="outline-text-3" id="text-10-8">
+<div id="outline-container-org2ad2666" class="outline-3">
+<h3 id="org2ad2666"><span class="section-number-3">11.9.</span> Nix Mode</h3>
+<div class="outline-text-3" id="text-11-9">
 <p>
 For building more cross-os stuff. This is the <a href="https://github.com/NixOS/nix-mode">official package</a>, but will look
 into binding and using <a href="https://github.com/travisbhartwell/nix-emacs">nix-emacs</a> as well.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> nix-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> nix-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5ccae28" class="outline-3">
-<h3 id="org5ccae28"><span class="section-number-3">10.9.</span> VIM mode</h3>
-<div class="outline-text-3" id="text-10-9">
+<div id="outline-container-org4dba0c7" class="outline-3">
+<h3 id="org4dba0c7"><span class="section-number-3">11.10.</span> VIM mode</h3>
+<div class="outline-text-3" id="text-11-10">
 <p>
 I like <code>vim-script</code>&#x2026; well no I don&rsquo;t but I still use it.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> vimrc-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> vimrc-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga58cc1b" class="outline-3">
-<h3 id="orga58cc1b"><span class="section-number-3">10.10.</span> JVM Languages</h3>
-<div class="outline-text-3" id="text-10-10">
+<div id="outline-container-org89d9626" class="outline-3">
+<h3 id="org89d9626"><span class="section-number-3">11.11.</span> JVM Languages</h3>
+<div class="outline-text-3" id="text-11-11">
 <p>
 Currently the languages I care about (apart from Java) are:
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #5a5b5a;">; </span><span style="color: #5a5b5a;">Kotlin &gt; Java</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> kotlin-mode<span style="color: #b294bb;">)</span>
-<span style="color: #5a5b5a;">; </span><span style="color: #5a5b5a;">Groovy -&gt; Testing</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> groovy-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #65737E;">; </span><span style="color: #65737E;">Kotlin &gt; Java</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> kotlin-mode<span style="color: #6699CC;">)</span>
+<span style="color: #65737E;">; </span><span style="color: #65737E;">Groovy -&gt; Testing</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> groovy-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org4e6b8d9" class="outline-3">
-<h3 id="org4e6b8d9"><span class="section-number-3">10.11.</span> Systemd Mode</h3>
-<div class="outline-text-3" id="text-10-11">
+<div id="outline-container-org1e0486f" class="outline-3">
+<h3 id="org1e0486f"><span class="section-number-3">11.12.</span> Systemd Mode</h3>
+<div class="outline-text-3" id="text-11-12">
 <p>
 Since I use a lot of user systemd units, it makes sense to have pretty
 highlighting.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> systemd<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> systemd<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org193ab30" class="outline-3">
-<h3 id="org193ab30"><span class="section-number-3">10.12.</span> Dart Mode</h3>
-<div class="outline-text-3" id="text-10-12">
+<div id="outline-container-org802e817" class="outline-3">
+<h3 id="org802e817"><span class="section-number-3">11.13.</span> Dart Mode</h3>
+<div class="outline-text-3" id="text-11-13">
 <p>
 Might eventually want to also get the companion <a href="https://github.com/bradyt/dart-server">dart server</a> sometime, but for
 now this syntax-highlighter will do. Might actually want to see if <code>prettier</code>
 has anything for it.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> dart-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> dart-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org3dd8576" class="outline-3">
-<h3 id="org3dd8576"><span class="section-number-3">10.13.</span> Wolfram Mode</h3>
-<div class="outline-text-3" id="text-10-13">
+<div id="outline-container-org492d6e3" class="outline-3">
+<h3 id="org492d6e3"><span class="section-number-3">11.14.</span> Wolfram Mode</h3>
+<div class="outline-text-3" id="text-11-14">
 <p>
 Actually <code>wolfram-mode</code> seems to be able to do more than just syntax highlighting, but at the moment I just need font-locking.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> wolfram-mode<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> wolfram-mode<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org8a91ac9" class="outline-3">
-<h3 id="org8a91ac9"><span class="section-number-3">10.14.</span> Polymode</h3>
-<div class="outline-text-3" id="text-10-14">
+<div id="outline-container-org50a5d4d" class="outline-3">
+<h3 id="org50a5d4d"><span class="section-number-3">11.15.</span> Polymode</h3>
+<div class="outline-text-3" id="text-11-15">
 <p>
 For working with <code>.Rmd</code> files and better <code>orgmode</code> R support.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> poly-R<span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> poly-org<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> poly-R<span style="color: #6699CC;">)</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> poly-org<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org571680e" class="outline-2">
-<h2 id="org571680e"><span class="section-number-2">11.</span> Matrix Clients</h2>
-<div class="outline-text-2" id="text-11">
+<div id="outline-container-org5400dfd" class="outline-2">
+<h2 id="org5400dfd"><span class="section-number-2">12.</span> Matrix Clients</h2>
+<div class="outline-text-2" id="text-12">
 <p>
 Apparently Riot.im is now Element.io; and I could do with an <code>emacs</code> client&#x2026;
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> pretty-hydra<span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> matrix-client <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"alphapapa/matrix-client.el"</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> pretty-hydra<span style="color: #6699CC;">)</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> matrix-client <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"alphapapa/matrix-client.el"</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orga46d7b7" class="outline-2">
-<h2 id="orga46d7b7"><span class="section-number-2">12.</span> Flycheck Additions</h2>
-<div class="outline-text-2" id="text-12">
+<div id="outline-container-org0bd4eed" class="outline-2">
+<h2 id="org0bd4eed"><span class="section-number-2">13.</span> Flycheck Additions</h2>
+<div class="outline-text-2" id="text-13">
 </div>
-<div id="outline-container-org60dab1e" class="outline-3">
-<h3 id="org60dab1e"><span class="section-number-3">12.1.</span> MELPA Helper</h3>
-<div class="outline-text-3" id="text-12-1">
+<div id="outline-container-orgece00e2" class="outline-3">
+<h3 id="orgece00e2"><span class="section-number-3">13.1.</span> MELPA Helper</h3>
+<div class="outline-text-3" id="text-13-1">
 <p>
 This is for linting files before submitting to MELPA.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> package-lint<span style="color: #b294bb;">)</span>
-<span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> flycheck-package<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> package-lint<span style="color: #6699CC;">)</span>
+<span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> flycheck-package<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgf56f49e" class="outline-2">
-<h2 id="orgf56f49e"><span class="section-number-2">13.</span> Snippets</h2>
-<div class="outline-text-2" id="text-13">
+<div id="outline-container-org1a4f099" class="outline-2">
+<h2 id="org1a4f099"><span class="section-number-2">14.</span> Snippets</h2>
+<div class="outline-text-2" id="text-14">
 <p>
 These are from <a href="https://github.com/hlissner">hlissner</a>.
 </p>
 </div>
-<div id="outline-container-orgaba2d8c" class="outline-3">
-<h3 id="orgaba2d8c"><span class="section-number-3">13.1.</span> Doom</h3>
-<div class="outline-text-3" id="text-13-1">
+<div id="outline-container-org29ca8a9" class="outline-3">
+<h3 id="org29ca8a9"><span class="section-number-3">14.1.</span> Doom</h3>
+<div class="outline-text-3" id="text-14-1">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> emacs-snippets
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-           <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"hlissner/emacs-snippets"</span>
-           <span style="color: #81a2be;">:files</span> <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"*"</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> emacs-snippets
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+           <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"hlissner/emacs-snippets"</span>
+           <span style="color: #EC5f67;">:files</span> <span style="color: #99C794;">(</span><span style="color: #99C794;">"*"</span><span style="color: #99C794;">)</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org1432e99" class="outline-3">
-<h3 id="org1432e99"><span class="section-number-3">13.2.</span> Standard</h3>
-<div class="outline-text-3" id="text-13-2">
+<div id="outline-container-orgea0623f" class="outline-3">
+<h3 id="orgea0623f"><span class="section-number-3">14.2.</span> Standard</h3>
+<div class="outline-text-3" id="text-14-2">
 <p>
 These are from the <a href="https://github.com/AndreaCrotti/yasnippet-snippets">official snippets repo</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> yasnippet-snippets
-  <span style="color: #81a2be;">:recipe</span> <span style="color: #81a2be;">(</span><span style="color: #81a2be;">:host</span> github
-           <span style="color: #81a2be;">:repo</span> <span style="color: #b5bd68;">"AndreaCrotti/yasnippet-snippets"</span>
-           <span style="color: #81a2be;">:files</span> <span style="color: #de935f;">(</span><span style="color: #b5bd68;">"*"</span><span style="color: #de935f;">)</span><span style="color: #81a2be;">)</span><span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> yasnippet-snippets
+  <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github
+           <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"AndreaCrotti/yasnippet-snippets"</span>
+           <span style="color: #EC5f67;">:files</span> <span style="color: #99C794;">(</span><span style="color: #99C794;">"*"</span><span style="color: #99C794;">)</span><span style="color: #E27E8D;">)</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org3910169" class="outline-2">
-<h2 id="org3910169"><span class="section-number-2">14.</span> Math support</h2>
-<div class="outline-text-2" id="text-14">
+<div id="outline-container-org07d6808" class="outline-2">
+<h2 id="org07d6808"><span class="section-number-2">15.</span> Math support</h2>
+<div class="outline-text-2" id="text-15">
 <p>
 I like <a href="https://github.com/cdominik/cdlatex">cdlatex</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> cdlatex<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> cdlatex<span style="color: #6699CC;">)</span>
 </pre>
 </div>
 <p>
 However, better support for symbols can be found in <code>math-symbol-lists</code> as <a href="https://www.emacswiki.org/emacs/TeXInputMethod">discussed here</a>.
 </p>
 <div class="org-src-container">
-<pre class="src src-elisp"><span style="color: #b294bb;">(</span><span style="color: #b294bb;">package!</span> math-symbol-lists<span style="color: #b294bb;">)</span>
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> math-symbol-lists<span style="color: #6699CC;">)</span>
+</pre>
+</div>
+<p>
+Also, <a href="https://github.com/johnbcoughlin/calctex">CalcTeX</a> makes life a lot easier, and is faster than calling SymPy or Mathematica.
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><span style="color: #6699CC;">(</span><span style="color: #C594C5;">package!</span> calctex <span style="color: #EC5f67;">:recipe</span> <span style="color: #E27E8D;">(</span><span style="color: #EC5f67;">:host</span> github <span style="color: #EC5f67;">:repo</span> <span style="color: #99C794;">"johnbcoughlin/calctex"</span>
+                           <span style="color: #EC5f67;">:files</span> <span style="color: #99C794;">(</span><span style="color: #99C794;">"*.el"</span> <span style="color: #99C794;">"calctex/*.el"</span> <span style="color: #99C794;">"calctex-contrib/*.el"</span> <span style="color: #99C794;">"org-calctex/*.el"</span> <span style="color: #99C794;">"vendor"</span><span style="color: #99C794;">)</span><span style="color: #E27E8D;">)</span>
+  <span style="color: #EC5f67;">:pin</span> <span style="color: #99C794;">"784cf911bc96..."</span><span style="color: #6699CC;">)</span>
 </pre>
 </div>
 </div>
@@ -997,7 +1028,7 @@ However, better support for symbols can be found in <code>math-symbol-lists</cod
 <div id="postamble" class="status">
 <p class="date">Date: 2020:04:09</p>
 <p class="author">Author: Rohit Goswami (HaoZeke) &lt;rohit.goswami@aol.com&gt;</p>
-<p class="date">Created: 2021-07-20 Tue 16:29</p>
+<p class="date">Created: 2021-11-29 Mon 19:20</p>
 </div>
 </body>
 </html>
