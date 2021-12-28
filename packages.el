@@ -20,6 +20,11 @@
 (package! firestarter)
 ;; Firestarter:1 ends here
 
+;; [[file:packages.org::*Mermaid][Mermaid:1]]
+(package! mermaid-mode)
+(package! ob-mermaid)
+;; Mermaid:1 ends here
+
 ;; [[file:packages.org::*Org Download][Org Download:1]]
 (package! org-download
   :recipe (:host github

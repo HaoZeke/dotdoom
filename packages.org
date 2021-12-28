@@ -29,6 +29,7 @@
   - [[#evil-colemak][Evil Colemak]]
   - [[#firestarter][Firestarter]]
   - [[#org-additions][Org Additions]]
+    - [[#mermaid][Mermaid]]
     - [[#org-download][Org Download]]
     - [[#later-org-drill][LATER Org Drill]]
     - [[#org-protocol-updates][Org Protocol Updates]]
@@ -152,6 +153,12 @@ For running shell commands on-save.
 ** Org Additions
 The new ones need to be covered in the ~config.org~ file with the appropriate
 keybindings. The notes are [[https://rgoswami.me/posts/org-note-workflow][described here]].
+*** Mermaid
+Technically not only an org addition, [[https://mermaid-js.github.io/mermaid/#/][mermaid is kinda]] like a souped up ~ditaa~. Naturally there's an [[https://github.com/arnm/ob-mermaid][org mode addition]].
+#+begin_src emacs-lisp :tangle yes
+(package! mermaid-mode)
+(package! ob-mermaid)
+#+end_src
 *** Org Download
 Now I load it here since I don't use ~+attach~.
 #+BEGIN_SRC emacs-lisp :tangle yes

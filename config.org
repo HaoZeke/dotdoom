@@ -50,6 +50,7 @@
     - [[#modifications][Modifications]]
     - [[#ignore-support][Ignore Support]]
     - [[#file-handling][File Handling]]
+    - [[#ob-mermaid][Ob-Mermaid]]
     - [[#kill-ob-julia][KILL Ob-Julia]]
     - [[#org-download][Org Download]]
     - [[#org-babel][Org Babel]]
@@ -1029,6 +1030,11 @@ dealing with ~append~ and stuff.
     ))
 #+END_SRC
 
+*** Ob-Mermaid
+#+begin_src emacs-lisp
+(use-package! mermaid-mode)
+(use-package! ob-mermaid)
+#+end_src
 *** KILL Ob-Julia
 So ~julia~ support is inbuilt, however the process variable needs to be set:
 #+BEGIN_SRC emacs-lisp :tangle no
