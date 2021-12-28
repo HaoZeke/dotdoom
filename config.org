@@ -12,12 +12,18 @@
     - [[#about-that-toc][About that TOC..]]
   - [[#personal-information][Personal Information]]
 - [[#doom-emacs-stuff][Doom Emacs Stuff]]
-    - [[#visual-tweaks][Visual tweaks]]
-    - [[#helm-changes][Helm changes]]
+  - [[#visual-tweaks][Visual tweaks]]
+    - [[#font-face][Font Face]]
+    - [[#unicode-fonts][Unicode Fonts]]
+    - [[#helm-and-childframes][Helm and Childframes]]
+    - [[#saner-dashboard][Saner Dashboard]]
+  - [[#bugfixes][Bugfixes]]
+  - [[#helm-changes][Helm changes]]
+  - [[#disable-eager-functions][Disable eager functions]]
     - [[#kill-spellcheck][Kill spellcheck]]
     - [[#kill-over-eager-literate-after-save-hook][Kill over-eager literate after-save-hook]]
     - [[#kill-orgmode-template][Kill Orgmode template]]
-    - [[#variables][Variables]]
+  - [[#variables][Variables]]
     - [[#theme][Theme]]
     - [[#do-not-format-on-save][Do not Format on Save]]
   - [[#keybindings][Keybindings]]
@@ -156,32 +162,41 @@ Let's set some variables with basic user information.
       user-mail-address "rohit.goswami@aol.com")
 #+END_SRC
 * Doom Emacs Stuff
-*** Visual tweaks
-**** Font Face
+** Visual tweaks
+*** Font Face
 Honestly the basic font setting is simply not pretty enough.
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Attribute Mono" :size 22))
+(setq doom-font (font-spec :family "Attribute Mono" :size 16))
 (unless (find-font doom-font)
-  (setq doom-font (font-spec :family "Cascadia Code PL" :size 20)))
+  (setq doom-font (font-spec :family "Cascadia Code PL" :size 14)))
 #+END_SRC
-**** Unicode Fonts
+*** Unicode Fonts
 This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
 #+BEGIN_SRC emacs-lisp
 (setq doom-unicode-font (font-spec :family "Symbola" :size 20))
 #+END_SRC
-**** Helm and Childframes
+*** Helm and Childframes
 I prefer the regular diminished font size, even for the childframes.
 #+BEGIN_SRC emacs-lisp
 ;; Undo the helm text enlargement in childframes
 (setq +helm-posframe-text-scale 0)
 #+END_SRC
-**** Saner Dashboard
+*** Saner Dashboard
 I have trouble at work with the current DOOM dashboard. This one is from the
 ~doom-emacs~ lead developer, as found on Discord.
 #+BEGIN_SRC emacs-lisp
 (setq +doom-dashboard-banner-file (expand-file-name "banner.png" doom-private-dir))
 #+END_SRC
-*** Helm changes
+** Bugfixes
+Most of these should be removed when ~doom~ fixes them.
+#+begin_src emacs-lisp
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")
+                         ("melpa" . "https://melpa.org/packages/")
+                         ))
+#+end_src
+** Helm changes
 This makes `helm` behave more like `ivy` while working with directories.
 #+BEGIN_SRC emacs-lisp :tangle no
 (after! helm
@@ -220,7 +235,7 @@ These conflict with my other templates.
 (set-file-template! "\\.org$" :ignore t)
 #+END_SRC
 
-*** Variables
+** Variables
 #+begin_src emacs-lisp
 (setq
    org_notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
