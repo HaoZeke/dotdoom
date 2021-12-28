@@ -206,6 +206,7 @@ This makes `helm` behave more like `ivy` while working with directories.
     (map! :map helm-find-files-map
           "<DEL>" #'helm-find-files-up-one-level)))
 #+END_SRC
+** Disable eager functions
 *** Kill spellcheck
 This is really really really excruciatingly slow for LaTeX mode and maybe even
 for other random buffers.
@@ -459,7 +460,7 @@ are a part of ~org-mode~.
       (:prefix ("i" . "Insert")
         :desc "Link/Image" "l" 'org-insert-link
         :desc "Item" "o" 'org-toggle-item
-        :desc "Citation" "c" 'org-ref-helm-insert-cite-link
+        :desc "Citation" "c" 'org-ref-insert-cite-link
         :desc "Footnote" "f" 'org-footnote-action
         :desc "Table" "t" 'org-table-create-or-convert-from-region
         :desc "Screenshot" "s" 'org-download-screenshot
