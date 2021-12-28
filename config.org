@@ -61,6 +61,7 @@
     - [[#org-babel][Org Babel]]
     - [[#async-org-babel][Async Org Babel]]
     - [[#org-config][Org Config]]
+    - [[#org-latex-subfigure][Org Latex Subfigure]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-drill][Org Drill]]
@@ -1167,6 +1168,42 @@ once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
     (setq org-image-actual-width 400)
     )
 #+END_SRC
+*** Org Latex Subfigure
+This modified [[https://list.orgmode.org/orgmode/87mty1an66.fsf@posteo.net/][environment makes it easier]] to work with reports.
+#+begin_src emacs-lisp
+;; TODO: Figure out how to pass parameters other than width
+;; TODO: Also make a subcaption label
+  (org-link-set-parameters
+   "subfig"
+   :follow (lambda (file) (find-file file))
+   :face '(:foreground "chocolate" :weight bold :underline t)
+   :display 'full
+   :export (lambda (file desc backend)
+       (when (eq backend 'latex)
+         (if (string-match ">(\\(.+\\))" desc)
+       (concat "\\begin{subfigure}[b]{"
+               (match-string 1 desc)
+               "}\\caption{" (replace-regexp-in-string "\s+>(.+)" "" desc) "}"
+         "\\includegraphics"
+         "["
+                           "width=\\textwidth"
+         "]"
+         "{"
+            file
+         "}"
+            "\\end{subfigure}"
+                      )
+     (format "\\begin{subfigure}[b]{\\textwidth}\\includegraphics{%s}\\caption{%s}\\end{subfigure}" file desc)))))
+#+end_src
+#+begin_export latex
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{graph2}
+         \caption{$y=3sinx$}
+         \label{fig:three sin x}
+     \end{subfigure}
+#+end_export
+
 **** Prevent invisible area modifications
 First [[https://yiufung.net/post/org-mode-hidden-gems-pt1/][discussed here]]. The invisible area modifications are a plague. I can't imagine why this is not set by default.
 #+begin_src emacs-lisp
