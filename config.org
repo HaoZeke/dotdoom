@@ -847,7 +847,7 @@ To use ~path~ variables [[https://github.com/purcell/exec-path-from-shell][more 
 *** Private Variables
 On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
 #+begin_src emacs-lisp
-(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/run/current-system/sw/bin/gpg")) ;; nix
+(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/usr/local/bin/gpg")) ;; brew
               (setq exec-path (append exec-path '("/run/current-system/sw/bin"))) ;; nix
               (setq exec-path (append exec-path '("/usr/local/bin/"))) ;; brew
               ))
@@ -1553,7 +1553,7 @@ Was removed from the core ~modules~ of ~doom-emacs~.
 (use-package! wakatime-mode
   :config
   (cond (IS-LINUX (setq wakatime-cli-path "/usr/bin/wakatime"))
-        (IS-MAC (setq wakatime-cli-path "/run/current-system/sw/bin/wakatime")) ;; We assume nix-darwin
+        (IS-MAC (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")) ;; We assume homebrew
         )
   )
 #+END_SRC
