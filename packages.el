@@ -11,6 +11,10 @@
 (package! wakatime-mode)
 ;; Wakatime:1 ends here
 
+;; [[file:packages.org::*Magit Delta][Magit Delta:1]]
+(package! magit-delta)
+;; Magit Delta:1 ends here
+
 ;; [[file:packages.org::*Evil Colemak][Evil Colemak:1]]
 (package! evil-colemak-basics)
 (package! evil-better-visual-line)
