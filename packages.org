@@ -25,6 +25,7 @@
     - [[#dired-icons][Dired Icons]]
     - [[#wakatime][Wakatime]]
   - [[#later-magit-additions][LATER Magit Additions]]
+    - [[#magit-delta][Magit Delta]]
   - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
   - [[#evil-colemak][Evil Colemak]]
   - [[#firestarter][Firestarter]]
@@ -129,6 +130,12 @@ These have been added upstream in ~develop~.
 Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
 There might still be workflows where [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]] is useful since that
 displays a global ~todo.org~ file.
+*** DONE Magit Delta
+CLOSED: [2022-01-21 Fri 10:44]
+#+begin_src emacs-lisp :tangle yes
+(package! magit-delta)
+#+end_src
+
 ** DONE Key Chords and Keybindings
 It turns out that the switch to [[https://github.com/noctuid/general.el][general.el]] is both inevitable (doom version 2.1)
 and very rational. However, I really can't wait. So.. This is a stop gap solution.

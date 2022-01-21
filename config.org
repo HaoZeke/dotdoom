@@ -848,7 +848,7 @@ To use ~path~ variables [[https://github.com/purcell/exec-path-from-shell][more 
 *** Private Variables
 On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
 #+begin_src emacs-lisp
-(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/run/current-system/sw/bin/gpg")) ;; nix
+(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/usr/local/bin/gpg")) ;; brew
               (setq exec-path (append exec-path '("/run/current-system/sw/bin"))) ;; nix
               (setq exec-path (append exec-path '("/usr/local/bin/"))) ;; brew
               ))
@@ -975,6 +975,46 @@ Also integrated upstream.
   :init
   (setq evil-magit-state 'normal))
 #+END_SRC
+**** HOLD Magit Delta
+#+begin_src emacs-lisp
+(use-package! magit-delta
+  :if (executable-find "delta")
+  :hook (magit-mode . magit-delta-mode)
+  :config
+  ; Kanged https://github.com/dandavison/magit-delta/issues/13
+  (setq magit-delta-delta-args (append magit-delta-delta-args '("--features" "magit-delta")))
+  ; Kanged https://github.com/dandavison/magit-delta/issues/15#issuecomment-865774240
+  (defun hz/magit-delta-toggle ()
+    "Toggle magit-delta-mode and refresh magit."
+    (interactive)
+    (progn
+      (call-interactively 'magit-delta-mode)
+      (magit-refresh)))
+  :general
+  (:keymaps 'magit-mode-map
+            :states 'normal
+            :prefix ","
+            "t" '(hz/magit-delta-toggle :wk "toggle magit-delta"))
+    )
+#+end_src
+Currently there are [[https://github.com/dandavison/magit-delta/issues/9][still performance issues]], which is why the ~toggle~
+keybinding is useful, however, there is a nicer workaround, simply disable for
+larger diffs as [[https://github.com/dandavison/magit-delta/issues/9#issuecomment-795435781][described here]]. Eventually this should be fixed somewhere else.
+#+begin_src emacs-lisp
+(defvar hz/magit-delta-point-max 50000)
+;; Disable mode if there are too many characters
+(advice-add 'magit-delta-call-delta-and-convert-ansi-escape-sequences :around
+            (defun hz/magit-delta-colorize-maybe-a (fn &rest args)
+              (if (<= (point-max) hz/magit-delta-point-max)
+                  (apply fn args)
+                (magit-delta-mode -1))))
+;; Re-enable mode after `magit-refresh' if there aren't too many characters
+(add-hook 'magit-post-refresh-hook
+          (defun hz/magit-enable-magit-delta-maybe-h (&rest _args)
+            (when (and (not magit-delta-mode)
+                       (<= (point-max) hz/magit-delta-point-max))
+              (magit-delta-mode +1))))
+#+end_src
 *** PDF Tools
 These bindings are essentially part of ~org-noter~ however, they do not actually
 need to be bound in ~org-mode~ files. Also updated to have ~evil-colemak~ bindings.
@@ -1554,7 +1594,7 @@ Was removed from the core ~modules~ of ~doom-emacs~.
 (use-package! wakatime-mode
   :config
   (cond (IS-LINUX (setq wakatime-cli-path "/usr/bin/wakatime"))
-        (IS-MAC (setq wakatime-cli-path "/run/current-system/sw/bin/wakatime")) ;; We assume nix-darwin
+        (IS-MAC (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")) ;; We assume homebrew
         )
   )
 #+END_SRC
