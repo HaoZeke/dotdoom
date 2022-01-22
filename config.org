@@ -115,6 +115,7 @@
 - [[#r-helpers][R Helpers]]
     - [[#r-markdown][R Markdown]]
     - [[#rmd-to-rorg][Rmd to Rorg]]
+    - [[#keybindings-1][Keybindings]]
 - [[#org-latex][Org LaTeX]]
     - [[#async-config][Async Config]]
     - [[#path-additions][Path Additions]]
@@ -1982,6 +1983,20 @@ The idea is to replace ~md~ completely with ~org~. Since ~polymode~ is pretty fi
       ))
   )
 #+END_SRC
+*** Keybindings
+#+begin_src emacs-lisp
+(defun then_R_operator ()
+  "R - %>% operator or 'then' pipe operator"
+  (interactive)
+  (just-one-space 1)
+  (insert "%>%")
+  (reindent-then-newline-and-indent))
+#+end_src
+#+begin_src emacs-lisp
+(map! :leader
+      :map (ess-mode-map, inferior-ess-mode-map)
+      :desc "Insert pipe"  ">" 'then_R_operator)
+#+end_src
 * Org LaTeX
 Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's
 also why here it's better to *not* use very _doom_ specific code. I think it
