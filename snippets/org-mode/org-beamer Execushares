@@ -319,7 +319,12 @@
 :BEAMER_opt: allowframebreaks
 :END:
 
-\printbibliography
+** No Column :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+\printbibliography[heading=none]
 
 * End
 :PROPERTIES:
