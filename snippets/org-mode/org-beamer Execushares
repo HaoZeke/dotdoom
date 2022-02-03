@@ -289,12 +289,26 @@
 #+BEAMER_THEME: Execushares
 #+BEAMER_FRAME_LEVEL: 2
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LATEX_HEADER: \setbeamerfont{footnote}{size=\tiny}
 
 # References
 #+LATEX_HEADER: \usepackage[doi=false,isbn=false,url=false,eprint=false]{biblatex}
 #+LATEX_HEADER: \bibliography{~/GDrive/zotLib.bib}
 
 * Start Here :ignoreheading:ignore:
+* Introduction
+* Outline
+:PROPERTIES:
+:BEAMER_opt: allowframebreaks
+:END:
+** No Column :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+#+begin_export latex
+\tableofcontents
+#+end_export
+
 * Slide Title
 ** A block :B_ignoreheading:BMCOL:
 :PROPERTIES:
@@ -314,6 +328,10 @@
 :END:
 
 
+* Section: References :ignoreheading:ignore:
+#+begin_export latex
+\section{References}
+#+end_export
 * References
 :PROPERTIES:
 :BEAMER_opt: allowframebreaks
@@ -325,6 +343,11 @@
 :END:
 
 \printbibliography[heading=none]
+
+* Section: End :ignoreheading:ignore:
+#+begin_export latex
+\section{End}
+#+end_export
 
 * End
 :PROPERTIES:
