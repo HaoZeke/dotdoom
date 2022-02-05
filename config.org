@@ -1923,6 +1923,7 @@ Currently I only need to use the clang formatting hook here.
   (add-hook 'before-save-hook 'haozeke/clang-format-buffer-conditional nil t))
 ; This is a doom-emacs convinience macro
 (add-hook! (c-mode c++-mode cc-mode) #'haozeke/clang-format-buffer-smart-on-save)
+(remove-hook! (c-mode c++-mode cc-mode) #'haozeke/clang-format-buffer-smart-on-save)
 #+END_SRC
 *** Disable Auto RDM
 This conflicts with the ArchLinux ~systemctl --user start rdm~ thing.
