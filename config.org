@@ -1447,7 +1447,12 @@ proper font locking mode for it, this should suffice.
 **** Fortran
 By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
 #+BEGIN_SRC emacs-lisp
-(setq auto-mode-alist (append '(("\\.f90\\'" . f90-mode))
+(setq auto-mode-alist (append '(
+                              ("\\.f\\'" . fortran-mode)
+                              ("\\.f77\\'" . fortran-mode)
+                              ("\\.f90\\'" . f90-mode)
+                              ("\\.F90\\'" . f90-mode)
+                              )
                               auto-mode-alist))
 #+END_SRC
 **** Vim
