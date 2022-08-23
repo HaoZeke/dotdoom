@@ -27,7 +27,7 @@ need to know more about why you might want to use my work, check my [[https://rg
 Well it just goes where ~doom~ expects config files.
 #+BEGIN_SRC bash
 # Honestly, this should be $HOME/.config
-git clone git@github.com:HaoZeke/dotDoom $XDG_CONFIG_DIR/doom
+git clone git@github.com:HaoZeke/dotDoom $HOME/.config/doom
 #+END_SRC
 * Config
 Since the ~config.el~ needs no page of its own, it is simply included below:
