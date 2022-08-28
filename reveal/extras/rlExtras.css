@@ -1,8 +1,9 @@
 .line {
-  background: #544839;
+  /* background: #544839; */
   /* background: #6f4caa; */
   /* background: #005ab6; */
   /* background: #CC0000; */
+  background: #4F84BC;
 }
 .reveal {
   display: flex;
@@ -28,7 +29,13 @@
   letter-spacing: normal;
   text-transform: uppercase;
   text-shadow: none;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+
+& > .author {
+  font-size: 2.0em !important;
+}
+
+}
 
 .reveal {
   font-family: "Bookerly", serif;
