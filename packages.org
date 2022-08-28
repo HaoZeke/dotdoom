@@ -148,7 +148,7 @@ and very rational. However, I really can't wait. So.. This is a stop gap solutio
 ** Evil Colemak
 I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from here]]. Read about why [[https://rgoswami.me/posts/colemak-dots-refactor/][here]]. The visual line mode setup leverages [[https://github.com/YourFin/evil-better-visual-line/][this package]].
 #+begin_src emacs-lisp :tangle yes
-(package! evil-colemak-basics)
+(package! evil-colemak-basics :recipe (:branch "main"))
 (package! evil-better-visual-line)
 #+end_src
 

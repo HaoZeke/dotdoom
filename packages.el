@@ -16,7 +16,7 @@
 ;; Magit Delta:1 ends here
 
 ;; [[file:packages.org::*Evil Colemak][Evil Colemak:1]]
-(package! evil-colemak-basics)
+(package! evil-colemak-basics :recipe (:branch "main"))
 (package! evil-better-visual-line)
 ;; Evil Colemak:1 ends here
 
