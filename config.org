@@ -256,8 +256,8 @@ These conflict with my other templates.
 *** Theme
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
-;; Also like doom-city-lights, doom-oceanic-next, doom-tomorrow-night, doom-wilmersdorf
-(setq doom-theme 'doom-wilmersdorf)
+;; Also like doom-city-lights, doom-oceanic-next, doom-tomorrow-night, doom-wilmersdorf, leuven, doom-monokai-pro
+(setq doom-theme 'doom-monokai-pro)
 #+END_SRC
 *** Do not Format on Save
 Formatting with ~styler~ takes forever.
