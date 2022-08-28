@@ -74,17 +74,19 @@
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#misc-highlighting][Misc Highlighting]]
     - [[#cpp-additions][CPP Additions]]
+    - [[#fortran][Fortran]]
+    - [[#quarto][Quarto]]
     - [[#meson][Meson]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
     - [[#lammps-mode][LAMMPS Mode]]
     - [[#pug-mode][Pug Mode]]
     - [[#conf-mode-files][Conf Mode Files]]
-    - [[#fortran][FORTRAN]]
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd][Systemd]]
     - [[#dart-mode][Dart Mode]]
     - [[#saltstack][SaltStack]]
     - [[#mathematica][Mathematica]]
+    - [[#snakemake][Snakemake]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
@@ -1444,17 +1446,6 @@ proper font locking mode for it, this should suffice.
 (setq auto-mode-alist (append '(("\\.envrc$" . shell-script-mode))
                               auto-mode-alist))
 #+END_SRC
-**** Fortran
-By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
-#+BEGIN_SRC emacs-lisp
-(setq auto-mode-alist (append '(
-                              ("\\.f\\'" . fortran-mode)
-                              ("\\.f77\\'" . fortran-mode)
-                              ("\\.f90\\'" . f90-mode)
-                              ("\\.F90\\'" . f90-mode)
-                              )
-                              auto-mode-alist))
-#+END_SRC
 **** Vim
 I still keep my ~vim~ dotfiles up to date...
 #+BEGIN_SRC emacs-lisp
@@ -1480,6 +1471,22 @@ I still keep my ~vim~ dotfiles up to date...
                                 ("\\.hpp$" . c++-mode)
                                 )
                               auto-mode-alist))
+#+end_src
+*** Fortran
+By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
+#+BEGIN_SRC emacs-lisp
+(setq auto-mode-alist (append '(
+                              ("\\.f\\'" . fortran-mode)
+                              ("\\.f77\\'" . fortran-mode)
+                              ("\\.f90\\'" . f90-mode)
+                              ("\\.F90\\'" . f90-mode)
+                              )
+                              auto-mode-alist))
+#+END_SRC
+*** Quarto
+Not a fan, but is still occasionally useful.
+#+begin_src emacs-lisp
+(use-package! quarto-mode)
 #+end_src
 *** Meson
 Mostly used with ~cpp~ files.
@@ -1540,15 +1547,6 @@ well by ~conf-mode~. Turns out that ~vmd~ files also look just like ~conf-mode~ 
              auto-mode-alist
              ))
 #+END_SRC
-*** FORTRAN
-Strangely the default settings do not pick up a bunch of fortran files.
-#+BEGIN_SRC emacs-lisp
-(setq auto-mode-alist
-             (append
-             '(("\\.F90\\'" . fortran-mode))
-             auto-mode-alist
-             ))
-#+END_SRC
 *** JVM Languages
 Since ~java+meghnada~, ~clojure~, and ~scala~ are covered by the standard ~doom~ config,
 the rest of these need to be loaded here.
@@ -1592,6 +1590,12 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
   (setq mathematica-command-line "~/.local/bin/mash")
   (add-to-list 'org-src-lang-modes '("mathematica" . wolfram)))
 #+END_SRC
+*** Snakemake
+#+begin_src emacs-lisp
+(use-package! snakemake-mode
+    :config
+  (add-to-list 'auto-mode-alist '("\\.smk" . snakemake-mode)))
+#+end_src
 ** Aesthetics
 *** Wakatime
 Was removed from the core ~modules~ of ~doom-emacs~.

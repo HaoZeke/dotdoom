@@ -49,6 +49,7 @@
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#sphinx-and-rst][Sphinx and RsT]]
     - [[#cpp-additions][CPP Additions]]
+    - [[#quarto-mode][Quarto Mode]]
     - [[#meson-mode][Meson Mode]]
     - [[#tup-mode][Tup Mode]]
     - [[#saltstack-mode][SaltStack Mode]]
@@ -62,6 +63,7 @@
     - [[#dart-mode][Dart Mode]]
     - [[#wolfram-mode][Wolfram Mode]]
     - [[#polymode][Polymode]]
+    - [[#snakemake][Snakemake]]
   - [[#matrix-clients][Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
@@ -283,6 +285,10 @@ Though the standard ~doom-emacs~ module configuration is a sane set of defaults,
 #+begin_src emacs-lisp :tangle yes
 (package! highlight-doxygen)
 #+end_src
+*** Quarto Mode
+#+begin_src emacs-lisp :tangle yes
+(package! quarto-mode)
+#+end_src
 *** Meson Mode
 Recently gotten into ~meson~ as a nice ~cmake~ alternative for smaller projects (maybe larger ones too).
 #+begin_src emacs-lisp :tangle yes
@@ -375,6 +381,11 @@ For working with ~.Rmd~ files and better ~orgmode~ R support.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! poly-R)
 (package! poly-org)
+#+END_SRC
+*** Snakemake
+Font locking for ~.smk~ files as they are evidently called (from [[https://github.com/kyleam/snakemake-mode][here]]).
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! snakemake-mode)
 #+END_SRC
 ** Matrix Clients
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...

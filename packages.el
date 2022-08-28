@@ -111,6 +111,10 @@
 (package! highlight-doxygen)
 ;; CPP Additions:1 ends here
 
+;; [[file:packages.org::*Quarto Mode][Quarto Mode:1]]
+(package! quarto-mode)
+;; Quarto Mode:1 ends here
+
 ;; [[file:packages.org::*Meson Mode][Meson Mode:1]]
 (package! meson-mode)
 ;; Meson Mode:1 ends here
@@ -170,6 +174,10 @@
 (package! poly-R)
 (package! poly-org)
 ;; Polymode:1 ends here
+
+;; [[file:packages.org::*Snakemake][Snakemake:1]]
+(package! snakemake-mode)
+;; Snakemake:1 ends here
 
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
