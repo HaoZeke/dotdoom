@@ -247,7 +247,7 @@ These conflict with my other templates.
 #+begin_src emacs-lisp
 (setq
    org_notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
-   zot_bib (concat (getenv "HOME") "/Documents/zotLib.bib")
+   zot_bib (concat (getenv "HOME") "/Insync/r95g10@gmail.com/Google Drive/zotLib.bib")
    org-directory org_notes
    deft-directory org_notes
    org-roam-directory org_notes
@@ -2348,7 +2348,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
 (after! org-ref
   (setq
    bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
-   bibtex-completion-bibliography (concat (getenv "HOME") "/Documents/zotLib.bib")
+   bibtex-completion-bibliography zot_bib
    bibtex-completion-pdf-field "file"
    bibtex-completion-notes-template-multiple-files
    (concat
