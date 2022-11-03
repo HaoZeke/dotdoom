@@ -186,7 +186,8 @@
         +pandoc             ; pandoc integration into org's exporter
        ;;+pomodoro          ; be fruitful with the tomato technique
         +present            ; using Emacs for presentations
-        +roam)              ; some sort of faster note system
+        ;; +roam            ; some sort of faster note system
+        )
        ;;php                ; perl's insecure younger brother
        ;;plantuml           ; diagrams for confusing people more
        ;;purescript         ; javascript, but functional
