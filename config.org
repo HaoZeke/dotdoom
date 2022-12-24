@@ -1136,7 +1136,7 @@ Now we can configure the package itself.
                 org-download-screenshot-file "/tmp/screenshot.png"
                 )
   (cond (IS-LINUX
-         (if (cl-search "wayland" (getenv "WAYLAND_DISPLAY"))
+         (if (string-match-p "wayland" (getenv "WAYLAND_DISPLAY"))
              (setq-default org-download-screenshot-method "slurp | grim -g - -  -o  > %s")
              (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
            )
