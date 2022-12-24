@@ -1198,24 +1198,26 @@ possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f
 ;; (add-to-list 'org-latex-default-packages-alist '("" "fontspec" t))
 ;; (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
 ;; (add-to-list 'org-latex-packages-alist '("" "unicode-math"))
-(plist-put org-format-latex-options :scale 2.2)
-(add-to-list 'org-preview-latex-process-alist '(dvixelatex :programs
-         ("xetex" "convert")
-         :description "pdf > png" :message "you need to install the programs: xetex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-         (1.0 . 1.0)
-         :latex-compiler
-         ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
-         :image-converter
-         ("dvisvgm %f -n -b min -c %S -o %O")))
+(after! org
+  (plist-put org-format-latex-options :scale 2.2)
+  (add-to-list 'org-preview-latex-process-alist '(dvixelatex :programs
+                                                  ("xetex" "convert")
+                                                  :description "pdf > png" :message "you need to install the programs: xetex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+                                                  (1.0 . 1.0)
+                                                  :latex-compiler
+                                                  ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
+                                                  :image-converter
+                                                  ("dvisvgm %f -n -b min -c %S -o %O")))
 
-(add-to-list 'org-preview-latex-process-alist '(imagexetex :programs
-         ("xelatex" "convert")
-         :description "pdf > png" :message "you need to install the programs: xelatex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-         (1.0 . 1.0)
-         :latex-compiler
-         ("xelatex -interaction nonstopmode -output-directory %o %f")
-         :image-converter
-         ("convert -density %D -trim -antialias %f -quality 100 %O")))
+  (add-to-list 'org-preview-latex-process-alist '(imagexetex :programs
+                                                  ("xelatex" "convert")
+                                                  :description "pdf > png" :message "you need to install the programs: xelatex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+                                                  (1.0 . 1.0)
+                                                  :latex-compiler
+                                                  ("xelatex -interaction nonstopmode -output-directory %o %f")
+                                                  :image-converter
+                                                  ("convert -density %D -trim -antialias %f -quality 100 %O")))
+  )
 #+END_SRC
 **** Inline images
 These need to be disabled by default otherwise ~emacs~ stalls often. Also, it
