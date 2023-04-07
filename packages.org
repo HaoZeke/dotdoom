@@ -19,6 +19,7 @@
   - [[#about-this-file][About this file]]
     - [[#about-that-toc][About that TOC..]]
     - [[#the-properties][The properties]]
+  - [[#bugfixes][Bugfixes]]
   - [[#os-specific-packages][OS Specific Packages]]
     - [[#macos][MacOS]]
   - [[#aesthetic-packages][Aesthetic Packages]]
@@ -97,6 +98,14 @@ block and moreover the output directory is the ~doom-private-dir~. It's
 practically self explanatory but still. 
 
 The filename is determined by the ~SRC~ block languages.
+** Bugfixes
+These are hopefully just temporary.
+#+begin_src emacs-lisp :tangle yes
+;; https://github.com/doomemacs/doomemacs/issues/7078#issuecomment-1430884107
+(package! transient :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440")
+(package! with-editor :pin "391e76a256aeec6b9e4cbd733088f30c677d965b")
+;; (package! compat :pin "6f73eac")
+#+end_src
 ** OS Specific Packages
 *** MacOS
 Paths are a nightmare on ~darwin~ systems which necessitates a separate package [[https://github.com/purcell/exec-path-from-shell][for setting things up]].
