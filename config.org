@@ -1314,8 +1314,8 @@ The keymaps are defined in the following way:
 *** Org Drill
 It makes sense to keep this around so as to leverage existing resources.
 #+BEGIN_SRC emacs-lisp :tangle yes
-(use-package! org-drill
-  :after org)
+;;(use-package! org-drill
+;;  :after org)
 #+END_SRC
 *** Org Re-Reveal Additions
 We will load a couple of helpers to get functionality closer to [[https://gitlab.com/oer/emacs-reveal/][emacs-reveal]].
