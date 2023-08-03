@@ -2,6 +2,7 @@
 ;; https://github.com/doomemacs/doomemacs/issues/7078#issuecomment-1430884107
 (package! transient :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440")
 (package! with-editor :pin "391e76a256aeec6b9e4cbd733088f30c677d965b")
+;; (package! compat :pin "6f73eac")
 ;; Bugfixes:1 ends here
 
 ;; [[file:packages.org::*MacOS][MacOS:1]]
@@ -189,6 +190,11 @@
 (package! package-lint)
 (package! flycheck-package)
 ;; MELPA Helper:1 ends here
+
+;; [[file:packages.org::*Github Copilot][Github Copilot:1]]
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+;; Github Copilot:1 ends here
 
 ;; [[file:packages.org::*Doom][Doom:1]]
 (package! emacs-snippets

@@ -68,6 +68,8 @@
   - [[#matrix-clients][Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
+  - [[#completion-helpers][Completion helpers]]
+    - [[#github-copilot][Github Copilot]]
   - [[#snippets][Snippets]]
     - [[#doom][Doom]]
     - [[#standard][Standard]]
@@ -409,6 +411,12 @@ This is for linting files before submitting to MELPA.
 (package! package-lint)
 (package! flycheck-package)
 #+END_SRC
+** Completion helpers
+*** Github Copilot
+#+begin_src emacs-lisp :tangle yes
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+#+end_src
 ** Snippets
 These are from [[https://github.com/hlissner][hlissner]].
 *** Doom
