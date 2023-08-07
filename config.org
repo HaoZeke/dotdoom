@@ -225,9 +225,6 @@ for other random buffers.
 **** Snippets
 I am not sure if these need to be initialized.
 #+BEGIN_SRC emacs-lisp
-; hlissner
-(use-package! doom-snippets
-  :after yasnippet)
 ; AndreaCrotti
 (use-package! yasnippet-snippets
   :after yasnippet)
