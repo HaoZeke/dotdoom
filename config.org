@@ -1138,7 +1138,7 @@ Now we can configure the package itself.
                 )
   (cond (IS-LINUX
          (if (string-match-p "wayland" (getenv "WAYLAND_DISPLAY"))
-             (setq-default org-download-screenshot-method "slurp | grim -g - -  -o  > %s")
+             (setq-default org-download-screenshot-method "grim -g \"$(slurp)\" - > %s")
              (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
            )
          )
