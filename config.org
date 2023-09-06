@@ -759,8 +759,8 @@ Since I tend to keep ~visual-line-mode~ all the time, [[https://github.com/YourF
 Harmonizing with Vimium.
 #+BEGIN_SRC emacs-lisp
 (after! evil (map! :map evil-motion-state-map
-                   (:n :desc "Previous match" "K" 'evil-ex-search-previous
-                    :n :desc "Next match" "k" 'evil-ex-search-next
+                   (:n :desc "Previous match" "K" 'evil-search-previous
+                    :n :desc "Next match" "k" 'evil-search-next
                     :n :desc "Forward search" "/" 'evil-search-forward
                     )
                    ))
