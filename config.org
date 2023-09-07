@@ -465,12 +465,16 @@ are a part of ~org-mode~.
           )
         )
       (:prefix ("i" . "Insert")
-        :desc "Link/Image" "l" 'org-insert-link
+        :desc "Link" "l" 'org-insert-link
         :desc "Item" "o" 'org-toggle-item
         :desc "Citation" "c" 'org-ref-insert-cite-link
         :desc "Footnote" "f" 'org-footnote-action
         :desc "Table" "t" 'org-table-create-or-convert-from-region
-        :desc "Screenshot" "s" 'org-download-screenshot
+        (:prefix ("d" . "Download")
+         :desc "Screenshot" "s" 'org-download-screenshot
+         :desc "Clipboard" "c" 'org-download-clipboard
+         :desc "Link" "l" 'org-download-image
+         )
         (:prefix ("b" . "Math")
          :desc "Bold" "f" 'org-make-bold-math
          :desc "Blackboard" "b" 'org-make-blackboard-math
@@ -2069,8 +2073,8 @@ Due to my recent switch to using ~tlmgr~, I had to make some modifications to
 the ~emacs~ path.
 #+NAME: orgPaths
 #+BEGIN_SRC emacs-lisp
-(cond (IS-LINUX (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2020/bin/x86_64-linux"))
-                (setq exec-path (append exec-path '("/usr/local/texlive/2020/bin/x86_64-linux")))
+(cond (IS-LINUX (setenv "PATH" (concat (getenv "PATH") ":/home/rgoswami/.local/share/texlive-20230827/bin/x86_64-linux"))
+                (setq exec-path (append exec-path '("/home/rgoswami/.local/share/texlive-20230827/bin/x86_64-linux")))
                 )
       (IS-MAC (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/universal-darwin"))
               (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/universal-darwin")))
@@ -2338,8 +2342,18 @@ though quite a bit of the config here relates to [[https://github.com/tmalsburg/
 sections are set in my ~private~ config.
 #+BEGIN_SRC emacs-lisp
 (use-package! org-ref
-    ;; :init
-    ; code to run before loading org-ref
+    :init
+    (with-eval-after-load 'ox
+      (defun my/org-ref-process-buffer--html (backend)
+        "Preprocess `org-ref' citations to HTML format.
+
+  Do this only if the export backend is `html' or a derivative of
+  that."
+        ;; `ox-hugo' is derived indirectly from `ox-html'.
+        ;; ox-hugo <- ox-blackfriday <- ox-md <- ox-html
+        (when (org-export-derived-backend-p backend 'html)
+          (org-ref-process-buffer 'html)))
+      (add-to-list 'org-export-before-parsing-hook #'my/org-ref-process-buffer--html))
     :config
     (setq
          org-ref-completion-library 'org-ref-ivy-cite
