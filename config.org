@@ -98,6 +98,7 @@
     - [[#caveats][Caveats]]
     - [[#helper-function][Helper function]]
     - [[#async-command-without-buffers][Async Command without Buffers]]
+    - [[#better-rust-formatting][Better Rust Formatting]]
     - [[#smarter-clang-formatting][Smarter Clang Formatting]]
     - [[#org-mode-export-to-markdown][Org-mode export to Markdown]]
     - [[#smartparens-wrapping][Smartparens Wrapping]]
@@ -1783,6 +1784,14 @@ This supresses the output window. Useful for when I do async exports. From [[htt
     (async-shell-command
      command)))
 #+END_SRC
+*** Better Rust Formatting
+Some of these are kanged [[https://github.com/jaybosamiya/dotfiles/blob/master/doom-emacs/.config/doom/config.el][from here]].
+#+begin_src emacs-lisp
+  (setq rustic-format-on-save t
+        ;; rustfmt uses `--edition 2015` by default. For now, 2021 seems to be a
+        ;; reasonable alternative.
+        rustic-rustfmt-args "--edition 2021")
+#+end_src
 *** Smarter Clang Formatting
 This is taken from [[https://eklitzke.org/smarter-emacs-clang-format][this blog]].
 #+BEGIN_SRC emacs-lisp
