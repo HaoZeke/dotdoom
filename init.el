@@ -112,7 +112,7 @@
        editorconfig     ; let someone else argue about tabs vs spaces
        ein              ; tame Jupyter notebooks with emacs
        (eval +overlay)  ; run code, run (also, repls)
-       gist             ; interacting with github gists
+       ;; gist          ; interacting with github gists
        (lookup          ; helps you navigate your code and documentation
         +dictionary     ; enable word definitions and thesaurus lookup
         +offline        ; install and prefer offline dictionary/thesaurus
@@ -152,6 +152,7 @@
        ess                  ; emacs speaks statistics
        ;;factor
        ;;faust              ; dsp, but you get to keep your soul
+       (fortran +lsp)       ; in FORTRAN, GOD is REAL (unless declared INTEGER)
        ;;fsharp             ; ML stands for Microsoft's Language
        ;;fstar              ; (dependent) types and (monadic) effects and Z3
        ;;gdscript           ; the language you waited for
@@ -185,7 +186,7 @@
         +jupyter            ; enable jupyter integration
         +pandoc             ; pandoc integration into org's exporter
        ;;+pomodoro          ; be fruitful with the tomato technique
-        +present            ; using Emacs for presentations
+        ;; +present            ; using Emacs for presentations
         ;; +roam            ; some sort of faster note system
         )
        ;;php                ; perl's insecure younger brother
