@@ -847,7 +847,7 @@ These are more semantic for me.
 *** MacOS Variables
 To use ~path~ variables [[https://github.com/purcell/exec-path-from-shell][more easily]].
 #+begin_src emacs-lisp
-(cond (IS-MAC (use-package! exec-path-from-shell
+(cond ((featurep :system 'macos) (use-package! exec-path-from-shell
                 :config
                 (exec-path-from-shell-initialize)
                 )
@@ -856,7 +856,7 @@ To use ~path~ variables [[https://github.com/purcell/exec-path-from-shell][more 
 *** Private Variables
 On a Mac, when using Nix and Emacs 28, some of the path variables need to be set to find ~gpg~. These should probably be handled through ~doom env~ since the terminal does not have trouble finding ~gpg~.
 #+begin_src emacs-lisp
-(cond (IS-MAC (custom-set-variables '(epg-gpg-program "/usr/local/bin/gpg")) ;; brew
+(cond ((featurep :system 'macos) (custom-set-variables '(epg-gpg-program "/usr/local/bin/gpg")) ;; brew
               (setq exec-path (append exec-path '("/run/current-system/sw/bin"))) ;; nix
               (setq exec-path (append exec-path '("/usr/local/bin/"))) ;; brew
               ))
@@ -1146,13 +1146,13 @@ Now we can configure the package itself.
                 org-download-heading-lvl 1
                 org-download-screenshot-file "/tmp/screenshot.png"
                 )
-  (cond (IS-LINUX
+  (cond ((featurep :system 'linux)
          (if (string-match-p "wayland" (getenv "WAYLAND_DISPLAY"))
              (setq-default org-download-screenshot-method "grim -g \"$(slurp)\" - > %s")
              (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
            )
          )
-        (IS-MAC (setq-default org-download-screenshot-method "screencapture -i %s")))
+        ((featurep :system 'macos) (setq-default org-download-screenshot-method "screencapture -i %s")))
   )
 #+END_SRC
 *** Org Babel
@@ -1620,8 +1620,8 @@ Was removed from the core ~modules~ of ~doom-emacs~.
 #+BEGIN_SRC emacs-lisp
 (use-package! wakatime-mode
   :config
-  (cond (IS-LINUX (setq wakatime-cli-path "/usr/bin/wakatime"))
-        (IS-MAC (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")) ;; We assume homebrew
+  (cond ((featurep :system 'linux) (setq wakatime-cli-path "/usr/bin/wakatime"))
+        ((featurep :system 'macos) (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")) ;; We assume homebrew
         )
   )
 #+END_SRC
