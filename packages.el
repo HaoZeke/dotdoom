@@ -77,7 +77,8 @@
 ;; Org Async:1 ends here
 
 ;; [[file:packages.org::*Anki Mode][Anki Mode:1]]
-(package! anki-editor)
+(package! anki-editor
+  :recipe (:host github :repo "orgtre/anki-editor"))
 ;; Anki Mode:1 ends here
 
 ;; [[file:packages.org::*Org Re-Reveal Extensions][Org Re-Reveal Extensions:1]]

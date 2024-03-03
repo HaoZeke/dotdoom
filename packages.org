@@ -238,7 +238,8 @@ We will use this.
 *** Anki Mode
 This is put here since it only works with ~org-mode~ stuff.
 #+BEGIN_SRC emacs-lisp :tangle yes
-(package! anki-editor)
+(package! anki-editor
+  :recipe (:host github :repo "orgtre/anki-editor"))
 #+END_SRC
 
 *** Org Re-Reveal Extensions
