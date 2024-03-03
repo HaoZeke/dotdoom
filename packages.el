@@ -192,8 +192,8 @@
 ;; MELPA Helper:1 ends here
 
 ;; [[file:packages.org::*Github Copilot][Github Copilot:1]]
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+;; (package! copilot
+;;   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 ;; Github Copilot:1 ends here
 
 ;; [[file:packages.org::*Doom][Doom:1]]
