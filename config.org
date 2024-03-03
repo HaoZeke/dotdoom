@@ -950,6 +950,11 @@ This section is to work with the settings for the ~word-wrap~ ~doom~ module.
   (setq-default ispell-program-name "hunspell")
 )
 #+end_src
+Also, it gets annoying to have spell check enabled while working with code.
+#+begin_src emacs-lisp
+;; Can always be enabled with SPC t s
+(remove-hook 'text-mode-hook #'spell-fu-mode)
+#+end_src
 *** Magit Aids
 **** DONE Magit todos
 Of course this is not really meant to be here..
