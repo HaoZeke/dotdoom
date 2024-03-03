@@ -2087,13 +2087,15 @@ Due to my recent switch to using ~tlmgr~, I had to make some modifications to
 the ~emacs~ path.
 #+NAME: orgPaths
 #+BEGIN_SRC emacs-lisp
-(cond (IS-LINUX (setenv "PATH" (concat (getenv "PATH") ":/home/rgoswami/.local/share/texlive-20230827/bin/x86_64-linux"))
-                (setq exec-path (append exec-path '("/home/rgoswami/.local/share/texlive-20230827/bin/x86_64-linux")))
-                )
-      (IS-MAC (setenv "PATH" (concat (getenv "PATH") ":/usr/local/texlive/2021/bin/universal-darwin"))
-              (setq exec-path (append exec-path '("/usr/local/texlive/2021/bin/universal-darwin")))
-              )
+(cond ((featurep :system 'linux)
+       (setenv "PATH" (concat (getenv "PATH") ":" (concat (getenv "HOME") "/.local/share/texlive-20230827/bin/x86_64-linux")))
+       (setq exec-path (append exec-path (list (concat (getenv "HOME") "/.local/share/texlive-20230827/bin/x86_64-linux"))))
       )
+      ((featurep :system 'macos)
+       (setenv "PATH" (concat (getenv "PATH") ":" (concat (getenv "HOME") "/usr/local/texlive/2021/bin/universal-darwin")))
+       (setq exec-path (append exec-path (list (concat (getenv "HOME") "/usr/local/texlive/2021/bin/universal-darwin"))))
+      )
+)
 #+END_SRC
 *** Config
 This is the part which is exported normally.
