@@ -6,6 +6,7 @@
 #+TITLE:     ${1:Presentation Title}
 #+SUBTITLE:  ${2:Subtitle}
 #+AUTHOR:    ${3:Author},\\textsc{\\scriptsize\\ ${5:PostNominals}}
+#+EMAIL:     ${4:Email}
 #+DATE:      \\today
 
 # Tangle the theme out once
