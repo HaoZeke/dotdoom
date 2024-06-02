@@ -1,3 +1,8 @@
+;; [[file:packages.org::*About this file][About this file:1]]
+;; -*- no-byte-compile: t; -*-
+;;; ~/.config/doom/packages.el
+;; About this file:1 ends here
+
 ;; [[file:packages.org::*Bugfixes][Bugfixes:1]]
 ;; https://github.com/doomemacs/doomemacs/issues/7078#issuecomment-1430884107
 (package! transient :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440")
@@ -61,6 +66,12 @@
 ;; [[file:packages.org::*Org Ref][Org Ref:1]]
 (package! org-ref)
 ;; Org Ref:1 ends here
+
+;; [[file:packages.org::*Org Gantt][Org Gantt:1]]
+(package! org-gantt
+  :recipe (:host github
+            :repo "swillner/org-gantt" :files ("*.el")))
+;; Org Gantt:1 ends here
 
 ;; [[file:packages.org::*Org Mind Map][Org Mind Map:1]]
 (package! org-mind-map

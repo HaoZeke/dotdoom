@@ -65,6 +65,7 @@
     - [[#org-latex-subfigure][Org Latex Subfigure]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-mind-map][Org Mind Map]]
+    - [[#org-gantt][Org Gantt]]
     - [[#org-drill][Org Drill]]
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
     - [[#org-gcal][Org GCal]]
@@ -1319,6 +1320,12 @@ The keymaps are defined in the following way:
             :states 'normal
             :prefix my-leader
             "m e m" '(org-mind-map-write :wk "Export mind-map") ))
+#+END_SRC
+*** Org Gantt
+Useful TeX generator.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package! org-gantt
+ :after org)
 #+END_SRC
 *** Org Drill
 It makes sense to keep this around so as to leverage existing resources.

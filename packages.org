@@ -37,6 +37,7 @@
     - [[#org-protocol-updates][Org Protocol Updates]]
     - [[#org-noter][Org Noter]]
     - [[#org-ref][Org Ref]]
+    - [[#org-gantt][Org Gantt]]
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-async][Org Async]]
@@ -216,6 +217,13 @@ This actually breaks the ~pdf-tools~ bindings.
 This is probably not the best thing in my current setup.. Now part of the ~init.el~ setup.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-ref)
+#+END_SRC
+*** Org Gantt
+Not on MELPA yet. From [[https://github.com/swillner/org-gantt][here]].
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! org-gantt
+  :recipe (:host github
+            :repo "swillner/org-gantt" :files ("*.el")))
 #+END_SRC
 *** Org Mind Map
 Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
