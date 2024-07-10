@@ -138,6 +138,10 @@
 (package! meson-mode)
 ;; Meson Mode:1 ends here
 
+;; [[file:packages.org::*~xonsh~ Mode][~xonsh~ Mode:1]]
+(package! xonsh-mode)
+;; ~xonsh~ Mode:1 ends here
+
 ;; [[file:packages.org::*Tup Mode][Tup Mode:1]]
 (package! tup-mode
 :recipe (:host github
