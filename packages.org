@@ -53,6 +53,7 @@
     - [[#cpp-additions][CPP Additions]]
     - [[#quarto-mode][Quarto Mode]]
     - [[#meson-mode][Meson Mode]]
+    - [[#xonsh-mode][~xonsh~ Mode]]
     - [[#tup-mode][Tup Mode]]
     - [[#saltstack-mode][SaltStack Mode]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
@@ -313,6 +314,11 @@ Though the standard ~doom-emacs~ module configuration is a sane set of defaults,
 Recently gotten into ~meson~ as a nice ~cmake~ alternative for smaller projects (maybe larger ones too).
 #+begin_src emacs-lisp :tangle yes
 (package! meson-mode)
+#+end_src
+*** ~xonsh~ Mode
+A minor upgrade, but annoying without highlighting.
+#+begin_src emacs-lisp :tangle yes
+(package! xonsh-mode)
 #+end_src
 *** Tup Mode
 Because honestly there isn't anything better than [[http://gittup.org/tup/][tup]]. Who doesn't need a build

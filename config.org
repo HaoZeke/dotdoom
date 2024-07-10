@@ -78,6 +78,7 @@
     - [[#fortran][Fortran]]
     - [[#quarto][Quarto]]
     - [[#meson][Meson]]
+    - [[#xonsh-mode][~xonsh~ Mode]]
     - [[#pkgbuild-mode][PKGBUILD Mode]]
     - [[#lammps-mode][LAMMPS Mode]]
     - [[#pug-mode][Pug Mode]]
@@ -1520,6 +1521,14 @@ Mostly used with ~cpp~ files.
   :mode "\\.build\\'"
   :config
   (add-hook!'meson-mode-hook 'company-mode)
+  )
+#+end_src
+*** ~xonsh~ Mode
+#+begin_src emacs-lisp :tangle yes
+(use-package! xonsh-mode
+  :mode "\\.xsh\\'"
+  :config
+  (add-hook!'xonsh-mode-hook 'company-mode)
   )
 #+end_src
 *** PKGBUILD Mode
