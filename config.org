@@ -105,6 +105,7 @@
     - [[#org-mode-export-to-markdown][Org-mode export to Markdown]]
     - [[#smartparens-wrapping][Smartparens Wrapping]]
     - [[#sort-words][Sort words]]
+    - [[#doas-helpers][~doas~ helpers]]
   - [[#chat-clients][Chat Clients]]
     - [[#matrix][Matrix]]
   - [[#projects][Projects]]
@@ -1861,6 +1862,91 @@ affects the sort order.
 See `sort-regexp-fields'."
   (interactive "*P\nr")
   (sort-regexp-fields reverse "\\w+" "\\&" beg end))
+#+end_src
+*** ~doas~ helpers
+~doom-emacs~ comes with ~sudo~ support, these are [[https://github.com/doomemacs/doomemacs/blob/559e5b6a966fa82bf8322f89d78a00ef4181812a/lisp/lib/files.el#L487][simply clones]] with ~doas~ instead.
+#+begin_src emacs-lisp
+(defun doom--doas-file-path (file)
+  (let ((host (or (file-remote-p file 'host) "localhost")))
+    (concat "/" (when (file-remote-p file)
+                  (concat (file-remote-p file 'method) ":"
+                          (if-let (user (file-remote-p file 'user))
+                              (concat user "@" host)
+                            host)
+                          "|"))
+            "doas:root@" host
+            ":" (or (file-remote-p file 'localname)
+                    file))))
+
+(defun doom/doas-find-file (file &optional arg)
+  "Open FILE as root.
+
+This will prompt you to save the current buffer, unless prefix ARG is given, in
+which case it will save it without prompting."
+  (interactive
+   (list (read-file-name "Open file as root: ")
+         current-prefix-arg))
+  ;; HACK: Teach `save-place' to treat the new "remote" buffer as if it were
+  ;;   visiting the same local file (because it is), and preserve the cursor
+  ;;   position as usual.
+  (letf! ((defun remote-local-name (path)
+            (if path (or (file-remote-p path 'localname) path)))
+          (defmacro with-local-name (&rest body)
+            `(when save-place-mode
+               (let ((buffer-file-name (remote-local-name buffer-file-name))
+                     (default-directory (remote-local-name default-directory)))
+                 ,@body))))
+    (let ((window-start (window-start))
+          (buffer (current-buffer)))
+      (when (and buffer-file-name (file-equal-p buffer-file-name file))
+        (when (buffer-modified-p)
+          (save-some-buffers arg (lambda () (eq (current-buffer) buffer))))
+        (with-local-name (save-place-to-alist)))
+      (prog1
+          ;; HACK: Disable auto-save in temporary tramp buffers because it could
+          ;;   trigger processes that hang silently in the background, making
+          ;;   those buffers inoperable for the rest of that session (Tramp
+          ;;   caches them).
+          (let ((auto-save-default nil)
+                ;; REVIEW: use only these when we drop 28 support
+                (remote-file-name-inhibit-auto-save t)
+                (remote-file-name-inhibit-auto-save-visited t)
+                ;; Prevent redundant work
+                save-place-mode)
+            (find-file (doom--doas-file-path (expand-file-name file))))
+        ;; Record of the cursor's old position if it isn't at BOB (indicating
+        ;; this buffer was already open), in case the user wishes to go to it.
+        (unless (bobp)
+          (doom-set-jump-h)
+          ;; save-place-find-file-hook requires point be a BOB to do its thang.
+          (goto-char (point-min)))
+        (with-local-name (save-place-find-file-hook))
+        (set-window-start nil window-start)))))
+(defun doom/doas-this-file ()
+  "Open the current file as root on Alpine Linux."
+  (interactive)
+  (doom/doas-find-file
+   (or (buffer-file-name (buffer-base-buffer))
+       (when (or (derived-mode-p 'dired-mode)
+                 (derived-mode-p 'wdired-mode))
+         default-directory)
+       (user-error "Current buffer isn't visiting a file"))))
+
+(defun doom/doas-save-buffer ()
+  "Save this file as root on Alpine Linux."
+  (interactive)
+  (let ((file (doom--doas-file-path (buffer-file-name (buffer-base-buffer)))))
+    (if-let (buffer (find-file-noselect file))
+        (let ((origin (current-buffer)))
+          (copy-to-buffer buffer (point-min) (point-max))
+          (unwind-protect
+              (with-current-buffer buffer
+                (save-buffer))
+            (unless (eq origin buffer)
+              (kill-buffer buffer))
+            (with-current-buffer origin
+              (revert-buffer t t))))
+      (user-error "Unable to open %S" file))))
 #+end_src
 ** Chat Clients
 *** Matrix
