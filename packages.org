@@ -139,7 +139,7 @@ These have been added upstream in ~develop~.
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp :tangle no
-(package! magit-todos)
+;; (package! magit-todos)
 #+END_SRC
 
 Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.

@@ -970,7 +970,7 @@ A variation of this was included upstream in the ~develop~ branch.
   (magit-org-todos-autoinsert))
 #+END_SRC
 #+BEGIN_SRC emacs-lisp
-(use-package! magit-todos)
+;; (use-package! magit-todos)
 #+END_SRC
 **** DONE Magithub
 This is for sweet github integration.
