@@ -1,0 +1,37 @@
+# -*- mode: snippet -*-
+# name: HTML export orgCSS
+# uuid: 96e9fb63-8ee6-4ce9-8bab-1afa3cd752f8
+# key: htmlorg
+# contributor: Rohit Goswami (HaoZeke)
+# condition: t
+# --
+# -*- org-src-preserve-indentation: t; org-edit-src-content: 0; -*-
+#+TITLE: ${1:Statement of Purpose}
+#+SUBTITLE: ${2:Program}
+#+AUTHOR: ${3:Author},\\textsc{\\scriptsize\\ ${4:MInstP MRSC MBCS}}
+#+EMAIL: ${3:Email}
+# This should not be altered
+#+OPTIONS: toc:nil title:nil todo:nil
+# I need the footnotes to be inlined
+#+STARTUP: fninline
+
+* Configuration :ignoreheading:ignore:noexport:
+  :PROPERTIES:
+  :VISIBILITY: folded
+  :END:
+#+BEGIN_SRC emacs-lisp :exports none :eval always :results none
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
+#+END_SRC
+** Theme :ignoreheading:ignore:
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://gongzhitaao.org/orgcss/org.css"/>
+#+BEGIN_SRC emacs-lisp :exports none :results none :eval always
+(setq org-html-head-include-default-style nil)
+(setq org-html-htmlize-output-type 'css)
+#+END_SRC
+** Code Properties :ignoreheading:ignore:
+# Set headers everywhere
+# #+PROPERTY: header-args:R :session oneR :results output :exports both :cache yes :tangle rcode.R
+There's no need to expand the ~noweb~ bits while exporting:
+#+property: header-args :noweb no-export
+* Start Here :ignoreheading:ignore:
