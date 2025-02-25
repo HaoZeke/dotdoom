@@ -1184,6 +1184,11 @@ From [[https://github.com/diadochos/org-babel-eval-in-repl][here]]. Now we can c
 #+END_SRC
 *** Org Config
 These are just variables I need to set to prevent things from dying.
+**** Highlighting LaTeX
+For better font-locking within orgmode.
+#+begin_src emacs-lisp
+(setq org-latex-preview '(native latex script entities))
+#+end_src
 **** Switching to XeLaTeX
 Since I use a lot of unicode math; it makes sense to switch from LaTeX to
 XeLaTeX everywhere. This section borrows heavily from [[https://github.com/david-sawatzke/dotfiles/blob/80f9ffb265bf664623f5ad39f3a64771e90a402e/doom.d/config.el][here]] and [[https://github.com/isfootaken/.emacs.d/blob/f2a3cd64c62ec1be544bdb8e2427a0e2fafcaf02/conf.org][here]]. Might
