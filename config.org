@@ -89,6 +89,7 @@
     - [[#saltstack][SaltStack]]
     - [[#mathematica][Mathematica]]
     - [[#snakemake][Snakemake]]
+    - [[#capnproto][CapnProto]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
@@ -1636,6 +1637,11 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 (use-package! snakemake-mode
     :config
   (add-to-list 'auto-mode-alist '("\\.smk" . snakemake-mode)))
+#+end_src
+*** CapnProto
+#+begin_src emacs-lisp
+(use-package! capnp-mode
+    :mode "\\.capnp")
 #+end_src
 ** Aesthetics
 *** Wakatime

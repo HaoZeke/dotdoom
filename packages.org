@@ -67,6 +67,7 @@
     - [[#wolfram-mode][Wolfram Mode]]
     - [[#polymode][Polymode]]
     - [[#snakemake][Snakemake]]
+    - [[#capnproto][CapnProto]]
   - [[#matrix-clients][Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
@@ -413,6 +414,13 @@ Font locking for ~.smk~ files as they are evidently called (from [[https://githu
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! snakemake-mode)
 #+END_SRC
+*** CapnProto
+I ended up making one of my own based off of ~prog-mode~ since I didn't find
+#+begin_src emacs-lisp :tangle yes
+(package! capnp-mode
+  :recipe (:host github
+                    :repo "HaoZeke/capnp-mode"))
+#+end_src
 ** Matrix Clients
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
 #+begin_src emacs-lisp :tangle no
