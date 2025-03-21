@@ -97,6 +97,7 @@
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
     - [[#org-mode-export-koma-letter][Org-mode export koma-letter]]
     - [[#org-mode-export-tex][Org-mode export TeX]]
+    - [[#org-mode-clear-results][Org-mode clear results]]
     - [[#caveats][Caveats]]
     - [[#helper-function][Helper function]]
     - [[#async-command-without-buffers][Async Command without Buffers]]
@@ -1779,6 +1780,17 @@ keep editing my files without waiting for it to finish creating the ~pdf~.
   (if (eq major-mode 'org-mode)
     (org-beamer-export-to-latex t)))
 #+END_SRC
+*** Org-mode clear results
+#+begin_src emacs-lisp
+;; Kanged from https://emacs.stackexchange.com/a/51378/19155
+(defun hz-clear-all-results ()
+  "Clear all results in the buffer."
+  (interactive)
+  (save-excursion
+    (goto-char (point-min))
+    (while (org-babel-next-src-block)
+      (org-babel-remove-result))))
+#+end_src
 *** TODO Caveats
 - Minted needs to be setup.
 - There are really a lot of optimizations to the above.
