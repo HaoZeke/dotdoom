@@ -195,6 +195,12 @@
 (package! snakemake-mode)
 ;; Snakemake:1 ends here
 
+;; [[file:packages.org::*CapnProto][CapnProto:1]]
+(package! capnp-mode
+  :recipe (:host github
+                    :repo "HaoZeke/capnp-mode"))
+;; CapnProto:1 ends here
+
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
 (package! flycheck-package)
