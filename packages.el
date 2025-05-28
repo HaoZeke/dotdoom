@@ -201,6 +201,14 @@
                     :repo "HaoZeke/capnp-mode"))
 ;; CapnProto:1 ends here
 
+;; [[file:packages.org::*Astro][Astro:1]]
+(package! astro-ts-mode)
+;; Astro:1 ends here
+
+;; [[file:packages.org::*Nushell][Nushell:1]]
+(package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
+;; Nushell:1 ends here
+
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
 (package! flycheck-package)
