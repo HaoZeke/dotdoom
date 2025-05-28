@@ -69,6 +69,7 @@
     - [[#snakemake][Snakemake]]
     - [[#capnproto][CapnProto]]
     - [[#astro][Astro]]
+    - [[#nushell][Nushell]]
   - [[#matrix-clients][Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
@@ -426,6 +427,11 @@ I ended up making one of my own based off of ~prog-mode~ since I didn't find
 For the TTech landing page.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! astro-ts-mode)
+#+END_SRC
+*** Nushell
+Since ~rattler-build~ supports ~.nu~ for a cross-platform build script.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
 #+END_SRC
 ** Matrix Clients
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...

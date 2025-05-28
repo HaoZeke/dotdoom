@@ -90,7 +90,8 @@
     - [[#mathematica][Mathematica]]
     - [[#snakemake][Snakemake]]
     - [[#capnproto][CapnProto]]
-    - [[#capnproto-1][CapnProto]]
+    - [[#nushell][Nushell]]
+    - [[#astro][Astro]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
   - [[#dockerfile-mode][Dockerfile Mode]]
@@ -1644,7 +1645,12 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 (use-package! capnp-mode
     :mode "\\.capnp")
 #+end_src
-*** CapnProto
+*** Nushell
+#+begin_src emacs-lisp
+(use-package! nushell-mode
+    :mode "\\.nu")
+#+end_src
+*** Astro
 #+begin_src emacs-lisp
 (setq treesit-language-source-alist
       '((astro "https://github.com/virchau13/tree-sitter-astro")
