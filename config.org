@@ -91,6 +91,7 @@
     - [[#snakemake][Snakemake]]
     - [[#capnproto][CapnProto]]
     - [[#nushell][Nushell]]
+    - [[#nickel][Nickel]]
     - [[#astro][Astro]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
@@ -1637,8 +1638,13 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 *** Snakemake
 #+begin_src emacs-lisp
 (use-package! snakemake-mode
-    :config
-  (add-to-list 'auto-mode-alist '("\\.smk" . snakemake-mode)))
+  :mode "\\.smk"
+)
+(after! nickel-mode
+  (set-formatter! 'snakefmt
+    '("nickel" "format")
+    :modes '(snakemake-mode))
+  )
 #+end_src
 *** CapnProto
 #+begin_src emacs-lisp
@@ -1649,6 +1655,17 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 #+begin_src emacs-lisp
 (use-package! nushell-mode
     :mode "\\.nu")
+#+end_src
+*** Nickel
+#+begin_src emacs-lisp
+(use-package! nickel-mode
+  :mode "\\.ncl"
+  )
+(after! nickel-mode
+  (set-formatter! 'nickelfmt
+    '("nickel" "format")
+    :modes '(nickel-mode))
+  )
 #+end_src
 *** Astro
 #+begin_src emacs-lisp

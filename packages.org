@@ -70,6 +70,7 @@
     - [[#capnproto][CapnProto]]
     - [[#astro][Astro]]
     - [[#nushell][Nushell]]
+    - [[#nickel][Nickel]]
   - [[#matrix-clients][Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
@@ -432,6 +433,11 @@ For the TTech landing page.
 Since ~rattler-build~ supports ~.nu~ for a cross-platform build script.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
+#+END_SRC
+*** Nickel
+Easier to not write repititive ~yml~.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! nickel-mode)
 #+END_SRC
 ** Matrix Clients
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
