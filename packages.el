@@ -209,6 +209,10 @@
 (package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
 ;; Nushell:1 ends here
 
+;; [[file:packages.org::*Nickel][Nickel:1]]
+(package! nickel-mode)
+;; Nickel:1 ends here
+
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)
 (package! flycheck-package)
