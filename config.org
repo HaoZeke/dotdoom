@@ -910,14 +910,17 @@ I use some paths on my remote machines, which are non-standard.
   (add-to-list 'tramp-remote-path "~/.hpc/bin")
   (add-to-list 'tramp-remote-path "~/.local/lsp/bin")
   (add-to-list 'tramp-remote-path "~/.micromamba/envs/lsp/bin/")
-  (setq remote-file-name-inhibit-cache 60
-        remote-file-name-inhibit-locks 't
-        tramp-completion-reread-directory-timeout 60
-        tramp-verbose 1
-        vc-ignore-dir-regexp (format "%s\\|%s\\|%s"
+  (setq remote-file-name-inhibit-cache 60)
+  (setq remote-file-name-inhibit-locks 't)
+  (setq tramp-completion-reread-directory-timeout 60)
+  (setq tramp-verbose 1)
+  (setq tramp-inline-compress-start-size 1000)
+  (setq tramp-default-method "sshx")
+  (setq vc-ignore-dir-regexp (format "%s\\|%s\\|%s"
                                      vc-ignore-dir-regexp
                                      tramp-file-name-regexp
-                                     "[/\\\\]node_modules"))
+                                     "[/\\\\]node_modules")
+        )
   (setq-default tramp-ssh-controlmaster-options
                 "-o ControlMaster=auto -o ControlPath='/tmp/tramp.%%C' -o ControlPersist=90m")
   )
