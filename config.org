@@ -92,6 +92,7 @@
     - [[#capnproto][CapnProto]]
     - [[#nushell][Nushell]]
     - [[#nickel][Nickel]]
+    - [[#meson-1][Meson]]
     - [[#astro][Astro]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
@@ -1678,6 +1679,15 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
   (set-formatter! 'nickelfmt
     '("nickel" "format")
     :modes '(nickel-mode))
+  )
+#+end_src
+*** Meson
+There is in built support for ~meson~ but it has no registered formatter.
+#+begin_src emacs-lisp
+(after! meson-mode
+  (set-formatter! 'mesonfmt
+    '("meson" "format")
+    :modes '(meson-mode))
   )
 #+end_src
 *** Astro
