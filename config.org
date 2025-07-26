@@ -313,23 +313,23 @@ Actually this might not be ported over so I'm just going to put this elsewhere.
 Also it's inconvenient to have a key chord requiring two hands to close a
 buffer.
 #+BEGIN_SRC emacs-lisp
-; Compatibility, delete when fully migrated
+;; Compatibility, delete when fully migrated
 (defconst my-leader "SPC")
-; Bind a new key chord
+;; Bind a new key chord
 (map!
  (:leader
-   (:prefix "b"
-     :desc "Kill buffer" "d" #'kill-this-buffer)
-   (:prefix ("k" . "kill")
-     :desc "Save and kill" "e" 'save-buffers-kill-terminal
-     :desc "Kill buffer" "b" 'my-kill-this-buffer
-     :desc "Delete frame" "f" 'delete-frame
+  (:prefix "b"
+   :desc "Kill buffer" "d" #'kill-this-buffer)
+  (:prefix ("k" . "kill")
+   :desc "Save and kill" "e" 'save-buffers-kill-terminal
+   :desc "Kill buffer" "b" 'my-kill-this-buffer
+   :desc "Delete frame" "f" 'delete-frame
    (:prefix ("o" . "Other")
-     :desc "Frames" "f" 'delete-other-frames
-     :desc "Windows" "w" 'delete-other-windows
-     )
+    :desc "Frames" "f" 'delete-other-frames
+    :desc "Windows" "w" 'delete-other-windows
+    )
    )
-   ))
+  ))
 #+END_SRC
 ***** general.el
 The binding syntax of the future, TODAY!
@@ -337,8 +337,8 @@ The binding syntax of the future, TODAY!
 ;; ** Global Keybindings
 ;; Normal mode?
 (nmap
- :prefix my-leader
- "b d" #'kill-this-buffer
+  :prefix my-leader
+  "b d" #'kill-this-buffer
   ;; kill things
   "k" '(:ignore t :which-key "kill")
   "k e" 'save-buffers-kill-terminal
@@ -346,7 +346,7 @@ The binding syntax of the future, TODAY!
   "k f" 'delete-frame
   "k o f" 'delete-other-frames
   "k o w" 'delete-other-windows
- "a" 'helm-mini)
+  "a" 'helm-mini)
 ;; (my-leader-def 'normal 'override
 ;;   "a" 'org-agenda)
 #+END_SRC
@@ -373,13 +373,13 @@ There are way too many of these to keep using ~helm~.
 #+BEGIN_SRC emacs-lisp
 (map! :leader
       (:prefix ("r" . "Replace")
-      :desc "String" "s" 'replace-string
-      :desc "Query" "q" 'query-replace
-      (:prefix ("r" . "Regexp")
+       :desc "String" "s" 'replace-string
+       :desc "Query" "q" 'query-replace
+       (:prefix ("r" . "Regexp")
         :desc "String" "s" 'replace-regexp
         :desc "Query" "q" 'query-replace-regexp
         )
-      )
+       )
       )
 #+END_SRC
 **** Insert Unicode
@@ -441,12 +441,12 @@ more.
       :desc "List Item"     "n" 'markdown-insert-list-item
       :desc "Pre"           "p" 'markdown-insert-pre
       (:prefix ("h" . "Headings")
-        :desc "One"   "1" 'markdown-insert-atx-1
-        :desc "Two"   "2" 'markdown-insert-atx-2
-        :desc "Three" "3" 'markdown-insert-atx-3
-        :desc "Four"  "4" 'markdown-insert-atx-4
-        :desc "Five"  "5" 'markdown-insert-atx-5
-        :desc "Six"   "6" 'markdown-insert-atx-6))
+       :desc "One"   "1" 'markdown-insert-atx-1
+       :desc "Two"   "2" 'markdown-insert-atx-2
+       :desc "Three" "3" 'markdown-insert-atx-3
+       :desc "Four"  "4" 'markdown-insert-atx-4
+       :desc "Five"  "5" 'markdown-insert-atx-5
+       :desc "Six"   "6" 'markdown-insert-atx-6))
 #+END_SRC
 *** Org Noter
 These bindings should probably be after ~org-noter~ is loaded.
@@ -463,47 +463,47 @@ Apart from extension specific bindings, here we define useful functions which
 are a part of ~org-mode~.
 #+BEGIN_SRC emacs-lisp
 (after! org (map! :localleader
-      :map org-mode-map
-      :desc "Eval Block" "e" 'ober-eval-block-in-repl
-      (:prefix "o"
-        :desc "Tags" "t" 'org-set-tags
-        :desc "Roam Bibtex" "b" 'orb-note-actions
-        (:prefix ("p" . "Properties")
-          :desc "Set" "s" 'org-set-property
-          :desc "Delete" "d" 'org-delete-property
-          :desc "Actions" "a" 'org-property-action
-          )
-        )
-      (:prefix ("i" . "Insert")
-        :desc "Link" "l" 'org-insert-link
-        :desc "Item" "o" 'org-toggle-item
-        :desc "Citation" "c" 'org-ref-insert-cite-link
-        :desc "Footnote" "f" 'org-footnote-action
-        :desc "Table" "t" 'org-table-create-or-convert-from-region
-        (:prefix ("d" . "Download")
-         :desc "Screenshot" "s" 'org-download-screenshot
-         :desc "Clipboard" "c" 'org-download-clipboard
-         :desc "Link" "l" 'org-download-image
-         )
-        (:prefix ("b" . "Math")
-         :desc "Bold" "f" 'org-make-bold-math
-         :desc "Blackboard" "b" 'org-make-blackboard-math
-         :desc "Remove" "r" 'org-make-symrm-math
-         :desc "Vert" "v" 'org-make-vert-math
-         )
-        (:prefix ("h" . "Headings")
-          :desc "Normal" "h" 'org-insert-heading
-          :desc "Todo" "t" 'org-insert-todo-heading
-          (:prefix ("s" . "Subheadings")
-            :desc "Normal" "s" 'org-insert-subheading
-            :desc "Todo" "t" 'org-insert-todo-subheading
-            )
-          )
-        (:prefix ("e" . "Exports")
-          :desc "Dispatch" "d" 'org-export-dispatch
-          )
-        )
-      )
+                  :map org-mode-map
+                  :desc "Eval Block" "e" 'ober-eval-block-in-repl
+                  (:prefix "o"
+                   :desc "Tags" "t" 'org-set-tags
+                   :desc "Roam Bibtex" "b" 'orb-note-actions
+                   (:prefix ("p" . "Properties")
+                    :desc "Set" "s" 'org-set-property
+                    :desc "Delete" "d" 'org-delete-property
+                    :desc "Actions" "a" 'org-property-action
+                    )
+                   )
+                  (:prefix ("i" . "Insert")
+                   :desc "Link" "l" 'org-insert-link
+                   :desc "Item" "o" 'org-toggle-item
+                   :desc "Citation" "c" 'org-ref-insert-cite-link
+                   :desc "Footnote" "f" 'org-footnote-action
+                   :desc "Table" "t" 'org-table-create-or-convert-from-region
+                   (:prefix ("d" . "Download")
+                    :desc "Screenshot" "s" 'org-download-screenshot
+                    :desc "Clipboard" "c" 'org-download-clipboard
+                    :desc "Link" "l" 'org-download-image
+                    )
+                   (:prefix ("b" . "Math")
+                    :desc "Bold" "f" 'org-make-bold-math
+                    :desc "Blackboard" "b" 'org-make-blackboard-math
+                    :desc "Remove" "r" 'org-make-symrm-math
+                    :desc "Vert" "v" 'org-make-vert-math
+                    )
+                   (:prefix ("h" . "Headings")
+                    :desc "Normal" "h" 'org-insert-heading
+                    :desc "Todo" "t" 'org-insert-todo-heading
+                    (:prefix ("s" . "Subheadings")
+                     :desc "Normal" "s" 'org-insert-subheading
+                     :desc "Todo" "t" 'org-insert-todo-subheading
+                     )
+                    )
+                   (:prefix ("e" . "Exports")
+                    :desc "Dispatch" "d" 'org-export-dispatch
+                    )
+                   )
+                  )
   )
 #+END_SRC
 **** Math Environments
@@ -523,19 +523,19 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
    '("align" LaTeX-env-label)
    '("notation" LaTeX-env-label)
    '("dmath" LaTeX-env-label)
-     ))
+   ))
 
 ;; Code I added to make syntax highlighting work in Auctex
 
 (custom-set-variables
  '(font-latex-math-environments (quote
-     ("display" "displaymath" "equation" "eqnarray" "gather" "multline"
-      "align" "alignat" "xalignat" "dmath")))
-  '(TeX-insert-braces nil)) ;;Stops putting {} on argumentless commands to "save" whitespace
+                                 ("display" "displaymath" "equation" "eqnarray" "gather" "multline"
+                                  "align" "alignat" "xalignat" "dmath")))
+ '(TeX-insert-braces nil)) ;;Stops putting {} on argumentless commands to "save" whitespace
 
 ;; Additionally, reftex code to recognize this environment as an equation
 (setq reftex-label-alist
-  '(("dmath" ?e nil nil t)))
+      '(("dmath" ?e nil nil t)))
 #+end_src
 **** Special Math Environments
 Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mathbf][from here]]. Note that these are meant to work with ~unicode-math~.
@@ -579,7 +579,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
         (backward-char jump)
         )
       )
-))
+    ))
 
 
 (defun org-make-blackboard-math ()
@@ -621,7 +621,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
         (backward-char jump)
         )
       )
-))
+    ))
 
 (defun org-make-symrm-math ()
   "If there's a selection -- wrap this with '\symrm{' and '}'
@@ -662,7 +662,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
         (backward-char jump)
         )
       )
-))
+    ))
 
 (defun org-make-vert-math ()
   "If there's a selection -- wrap this with '\vert{' and '}'
@@ -703,7 +703,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
         (backward-char jump)
         )
       )
-))
+    ))
 #+end_src
 *** Anki Editor
 These are only relevant to ~org-mode~. Nevertheless they are not part of
@@ -712,36 +712,36 @@ These are only relevant to ~org-mode~. Nevertheless they are not part of
 (map! :localleader
       :map org-mode-map
       (:prefix ("a" . "Anki")
-        :desc "Push" "p" 'anki-editor-push-notes
-        :desc "Retry" "r" 'anki-editor-retry-failure-notes
-        :desc "Insert" "n" 'anki-editor-insert-note
-        (:prefix ("c" . "Cloze")
-          :desc "Dwim" "d" 'anki-editor-cloze-dwim
-          :desc "Region" "r" 'anki-editor-cloze-region
-          )
+       :desc "Push" "p" 'anki-editor-push-notes
+       :desc "Retry" "r" 'anki-editor-retry-failure-notes
+       :desc "Insert" "n" 'anki-editor-insert-note
+       (:prefix ("c" . "Cloze")
+        :desc "Dwim" "d" 'anki-editor-cloze-dwim
+        :desc "Region" "r" 'anki-editor-cloze-region
         )
- )
+       )
+      )
 #+END_SRC
 *** CC Mode
 These are basically wrappers around various ~rtags~ functions.
 #+BEGIN_SRC emacs-lisp
 (nmap
-:prefix my-leader
-:keymaps 'c-mode-base-map
-"m" '(:ignore t :wk "Local Commands")
-"m r" '(:ignore t :wk "Rtags")
-"m r c" '(rtags-check-includes :wk "Check Includes")
-;; All the find commands
-"m r f" '(:ignore t :wk "Find")
-"m r f s" '(:ignore t :wk "Symbol")
-"m r f s a" '(rtags-find-symbol-at-point :wk "At point")
-"m r f s s" '(rtags-find-symbol :wk "Symbol")
-"m r f s c" '(:ignore t :wk "Current")
-"m r f s c f" '(rtags-find-symbol-current-file :wk "File")
-"m r f s c d" '(rtags-find-symbol-current-dir :wk "Directory")
-"m r f f" '(rtags-find-functions-called-by-this-function :wk "Functions")
-"m r f r" '(rtags-find-references :wk "References")
-)
+  :prefix my-leader
+  :keymaps 'c-mode-base-map
+  "m" '(:ignore t :wk "Local Commands")
+  "m r" '(:ignore t :wk "Rtags")
+  "m r c" '(rtags-check-includes :wk "Check Includes")
+  ;; All the find commands
+  "m r f" '(:ignore t :wk "Find")
+  "m r f s" '(:ignore t :wk "Symbol")
+  "m r f s a" '(rtags-find-symbol-at-point :wk "At point")
+  "m r f s s" '(rtags-find-symbol :wk "Symbol")
+  "m r f s c" '(:ignore t :wk "Current")
+  "m r f s c f" '(rtags-find-symbol-current-file :wk "File")
+  "m r f s c d" '(rtags-find-symbol-current-dir :wk "Directory")
+  "m r f f" '(rtags-find-functions-called-by-this-function :wk "Functions")
+  "m r f r" '(rtags-find-references :wk "References")
+  )
 
 #+END_SRC
 *** Evil Colemak
@@ -767,7 +767,7 @@ Since I tend to keep ~visual-line-mode~ all the time, [[https://github.com/YourF
          :nvm "e" 'evil-better-visual-line-previous-line
          :nvm "g n" 'evil-next-line
          :nvm "g e" 'evil-previous-line))
-)
+  )
 #+END_SRC
 **** Search
 Harmonizing with Vimium.
@@ -1016,9 +1016,9 @@ Also integrated upstream.
   :if (executable-find "delta")
   :hook (magit-mode . magit-delta-mode)
   :config
-  ; Kanged https://github.com/dandavison/magit-delta/issues/13
+                                        ; Kanged https://github.com/dandavison/magit-delta/issues/13
   (setq magit-delta-delta-args (append magit-delta-delta-args '("magit-delta")))
-  ; Kanged https://github.com/dandavison/magit-delta/issues/15#issuecomment-865774240
+                                        ; Kanged https://github.com/dandavison/magit-delta/issues/15#issuecomment-865774240
   (defun hz/magit-delta-toggle ()
     "Toggle magit-delta-mode and refresh magit."
     (interactive)
@@ -1027,10 +1027,10 @@ Also integrated upstream.
       (magit-refresh)))
   :general
   (:keymaps 'magit-mode-map
-            :states 'normal
-            :prefix ","
-            "t" '(hz/magit-delta-toggle :wk "toggle magit-delta"))
-    )
+   :states 'normal
+   :prefix ","
+   "t" '(hz/magit-delta-toggle :wk "toggle magit-delta"))
+  )
 #+end_src
 Currently there are [[https://github.com/dandavison/magit-delta/issues/9][still performance issues]], which is why the ~toggle~
 keybinding is useful, however, there is a nicer workaround, simply disable for
@@ -1061,8 +1061,8 @@ need to be bound in ~org-mode~ files. Also updated to have ~evil-colemak~ bindin
   ;; automatically annotate highlights
   (setq pdf-annot-activate-created-annotations t
         pdf-view-resize-factor 1.1)
-   ;; faster motion
- (map!
+  ;; faster motion
+  (map!
    :map pdf-view-mode-map
    :n "g g"          #'pdf-view-first-page
    :n "G"            #'pdf-view-last-page
@@ -1072,10 +1072,10 @@ need to be bound in ~org-mode~ files. Also updated to have ~evil-colemak~ bindin
    :n "n"            #'evil-collection-pdf-view-next-line-or-next-page
    :localleader
    (:prefix "o"
-    (:prefix "n"
-     :desc "Insert" "i" 'org-noter-insert-note
-     ))
- ))
+            (:prefix "n"
+             :desc "Insert" "i" 'org-noter-insert-note
+             ))
+   ))
 #+end_src
 
 #+RESULTS:
@@ -1171,7 +1171,7 @@ Now we can configure the package itself.
   (cond ((featurep :system 'linux)
          (if (string-match-p "wayland" (getenv "WAYLAND_DISPLAY"))
              (setq-default org-download-screenshot-method "grim -g \"$(slurp)\" - > %s")
-             (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
+           (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
            )
          )
         ((featurep :system 'macos) (setq-default org-download-screenshot-method "screencapture -i %s")))
@@ -1216,23 +1216,23 @@ possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f
 ;; Set after the default-packages list anyway
 (setq org-latex-packages-alist 'nil)
 (setq org-latex-default-packages-alist
-  '(("AUTO" "inputenc"  t ("pdflatex"))
-    ("T1"   "fontenc"   t ("pdflatex"))
-    (""     "graphicx"  t)
-    (""     "grffile"   t)
-    (""     "minted"   t)
-    ;; ("dvipsnames,svgnames*,x11names*,table"     "xcolor"   t)
-    (""     "longtable" nil)
-    (""     "wrapfig"   nil)
-    (""     "rotating"  nil)
-    ("normalem" "ulem"  t)
-    (""     "amsmath"   t)
-    (""     "amssymb"   t)
-    (""     "unicode-math"   t)
-    (""     "mathtools"   t)
-    (""     "textcomp"  t)
-    (""     "capt-of"   nil)
-    (""     "hyperref"  nil)))
+      '(("AUTO" "inputenc"  t ("pdflatex"))
+        ("T1"   "fontenc"   t ("pdflatex"))
+        (""     "graphicx"  t)
+        (""     "grffile"   t)
+        (""     "minted"   t)
+        ;; ("dvipsnames,svgnames*,x11names*,table"     "xcolor"   t)
+        (""     "longtable" nil)
+        (""     "wrapfig"   nil)
+        (""     "rotating"  nil)
+        ("normalem" "ulem"  t)
+        (""     "amsmath"   t)
+        (""     "amssymb"   t)
+        (""     "unicode-math"   t)
+        (""     "mathtools"   t)
+        (""     "textcomp"  t)
+        (""     "capt-of"   nil)
+        (""     "hyperref"  nil)))
 ;; (add-to-list 'org-latex-default-packages-alist '("" "fontspec" t))
 ;; (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
 ;; (add-to-list 'org-latex-packages-alist '("" "unicode-math"))
@@ -1273,27 +1273,27 @@ This modified [[https://list.orgmode.org/orgmode/87mty1an66.fsf@posteo.net/][env
 #+begin_src emacs-lisp
 ;; TODO: Figure out how to pass parameters other than width
 ;; TODO: Also make a subcaption label
-  (org-link-set-parameters
-   "subfig"
-   :follow (lambda (file) (find-file file))
-   :face '(:foreground "chocolate" :weight bold :underline t)
-   :display 'full
-   :export (lambda (file desc backend)
-       (when (eq backend 'latex)
-         (if (string-match ">(\\(.+\\))" desc)
-       (concat "\\begin{subfigure}[b]{"
-               (match-string 1 desc)
-               "}\\caption{" (replace-regexp-in-string "\s+>(.+)" "" desc) "}"
-         "\\includegraphics"
-         "["
-                           "width=\\textwidth"
-         "]"
-         "{"
-            file
-         "}"
-            "\\end{subfigure}"
-                      )
-     (format "\\begin{subfigure}[b]{\\textwidth}\\includegraphics{%s}\\caption{%s}\\end{subfigure}" file desc)))))
+(org-link-set-parameters
+ "subfig"
+ :follow (lambda (file) (find-file file))
+ :face '(:foreground "chocolate" :weight bold :underline t)
+ :display 'full
+ :export (lambda (file desc backend)
+           (when (eq backend 'latex)
+             (if (string-match ">(\\(.+\\))" desc)
+                 (concat "\\begin{subfigure}[b]{"
+                         (match-string 1 desc)
+                         "}\\caption{" (replace-regexp-in-string "\s+>(.+)" "" desc) "}"
+                         "\\includegraphics"
+                         "["
+                         "width=\\textwidth"
+                         "]"
+                         "{"
+                         file
+                         "}"
+                         "\\end{subfigure}"
+                         )
+               (format "\\begin{subfigure}[b]{\\textwidth}\\includegraphics{%s}\\caption{%s}\\end{subfigure}" file desc)))))
 #+end_src
 #+begin_export latex
      \begin{subfigure}[b]{0.3\textwidth}
@@ -1322,19 +1322,19 @@ The keymaps are defined in the following way:
   :after org
   :general
   (:keymaps 'org-mode-map
-            :states 'normal
-            :prefix my-leader
-            "m r" '(:ignore t :wk "Rifle (Helm)")
-            "m r b" '(helm-org-rifle-current-buffer :wk "Rifle buffer")
-            "m r e" '(helm-org-rifle :wk "Rifle every open buffer")
-            "m r d" '(helm-org-rifle-directory :wk "Rifle from org-directory")
-            "m r a" '(helm-org-rifle-agenda-files :wk "Rifle agenda")
-            "m r o" '(:ignore t :wk "Occur (Persistent)")
-            "m r o b" '(helm-org-rifle-current-buffer :wk "Rifle buffer")
-            "m r o e" '(helm-org-rifle :wk "Rifle every open buffer")
-            "m r o d" '(helm-org-rifle-directory :wk "Rifle from org-directory")
-            "m r o a" '(helm-org-rifle-agenda-files :wk "Rifle agenda")
-            )
+   :states 'normal
+   :prefix my-leader
+   "m r" '(:ignore t :wk "Rifle (Helm)")
+   "m r b" '(helm-org-rifle-current-buffer :wk "Rifle buffer")
+   "m r e" '(helm-org-rifle :wk "Rifle every open buffer")
+   "m r d" '(helm-org-rifle-directory :wk "Rifle from org-directory")
+   "m r a" '(helm-org-rifle-agenda-files :wk "Rifle agenda")
+   "m r o" '(:ignore t :wk "Occur (Persistent)")
+   "m r o b" '(helm-org-rifle-current-buffer :wk "Rifle buffer")
+   "m r o e" '(helm-org-rifle :wk "Rifle every open buffer")
+   "m r o d" '(helm-org-rifle-directory :wk "Rifle from org-directory")
+   "m r o a" '(helm-org-rifle-agenda-files :wk "Rifle agenda")
+   )
   )
 #+END_SRC
 *** Org Mind Map
@@ -1343,9 +1343,9 @@ The keymaps are defined in the following way:
 (use-package! org-mind-map
   :general
   (:keymaps 'org-mode-map
-            :states 'normal
-            :prefix my-leader
-            "m e m" '(org-mind-map-write :wk "Export mind-map") ))
+   :states 'normal
+   :prefix my-leader
+   "m e m" '(org-mind-map-write :wk "Export mind-map") ))
 #+END_SRC
 *** Org Gantt
 Useful TeX generator.
@@ -1527,11 +1527,11 @@ I still keep my ~vim~ dotfiles up to date...
 By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
 #+BEGIN_SRC emacs-lisp
 (setq auto-mode-alist (append '(
-                              ("\\.f\\'" . fortran-mode)
-                              ("\\.f77\\'" . fortran-mode)
-                              ("\\.f90\\'" . f90-mode)
-                              ("\\.F90\\'" . f90-mode)
-                              )
+                                ("\\.f\\'" . fortran-mode)
+                                ("\\.f77\\'" . fortran-mode)
+                                ("\\.f90\\'" . f90-mode)
+                                ("\\.F90\\'" . f90-mode)
+                                )
                               auto-mode-alist))
 #+END_SRC
 *** Quarto
@@ -1782,19 +1782,19 @@ made unique when necessary."
 (defun unpackaged/org-export-new-title-reference (datum cache)
   "Return new reference for DATUM that is unique in CACHE."
   (cl-macrolet ((inc-suffixf (place)
-                             `(progn
-                                (string-match (rx bos
-                                                  (minimal-match (group (1+ anything)))
-                                                  (optional "--" (group (1+ digit)))
-                                                  eos)
-                                              ,place)
-                                ;; HACK: `s1' instead of a gensym.
-                                (-let* (((s1 suffix) (list (match-string 1 ,place)
-                                                           (match-string 2 ,place)))
-                                        (suffix (if suffix
-                                                    (string-to-number suffix)
-                                                  0)))
-                                  (setf ,place (format "%s--%s" s1 (cl-incf suffix)))))))
+                  `(progn
+                     (string-match (rx bos
+                                       (minimal-match (group (1+ anything)))
+                                       (optional "--" (group (1+ digit)))
+                                       eos)
+                                   ,place)
+                     ;; HACK: `s1' instead of a gensym.
+                     (-let* (((s1 suffix) (list (match-string 1 ,place)
+                                                (match-string 2 ,place)))
+                             (suffix (if suffix
+                                         (string-to-number suffix)
+                                       0)))
+                       (setf ,place (format "%s--%s" s1 (cl-incf suffix)))))))
     (let* ((title (org-element-property :raw-value datum))
            (ref (url-hexify-string (substring-no-properties title)))
            (parent (org-element-property :parent datum)))
@@ -2354,31 +2354,31 @@ stackexchange]] question.
 **** Process
 #+BEGIN_SRC emacs-lisp
 '(org-preview-latex-process-alist
-       (quote
-       ((dvipng :programs
-         ("lualatex" "dvipng")
-         :description "dvi > png" :message "you need to install the programs: latex and dvipng." :image-input-type "dvi" :image-output-type "png" :image-size-adjust
-         (1.0 . 1.0)
-         :latex-compiler
-         ("lualatex -output-format dvi -interaction nonstopmode -output-directory %o %f")
-         :image-converter
-         ("dvipng -fg %F -bg %B -D %D -T tight -o %O %f"))
- (dvisvgm :programs
-          ("latex" "dvisvgm")
-          :description "dvi > svg" :message "you need to install the programs: latex and dvisvgm." :use-xcolor t :image-input-type "xdv" :image-output-type "svg" :image-size-adjust
-          (1.7 . 1.5)
-          :latex-compiler
-          ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
-          :image-converter
-          ("dvisvgm %f -n -b min -c %S -o %O"))
- (imagemagick :programs
-              ("latex" "convert")
-              :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-              (1.0 . 1.0)
-              :latex-compiler
-              ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
-              :image-converter
-              ("convert -density %D -trim -antialias %f -quality 100 %O")))))
+  (quote
+   ((dvipng :programs
+     ("lualatex" "dvipng")
+     :description "dvi > png" :message "you need to install the programs: latex and dvipng." :image-input-type "dvi" :image-output-type "png" :image-size-adjust
+     (1.0 . 1.0)
+     :latex-compiler
+     ("lualatex -output-format dvi -interaction nonstopmode -output-directory %o %f")
+     :image-converter
+     ("dvipng -fg %F -bg %B -D %D -T tight -o %O %f"))
+    (dvisvgm :programs
+     ("latex" "dvisvgm")
+     :description "dvi > svg" :message "you need to install the programs: latex and dvisvgm." :use-xcolor t :image-input-type "xdv" :image-output-type "svg" :image-size-adjust
+     (1.7 . 1.5)
+     :latex-compiler
+     ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
+     :image-converter
+     ("dvisvgm %f -n -b min -c %S -o %O"))
+    (imagemagick :programs
+     ("latex" "convert")
+     :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :use-xcolor t :image-input-type "pdf" :image-output-type "png" :image-size-adjust
+     (1.0 . 1.0)
+     :latex-compiler
+     ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
+     :image-converter
+     ("convert -density %D -trim -antialias %f -quality 100 %O")))))
 #+END_SRC
 **** Packages
 These are required to view math properly.
@@ -2386,7 +2386,7 @@ These are required to view math properly.
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
 #+begin_src emacs-lisp
 (map! :map cdlatex-mode-map
-    :i "TAB" #'cdlatex-tab)
+      :i "TAB" #'cdlatex-tab)
 #+end_src
 Also we need some more things.
 #+BEGIN_SRC emacs-lisp
@@ -2428,7 +2428,7 @@ From [[https://endlessparentheses.com/improving-latex-equations-with-font-lock.h
 #+begin_src emacs-lisp
 (defface endless/unimportant-latex-face
   '((t :height 0.7
-       :inherit font-lock-comment-face))
+     :inherit font-lock-comment-face))
   "Face used on less relevant math commands."
   :group 'LaTeX-math)
 
@@ -2464,15 +2464,15 @@ formats with ~babel~.
   "Execute a block of rst code with org-babel.
 This function is called by `org-babel-execute-src-block'."
   (let* ((result-params (split-string (or (cdr (assoc :results params)) "")))
-       (in-file (org-babel-temp-file "rst-"))
-       (cmdline (cdr (assoc :cmdline params)))
-       (to (cdr (assoc :to params)))
-       (template (cdr (assoc :template params)))
-       (cmd (concat "pandoc"
-                    " -t  org"
-                    " -i " (org-babel-process-file-name in-file)
-                    " -f rst "
-                    " " cmdline)))
+         (in-file (org-babel-temp-file "rst-"))
+         (cmdline (cdr (assoc :cmdline params)))
+         (to (cdr (assoc :to params)))
+         (template (cdr (assoc :template params)))
+         (cmd (concat "pandoc"
+                      " -t  org"
+                      " -i " (org-babel-process-file-name in-file)
+                      " -f rst "
+                      " " cmdline)))
     (with-temp-file in-file (insert body))
     (message cmd)
     (shell-command-to-string cmd))) ;; Send to results
@@ -2540,28 +2540,28 @@ though quite a bit of the config here relates to [[https://github.com/tmalsburg/
 sections are set in my ~private~ config.
 #+BEGIN_SRC emacs-lisp
 (use-package! org-ref
-    :init
-    (with-eval-after-load 'ox
-      (defun my/org-ref-process-buffer--html (backend)
-        "Preprocess `org-ref' citations to HTML format.
+  :init
+  (with-eval-after-load 'ox
+    (defun my/org-ref-process-buffer--html (backend)
+      "Preprocess `org-ref' citations to HTML format.
 
   Do this only if the export backend is `html' or a derivative of
   that."
-        ;; `ox-hugo' is derived indirectly from `ox-html'.
-        ;; ox-hugo <- ox-blackfriday <- ox-md <- ox-html
-        (when (org-export-derived-backend-p backend 'html)
-          (org-ref-process-buffer 'html)))
-      (add-to-list 'org-export-before-parsing-hook #'my/org-ref-process-buffer--html))
-    :config
-    (setq
-         org-ref-completion-library 'org-ref-ivy-cite
-         org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-         bibtex-completion-bibliography (list (concat (getenv "HOME") "/GDrive/zotLib.bib"))
-         bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
-         org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-         org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
-         org-ref-notes-function 'orb-edit-notes
-    ))
+      ;; `ox-hugo' is derived indirectly from `ox-html'.
+      ;; ox-hugo <- ox-blackfriday <- ox-md <- ox-html
+      (when (org-export-derived-backend-p backend 'html)
+        (org-ref-process-buffer 'html)))
+    (add-to-list 'org-export-before-parsing-hook #'my/org-ref-process-buffer--html))
+  :config
+  (setq
+   org-ref-completion-library 'org-ref-ivy-cite
+   org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+   bibtex-completion-bibliography (list (concat (getenv "HOME") "/GDrive/zotLib.bib"))
+   bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
+   org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+   org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
+   org-ref-notes-function 'orb-edit-notes
+   ))
 #+END_SRC
 
 Apparently, ~org-ref~ is also able to fetch ~pdf~ files when ~DOI~ or ~URL~
@@ -2600,7 +2600,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
     ":END:\n\n"
     )
    )
-)
+  )
 #+END_SRC
 
 *** Org-Roam
@@ -2608,17 +2608,17 @@ Will also setup the ~org-roam-bibtex~ thing here.
 As foretold in the last line, there are more settings for [[https://github.com/Zaeph/org-roam-bibtex][ORB]]. The template is
 modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
 #+begin_src emacs-lisp :tangle yes
- (use-package! org-roam-bibtex
+(use-package! org-roam-bibtex
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)
   :config
   (setq org-roam-bibtex-preformat-keywords
-   '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+        '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
   (setq orb-templates
         '(("r" "ref" plain (function org-roam-capture--get-point)
            ""
            :file-name "${slug}"
-           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS: 
+           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS:
 
 - keywords :: ${keywords}
 
@@ -2692,16 +2692,16 @@ This might get complicated but I am only trying to get the bare minimum for
                  :kill-buffer t))
   ;; Misc
   (add-to-list 'org-capture-templates
-         '("a"               ; key
-           "Article"         ; name
-           entry             ; type
-           (file+headline +org-capture-notes-file "Article")  ; target
-           "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-           :prepend t        ; properties
-           :empty-lines 1    ; properties
-           :created t        ; properties
-           ))
-)
+               '("a"               ; key
+                 "Article"         ; name
+                 entry             ; type
+                 (file+headline +org-capture-notes-file "Article")  ; target
+                 "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
+                 :prepend t        ; properties
+                 :empty-lines 1    ; properties
+                 :created t        ; properties
+                 ))
+  )
 #+END_SRC
 **** HTML Parsing
 The standard capture method isn't too great, but [[https://github.com/alphapapa/org-protocol-capture-html][this]] makes it better.
@@ -2723,11 +2723,11 @@ The standard capture method isn't too great, but [[https://github.com/alphapapa/
 
 #+BEGIN_SRC emacs-lisp :tangle no
 (setq org-roam-ref-capture-templates
-        '(("r" "ref" plain (function org-roam--capture-get-point)
-           "%?"
-           :file-name "websites/${slug}"
-           :head "#+SETUPFILE:./hugo_setup.org
-#+ROAM_KEY: ${ref}
-#+HUGO_SLUG: ${slug}
-#+TITLE: ${title}
+      '(("r" "ref" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "websites/${slug}"
+         :head "#+SETUPFILE:./hugo_setup.org
+,#+ROAM_KEY: ${ref}
+,#+HUGO_SLUG: ${slug}
+,#+TITLE: ${title}
 #+END_SRC
