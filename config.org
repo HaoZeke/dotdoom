@@ -1692,13 +1692,13 @@ There is in built support for ~meson~ but it has no registered formatter.
 #+end_src
 *** Astro
 #+begin_src emacs-lisp
-(setq treesit-language-source-alist
-      '((astro "https://github.com/virchau13/tree-sitter-astro")
-        (css "https://github.com/tree-sitter/tree-sitter-css")
-        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")))
-(mapc #'treesit-install-language-grammar '(astro css tsx))
-(use-package! astro-ts-mode
-    :mode "\\.astro")
+;; (setq treesit-language-source-alist
+;;       '((astro "https://github.com/virchau13/tree-sitter-astro")
+;;         (css "https://github.com/tree-sitter/tree-sitter-css")
+;;         (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")))
+;; (mapc #'treesit-install-language-grammar '(astro css tsx))
+;; (use-package! astro-ts-mode
+;;     :mode "\\.astro")
 #+end_src
 ** Aesthetics
 *** Wakatime
