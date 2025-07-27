@@ -196,14 +196,10 @@
 ;; Snakemake:1 ends here
 
 ;; [[file:packages.org::*CapnProto][CapnProto:1]]
-(package! capnp-mode
+(package! capnp2-mode
   :recipe (:host github
-                    :repo "HaoZeke/capnp-mode"))
+           :repo "HaoZeke/capnp2-mode"))
 ;; CapnProto:1 ends here
-
-;; [[file:packages.org::*Astro][Astro:1]]
-(package! astro-ts-mode)
-;; Astro:1 ends here
 
 ;; [[file:packages.org::*Nushell][Nushell:1]]
 (package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
@@ -217,11 +213,6 @@
 (package! package-lint)
 (package! flycheck-package)
 ;; MELPA Helper:1 ends here
-
-;; [[file:packages.org::*Github Copilot][Github Copilot:1]]
-;; (package! copilot
-;;   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-;; Github Copilot:1 ends here
 
 ;; [[file:packages.org::*Doom][Doom:1]]
 (package! emacs-snippets

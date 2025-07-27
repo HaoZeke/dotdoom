@@ -418,15 +418,15 @@ Font locking for ~.smk~ files as they are evidently called (from [[https://githu
 (package! snakemake-mode)
 #+END_SRC
 *** CapnProto
-I ended up making one of my own based off of ~prog-mode~ since I didn't find
+I ended up making one of my own based off of ~c-mode~. This is temporary, pending [[https://github.com/capnproto/capnproto/pull/2363][gh(capnproto)-2363]].
 #+begin_src emacs-lisp :tangle yes
-(package! capnp-mode
+(package! capnp2-mode
   :recipe (:host github
-                    :repo "HaoZeke/capnp-mode"))
+           :repo "HaoZeke/capnp2-mode"))
 #+end_src
 *** Astro
 For the TTech landing page.
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! astro-ts-mode)
 #+END_SRC
 *** Nushell
@@ -454,9 +454,9 @@ This is for linting files before submitting to MELPA.
 #+END_SRC
 ** Completion helpers
 *** Github Copilot
-#+begin_src emacs-lisp :tangle yes
-;; (package! copilot
-;;   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+#+begin_src emacs-lisp :tangle no
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 #+end_src
 ** Snippets
 These are from [[https://github.com/hlissner][hlissner]].
