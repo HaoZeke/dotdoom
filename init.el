@@ -16,6 +16,7 @@
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
 (doom! :input
+       ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
        ;;japanese
        ;;layout            ; auie,ctsrnm is the superior home row
@@ -45,8 +46,8 @@
      ; fill-column       ; a `fill-column' indicator
       hl-todo           ; highlight TODO/FIXME/NOTE tags
       ;; indent-guides  ; highlighted indent columns
-      ;;ligatures       ; ligatures and symbols to make your code pretty again
-      ;;minimap           ; show a map of the code on the side
+      ligatures         ; ligatures and symbols to make your code pretty again
+      ;; minimap        ; show a map of the code on the side
       modeline          ; snazzy, Atom-inspired modeline, plus API
       nav-flash         ; blink the current line after jumping
       ;; neotree        ; a project drawer, like NERDTree for vim
@@ -54,7 +55,7 @@
       (popup            ; tame sudden yet inevitable temporary windows
         +all            ; catch all popups that start with an asterix
         +defaults)      ; default popup rules
-      ligatures         ; replace bits of code with prettymbols
+      ;; smooth-scroll  ; So smooth you won't believe it's not butter
       ;; tabs           ; a tab bar for Emacs
       treemacs          ; a project drawer, like neotree but cooler
       unicode           ; extended unicode support for various languages
@@ -70,10 +71,10 @@
       fold               ; (nigh) universal code folding
       format             ; Automated prettiness (no more +onsave)
       ;; god             ; run Emacs commands without modifier keys
-      ;; lispy              ; vim for lisp, for people who dont like vim
+      ;; lispy           ; vim for lisp, for people who dont like vim
       multiple-cursors   ; editing in many places at once
       ;; objed           ; text object editing for the innocent
-      ;; parinfer           ; turn lisp into python, sort of
+      ;; parinfer        ; turn lisp into python, sort of
       rotate-text        ; cycle region at point between text candidates
       snippets           ; my elves. They type so I don't have to
       word-wrap          ; soft wrapping with language aware indent
@@ -81,8 +82,11 @@
 
        :emacs
        (dired            ; making dired pretty [functional]
-        +icons)            ; colorful icons for dired-mode
+        +icons           ; colorful icons for dired-mode
+        +dirvish         ; far nicer directory management
+        )
        electric          ; smarter, keyword-based electric-indent
+       ;;eww               ; the internet is gross
        ibuffer           ; interactive buffer management
        (undo             ; persistent, smarter undo for your inevitable mistakes
         +tree)           ; bit more unstable, but has pretty visuals
@@ -90,10 +94,10 @@
 
        :term
        eshell            ; a consistent, cross-platform shell (WIP)
-       ;; shell           ; a terminal REPL for Emacs
-       term              ; terminals in Emacs
-       ;; vterm             ; another terminal in Emacs
-      
+       ;; shell          ; simple shell REPL for Emacs
+       term              ; basic terminal emulator for Emacs
+       ;;vterm           ; the best terminal emulation in Emacs
+
        :checkers
        (syntax             ; tasing you for every semicolon you forget
         +childframe)       ; use childframes for error popups (Emacs 26+ only)
@@ -105,6 +109,8 @@
 
        :tools
        ;; ansible
+       ;; biblio        ; prioritize native implementations [DEPRECATED]
+       ;; collab        ; buffers with friends
        ;; debugger      ; FIXME stepping through code, to help you add bugs
        direnv
        ;; docker
@@ -116,22 +122,24 @@
         +dictionary     ; enable word definitions and thesaurus lookup
         +offline        ; install and prefer offline dictionary/thesaurus
         +docsets)       ; ...on in Dash docsets locally
+       ;; llm           ; when I said you needed friends, I didn't mean...
        (lsp +eglot)     ; M-x vscode
        magit            ; a git porcelain for Emacs
        ;;make           ; run make tasks from Emacs
        ;;pass           ;password manager for nerds
        pdf              ; pdf enhancements
+       ;;terraform      ; infrastructure as code
        ;;prodigy        ; FIXME managing external services & code builders
        ;;rgb            ; creating color strings
        ;;taskrunner     ; taskrunner for all your projects
        ;;terraform      ; infrastructure as code
        tmux             ; an API for interacting with tmux
+       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload         ; map local to remote projects via ssh/ftp
-       ;;biblio         ; prioritize native implementations [DEPRECATED]
 
        :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
-       ;;tty               ; improve the terminal Emacs experience
+       (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
+       ;;tty                                  ; improve the terminal Emacs experience
 
        :lang
        ;;agda               ; types of types of types of types...
@@ -144,6 +152,7 @@
        ;;csharp             ; unity, .NET, and mono shenanigans
        data                 ; config/data formats
        ;;(dart +flutter)    ; paint ui and not much else
+       ;;dhall
        ;;elixir             ; erlang done right
        ;;elm                ; care for a cup of TEA?
        emacs-lisp           ; drown in parentheses
@@ -156,10 +165,12 @@
        ;;fstar              ; (dependent) types and (monadic) effects and Z3
        ;;gdscript           ; the language you waited for
        ;; (go +lsp)            ; the hipster dialect
+       ;;(graphql +lsp)    ; Give queries a REST
        ;; (haskell +dante)     ; a language that's lazier than I am
-       hy                   ; readability of scheme w/ speed of python
+       ;;hy                 ; readability of scheme w/ speed of python
        ;;idris              ; a language you can depend on
        json                 ; At least it ain't XML
+       ;;janet             ; Fun fact: Janet is me!
        ;;(java +meghanada)  ; the poster child for carpal tunnel syndrome
        javascript           ; all(hope(abandon(ye(who(enter(here))))))
        julia                ; a better, faster MATLAB
@@ -185,11 +196,12 @@
         +jupyter            ; enable jupyter integration
         +pandoc             ; pandoc integration into org's exporter
        ;;+pomodoro          ; be fruitful with the tomato technique
-        ;; +present            ; using Emacs for presentations
-        ;; +roam            ; some sort of faster note system
+       ;; +present          ; using Emacs for presentations
+       ;; +roam2            ; some sort of faster note system
         )
        ;;php                ; perl's insecure younger brother
        ;;plantuml           ; diagrams for confusing people more
+       ;;graphviz           ; diagrams for confusing yourself even more
        ;;purescript         ; javascript, but functional
        (python              ; beautiful is better than ugly
         +lsp                ; Language server protocol support
