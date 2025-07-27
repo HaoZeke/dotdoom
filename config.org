@@ -1016,9 +1016,9 @@ Also integrated upstream.
   :if (executable-find "delta")
   :hook (magit-mode . magit-delta-mode)
   :config
-                                        ; Kanged https://github.com/dandavison/magit-delta/issues/13
-  (setq magit-delta-delta-args (append magit-delta-delta-args '("magit-delta")))
-                                        ; Kanged https://github.com/dandavison/magit-delta/issues/15#issuecomment-865774240
+  ;; Kanged https://github.com/dandavison/magit-delta/issues/13
+  (setq magit-delta-delta-args (append magit-delta-delta-args '("--features" "magit-delta")))
+  ;; Kanged https://github.com/dandavison/magit-delta/issues/15#issuecomment-865774240
   (defun hz/magit-delta-toggle ()
     "Toggle magit-delta-mode and refresh magit."
     (interactive)
