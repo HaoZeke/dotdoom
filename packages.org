@@ -232,7 +232,7 @@ Not on MELPA yet. From [[https://github.com/swillner/org-gantt][here]].
 #+END_SRC
 *** Org Mind Map
 Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! org-mind-map
   :recipe (:host github
             :repo "theodorewiles/org-mind-map"))

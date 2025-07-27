@@ -66,12 +66,6 @@
             :repo "swillner/org-gantt" :files ("*.el")))
 ;; Org Gantt:1 ends here
 
-;; [[file:packages.org::*Org Mind Map][Org Mind Map:1]]
-(package! org-mind-map
-  :recipe (:host github
-            :repo "theodorewiles/org-mind-map"))
-;; Org Mind Map:1 ends here
-
 ;; [[file:packages.org::*Org Rifle][Org Rifle:1]]
 (package! helm-org-rifle)
 ;; Org Rifle:1 ends here
