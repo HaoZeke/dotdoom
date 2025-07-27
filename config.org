@@ -2398,30 +2398,28 @@ Also we need some more things.
   ((LaTeX-mode . turn-on-cdlatex)
    (org-mode . turn-on-org-cdlatex)))
 #+END_SRC
-Corfu usage was kanged [[https://github.com/YueRen/.emacs.d/blob/b3b4eeca6ac3bde8b7a213df5b1b8776b25dffcd/config.org#company-math][from here]].
 #+BEGIN_SRC emacs-lisp
 (use-package! company-math
   :after (:any org-mode TeX-mode)
-  :init
-  (when (featurep! :completion corfu)
-    (defun math-setup-capf ()
-      (add-to-list 'completion-at-point-functions (cape-company-to-capf #'company-math-symbols-latex))
-      (add-to-list 'completion-at-point-functions (cape-company-to-capf #'company-math-symbols-unicode))
-      (add-to-list 'completion-at-point-functions (cape-company-to-capf #'company-latex-commands)))
-    )
-  :hook
-  (when (featurep! :completion corfu)
-    (LaTeX-mode . math-setup-capf))
+  :when (modulep! :completion company)
+  :defer t
   :config
-  (when (featurep! :completion company)
-    (set-company-backend! 'org-mode 'company-math-symbols-latex)
-    (set-company-backend! 'TeX-mode 'company-math-symbols-latex)
-    (set-company-backend! 'org-mode 'company-latex-commands)
-    (set-company-backend! 'TeX-mode 'company-latex-commands)
-    )
+  (set-company-backend! 'org-mode 'company-math-symbols-latex)
+  (set-company-backend! 'TeX-mode 'company-math-symbols-latex)
+  (set-company-backend! 'org-mode 'company-latex-commands)
+  (set-company-backend! 'TeX-mode 'company-latex-commands)
   (setq company-tooltip-align-annotations t)
   (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
+Similarly:
+#+begin_src emacs-lisp
+(use-package! company-auctex
+  :when (modulep! :completion company)
+  :defer t
+  :init
+  (add-to-list '+latex--company-backends #'company-auctex-environments nil #'eq)
+  (add-to-list '+latex--company-backends #'company-auctex-macros nil #'eq))
+#+end_src
 We would also like to set up the ~math-symbol-list~ unicode input [[https://www.emacswiki.org/emacs/TeXInputMethod][from here]].
 #+begin_src emacs-lisp
 (use-package! math-symbol-lists
@@ -2439,6 +2437,7 @@ We would also like to set up the ~math-symbol-list~ unicode input [[https://www.
               (quail-defrule (cadr x) (car (cddr x)))))
         (append math-symbol-list-basic math-symbol-list-extended math-symbol-list-subscripts math-symbol-list-superscripts)))
 #+end_src
+- [ ] Corfu usage can be kanged [[https://github.com/YueRen/.emacs.d/blob/b3b4eeca6ac3bde8b7a213df5b1b8776b25dffcd/config.org#company-math][from here]], [[https://github.com/vadim-zyamalov/Emacs-settings/blob/7653d79b7ab95f1ef4931356e3a707846d6002d0/.emacs.d/init.org#L1688][here]] and [[https://github.com/minad/cape/issues/73][this issue]].
 ** Prettier TeX buffers
 From [[https://endlessparentheses.com/improving-latex-equations-with-font-lock.html][here]]. Reduces the size of inessential ~tex~.
 #+begin_src emacs-lisp
