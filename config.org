@@ -2391,20 +2391,22 @@ This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_genera
 Also we need some more things.
 #+BEGIN_SRC emacs-lisp
 (use-package! cdlatex
-    :after (:any org-mode LaTeX-mode)
-    :hook
-    ((LaTeX-mode . turn-on-cdlatex)
-     (org-mode . turn-on-org-cdlatex)))
+  :after (:any org-mode LaTeX-mode)
+  :hook
+  ((LaTeX-mode . turn-on-cdlatex)
+   (org-mode . turn-on-org-cdlatex)))
 
 (use-package! company-math
-    :after (:any org-mode TeX-mode)
-    :config
+  :after (:any org-mode TeX-mode)
+  :config
+  (when (featurep! :completion company)
     (set-company-backend! 'org-mode 'company-math-symbols-latex)
     (set-company-backend! 'TeX-mode 'company-math-symbols-latex)
     (set-company-backend! 'org-mode 'company-latex-commands)
     (set-company-backend! 'TeX-mode 'company-latex-commands)
-    (setq company-tooltip-align-annotations t)
-    (setq company-math-allow-latex-symbols-in-faces t))
+    )
+  (setq company-tooltip-align-annotations t)
+  (setq company-math-allow-latex-symbols-in-faces t))
 #+END_SRC
 We would also like to set up the ~math-symbol-list~ unicode input [[https://www.emacswiki.org/emacs/TeXInputMethod][from here]].
 #+begin_src emacs-lisp
