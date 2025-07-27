@@ -527,11 +527,10 @@ Modified from [[https://tex.stackexchange.com/questions/22573/how-can-i-tell-auc
 
 ;; Code I added to make syntax highlighting work in Auctex
 
-(custom-set-variables
- '(font-latex-math-environments (quote
-                                 ("display" "displaymath" "equation" "eqnarray" "gather" "multline"
-                                  "align" "alignat" "xalignat" "dmath")))
- '(TeX-insert-braces nil)) ;;Stops putting {} on argumentless commands to "save" whitespace
+(setq font-latex-math-environments (quote
+                                    ("display" "displaymath" "equation" "eqnarray" "gather" "multline"
+                                     "align" "alignat" "xalignat" "dmath")))
+(setq TeX-insert-braces 'nil) ;;Stops putting {} on argumentless commands to "save" whitespace
 
 ;; Additionally, reftex code to recognize this environment as an equation
 (setq reftex-label-alist
