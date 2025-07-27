@@ -2395,9 +2395,21 @@ Also we need some more things.
   :hook
   ((LaTeX-mode . turn-on-cdlatex)
    (org-mode . turn-on-org-cdlatex)))
-
+#+END_SRC
+Corfu usage was kanged [[https://github.com/YueRen/.emacs.d/blob/b3b4eeca6ac3bde8b7a213df5b1b8776b25dffcd/config.org#company-math][from here]].
+#+BEGIN_SRC emacs-lisp
 (use-package! company-math
   :after (:any org-mode TeX-mode)
+  :init
+  (when (featurep! :completion corfu)
+    (defun math-setup-capf ()
+      (add-to-list 'completion-at-point-functions (cape-company-to-capf #'company-math-symbols-latex))
+      (add-to-list 'completion-at-point-functions (cape-company-to-capf #'company-math-symbols-unicode))
+      (add-to-list 'completion-at-point-functions (cape-company-to-capf #'company-latex-commands)))
+    )
+  :hook
+  (when (featurep! :completion corfu)
+    (LaTeX-mode . math-setup-capf))
   :config
   (when (featurep! :completion company)
     (set-company-backend! 'org-mode 'company-math-symbols-latex)
