@@ -38,7 +38,7 @@
     - [[#org-noter][Org Noter]]
     - [[#org-ref][Org Ref]]
     - [[#org-gantt][Org Gantt]]
-    - [[#org-mind-map][Org Mind Map]]
+    - [[#no-org-mind-map][NO Org Mind Map]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-async][Org Async]]
     - [[#anki-mode][Anki Mode]]
@@ -63,19 +63,19 @@
     - [[#vim-mode][VIM mode]]
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd-mode][Systemd Mode]]
-    - [[#dart-mode][Dart Mode]]
+    - [[#no-dart-mode][NO Dart Mode]]
     - [[#wolfram-mode][Wolfram Mode]]
     - [[#polymode][Polymode]]
     - [[#snakemake][Snakemake]]
     - [[#capnproto][CapnProto]]
-    - [[#astro][Astro]]
+    - [[#no-astro][NO Astro]]
     - [[#nushell][Nushell]]
     - [[#nickel][Nickel]]
-  - [[#matrix-clients][Matrix Clients]]
+  - [[#no-matrix-clients][NO Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
   - [[#completion-helpers][Completion helpers]]
-    - [[#github-copilot][Github Copilot]]
+    - [[#no-github-copilot][NO Github Copilot]]
   - [[#snippets][Snippets]]
     - [[#doom][Doom]]
     - [[#standard][Standard]]
@@ -230,7 +230,8 @@ Not on MELPA yet. From [[https://github.com/swillner/org-gantt][here]].
   :recipe (:host github
             :repo "swillner/org-gantt" :files ("*.el")))
 #+END_SRC
-*** Org Mind Map
+*** NO Org Mind Map
+CLOSED: [2025-07-27 Sun 02:06]
 Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! org-mind-map
@@ -394,7 +395,8 @@ highlighting.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! systemd)
 #+END_SRC
-*** Dart Mode
+*** NO Dart Mode
+CLOSED: [2025-07-27 Sun 02:06]
 Might eventually want to also get the companion [[https://github.com/bradyt/dart-server][dart server]] sometime, but for
 now this syntax-highlighter will do. Might actually want to see if ~prettier~
 has anything for it.
@@ -424,7 +426,8 @@ I ended up making one of my own based off of ~c-mode~. This is temporary, pendin
   :recipe (:host github
            :repo "HaoZeke/capnp2-mode"))
 #+end_src
-*** Astro
+*** NO Astro
+CLOSED: [2025-07-27 Sun 02:07]
 For the TTech landing page.
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! astro-ts-mode)
@@ -439,7 +442,8 @@ Easier to not write repititive ~yml~.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! nickel-mode)
 #+END_SRC
-** Matrix Clients
+** NO Matrix Clients
+CLOSED: [2025-07-27 Sun 02:07]
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
 #+begin_src emacs-lisp :tangle no
 (package! pretty-hydra)
@@ -453,7 +457,8 @@ This is for linting files before submitting to MELPA.
 (package! flycheck-package)
 #+END_SRC
 ** Completion helpers
-*** Github Copilot
+*** NO Github Copilot
+CLOSED: [2025-07-27 Sun 02:07]
 #+begin_src emacs-lisp :tangle no
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
