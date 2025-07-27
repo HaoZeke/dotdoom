@@ -23,8 +23,10 @@
 
        :completion
        ;; (company          ; the ultimate code completion backend
-       ;;  +childframe)      ; a better UI for company (Emacs 26+)
-       (corfu +orderless)  ; complete with cap(f), cape and a flying feather!
+       ;;  +childframe)     ; a better UI for company (Emacs 26+)
+       (corfu               ; complete with cap(f), cape and a flying feather!
+        +orderless
+        +icons)
       ;; (helm             ; the *other* search engine for love and life
       ;;   +childframe      ; a better UI for helm (Emacs 26+)
       ;;   +fuzzy)          ; enable fuzzy search backend for helm
@@ -35,6 +37,7 @@
        ;;  +icons           ; enables file icons
        ;;  +fuzzy)          ; enable fuzzy search backend for ivy
        (vertico             ; the search engine of the future
+        +childframe         ; GUI only, but nicer UX
         +icons)             ; Icons for file and buffer category completions
 
       :ui
