@@ -21,8 +21,9 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company          ; the ultimate code completion backend
-        +childframe)      ; a better UI for company (Emacs 26+)
+       ;; (company          ; the ultimate code completion backend
+       ;;  +childframe)      ; a better UI for company (Emacs 26+)
+       (corfu +orderless)  ; complete with cap(f), cape and a flying feather!
       ;; (helm             ; the *other* search engine for love and life
       ;;   +childframe      ; a better UI for helm (Emacs 26+)
       ;;   +fuzzy)          ; enable fuzzy search backend for helm
