@@ -1545,7 +1545,7 @@ Mostly used with ~cpp~ files.
 (use-package! meson-mode
   :mode "\\.build\\'"
   :config
-  (when (featurep! :completion company)
+  (when (modulep! :completion company)
     (add-hook!'meson-mode-hook 'company-mode))
   )
 #+end_src
@@ -1554,7 +1554,7 @@ Mostly used with ~cpp~ files.
 (use-package! xonsh-mode
   :mode "\\.xsh\\'"
   :config
-  (when (featurep! :completion company)
+  (when (modulep! :completion company)
     (add-hook!'xonsh-mode-hook 'company-mode))
   )
 #+end_src
