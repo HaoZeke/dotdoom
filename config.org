@@ -1536,7 +1536,7 @@ By default, ~fortran-mode~ is used for ~f90~ files which is less than ideal.
 #+END_SRC
 *** Quarto
 Not a fan, but is still occasionally useful.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 (use-package! quarto-mode)
 #+end_src
 *** Meson
@@ -1545,7 +1545,8 @@ Mostly used with ~cpp~ files.
 (use-package! meson-mode
   :mode "\\.build\\'"
   :config
-  (add-hook!'meson-mode-hook 'company-mode)
+  (when (featurep! :completion company)
+    (add-hook!'meson-mode-hook 'company-mode))
   )
 #+end_src
 *** ~xonsh~ Mode
@@ -1553,7 +1554,8 @@ Mostly used with ~cpp~ files.
 (use-package! xonsh-mode
   :mode "\\.xsh\\'"
   :config
-  (add-hook!'xonsh-mode-hook 'company-mode)
+  (when (featurep! :completion company)
+    (add-hook!'xonsh-mode-hook 'company-mode))
   )
 #+end_src
 *** PKGBUILD Mode
