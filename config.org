@@ -885,6 +885,20 @@ On a Mac, when using Nix and Emacs 28, some of the path variables need to be set
        (setq exec-path (append exec-path '("/usr/local/bin/"))) ;; brew
        ))
 #+end_src
+**** Linux
+Over time I've had to add some more paths...
+#+begin_src emacs-lisp
+(cond
+ ((featurep :system 'linux)
+  (add-to-list 'exec-path (expand-file-name "~/.local/bin"))
+  (add-to-list 'exec-path (expand-file-name "~/.cargo/bin"))
+  (add-to-list 'exec-path (expand-file-name "~/.nix-profile/bin"))
+  (let ((tex-live-paths (file-expand-wildcards "~/.local/share/texlive-*/bin")))
+    (when tex-live-paths
+      (setq exec-path (delete-dups (append tex-live-paths exec-path)))
+      ))
+  ))
+#+end_src
 *** Safe Variables
 The problem is that ~packages.el~ isn't being produced by the clever little ugly
 commit I tried so, this is a workaround to tangle *any* file to be produced in
