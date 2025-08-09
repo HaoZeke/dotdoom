@@ -199,6 +199,10 @@
 (package! nushell-mode :recipe (:host github :repo "mrkkrp/nushell-mode"))
 ;; Nushell:1 ends here
 
+;; [[file:packages.org::*Fish shell][Fish shell:1]]
+(package! fish-mode)
+;; Fish shell:1 ends here
+
 ;; [[file:packages.org::*Nickel][Nickel:1]]
 (package! nickel-mode)
 ;; Nickel:1 ends here

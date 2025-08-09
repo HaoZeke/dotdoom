@@ -91,6 +91,7 @@
     - [[#snakemake][Snakemake]]
     - [[#capnproto][CapnProto]]
     - [[#nushell][Nushell]]
+    - [[#fish-shell][Fish shell]]
     - [[#nickel][Nickel]]
     - [[#meson-1][Meson]]
     - [[#astro][Astro]]
@@ -1689,6 +1690,11 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 #+begin_src emacs-lisp
 (use-package! nushell-mode
     :mode "\\.nu")
+#+end_src
+*** Fish shell
+#+begin_src emacs-lisp
+(use-package! fish-mode
+    :mode "\\.fish")
 #+end_src
 *** Nickel
 #+begin_src emacs-lisp
