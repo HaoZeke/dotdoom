@@ -17,6 +17,7 @@
     - [[#unicode-fonts][Unicode Fonts]]
     - [[#helm-and-childframes][Helm and Childframes]]
     - [[#saner-dashboard][Saner Dashboard]]
+    - [[#non-posix-shells][Non-posix shells]]
   - [[#bugfixes][Bugfixes]]
   - [[#helm-changes][Helm changes]]
   - [[#disable-eager-functions][Disable eager functions]]
@@ -208,6 +209,20 @@ I have trouble at work with the current DOOM dashboard. This one is from the
 #+BEGIN_SRC emacs-lisp
 (setq +doom-dashboard-banner-file (expand-file-name "banner.png" doom-private-dir))
 #+END_SRC
+*** Non-posix shells
+Apparently ~fish~ and ~nushell~ are particularly incompatible..
+#+begin_src emacs-lisp
+(when (getenv "SHELL")
+  (let ((user-shell (getenv "SHELL")))
+    (when (or (string-match-p "fish" user-shell)
+              (string-match-p "nu" user-shell))
+      ;; Set a POSIX-compliant shell for internal Emacs processes
+      (setq shell-file-name (executable-find "bash"))
+
+      ;; Ensure Emacs terminal emulators still use the user's preferred shell
+      (setq-default vterm-shell user-shell)
+      (setq-default explicit-shell-file-name user-shell))))
+#+end_src
 ** Bugfixes
 Most of these should be removed when ~doom~ fixes them.
 #+begin_src emacs-lisp
