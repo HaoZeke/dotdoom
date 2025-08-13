@@ -17,7 +17,9 @@
     - [[#unicode-fonts][Unicode Fonts]]
     - [[#helm-and-childframes][Helm and Childframes]]
     - [[#saner-dashboard][Saner Dashboard]]
+  - [[#tweaks][Tweaks]]
     - [[#non-posix-shells][Non-posix shells]]
+    - [[#projectile-cache-management][Projectile cache management]]
   - [[#bugfixes][Bugfixes]]
   - [[#helm-changes][Helm changes]]
   - [[#disable-eager-functions][Disable eager functions]]
@@ -209,6 +211,7 @@ I have trouble at work with the current DOOM dashboard. This one is from the
 #+BEGIN_SRC emacs-lisp
 (setq +doom-dashboard-banner-file (expand-file-name "banner.png" doom-private-dir))
 #+END_SRC
+** Tweaks
 *** Non-posix shells
 Apparently ~fish~ and ~nushell~ are particularly incompatible..
 #+begin_src emacs-lisp
@@ -225,6 +228,10 @@ Apparently ~fish~ and ~nushell~ are particularly incompatible..
 
       ;; Also update the specific shell script variable if needed
       (setq-default sh-shell-file user-shell))))
+#+end_src
+*** Projectile cache management
+#+begin_src emacs-lisp
+(add-hook 'projectile-after-switch-project-hook (lambda () (projectile-invalidate-cache nil)))
 #+end_src
 ** Bugfixes
 Most of these should be removed when ~doom~ fixes them.
