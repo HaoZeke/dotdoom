@@ -128,6 +128,7 @@
     - [[#disable-auto-rdm][Disable Auto RDM]]
   - [[#troubleshooting][Troubleshooting]]
 - [[#sphinx-and-rst][Sphinx and RsT]]
+- [[#python-helpers][Python Helpers]]
 - [[#r-helpers][R Helpers]]
     - [[#r-markdown][R Markdown]]
     - [[#rmd-to-rorg][Rmd to Rorg]]
@@ -980,7 +981,7 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
   (add-hook 'nix-mode-hook 'eglot-ensure)
   (add-hook 'f90-mode-hook 'eglot-ensure)
   (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
-  (set-eglot-client! 'python-mode '("pylsp"))
+  (set-eglot-client! 'python-mode '("uvx" "ruff" "server"))
   (when (string= (system-name) "Rohits-MacBook-Pro.local")
     (setq exec-path (append exec-path '(
                                         (concat (getenv "HOME") "/.micromamba/envs/lsp/bin/") ;; python, fortran
@@ -2212,6 +2213,16 @@ As mentioned in [[file:packages.org]], we have some packages which make life eas
 (use-package! ox-rst
 :after org)
 (use-package! sphinx-mode)
+#+end_src
+* Python Helpers
+Basically this set's ~uvx~ up for most of the tooling.
+#+begin_src emacs-lisp
+(after! python
+  ;; Use uvx ruff for formatting
+  (set-formatter! 'ruff-format '("uvx" "ruff" "format" "--stdin-filename" "%S")
+    :modes '(python-mode python-ts-mode))
+  (setq-default flycheck-python-ruff-executable (executable-find "ruff"))
+  )
 #+end_src
 * R Helpers
 This section is essentially to configure working with ~R~ above and beyond the
