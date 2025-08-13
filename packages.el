@@ -95,10 +95,6 @@
 (package! citeproc-org :pin "0fb4c96f48b3055a59a397af24d3f1a82cf77b66")
 ;; Citeproc Org:1 ends here
 
-;; [[file:packages.org::*Dockerfile Mode][Dockerfile Mode:1]]
-(package! dockerfile-mode)
-;; Dockerfile Mode:1 ends here
-
 ;; [[file:packages.org::*Zotero][Zotero:1]]
 (package! zotxt)
 ;; Zotero:1 ends here
@@ -206,6 +202,10 @@
 ;; [[file:packages.org::*Nickel][Nickel:1]]
 (package! nickel-mode)
 ;; Nickel:1 ends here
+
+;; [[file:packages.org::*Dockerfile Mode][Dockerfile Mode:1]]
+(package! dockerfile-mode)
+;; Dockerfile Mode:1 ends here
 
 ;; [[file:packages.org::*MELPA Helper][MELPA Helper:1]]
 (package! package-lint)

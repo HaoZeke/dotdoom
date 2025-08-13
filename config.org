@@ -98,9 +98,9 @@
     - [[#nickel][Nickel]]
     - [[#meson-1][Meson]]
     - [[#astro][Astro]]
+    - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#aesthetics][Aesthetics]]
     - [[#wakatime][Wakatime]]
-  - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#functions][Functions]]
     - [[#org-export-html-with-useful-ids][Org-Export HTML with useful IDs]]
     - [[#org-mode-export-pdf-when-saved][Org-mode export pdf when saved]]
@@ -1751,6 +1751,16 @@ There is in built support for ~meson~ but it has no registered formatter.
 ;; (use-package! astro-ts-mode
 ;;     :mode "\\.astro")
 #+end_src
+*** Dockerfile Mode
+[[https://github.com/spotify/dockerfile-mode][This]] package from spotify has support for building things as well as
+highlighting Dockerfiles.
+#+BEGIN_SRC emacs-lisp
+(use-package! dockerfile-mode
+  :mode "Dockerfile\\'"
+  :config
+  (put 'dockerfile-image-name 'safe-local-variable #'stringp)
+  )
+#+END_SRC
 ** Aesthetics
 *** Wakatime
 Was removed from the core ~modules~ of ~doom-emacs~.
@@ -1760,16 +1770,6 @@ Was removed from the core ~modules~ of ~doom-emacs~.
   (cond ((featurep :system 'linux) (setq wakatime-cli-path "/usr/bin/wakatime"))
         ((featurep :system 'macos) (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")) ;; We assume homebrew
         )
-  )
-#+END_SRC
-** Dockerfile Mode
-[[https://github.com/spotify/dockerfile-mode][This]] package from spotify has support for building things as well as
-highlighting Dockerfiles.
-#+BEGIN_SRC emacs-lisp
-(use-package! dockerfile-mode
-  :mode "Dockerfile\\'"
-  :config
-  (put 'dockerfile-image-name 'safe-local-variable #'stringp)
   )
 #+END_SRC
 ** Functions

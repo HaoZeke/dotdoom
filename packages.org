@@ -46,7 +46,6 @@
     - [[#org-roam-bibtex][Org Roam Bibtex]]
     - [[#org-gcal][Org GCal]]
     - [[#citeproc-org][Citeproc Org]]
-  - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#reference-management][Reference Management]]
   - [[#syntax-highlighting][Syntax Highlighting]]
     - [[#sphinx-and-rst][Sphinx and RsT]]
@@ -72,6 +71,7 @@
     - [[#nushell][Nushell]]
     - [[#fish-shell][Fish shell]]
     - [[#nickel][Nickel]]
+    - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#no-matrix-clients][NO Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
@@ -277,13 +277,6 @@ Mainly used with ~ox-hugo~
 #+begin_src emacs-lisp :tangle yes
 (package! citeproc-org :pin "0fb4c96f48b3055a59a397af24d3f1a82cf77b66")
 #+end_src
-** Dockerfile Mode
-For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
-~## -*- docker-image-name: "your-image-name-here" -*-~ can be used to specify
-the image name.
-#+BEGIN_SRC emacs-lisp :tangle yes
-(package! dockerfile-mode)
-#+END_SRC
 ** Reference Management
 **** Zotero
 There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://github.com/vspinu/zotelo][zotelo]], but
@@ -447,6 +440,13 @@ Still haven't found a shell I really like.
 Easier to not write repititive ~yml~.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! nickel-mode)
+#+END_SRC
+*** Dockerfile Mode
+For syntax highlighting and inline builds. [[https://github.com/spotify/dockerfile-mode][From spotify]] weirdly.
+~## -*- docker-image-name: "your-image-name-here" -*-~ can be used to specify
+the image name.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! dockerfile-mode)
 #+END_SRC
 ** NO Matrix Clients
 CLOSED: [2025-07-27 Sun 02:07]
