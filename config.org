@@ -221,7 +221,10 @@ Apparently ~fish~ and ~nushell~ are particularly incompatible..
 
       ;; Ensure Emacs terminal emulators still use the user's preferred shell
       (setq-default vterm-shell user-shell)
-      (setq-default explicit-shell-file-name user-shell))))
+      (setq-default explicit-shell-file-name user-shell)
+
+      ;; Also update the specific shell script variable if needed
+      (setq-default sh-shell-file user-shell))))
 #+end_src
 ** Bugfixes
 Most of these should be removed when ~doom~ fixes them.
