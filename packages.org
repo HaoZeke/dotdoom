@@ -30,6 +30,7 @@
   - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
   - [[#evil-colemak][Evil Colemak]]
   - [[#firestarter][Firestarter]]
+  - [[#faster-eglot][Faster ~eglot~]]
   - [[#org-additions][Org Additions]]
     - [[#mermaid][Mermaid]]
     - [[#org-download][Org Download]]
@@ -177,6 +178,16 @@ For running shell commands on-save.
 (package! firestarter)
 #+END_SRC
 
+** Faster ~eglot~
+Using [[https://github.com/jdtsmith/eglot-booster][eglot-booster]], which in turn needs the [[https://github.com/blahgeek/emacs-lsp-booster][binary]].
+#+begin_src emacs-lisp :tangle yes
+(package!
+  eglot-booster
+  :recipe (
+           :host github
+           :repo "jdtsmith/eglot-booster")
+  )
+#+end_src
 ** Org Additions
 The new ones need to be covered in the ~config.org~ file with the appropriate
 keybindings. The notes are [[https://rgoswami.me/posts/org-note-workflow][described here]].

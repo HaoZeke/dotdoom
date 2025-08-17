@@ -29,6 +29,15 @@
 (package! firestarter)
 ;; Firestarter:1 ends here
 
+;; [[file:packages.org::*Faster ~eglot~][Faster ~eglot~:1]]
+(package!
+  eglot-booster
+  :recipe (
+           :host github
+           :repo "jdtsmith/eglot-booster")
+  )
+;; Faster ~eglot~:1 ends here
+
 ;; [[file:packages.org::*Mermaid][Mermaid:1]]
 (package! mermaid-mode)
 (package! ob-mermaid)

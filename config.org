@@ -992,6 +992,18 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
     )
   )
 #+end_src
+Also ~booster~ helps.
+#+begin_src emacs-lisp
+(use-package! eglot-booster
+  :after eglot
+  :commands (eglot-booster-mode)
+  :config
+  (eglot-booster-mode)
+  (set-eglot-client! 'python-mode '("emacs-lsp-booster" "uvx" "ruff" "server"))
+  (set-eglot-client! 'cc-mode '("emacs-lsp-booster" "clangd" "-j=3" "--clang-tidy"))
+  (set-eglot-client! '(rust-mode rust-ts-mode) '("emacs-lsp-booster" "rust-analyzer"))
+  )
+#+end_src
 **** Vale setup
 Even more writing aids.
 #+begin_src emacs-lisp
