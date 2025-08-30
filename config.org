@@ -465,7 +465,7 @@ There are way too many of these to keep using ~helm~.
       )
 #+END_SRC
 **** Insert Unicode
-This should hopefully propogate across all modes.
+This should hopefully propagate across all modes.
 #+BEGIN_SRC emacs-lisp
 (map! :leader
       (:prefix ("i" . "Insert")
@@ -788,7 +788,7 @@ Stolen [[https://tex.stackexchange.com/questions/45712/faster-way-of-writing-mat
 #+end_src
 *** Anki Editor
 These are only relevant to ~org-mode~. Nevertheless they are not part of
-~org-mode~ so semantically it makes no sense to use ~o~ after the localleader.
+~org-mode~ so semantically it makes no sense to use ~o~ after the ~localleader~.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (map! :localleader
       :map org-mode-map
