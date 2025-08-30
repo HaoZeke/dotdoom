@@ -69,6 +69,10 @@
 (package! org-ref)
 ;; Org Ref:1 ends here
 
+;; [[file:packages.org::*Org Modern][Org Modern:1]]
+(package! org-modern)
+;; Org Modern:1 ends here
+
 ;; [[file:packages.org::*Org Gantt][Org Gantt:1]]
 (package! org-gantt
   :recipe (:host github

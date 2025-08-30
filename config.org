@@ -67,6 +67,7 @@
     - [[#org-latex-subfigure][Org Latex Subfigure]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-mind-map][Org Mind Map]]
+    - [[#org-modern][Org Modern]]
     - [[#org-gantt][Org Gantt]]
     - [[#org-drill][Org Drill]]
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
@@ -1474,6 +1475,14 @@ The keymaps are defined in the following way:
    :states 'normal
    :prefix my-leader
    "m e m" '(org-mind-map-write :wk "Export mind-map") ))
+#+END_SRC
+*** Org Modern
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package! org-modern
+  :after org
+  :config
+  (setq global-org-modern-mode t)
+)
 #+END_SRC
 *** Org Gantt
 Useful TeX generator.
