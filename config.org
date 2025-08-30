@@ -190,15 +190,16 @@ Let's set some variables with basic user information.
 *** Font Face
 Honestly the basic font setting is simply not pretty enough.
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Intel One Mono" :size 18))
+(setq doom-font (font-spec :family "Intel One Mono" :size 26.0))
 ;; (setq doom-font (font-spec :family "Attribute Mono" :size 16))
 (unless (find-font doom-font)
-  (setq doom-font (font-spec :family "Cascadia Code PL" :size 14)))
+  (setq doom-font (font-spec :family "Cascadia Code PL" :size 24.0)))
 #+END_SRC
+Also ~doom-big-font-mode~ with ~SPC t b~ is very useful [fn:: This post has [[https://discourse.doomemacs.org/t/keeping-font-size-everywhere/2799/2][good notes]]].
 *** Unicode Fonts
 This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
 #+BEGIN_SRC emacs-lisp
-(setq doom-unicode-font (font-spec :family "Symbola" :size 20))
+(setq doom-unicode-font (font-spec :family "Symbola" :size 24.0))
 #+END_SRC
 *** Helm and Childframes
 I prefer the regular diminished font size, even for the childframes.
