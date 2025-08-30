@@ -13,8 +13,7 @@
   - [[#personal-information][Personal Information]]
 - [[#doom-emacs-stuff][Doom Emacs Stuff]]
   - [[#visual-tweaks][Visual tweaks]]
-    - [[#font-face][Font Face]]
-    - [[#unicode-fonts][Unicode Fonts]]
+    - [[#font-faces][Font Faces]]
     - [[#helm-and-childframes][Helm and Childframes]]
     - [[#saner-dashboard][Saner Dashboard]]
   - [[#tweaks][Tweaks]]
@@ -187,20 +186,74 @@ Let's set some variables with basic user information.
 #+END_SRC
 * Doom Emacs Stuff
 ** Visual tweaks
-*** Font Face
-Honestly the basic font setting is simply not pretty enough.
-#+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family "Intel One Mono" :size 26.0))
-;; (setq doom-font (font-spec :family "Attribute Mono" :size 16))
-(unless (find-font doom-font)
-  (setq doom-font (font-spec :family "Cascadia Code PL" :size 24.0)))
-#+END_SRC
+*** Font Faces
+Start by becoming resolution aware [fn:: Kanged from [[https://github.com/ztlevi/doom-config/blob/2c4841dcd722e80eafdfd58218017de43a52be2e/%2Bui.el#L44][here]]].
+#+begin_src emacs-lisp
+(setq resolution-factor (eval (/ (x-display-pixel-height) 1080.0)))
+(setq base-font-size 27.0)
+(defvar hz/font-setup-verbose 'nil
+  "If non-nil, display verbose messages about font setup.")
+#+end_src
+
+Now to find and set fonts.
+#+begin_src emacs-lisp
+(let ((font-list '("Intel One Mono"
+                   "Cascadia Code PL"
+                   "Attribute Mono"
+                   "OperatorMono Nerd Font"
+                   "Droid Sans Mono"
+                   "Droid Sans Fallback"))
+      (found-font nil))
+
+  (dolist (font-name font-list)
+    (if (find-font (font-spec :name font-name))
+        (progn
+          (setq user-font font-name)
+          (setq found-font t))
+      (when hz/font-setup-verbose
+        (message "Font '%s' does not exist!" font-name))))
+
+(unless found-font
+  (warn "No suitable font found. Using system defaults."))
+
+;; Set the font weight based on the found font
+(setq user-font-weight
+      (cond
+       ((string= user-font "Droid Sans Mono") 'medium)
+       (t 'normal)))
+
+;; Set up the fonts using the found font and resolution factor
+(setq doom-font (font-spec :family user-font
+                           :weight user-font-weight
+                           :size (eval (round (* base-font-size resolution-factor))))
+      doom-big-font (font-spec :family user-font
+                               :weight user-font-weight
+                               :size (eval (round (* (+ base-font-size 4) resolution-factor))))
+      doom-variable-pitch-font (font-spec :family user-font
+                                          :weight user-font-weight
+                                          :size (eval (round (* (- base-font-size 1) resolution-factor))))
+      doom-modeline-height (eval (round (* 36 resolution-factor)))
+
+      )
+)
+#+end_src
 Also ~doom-big-font-mode~ with ~SPC t b~ is very useful [fn:: This post has [[https://discourse.doomemacs.org/t/keeping-font-size-everywhere/2799/2][good notes]]].
-*** Unicode Fonts
-This should be implemented as fallback font once [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged.
+**** Unicode Fonts
+The ~unicode~ module uses ~doom-font~ for everything, but still needs a fallback
+font.
 #+BEGIN_SRC emacs-lisp
-(setq doom-unicode-font (font-spec :family "Symbola" :size 24.0))
+(setq doom-unicode-font (font-spec :family "Symbola"
+                                   :size (eval (round (* (- base-font-size 2) resolution-factor)))))
 #+END_SRC
+Now that [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged...
+#+begin_src emacs-lisp
+(defun hz/setup-font-sets ()
+  "Ensure fontsets for unicode fallback are configured correctly."
+  (when (and doom-unicode-font (fboundp 'set-fontset-font))
+    (set-fontset-font t 'unicode doom-unicode-font nil 'append)))
+
+(add-hook 'after-setting-font-hook #'hz/setup-font-sets)
+#+end_src
 *** Helm and Childframes
 I prefer the regular diminished font size, even for the childframes.
 #+BEGIN_SRC emacs-lisp
