@@ -28,6 +28,7 @@
   - [[#later-magit-additions][LATER Magit Additions]]
     - [[#magit-delta][Magit Delta]]
   - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
+  - [[#chezmoi-setup][~chezmoi~ setup]]
   - [[#evil-colemak][Evil Colemak]]
   - [[#firestarter][Firestarter]]
   - [[#faster-eglot][Faster ~eglot~]]
@@ -165,6 +166,10 @@ and very rational. However, I really can't wait. So.. This is a stop gap solutio
 (package! general)
 #+END_SRC
 - [x] Remove when it's merged upstream
+** ~chezmoi~ setup
+#+begin_src emacs-lisp
+(package! chezmoi)
+#+end_src
 ** Evil Colemak
 I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from here]]. Read about why [[https://rgoswami.me/posts/colemak-dots-refactor/][here]]. The visual line mode setup leverages [[https://github.com/YourFin/evil-better-visual-line/][this package]].
 #+begin_src emacs-lisp :tangle yes

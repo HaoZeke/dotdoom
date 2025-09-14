@@ -20,6 +20,10 @@
 (package! magit-delta)
 ;; Magit Delta:1 ends here
 
+;; [[file:packages.org::*~chezmoi~ setup][~chezmoi~ setup:1]]
+(package! chezmoi)
+;; ~chezmoi~ setup:1 ends here
+
 ;; [[file:packages.org::*Evil Colemak][Evil Colemak:1]]
 (package! evil-colemak-basics :recipe (:branch "main"))
 (package! evil-better-visual-line)
