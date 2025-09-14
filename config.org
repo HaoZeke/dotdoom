@@ -62,6 +62,7 @@
     - [[#kill-ob-julia][KILL Ob-Julia]]
     - [[#org-download][Org Download]]
     - [[#org-babel][Org Babel]]
+    - [[#org-cv][Org CV]]
     - [[#async-org-babel][Async Org Babel]]
     - [[#org-config][Org Config]]
     - [[#org-latex-subfigure][Org Latex Subfigure]]
@@ -72,7 +73,7 @@
     - [[#org-drill][Org Drill]]
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
     - [[#org-gcal][Org GCal]]
-    - [[#hugo-settings][Hugo Settings]]
+    - [[#ox-hugo-settings][~ox-hugo~ Settings]]
     - [[#citeproc][Citeproc]]
     - [[#calctex][CalcTeX]]
   - [[#syntax-highlighting][Syntax Highlighting]]
@@ -1327,6 +1328,18 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
       org-ditaa-jar-path (concat (getenv "HOME") "/.local/bin/ditaa0_9.jar")
 )
 #+END_SRC
+*** Org CV
+#+begin_src emacs-lisp
+(use-package! ox-awesomecv
+  :after org
+  :config
+  (defun hz/org-export-to-file-awesomecv-tex ()
+    (interactive)
+    (let ((outfile (org-export-output-file-name ".tex")))
+      (org-export-to-file 'awesomecv outfile)))
+  )
+#+end_src
+Usage is from [[https://github.com/stotok/dotdoomemacs/blob/d6e19efb19546bab09834969d5d210517b99b841/doom.org#L30][stotok]] and the [[https://gitlab.com/zzamboni/vita/-/tree/master?ref_type=heads][zzamboni]] configurations.
 *** Async Org Babel
 From [[https://github.com/diadochos/org-babel-eval-in-repl][here]]. Now we can configure this.
 #+BEGIN_SRC emacs-lisp
@@ -1520,7 +1533,7 @@ Note that we configure this [[https://github.com/kidd/org-gcal.el][as per the RE
 #+begin_src emacs-lisp :tangle yes
 (use-package! org-gcal)
 #+end_src
-*** Hugo Settings
+*** ~ox-hugo~ Settings
 This should be set for everything. I like to keep the last modified date, but only consider things to be modified if 12 hours have passed.
 #+BEGIN_SRC emacs-lisp
 (let* ((hugo-section "posts")

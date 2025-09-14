@@ -83,6 +83,13 @@
 (package! helm-org-rifle)
 ;; Org Rifle:1 ends here
 
+;; [[file:packages.org::*Org CV][Org CV:1]]
+(package! org-cv
+  :recipe (:host gitlab
+           :repo "Titan-C/org-cv"
+           :branch "master"))
+;; Org CV:1 ends here
+
 ;; [[file:packages.org::*Org Async][Org Async:1]]
 (package! org-babel-eval-in-repl)
 ;; Org Async:1 ends here

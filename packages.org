@@ -42,6 +42,7 @@
     - [[#org-gantt][Org Gantt]]
     - [[#no-org-mind-map][NO Org Mind Map]]
     - [[#org-rifle][Org Rifle]]
+    - [[#org-cv][Org CV]]
     - [[#org-async][Org Async]]
     - [[#anki-mode][Anki Mode]]
     - [[#org-re-reveal-extensions][Org Re-Reveal Extensions]]
@@ -261,6 +262,14 @@ Technically a helm addition. Perfect for monolithic ~org~ files. More details
 [[https://github.com/alphapapa/helm-org-rifle][here]].
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! helm-org-rifle)
+#+END_SRC
+*** Org CV
+Not yet on MELPA, but used here to [[https://gitlab.com/zzamboni/vita/-/tree/master?ref_type=heads][great effect]].
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! org-cv
+  :recipe (:host gitlab
+           :repo "Titan-C/org-cv"
+           :branch "master"))
 #+END_SRC
 *** Org Async
 We will use this.
