@@ -1523,11 +1523,25 @@ Note that we configure this [[https://github.com/kidd/org-gcal.el][as per the RE
 *** Hugo Settings
 This should be set for everything. I like to keep the last modified date, but only consider things to be modified if 12 hours have passed.
 #+BEGIN_SRC emacs-lisp
-(setq org-hugo-auto-set-lastmod 't
-      org-hugo-section "posts"
-      org-hugo-suppress-lastmod-period 43200.0
-      org-hugo-export-creator-string "Emacs 26.3 (Org mode 9.4 + ox-hugo + HaoZeke)"
-)
+(let* ((hugo-section "posts")
+       (emacs-major-version (car (version-to-list emacs-version)))
+       (emacs-minor-version (nth 1 (version-to-list emacs-version)))
+       (org-mode-version org-version)
+       (hugo-creator-string (format "Emacs %s.%s (Org mode %s + ox-hugo + HaoZeke)"
+                                    emacs-major-version
+                                    emacs-minor-version
+                                    org-mode-version))
+       (org-creator-string (format "Emacs %s.%s (Org mode %s + HaoZeke)"
+                                   emacs-major-version
+                                   emacs-minor-version
+                                   org-mode-version))
+       (auto-set-lastmod 't)
+       (suppress-period 43200.0))
+  (setq org-hugo-auto-set-lastmod auto-set-lastmod
+        org-hugo-section hugo-section
+        org-hugo-suppress-lastmod-period suppress-period
+        org-hugo-export-creator-string hugo-creator-string
+        org-export-creator-string org-creator-string))
 #+END_SRC
 *** Citeproc
 I also like to have rational and numbered citations.
