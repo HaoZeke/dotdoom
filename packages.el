@@ -90,6 +90,13 @@
            :branch "master"))
 ;; Org CV:1 ends here
 
+;; [[file:packages.org::*ESSGD][ESSGD:1]]
+(package! essgd
+  :recipe (:host github
+           :repo "sje30/essgd"
+           :branch "main"))
+;; ESSGD:1 ends here
+
 ;; [[file:packages.org::*Org Async][Org Async:1]]
 (package! org-babel-eval-in-repl)
 ;; Org Async:1 ends here

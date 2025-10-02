@@ -98,6 +98,7 @@
     - [[#fish-shell][Fish shell]]
     - [[#nickel][Nickel]]
     - [[#meson-1][Meson]]
+    - [[#r][R]]
     - [[#astro][Astro]]
     - [[#dockerfile-mode][Dockerfile Mode]]
   - [[#aesthetics][Aesthetics]]
@@ -1865,6 +1866,27 @@ There is in built support for ~meson~ but it has no registered formatter.
     :modes '(meson-mode))
   )
 #+end_src
+*** R
+I now use ~pixi~ to handle some of this.. so.
+#+begin_src bash :eval never
+pixi global add --environment r_env r-styler --expose pixiR=R
+#+end_src
+#+begin_src emacs-lisp
+(set-formatter!
+  'rstyler
+  '("pixiR" "-s" "--no-save" "--no-restore" "-e" "styler::style_text(readLines(file('stdin')))")
+  :modes '(ess-r-mode))
+#+end_src
+
+Also nice to use [[https://github.com/sje30/essgd?tab=readme-ov-file][essgd]]:
+#+begin_src emacs-lisp
+(use-package! essgd
+  :after '(ess-r-mode)
+  :config
+  (essgd-start)
+  )
+#+end_src
+
 *** Astro
 #+begin_src emacs-lisp
 ;; (setq treesit-language-source-alist

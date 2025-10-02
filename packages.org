@@ -43,6 +43,7 @@
     - [[#no-org-mind-map][NO Org Mind Map]]
     - [[#org-rifle][Org Rifle]]
     - [[#org-cv][Org CV]]
+    - [[#essgd][ESSGD]]
     - [[#org-async][Org Async]]
     - [[#anki-mode][Anki Mode]]
     - [[#org-re-reveal-extensions][Org Re-Reveal Extensions]]
@@ -270,6 +271,14 @@ Not yet on MELPA, but used here to [[https://gitlab.com/zzamboni/vita/-/tree/mas
   :recipe (:host gitlab
            :repo "Titan-C/org-cv"
            :branch "master"))
+#+END_SRC
+*** ESSGD
+Not yet on MELPA, but [[https://github.com/sje30/essgd][very cool]].
+#+BEGIN_SRC emacs-lisp :tangle yes
+(package! essgd
+  :recipe (:host github
+           :repo "sje30/essgd"
+           :branch "main"))
 #+END_SRC
 *** Org Async
 We will use this.
