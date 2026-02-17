@@ -37,7 +37,7 @@
        ;;  +icons           ; enables file icons
        ;;  +fuzzy)          ; enable fuzzy search backend for ivy
        (vertico             ; the search engine of the future
-        +childframe         ; GUI only, but nicer UX
+        ;; +childframe         ; GUI only, but nicer UX
         +icons)             ; Icons for file and buffer category completions
 
       :ui
@@ -102,8 +102,8 @@
        ;;vterm           ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax             ; tasing you for every semicolon you forget
-        +childframe)       ; use childframes for error popups (Emacs 26+ only)
+       (syntax)             ; tasing you for every semicolon you forget
+        ;; +childframe)       ; use childframes for error popups (Emacs 26+ only)
        (spell              ; tasing you for misspelling mispelling
         +aspell            ; works better than hunspell
        ;; +hunspell        ; use a backend
@@ -125,7 +125,7 @@
         +dictionary     ; enable word definitions and thesaurus lookup
         +offline        ; install and prefer offline dictionary/thesaurus
         +docsets)       ; ...on in Dash docsets locally
-       ;; llm           ; when I said you needed friends, I didn't mean...
+       llm              ; when I said you needed friends, I didn't mean...
        (lsp +eglot)     ; M-x vscode
        magit            ; a git porcelain for Emacs
        ;;make           ; run make tasks from Emacs
@@ -186,8 +186,8 @@
        ;;ledger             ; be audit you can be
        lua                  ; one-based indices? one-based indices
        markdown             ; writing docs for people to ignore
-       ;;nim                ; python + lisp at the speed of c
-       ;; nix                  ; I hereby declare "nix geht mehr!"
+       (nim +lsp)           ; python + lisp at the speed of c
+       ;; nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml              ; an objective camel
        (org                 ; organize your plain life in plain text
         ;; +brain           ; for org-brain support
