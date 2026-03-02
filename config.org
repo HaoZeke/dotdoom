@@ -2912,12 +2912,12 @@ LLM proxy. Agentic mode gives pi full tool access (file edits, shell commands).
     (vterm-send-string rg/pi-command)
     (vterm-send-return)))
 
+;; Pi bindings under SPC l (Doom's llm prefix) alongside gptel
+;; gptel-send is already SPC l s, gptel-menu is SPC l m
 (map! :leader
-      (:prefix ("a" . "AI")
-       :desc "gptel send" "g" #'gptel-send
-       :desc "gptel menu" "G" #'gptel-menu
+      (:prefix "l"
        :desc "Pi interactive" "p" #'rg/pi-open
-       :desc "Pi send region" "r" #'rg/pi-send-region
+       :desc "Pi send region" "R" #'rg/pi-send-region
        :desc "Pi send buffer" "b" #'rg/pi-send-buffer))
 #+end_src
 ** Vterm quick launchers
