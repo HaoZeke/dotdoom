@@ -1928,9 +1928,7 @@ Also nice to use [[https://github.com/sje30/essgd?tab=readme-ov-file][essgd]]:
 #+begin_src emacs-lisp
 (use-package! essgd
   :after ess-r-mode
-  :config
-  (essgd-start)
-  )
+  :commands (essgd-start))
 #+end_src
 
 *** Astro
