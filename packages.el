@@ -79,9 +79,9 @@
             :repo "swillner/org-gantt" :files ("*.el")))
 ;; Org Gantt:1 ends here
 
-;; [[file:packages.org::*Org Rifle][Org Rifle:1]]
-(package! helm-org-rifle)
-;; Org Rifle:1 ends here
+;; [[file:packages.org::*Org-ql (replaces helm-org-rifle)][Org-ql (replaces helm-org-rifle):1]]
+(package! org-ql)
+;; Org-ql (replaces helm-org-rifle):1 ends here
 
 ;; [[file:packages.org::*Org CV][Org CV:1]]
 (package! org-cv
@@ -239,6 +239,12 @@
 (package! flycheck-package)
 ;; MELPA Helper:1 ends here
 
+;; [[file:packages.org::*LLM Interactions][LLM Interactions:1]]
+;; gptel is built into Doom's :tools llm module
+;; (package! aidermacs)  ; aider not installed; using pi-coding-agent via vterm
+;; (package! ellama)     ; ollama removed; GPU LLM proxy via gptel instead
+;; LLM Interactions:1 ends here
+
 ;; [[file:packages.org::*Doom][Doom:1]]
 (package! emacs-snippets
   :recipe (:host github
@@ -252,6 +258,22 @@
            :repo "AndreaCrotti/yasnippet-snippets"
            :files ("*")))
 ;; Standard:1 ends here
+
+;; [[file:packages.org::*Org and LaTeX enhancements][Org and LaTeX enhancements:1]]
+;; Syntax highlighting in LaTeX export using Emacs faces (replaces minted/listings)
+(package! engrave-faces)
+;; Reveal hidden org markup (emphasis, links, entities) on cursor
+(package! org-appear :recipe (:host github :repo "awth13/org-appear"))
+;; Context-aware auto-expanding LaTeX snippets in math environments
+(package! aas :recipe (:host github :repo "ymarco/auto-activating-snippets"))
+(package! laas :recipe (:host github :repo "tecosaur/LaTeX-auto-activating-snippets"))
+;; Theme-matching LaTeX PDF exports
+(package! ox-chameleon :recipe (:host github :repo "tecosaur/ox-chameleon"))
+;; Glossaries, acronyms, and index support for org documents
+(package! org-glossary :recipe (:host github :repo "tecosaur/org-glossary"))
+;; Visual latexdiff on org exports with magit integration
+(package! orgdiff :recipe (:host github :repo "tecosaur/orgdiff"))
+;; Org and LaTeX enhancements:1 ends here
 
 ;; [[file:packages.org::*Math support][Math support:1]]
 (package! cdlatex)
