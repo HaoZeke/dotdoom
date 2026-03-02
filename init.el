@@ -99,11 +99,11 @@
        eshell            ; a consistent, cross-platform shell (WIP)
        ;; shell          ; simple shell REPL for Emacs
        term              ; basic terminal emulator for Emacs
-       ;;vterm           ; the best terminal emulation in Emacs
+       vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax)             ; tasing you for every semicolon you forget
-        ;; +childframe)       ; use childframes for error popups (Emacs 26+ only)
+       (syntax              ; tasing you for every semicolon you forget
+        +flycheck)           ; use flycheck over flymake (vale/typos checkers need it)
        (spell              ; tasing you for misspelling mispelling
         +aspell            ; works better than hunspell
        ;; +hunspell        ; use a backend

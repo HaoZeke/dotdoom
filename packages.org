@@ -79,8 +79,7 @@
   - [[#no-matrix-clients][NO Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
-  - [[#completion-helpers][Completion helpers]]
-    - [[#no-github-copilot][NO Github Copilot]]
+  - [[#llm-interactions][LLM Interactions]]
   - [[#snippets][Snippets]]
     - [[#doom][Doom]]
     - [[#standard][Standard]]
@@ -258,11 +257,11 @@ Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
   :recipe (:host github
             :repo "theodorewiles/org-mind-map"))
 #+END_SRC
-*** Org Rifle
-Technically a helm addition. Perfect for monolithic ~org~ files. More details
-[[https://github.com/alphapapa/helm-org-rifle][here]].
+*** Org-ql (replaces helm-org-rifle)
+Structured org queries with vertico integration. Searches headings, content,
+tags, and properties across files.
 #+BEGIN_SRC emacs-lisp :tangle yes
-(package! helm-org-rifle)
+(package! org-ql)
 #+END_SRC
 *** Org CV
 Not yet on MELPA, but used here to [[https://gitlab.com/zzamboni/vita/-/tree/master?ref_type=heads][great effect]].
@@ -497,12 +496,11 @@ This is for linting files before submitting to MELPA.
 (package! package-lint)
 (package! flycheck-package)
 #+END_SRC
-** Completion helpers
-*** NO Github Copilot
-CLOSED: [2025-07-27 Sun 02:07]
-#+begin_src emacs-lisp :tangle no
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+** LLM Interactions
+#+begin_src emacs-lisp
+;; gptel is built into Doom's :tools llm module
+;; (package! aidermacs)  ; aider not installed; using pi-coding-agent via vterm
+;; (package! ellama)     ; ollama removed; GPU LLM proxy via gptel instead
 #+end_src
 ** Snippets
 These are from [[https://github.com/hlissner][hlissner]].
@@ -521,6 +519,23 @@ These are from the [[https://github.com/AndreaCrotti/yasnippet-snippets][officia
            :repo "AndreaCrotti/yasnippet-snippets"
            :files ("*")))
 #+END_SRC
+** Org and LaTeX enhancements
+Tecosaur ecosystem packages for better org-mode and LaTeX export.
+#+begin_src emacs-lisp :tangle yes
+;; Syntax highlighting in LaTeX export using Emacs faces (replaces minted/listings)
+(package! engrave-faces)
+;; Reveal hidden org markup (emphasis, links, entities) on cursor
+(package! org-appear :recipe (:host github :repo "awth13/org-appear"))
+;; Context-aware auto-expanding LaTeX snippets in math environments
+(package! aas :recipe (:host github :repo "ymarco/auto-activating-snippets"))
+(package! laas :recipe (:host github :repo "tecosaur/LaTeX-auto-activating-snippets"))
+;; Theme-matching LaTeX PDF exports
+(package! ox-chameleon :recipe (:host github :repo "tecosaur/ox-chameleon"))
+;; Glossaries, acronyms, and index support for org documents
+(package! org-glossary :recipe (:host github :repo "tecosaur/org-glossary"))
+;; Visual latexdiff on org exports with magit integration
+(package! orgdiff :recipe (:host github :repo "tecosaur/orgdiff"))
+#+end_src
 ** Math support
 I like [[https://github.com/cdominik/cdlatex][cdlatex]].
 #+BEGIN_SRC emacs-lisp :tangle yes

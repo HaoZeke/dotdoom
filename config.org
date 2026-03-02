@@ -115,6 +115,7 @@
     - [[#better-rust-formatting][Better Rust Formatting]]
     - [[#smarter-clang-formatting][Smarter Clang Formatting]]
     - [[#org-mode-export-to-markdown][Org-mode export to Markdown]]
+    - [[#org-mode-export-for-the-carpentries-workbench][Org-mode export for the Carpentries workbench]]
     - [[#smartparens-wrapping][Smartparens Wrapping]]
     - [[#sort-words][Sort words]]
     - [[#doas-helpers][~doas~ helpers]]
@@ -158,6 +159,7 @@
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
   - [[#xenops-inspired][Xenops Inspired]]
+- [[#llm-interactions][LLM Interactions]]
 - [[#notes][Notes]]
   - [[#noteyoda][noteYoda]]
     - [[#org-ref][Org-Ref]]
@@ -263,9 +265,9 @@ Now that [[https://github.com/hlissner/doom-emacs/pull/861][this]] is merged...
 #+end_src
 *** Helm and Childframes
 I prefer the regular diminished font size, even for the childframes.
-#+BEGIN_SRC emacs-lisp
-;; Undo the helm text enlargement in childframes
-(setq +helm-posframe-text-scale 0)
+#+BEGIN_SRC emacs-lisp :tangle no
+;; Helm is no longer enabled (using vertico)
+;; (setq +helm-posframe-text-scale 0)
 #+END_SRC
 *** Saner Dashboard
 I have trouble at work with the current DOOM dashboard. This one is from the
@@ -297,12 +299,11 @@ Apparently ~fish~ and ~nushell~ are particularly incompatible..
 #+end_src
 ** Bugfixes
 Most of these should be removed when ~doom~ fixes them.
-#+begin_src emacs-lisp
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("nongnu" . "https://elpa.nongnu.org/nongnu/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")
-                         ("melpa" . "https://melpa.org/packages/")
-                         ))
+#+begin_src emacs-lisp :tangle no
+;; Doom manages package-archives via straight.el; manual override removed
+;; (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
+;;                          ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+;;                          ("melpa" . "https://melpa.org/packages/")))
 #+end_src
 ** Helm changes
 This makes `helm` behave more like `ivy` while working with directories.
@@ -333,7 +334,7 @@ This is a little too frequent for working with a ~git~ repo. Henrik mentioned an
 will probably only manually trigger the re-compliation.
 #+BEGIN_SRC emacs-lisp
 (after! org
-  (remove-hook 'after-save-hook #'+literate|recompile-maybe))
+  (remove-hook 'after-save-hook #'+literate-recompile-maybe-h))
 #+END_SRC
 *** Kill Orgmode template
 These conflict with my other templates.
@@ -478,7 +479,7 @@ This should hopefully propagate across all modes.
        :desc "Unicode" "u" 'insert-char
        :desc "Snippet" "s" 'yas-insert-snippet
        :desc "From Clipboard" "y" '+default/yank-pop
-       :desc "From Evil Registers" "r" 'counsel-evil-registers
+       :desc "From Evil Registers" "r" 'evil-show-registers
       )
 )
 #+END_SRC
@@ -811,14 +812,14 @@ These are only relevant to ~org-mode~. Nevertheless they are not part of
 #+END_SRC
 *** CC Mode
 These are basically wrappers around various ~rtags~ functions.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
+;; rtags is no longer installed; using clangd via eglot instead
 (nmap
   :prefix my-leader
   :keymaps 'c-mode-base-map
   "m" '(:ignore t :wk "Local Commands")
   "m r" '(:ignore t :wk "Rtags")
   "m r c" '(rtags-check-includes :wk "Check Includes")
-  ;; All the find commands
   "m r f" '(:ignore t :wk "Find")
   "m r f s" '(:ignore t :wk "Symbol")
   "m r f s a" '(rtags-find-symbol-at-point :wk "At point")
@@ -829,7 +830,6 @@ These are basically wrappers around various ~rtags~ functions.
   "m r f f" '(rtags-find-functions-called-by-this-function :wk "Functions")
   "m r f r" '(rtags-find-references :wk "References")
   )
-
 #+END_SRC
 *** Evil Colemak
 These are mostly because movement without ~hnei~ is horrible. Read about it
@@ -933,9 +933,8 @@ These are more semantic for me.
   "m f m" '(TeX-fold-math :wk "Math")
   ;; Insertions
   "m i" '(:ignore t :wk "Insert")
-  "m i m" '(helm-insert-latex-math :wk "Math Symbols")
+  "m i m" '(LaTeX-math-mode :wk "Math mode toggle")
   "m i r" '(:ignore t :wk "References")
-  "m i r h" '(helm-bibtex-with-local-bibliography :wk "Helm")
   "m i r r" '(reftex-citation :wk "Reftex")
   )
 #+END_SRC
@@ -1038,11 +1037,17 @@ I use some paths on my remote machines, which are non-standard.
 Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better described here.
 #+begin_src emacs-lisp
 (after! eglot
-  :config
   (add-hook 'nix-mode-hook 'eglot-ensure)
   (add-hook 'f90-mode-hook 'eglot-ensure)
   (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
   (set-eglot-client! 'python-mode '("uvx" "ruff" "server"))
+  ;; harper-ls for grammar checking in prose modes
+  (set-eglot-client! 'org-mode '("harper-ls" "--stdio"))
+  (set-eglot-client! 'markdown-mode '("harper-ls" "--stdio"))
+  (set-eglot-client! 'text-mode '("harper-ls" "--stdio"))
+  (set-eglot-client! 'latex-mode '("harper-ls" "--stdio"))
+  (add-hook 'org-mode-hook 'eglot-ensure)
+  (add-hook 'markdown-mode-hook 'eglot-ensure)
   (when (string= (system-name) "Rohits-MacBook-Pro.local")
     (setq exec-path (append exec-path '(
                                         (concat (getenv "HOME") "/.micromamba/envs/lsp/bin/") ;; python, fortran
@@ -1065,17 +1070,30 @@ Also ~booster~ helps.
   (set-eglot-client! '(rust-mode rust-ts-mode) '("emacs-lsp-booster" "rust-analyzer"))
   )
 #+end_src
-**** Vale setup
-Even more writing aids.
+**** Vale and typos
+Prose linting with vale (custom ~rgoswami~ style at =~/.config/vale=) and spell checking with typos (Rust, low false-positive).
 #+begin_src emacs-lisp
 (flycheck-define-checker vale
-  "A checker for prose"
-  :command ("uvx" "vale" "--output" "line" source)
+  "A checker for prose using vale with custom rgoswami style rules."
+  :command ("vale" "--output" "line"
+            "--config" (eval (expand-file-name "~/.config/vale/.vale.ini"))
+            source)
   :standard-input nil
   :error-patterns
   ((error line-start (file-name) ":" line ":" column ":" (id (one-or-more (not (any ":")))) ":" (message) line-end))
-  :modes (markdown-mode gfm-mode org-mode text-mode))
+  :modes (markdown-mode gfm-mode org-mode text-mode latex-mode))
 (add-to-list 'flycheck-checkers 'vale 'append)
+
+(flycheck-define-checker typos
+  "A spell checker for code and prose using typos (Rust)."
+  :command ("typos" "--format" "brief" source)
+  :standard-input nil
+  :error-patterns
+  ((warning line-start (file-name) ":" line ":" column ": " (message) line-end))
+  :modes (markdown-mode gfm-mode org-mode text-mode latex-mode
+          python-mode rust-mode c-mode c++-mode nim-mode
+          emacs-lisp-mode sh-mode yaml-mode))
+(add-to-list 'flycheck-checkers 'typos 'append)
 #+end_src
 ** Package Settings
 These should eventually go into a different module.
@@ -1092,16 +1110,13 @@ This section is to work with the settings for the ~word-wrap~ ~doom~ module.
 #+begin_src emacs-lisp
 (after! spell-fu
   (setq spell-fu-idle-delay 0.5 ; default is 0.25
-        ispell-program-name "hunspell"
-        ;; aspell -> "--sug-mode=ultra"
-        ;;ispell-extra-args '("-d en_US")
-        ispell-dictionary "en_US" ; needed for MacOS in particular
-        ispell-personal-dictionary "~/.aspell.en.pws" ; standard location
-        spell-fu-dictionary "~/.config/dict" ; standard location
+        ispell-program-name "aspell"
+        ispell-extra-args '("--sug-mode=ultra")
+        ispell-dictionary "en_US"
+        ispell-personal-dictionary "~/.aspell.en.pws"
+        spell-fu-dictionary "~/.config/dict"
         )
-  ;; use American English as ispell default dictionary
   (ispell-change-dictionary "american" t)
-  (setq-default ispell-program-name "hunspell")
   )
 #+end_src
 Also, it gets annoying to have spell check enabled while working with code.
@@ -1306,7 +1321,7 @@ Now we can configure the package itself.
                 org-download-screenshot-file "/tmp/screenshot.png"
                 )
   (cond ((featurep :system 'linux)
-         (if (string-match-p "wayland" (getenv "WAYLAND_DISPLAY"))
+         (if (getenv "WAYLAND_DISPLAY")
              (setq-default org-download-screenshot-method "grim -g \"$(slurp)\" - > %s")
            (setq-default org-download-screenshot-method "xclip -selection clipboard -t image/png -o > %s")
            )
@@ -1317,14 +1332,13 @@ Now we can configure the package itself.
 *** Org Babel
 Julia and Mathematica are not set. Other languages might also be needed here eventually.
 #+BEGIN_SRC emacs-lisp
-(after! 'org
-            (org-babel-do-load-languages 'org-babel-load-languages
-                                         (append org-babel-load-languages
-                                                 ;; '((julia . t))
-                                                 '((mathematica . t))
-                                                 '((ditaa . t))
-                                                 ))
-            )
+(after! org
+  (org-babel-do-load-languages 'org-babel-load-languages
+                               (append org-babel-load-languages
+                                       ;; '((julia . t))
+                                       '((mathematica . t))
+                                       '((ditaa . t))
+                                       )))
 (setq org-babel-mathematica-command "~/.local/bin/mash"
       org-ditaa-jar-path (concat (getenv "HOME") "/.local/bin/ditaa0_9.jar")
 )
@@ -1341,6 +1355,16 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
   )
 #+end_src
 Usage is from [[https://github.com/stotok/dotdoomemacs/blob/d6e19efb19546bab09834969d5d210517b99b841/doom.org#L30][stotok]] and the [[https://gitlab.com/zzamboni/vita/-/tree/master?ref_type=heads][zzamboni]] configurations.
+#+begin_src emacs-lisp
+(use-package! ox-moderncv
+  :after org
+  :config
+  (defun hz/org-export-to-file-moderncv-tex ()
+    (interactive)
+    (let ((outfile (org-export-output-file-name ".tex")))
+      (org-export-to-file 'moderncv outfile)))
+  )
+#+end_src
 *** Async Org Babel
 From [[https://github.com/diadochos/org-babel-eval-in-repl][here]]. Now we can configure this.
 #+BEGIN_SRC emacs-lisp
@@ -1357,20 +1381,14 @@ For better font-locking within orgmode.
 #+begin_src emacs-lisp
 (setq org-latex-preview '(native latex script entities))
 #+end_src
-**** Switching to XeLaTeX
-Since I use a lot of unicode math; it makes sense to switch from LaTeX to
-XeLaTeX everywhere. This section borrows heavily from [[https://github.com/david-sawatzke/dotfiles/blob/80f9ffb265bf664623f5ad39f3a64771e90a402e/doom.d/config.el][here]] and [[https://github.com/isfootaken/.emacs.d/blob/f2a3cd64c62ec1be544bdb8e2427a0e2fafcaf02/conf.org][here]]. Might
-possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f770d7427665fa1f8e691fd4c2316febcb41d/conf.org#org-latex-preview][at this]] later too.
+**** Default packages for XeLaTeX
+Unicode math with tectonic (XeLaTeX by default). No need for ~inputenc~ /
+~fontenc~ conditionals since we never use pdflatex. Minted removed in favor of
+~engrave-faces~ (set in shared preferences).
 #+BEGIN_SRC emacs-lisp
-;; Set after the default-packages list anyway
 (setq org-latex-packages-alist 'nil)
 (setq org-latex-default-packages-alist
-      '(("AUTO" "inputenc"  t ("pdflatex"))
-        ("T1"   "fontenc"   t ("pdflatex"))
-        (""     "graphicx"  t)
-        (""     "grffile"   t)
-        (""     "minted"   t)
-        ;; ("dvipsnames,svgnames*,x11names*,table"     "xcolor"   t)
+      '((""     "graphicx"  t)
         (""     "longtable" nil)
         (""     "wrapfig"   nil)
         (""     "rotating"  nil)
@@ -1382,37 +1400,23 @@ possibly want to look [[https://github.com/isfootaken/emacs-org-config/blob/376f
         (""     "textcomp"  t)
         (""     "capt-of"   nil)
         (""     "hyperref"  nil)))
-;; (add-to-list 'org-latex-default-packages-alist '("" "fontspec" t))
-;; (setq org-latex-inputenc-alist '(("utf8" . "utf8x")))
-;; (add-to-list 'org-latex-packages-alist '("" "unicode-math"))
 (after! org
   (plist-put org-format-latex-options :scale 2.2)
-  (add-to-list 'org-preview-latex-process-alist '(dvixelatex :programs
-                                                  ("xetex" "convert")
-                                                  :description "pdf > png" :message "you need to install the programs: xetex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-                                                  (1.0 . 1.0)
-                                                  :latex-compiler
-                                                  ("xelatex -no-pdf -interaction nonstopmode -output-directory %o %f")
-                                                  :image-converter
-                                                  ("dvisvgm %f -n -b min -c %S -o %O")))
-
-  (add-to-list 'org-preview-latex-process-alist '(imagexetex :programs
-                                                  ("xelatex" "convert")
-                                                  :description "pdf > png" :message "you need to install the programs: xelatex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-                                                  (1.0 . 1.0)
-                                                  :latex-compiler
-                                                  ("xelatex -interaction nonstopmode -output-directory %o %f")
-                                                  :image-converter
-                                                  ("convert -density %D -trim -antialias %f -quality 100 %O")))
+  ;; tectonic-based preview via dvisvgm (SVG, theme-aware)
+  (add-to-list 'org-preview-latex-process-alist
+               '(dvisvgm-tectonic :programs ("tectonic" "dvisvgm")
+                 :description "xdv > svg"
+                 :image-input-type "xdv" :image-output-type "svg"
+                 :image-size-adjust (1.7 . 1.5)
+                 :latex-compiler ("tectonic -X compile --outfmt xdv --keep-logs -o %o %f")
+                 :image-converter ("dvisvgm %f -n -b min -c %S -o %O")))
   )
 #+END_SRC
 **** Inline images
-These need to be disabled by default otherwise ~emacs~ stalls often. Also, it
-turns out that ~dvipng~ has some bugs on my system, so Imagemagick works better,
-once security policies have been adjusted in ~/etc/ImageMagick-/policy.xml~.
+Previews via tectonic + dvisvgm for SVG output (theme-aware, sharp at any scale).
 #+BEGIN_SRC emacs-lisp
   (after! org
-    (setq org-preview-latex-default-process 'imagexetex)
+    (setq org-preview-latex-default-process 'dvisvgm-tectonic)
     (setq org-startup-with-inline-images 'nil)
     (setq org-image-actual-width 400)
     )
@@ -1463,32 +1467,26 @@ We would like to not have additional newlines between trees.
 #+begin_src emacs-lisp
 (setq org-cycle-separator-lines 0)
 #+end_src
-*** Org Rifle
-This probably needs to be refactored later. Or loaded elsewhere.
-The keymaps are defined in the following way:
-#+BEGIN_SRC emacs-lisp
-(use-package! helm-org-rifle
+*** Org Search (replaces helm-org-rifle)
+[[https://github.com/alphapapa/org-ql][org-ql]] for structured queries across org files (headings + content + tags +
+properties). ~consult-org-heading~ for quick heading jumps in current buffer /
+agenda. Together they cover everything helm-org-rifle did but with vertico.
+#+begin_src emacs-lisp
+(use-package! org-ql
   :after org
-  :general
-  (:keymaps 'org-mode-map
-   :states 'normal
-   :prefix my-leader
-   "m r" '(:ignore t :wk "Rifle (Helm)")
-   "m r b" '(helm-org-rifle-current-buffer :wk "Rifle buffer")
-   "m r e" '(helm-org-rifle :wk "Rifle every open buffer")
-   "m r d" '(helm-org-rifle-directory :wk "Rifle from org-directory")
-   "m r a" '(helm-org-rifle-agenda-files :wk "Rifle agenda")
-   "m r o" '(:ignore t :wk "Occur (Persistent)")
-   "m r o b" '(helm-org-rifle-current-buffer :wk "Rifle buffer")
-   "m r o e" '(helm-org-rifle :wk "Rifle every open buffer")
-   "m r o d" '(helm-org-rifle-directory :wk "Rifle from org-directory")
-   "m r o a" '(helm-org-rifle-agenda-files :wk "Rifle agenda")
-   )
-  )
-#+END_SRC
+  :commands (org-ql-search org-ql-view org-ql-find))
+
+(after! org
+  (map! :leader
+        (:prefix ("o" . "open")
+         :desc "Org heading (buffer)" "h" #'consult-org-heading
+         :desc "Org heading (agenda)" "H" #'consult-org-agenda
+         :desc "Org-ql find" "q" #'org-ql-find
+         :desc "Org-ql search" "Q" #'org-ql-search)))
+#+end_src
 *** Org Mind Map
 [[https://github.com//theodorewiles/org-mind-map][This]] is used to create ~graphiz~ graphs from ~org-mode~ stuff.
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package! org-mind-map
   :general
   (:keymaps 'org-mode-map
@@ -1504,6 +1502,54 @@ The keymaps are defined in the following way:
   (setq global-org-modern-mode t)
 )
 #+END_SRC
+*** Org Appear
+Reveal hidden markup (emphasis, links, subscripts, entities) when cursor is on them.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-hide-emphasis-markers t
+        org-appear-autoemphasis t
+        org-appear-autolinks t
+        org-appear-autosubmarkers t
+        org-appear-autoentities t))
+#+END_SRC
+*** LaTeX Auto-Activating Snippets
+Context-aware auto-expanding snippets in math environments. Typing =sr= expands
+to =\sqrt{}=, =//= to =\frac{}{}=, etc.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package! laas
+  :hook ((LaTeX-mode . laas-mode)
+         (org-mode . laas-mode)))
+#+END_SRC
+*** Ox-Chameleon
+Theme-matching LaTeX PDF exports. Picks up the current Emacs theme colors for
+headings, links, and source blocks so exported PDFs stay consistent with the
+editor appearance.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(after! ox
+  (require 'ox-chameleon))
+#+END_SRC
+*** Org Glossary
+Glossaries, acronyms, and index support for org documents. Define terms in a
+=:glossary:= drawer and reference them with =gls:term= links.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package! org-glossary
+  :hook (org-mode . org-glossary-mode))
+#+END_SRC
+*** OrgDiff
+Visual diffs of org files via ~latexdiff~ on exported LaTeX. Integrates with
+magit for commit-to-commit comparison. Requires ~latexdiff~ from texlive.
+#+BEGIN_SRC emacs-lisp :tangle yes
+(use-package! orgdiff
+  :after org
+  :config
+  (let ((texlive-bin (car (file-expand-wildcards
+                           (expand-file-name "~/.local/share/texlive-*/bin/x86_64-linux")))))
+    (when texlive-bin
+      (add-to-list 'exec-path texlive-bin)
+      (setenv "PATH" (concat texlive-bin ":" (getenv "PATH"))))))
+#+END_SRC
 *** Org Gantt
 Useful TeX generator.
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -1512,7 +1558,7 @@ Useful TeX generator.
 #+END_SRC
 *** Org Drill
 It makes sense to keep this around so as to leverage existing resources.
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 ;;(use-package! org-drill
 ;;  :after org)
 #+END_SRC
@@ -1881,14 +1927,14 @@ pixi global add --environment r_env r-styler --expose pixiR=R
 Also nice to use [[https://github.com/sje30/essgd?tab=readme-ov-file][essgd]]:
 #+begin_src emacs-lisp
 (use-package! essgd
-  :after '(ess-r-mode)
+  :after ess-r-mode
   :config
   (essgd-start)
   )
 #+end_src
 
 *** Astro
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 ;; (setq treesit-language-source-alist
 ;;       '((astro "https://github.com/virchau13/tree-sitter-astro")
 ;;         (css "https://github.com/tree-sitter/tree-sitter-css")
@@ -2112,6 +2158,70 @@ This is a convinience function for working with ~nanoc~.
            dir "/" (file-name-sans-extension (buffer-name)) ".md"))
     )
 #+END_SRC
+*** Org-mode export for the Carpentries workbench
+#+begin_src emacs-lisp
+(defun export-as-workbench-md ()
+  "Save, strip the export line via grep, and pipe to Pandoc."
+  (interactive)
+  (save-buffer)
+  (let* ((src (buffer-file-name))
+         ;; Get the filename from the buffer keywords
+         (kv  (org-collect-keywords '("EXPORT_FILE_NAME")))
+         (out (or (cadr (assoc "EXPORT_FILE_NAME" kv))
+                  (concat (file-name-sans-extension src) ".md")))
+         ;; Grep excludes the line -> Pipe -> Pandoc
+         (cmd (format "grep -v '^#+EXPORT_FILE_NAME:' %s | pandoc -f org -t markdown-smart+fenced_divs -o %s"
+                      (shell-quote-argument src)
+                      (shell-quote-argument out))))
+    
+    (shell-command cmd)
+    (message "Exported to %s" out)))
+#+end_src
+or alternatively a baroque but windows compatible variant without ~grep~.
+#+begin_src emacs-lisp :eval never :exports none
+(defun export-as-workbench-md ()
+  "Export to Carpentries MD, filtering out global Org options that confuse Pandoc."
+  (interactive)
+  (let* ((source-file (buffer-file-name))
+         ;; 1. helper to get keywords from the current buffer before we mess with it
+         (get-keyword (lambda (key) 
+                        (cadr (assoc key (org-collect-keywords (list key))))))
+         (export-prop (funcall get-keyword "EXPORT_FILE_NAME"))
+         (output-file (or export-prop 
+                          (concat (file-name-sans-extension source-file) ".md"))))
+    
+    (if source-file
+        (let ((default-directory (file-name-directory source-file)))
+          ;; Create output directory if it doesn't exist
+          (when (file-name-directory output-file)
+            (make-directory (file-name-directory output-file) t))
+
+          ;; 2. Work in a temp buffer so we don't modify your actual file
+          (with-temp-buffer
+            (insert-file-contents source-file)
+            
+            ;; 3. Remove the specific global lines that Pandoc renders as raw text
+            ;; We remove TITLE (since it's in YAML), OPTIONS, and EXPORT_FILE_NAME
+            ;; We do NOT remove MACRO, so your mdheader still works.
+            (goto-char (point-min))
+            (while (re-search-forward "^#\\+\\(EXPORT_FILE_NAME\\|OPTIONS\\|TITLE\\|AUTHOR\\|DATE\\):.*[\r\n]+" nil t)
+              (replace-match ""))
+
+            ;; 4. Pipe the CLEANED buffer content to Pandoc
+            ;; We use call-process-region sending the buffer (point-min to max) to stdin
+            (apply 'call-process-region
+                   (point-min) (point-max)
+                   "pandoc"
+                   nil 0 nil ;; discard stdout (0), don't replace buffer
+                   ;; Args passed to pandoc:
+                   "-f" "org" 
+                   "-t" "markdown-smart+fenced_divs" 
+                   "-o" output-file
+                   nil))
+          
+          (message "Exported cleaned content to %s" output-file))
+      (error "Buffer is not associated with a file"))))
+#+end_src
 *** TODO Smartparens Wrapping
 - [ ] Make this conditional and only when ~+smartparens~ is active
 This is to define some more wrapping functions I use often (for markdown and
@@ -2228,7 +2338,7 @@ which case it will save it without prompting."
 ** Chat Clients
 *** Matrix
 Configuring the only ~emacs~ chat client I use.
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :tangle no
 ;; (use-package! matrix-client
 ;;   :init
 ;;   :commands matrix-client-connect)
@@ -2317,12 +2427,11 @@ probably replace a lot of my other hooks eventually as well.
 Move all the hooks to this section if possible.
 *** Out of Focus Hook
 Similar to ~neovim~ and its ~set autowrite~ and ~au FocusLost * update~:
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp :tangle no
 ;; Save on focus lost (The frame's focus that is...)
 ;; (defun save-all ()
 ;;   (interactive)
 ;;   (save-some-buffers t))
-
 ;; (add-hook 'focus-out-hook 'save-all)
 #+end_src
 From [[https://github.com/madstap/emacs/blob/master/customizations/editing.el][here]].
@@ -2335,15 +2444,14 @@ Currently I only need to use the clang formatting hook here.
 (interactive)
   "Add auto-save hook for clang-format-buffer-smart."
   (add-hook 'before-save-hook 'haozeke/clang-format-buffer-conditional nil t))
-; This is a doom-emacs convinience macro
-(add-hook! (c-mode c++-mode cc-mode) #'haozeke/clang-format-buffer-smart-on-save)
-(remove-hook! (c-mode c++-mode cc-mode) #'haozeke/clang-format-buffer-smart-on-save)
+; Disabled: using Doom format module with clang-format instead
+;; (add-hook! (c-mode c++-mode cc-mode) #'haozeke/clang-format-buffer-smart-on-save)
 #+END_SRC
 *** Disable Auto RDM
 This conflicts with the ArchLinux ~systemctl --user start rdm~ thing.
-#+BEGIN_SRC emacs-lisp
-; Do not automatically try to run rdm
-(remove-hook 'c-mode-common-hook #'+cc|init-rtags)
+#+BEGIN_SRC emacs-lisp :tangle no
+; rtags support was removed from Doom; this hook no longer exists
+;; (remove-hook 'c-mode-common-hook #'+cc|init-rtags)
 #+END_SRC
 ** Troubleshooting
 These are strictly temporary hacks to resolve problems until they are fixed
@@ -2502,21 +2610,21 @@ This is the part which is exported normally.
 #+END_SRC
 ** Shared Preferences
 *** Compiler
-It makes sense to use ~latexmk~ anyway. This way I can set sane defaults.
+Using ~tectonic~ for automatic package fetching, reproducible builds, and no
+~texlive~ management overhead. Falls back to a single invocation with bibtex.
 #+NAME: tex_process
 #+BEGIN_SRC emacs-lisp :tangle no
-;; Compiler
-(setq org-latex-pdf-process (list "latexmk -shell-escape -f -pdfxe %f"))
+;; Compiler -- tectonic handles bibtex, package downloads, and multiple passes
+(setq org-latex-pdf-process (list "tectonic -X compile --synctex --keep-logs %f"))
 #+END_SRC
 *** Packages
-Some of these are damn near universal given my set up, so they are declared here.
+Using ~engrave-faces~ for source block highlighting in LaTeX export (faster than
+minted, no pygments dependency, works in batch mode).
 #+NAME: common_pkgs
 #+BEGIN_SRC emacs-lisp :tangle no
-;; Configuration
-(add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
-(setq org-latex-listings 'minted)
-(setq org-latex-minted-options
-  '(("bgcolor" "white") ("breaklines" "true") ("linenos" "true") ("style" "tango")))
+;; engrave-faces replaces minted for code highlighting
+(setq org-latex-src-block-backend 'engraved)
+(setq org-latex-engraved-theme t) ;; use current Emacs theme
 #+END_SRC
 ** Export Templates
 Most of the configuration is to be moved into the file snippets. However, class
@@ -2560,7 +2668,8 @@ This is really ad-hoc right now and from [[https://www.reddit.com/r/emacs/commen
 Basically I need to see math and physics. Originally borrowed from [[https://emacs.stackexchange.com/questions/30341/how-do-i-customize-the-process-that-gets-triggered-in-org-preview-latex-fragment][this
 stackexchange]] question.
 **** Process
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
+;; Superseded by dvisvgm-tectonic process defined in Org Config section
 '(org-preview-latex-process-alist
   (quote
    ((dvipng :programs
@@ -2728,8 +2837,7 @@ This function is called by `org-babel-execute-src-block'."
 #+end_src
 ** Completion
 *** Github Copilot
-#+begin_src emacs-lisp :tangle yes
-;; accept completion from copilot and fallback to company
+#+begin_src emacs-lisp :tangle no
 ;; (use-package! copilot
 ;;   :hook (prog-mode . copilot-mode)
 ;;   :bind (:map copilot-completion-map
@@ -2751,6 +2859,86 @@ This includes settings for both flycheck and the packages it needs.
 ** Xenops Inspired
 [[https://github.com/dandavison/xenops/][Xenops]] is essentially a supercharged literate set of functions for using ~Mathematica~ and ~SymPy~. It is similar to my previous ~mash~ et. al. setup but automatically appends ~// TeXForm // ToString~ and other helpful conversions. Due to the many modifications of my default environment and setup; these functions are adapted for use from ~xenops~ but cannot be loaded directly with it. Also my use case here is more focused towards only working in ~orgmode~ as opposed to ~xenops~'s focus on ~TeX~.
 #+begin_src emacs-lisp
+#+end_src
+* LLM Interactions
+** gptel
+Doom's built-in ~gptel~ backend, pointed at the local GPU LLM proxy (RTX 4070 Ti
+SUPER via SSH tunnel on localhost:8081). Requires ~gpu-llm-up~ to be running.
+#+begin_src emacs-lisp
+(after! gptel
+  (setq gptel-model "qwen3-coder-30b-a3b"
+        gptel-backend (gptel-make-openai "gpu-llm"
+                                         :host "localhost:8081"
+                                         :protocol "http"
+                                         :models '("qwen3-coder-30b-a3b"
+                                                   "qwen3-coder-next-80b"
+                                                   "qwen3.5-35b-a3b")
+                                         :stream t))
+  (setq gptel-default-mode 'org-mode))
+#+end_src
+** Pi-coding-agent integration
+Send buffer, region, or file to [[https://github.com/mariozechner/pi-coding-agent][pi-coding-agent]] running against the local GPU
+LLM proxy. Agentic mode gives pi full tool access (file edits, shell commands).
+#+begin_src emacs-lisp
+(defvar rg/pi-command "bunx @mariozechner/pi-coding-agent"
+  "Command to launch pi-coding-agent.")
+
+(defun rg/pi-send-region (start end prompt)
+  "Send region between START and END to pi with PROMPT in a vterm buffer."
+  (interactive "r\nsPrompt for pi: ")
+  (let* ((text (buffer-substring-no-properties start end))
+         (buf-name "*vterm-pi*")
+         (escaped-prompt (shell-quote-argument
+                          (format "%s\n\n```\n%s\n```" prompt text))))
+    (unless (get-buffer buf-name)
+      (let ((vterm-buffer-name buf-name))
+        (vterm)))
+    (switch-to-buffer buf-name)
+    (vterm-send-string
+     (format "%s --prompt %s" rg/pi-command escaped-prompt))
+    (vterm-send-return)))
+
+(defun rg/pi-send-buffer (prompt)
+  "Send entire buffer to pi with PROMPT."
+  (interactive "sPrompt for pi: ")
+  (rg/pi-send-region (point-min) (point-max) prompt))
+
+(defun rg/pi-open ()
+  "Open an interactive pi-coding-agent session in a vterm buffer."
+  (interactive)
+  (let ((buf-name "*vterm-pi*"))
+    (unless (get-buffer buf-name)
+      (let ((vterm-buffer-name buf-name))
+        (vterm)))
+    (switch-to-buffer buf-name)
+    (vterm-send-string rg/pi-command)
+    (vterm-send-return)))
+
+(map! :leader
+      (:prefix ("a" . "AI")
+       :desc "gptel send" "g" #'gptel-send
+       :desc "gptel menu" "G" #'gptel-menu
+       :desc "Pi interactive" "p" #'rg/pi-open
+       :desc "Pi send region" "r" #'rg/pi-send-region
+       :desc "Pi send buffer" "b" #'rg/pi-send-buffer))
+#+end_src
+** Vterm quick launchers
+Named vterm buffers for common tasks.
+#+begin_src emacs-lisp
+(defun rg/vterm-named (name cmd)
+  "Open a named vterm buffer and send CMD."
+  (let ((buf-name (format "*vterm-%s*" name)))
+    (unless (get-buffer buf-name)
+      (let ((vterm-buffer-name buf-name))
+        (vterm)
+        (vterm-send-string cmd)
+        (vterm-send-return)))
+    (switch-to-buffer buf-name)))
+
+(map! :leader
+      (:prefix ("v" . "Vterm")
+       :desc "Open vterm" "v" #'+vterm/here
+       :desc "Project vterm" "p" #'+vterm/toggle))
 #+end_src
 * Notes
 ** noteYoda
@@ -2775,9 +2963,8 @@ sections are set in my ~private~ config.
     (add-to-list 'org-export-before-parsing-hook #'my/org-ref-process-buffer--html))
   :config
   (setq
-   org-ref-completion-library 'org-ref-ivy-cite
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-   bibtex-completion-bibliography (list (concat (getenv "HOME") "/GDrive/zotLib.bib"))
+   bibtex-completion-bibliography (list (concat (getenv "HOME") "/Documents/zotLib.bib"))
    bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
    org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
    org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
