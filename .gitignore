@@ -361,3 +361,8 @@ Temporary Items
 
 
 .aider*
+
+# Claude Code
+CLAUDE.md
+.claude/
+local/rg_signature.png
