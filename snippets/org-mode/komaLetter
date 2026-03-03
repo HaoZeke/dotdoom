@@ -1,0 +1,98 @@
+# -*- mode: snippet -*-
+# name: koma-letter
+# contributor: Rohit Goswami (HaoZeke)
+# key: <kltr
+# --
+
+#+AUTHOR: Rohit Goswami
+#+SUBJECT: ${1:Subject}
+
+# Export: org-koma-letter-export-to-pdf (C-c C-e k p)
+# Ref: https://orgmode.org/worg/exporters/koma-letter-export.html
+# Ref: https://ch.mirrors.cicku.me/ctan/macros/latex/contrib/koma-script/doc/scrguide-en.pdf
+
+# --- Signature (text-only default; for digital sig swap the lines below) ---
+#+SIGNATURE: Rohit Goswami MInstP MRSC MBCS \\\\ Institute IMX \\& Lab-COSMO \\\\ Ecole polytechnique federale de Lausanne (EPFL) \\\\ Switzerland \\\\ \\url{https://rgoswami.me}
+# #+SIGNATURE: \\includegraphics[width=3cm]{`(expand-file-name "local/rg_signature.png" doom-user-dir)`} \\\\ Rohit Goswami MInstP MRSC MBCS \\\\ Institute IMX \\& Lab-COSMO \\\\ Ecole polytechnique federale de Lausanne (EPFL) \\\\ Switzerland \\\\ \\url{https://rgoswami.me}
+
+# --- Letterhead / logo (uncomment and set firsthead=true in class options) ---
+# To enable: swap the CLASS_OPTIONS lines, uncomment the setkomavar block below
+#+LATEX_CLASS_OPTIONS: [foldmarks=false, firsthead=false, backaddress=false, version=last]
+# #+LATEX_CLASS_OPTIONS: [foldmarks=false, firsthead=true, backaddress=false, version=last]
+
+#+OPTIONS: subject:underlined
+
+# --- Local session config (buffer-local, does not pollute global org) ---
+#+begin_src emacs-lisp :results none :eval always :exports none
+(make-variable-buffer-local 'org-latex-default-packages-alist)
+(make-variable-buffer-local 'org-latex-packages-alist)
+
+(defun hz/org-latex-setup-koma-letter (backend)
+  "Buffer-local overrides for koma-letter export."
+  (when (org-export-derived-backend-p backend 'koma-letter)
+    (setq-local org-latex-packages-alist nil)
+    (setq-local org-latex-default-packages-alist nil)))
+(add-hook 'org-export-before-processing-hook #'hz/org-latex-setup-koma-letter nil t)
+#+end_src
+
+# --- LaTeX Preamble ---
+#+LATEX_HEADER: % --- Letterhead (uncomment for logo/header; also set firsthead=true above) ---
+#+LATEX_HEADER: % \\setkomavar{firsthead}{%
+#+LATEX_HEADER: %   \\includegraphics[height=1.5cm]{logo.png}\\hfill
+#+LATEX_HEADER: %   {\\sffamily\\large Your Organization}%
+#+LATEX_HEADER: % }
+#+LATEX_HEADER: % \\setplength{firstheadvpos}{20pt}
+#+LATEX_HEADER: % Remove spacing for omitted headers (disable these when using letterhead)
+#+LATEX_HEADER: \\setplength{firstheadvpos}{0pt}
+#+LATEX_HEADER: \\setplength{backaddrheight}{0pt}
+#+LATEX_HEADER: \\setplength{locvpos}{0pt}
+#+LATEX_HEADER: \\setplength{toaddrvpos}{0pt}
+#+LATEX_HEADER: \\setplength{refvpos}{100pt}
+#+LATEX_HEADER: \\setplength{tfoldmarkvpos}{0pt}
+#+LATEX_HEADER: % --- CORE & COLOR PACKAGES ---
+#+LATEX_HEADER: \\usepackage{url}
+#+LATEX_HEADER: \\usepackage[svgnames]{xcolor}
+#+LATEX_HEADER: \\usepackage{pagecolor}
+#+LATEX_HEADER: \\usepackage{graphicx}
+#+LATEX_HEADER: % --- TYPOGRAPHY PACKAGES ---
+#+LATEX_HEADER: \\usepackage{fontspec}
+#+LATEX_HEADER: \\usepackage{lettrine}
+#+LATEX_HEADER: \\usepackage{microtype}
+#+LATEX_HEADER: \\usepackage[document]{ragged2e}
+#+LATEX_HEADER: % Font stack
+#+LATEX_HEADER: \\setmainfont[Ligatures=TeX, SmallCapsFont={Vollkorn SemiBold}]{Vollkorn}
+#+LATEX_HEADER: \\setsansfont[Ligatures=TeX]{Atkinson Hyperlegible}
+#+LATEX_HEADER: \\setmonofont[Scale=0.85]{Intel One Mono}
+#+LATEX_HEADER: % --- Page color (uncomment for parchment) ---
+#+LATEX_HEADER: % \\pagecolor{Seashell}
+#+LATEX_HEADER: % --- Drop cap ---
+#+LATEX_HEADER: \\newcommand{\\dropcap}[2]{\\lettrine[lines=2, findent=3pt, nindent=0pt]{#1}{#2}}
+#+LATEX_HEADER: \\renewcommand*{\\raggedsignature}{\\raggedright}
+#+LATEX_HEADER: \\setkomavar*{enclseparator}{Enclosure}
+#+LATEX_HEADER: \\usepackage[textwidth=7in,textheight=9in]{geometry}
+#+LATEX_HEADER: \\usepackage{hyperref}
+# --- End Preamble ---
+
+* To Address                                                           :to:
+${2:Recipient}
+${3:Organization}
+${4:Location}
+
+* ${5:Dear Sir or Madam,}
+\\dropcap{${6:P}}{${7:lease}} $0
+
+*  Thank you for your consideration :closing:
+
+# * PS                                                                   :ps:
+# PS: text here
+
+# * ENCL                                                               :encl:
+# Attached documents
+
+# * CC                                                                   :cc:
+# recipients
+
+# Local Variables:
+# before-save-hook: org-babel-execute-buffer
+# after-save-hook: haozeke/org-save-and-export-koma-letter-pdf
+# End:
