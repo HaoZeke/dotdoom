@@ -66,9 +66,14 @@
     - [[#async-org-babel][Async Org Babel]]
     - [[#org-config][Org Config]]
     - [[#org-latex-subfigure][Org Latex Subfigure]]
-    - [[#org-rifle][Org Rifle]]
+    - [[#org-search-replaces-helm-org-rifle][Org Search (replaces helm-org-rifle)]]
     - [[#org-mind-map][Org Mind Map]]
     - [[#org-modern][Org Modern]]
+    - [[#org-appear][Org Appear]]
+    - [[#latex-auto-activating-snippets][LaTeX Auto-Activating Snippets]]
+    - [[#ox-chameleon][Ox-Chameleon]]
+    - [[#org-glossary][Org Glossary]]
+    - [[#orgdiff][OrgDiff]]
     - [[#org-gantt][Org Gantt]]
     - [[#org-drill][Org Drill]]
     - [[#org-re-reveal-additions][Org Re-Reveal Additions]]
@@ -160,6 +165,9 @@
     - [[#melpa-helpers][MELPA Helpers]]
   - [[#xenops-inspired][Xenops Inspired]]
 - [[#llm-interactions][LLM Interactions]]
+  - [[#gptel][gptel]]
+  - [[#pi-coding-agent-integration][Pi-coding-agent integration]]
+  - [[#vterm-quick-launchers][Vterm quick launchers]]
 - [[#notes][Notes]]
   - [[#noteyoda][noteYoda]]
     - [[#org-ref][Org-Ref]]
@@ -372,23 +380,6 @@ Formatting with ~styler~ takes forever.
                                           ))
 #+END_SRC
 ** Keybindings
-These are eventually going to with [[https://github.com/noctuid/general.el][general]] anyway. So it's better to load that
-for now and carry on. Later this block can be prevented from being tangled.
-*** DONE General
-- [X] Remove once merged upstream.
-This does very little other than load it and remind it that ~SPC~ is the leader for the other bindings to work.
-#+BEGIN_SRC emacs-lisp :tangle no
-(use-package! general)
-;; Creating a constant for making future changes simpler
-(defconst my-leader "SPC")
-;; Tell general all about it
-(general-create-definer my-leader-def
-  :prefix my-leader)
-  ;; :prefix my-leader)
-;; (general-create-definer my-local-leader-def
-;;   ;; :prefix my-local-leader
-;;   :prefix "SPC m")
-#+END_SRC
 *** Evil Setup and Error Handling
 Actually this might not be ported over so I'm just going to put this elsewhere.
 #+BEGIN_SRC emacs-lisp
