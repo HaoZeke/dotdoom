@@ -114,9 +114,6 @@ The filename is determined by the ~SRC~ block languages.
 These are hopefully just temporary.
 #+begin_src emacs-lisp :tangle no
 ;; https://github.com/doomemacs/doomemacs/issues/7078#issuecomment-1430884107
-(package! transient :pin "c2bdf7e12c530eb85476d3aef317eb2941ab9440")
-(package! with-editor :pin "391e76a256aeec6b9e4cbd733088f30c677d965b")
-;; (package! compat :pin "6f73eac")
 #+end_src
 ** OS Specific Packages
 *** MacOS
@@ -143,11 +140,6 @@ These have been added upstream in ~develop~.
 
 #+BEGIN_SRC emacs-lisp :tangle no
 (package! magit-org-todos)
-(package! magithub)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle no
-;; (package! magit-todos)
 #+END_SRC
 
 Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
@@ -159,13 +151,6 @@ CLOSED: [2022-01-21 Fri 10:44]
 (package! magit-delta)
 #+end_src
 
-** DONE Key Chords and Keybindings
-It turns out that the switch to [[https://github.com/noctuid/general.el][general.el]] is both inevitable (doom version 2.1)
-and very rational. However, I really can't wait. So.. This is a stop gap solution.
-#+BEGIN_SRC emacs-lisp :tangle no
-(package! general)
-#+END_SRC
-- [x] Remove when it's merged upstream
 ** Evil Colemak
 I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from here]]. Read about why [[https://rgoswami.me/posts/colemak-dots-refactor/][here]]. The visual line mode setup leverages [[https://github.com/YourFin/evil-better-visual-line/][this package]].
 #+begin_src emacs-lisp :tangle yes
@@ -309,8 +294,7 @@ This extension seems to be a maintained fork.
 *** Citeproc Org
 Mainly used with ~ox-hugo~
 #+begin_src emacs-lisp :tangle yes
-(package! citeproc-org :pin "0fb4c96f48b3055a59a397af24d3f1a82cf77b66")
-#+end_src
+(package! citeproc-org)
 ** Reference Management
 **** Zotero
 There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://github.com/vspinu/zotelo][zotelo]], but
