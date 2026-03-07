@@ -54,13 +54,11 @@
 ;; Feature parity with doom
 (eval-after-load 'ox '(require 'ox-koma-letter))
 (with-eval-after-load 'ox-latex
-  ;; Compiler
-  (setq org-latex-pdf-process (list "latexmk -shell-escape -f -pdfxe %f"))
-  ;; Configuration
-  (add-to-list 'org-latex-packages-alist '("" "minted" "xcolor"))
-  (setq org-latex-listings 'minted)
-  (setq org-latex-minted-options
-    '(("bgcolor" "white") ("breaklines" "true") ("linenos" "true") ("style" "tango")))
+  ;; Compiler -- tectonic handles bibtex, package downloads, and multiple passes
+  (setq org-latex-pdf-process (list "tectonic -X compile --synctex --keep-logs %f"))
+  ;; engrave-faces replaces minted for code highlighting
+  (setq org-latex-src-block-backend 'engraved)
+  (setq org-latex-engraved-theme t) ;; use current Emacs theme
   (append-to-list
    'org-latex-classes
    '(("tufte-book"
