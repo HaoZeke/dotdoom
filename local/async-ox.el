@@ -4,29 +4,61 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
+(defvar rg/async-emacs-dir
+  (file-name-as-directory (expand-file-name "~/.config/emacs/"))
+  "Emacs configuration directory for async Org export workers.")
+
+(defvar rg/async-straight-dir
+  (expand-file-name ".local/straight/" rg/async-emacs-dir)
+  "Straight package root for async Org export workers.")
+
+(defvar rg/async-straight-repos-dir
+  (expand-file-name "repos/" rg/async-straight-dir)
+  "Straight repository root for async Org export workers.")
+
+(defvar rg/async-straight-build-dir
+  (file-name-as-directory
+   (or (car (file-expand-wildcards
+             (expand-file-name
+              (format "build-%d.%d" emacs-major-version emacs-minor-version)
+              rg/async-straight-dir)))
+       (car (last (sort (file-expand-wildcards
+                         (expand-file-name "build-*" rg/async-straight-dir))
+                        #'string<)))
+       (expand-file-name "build/" rg/async-straight-dir)))
+  "Straight build directory for async Org export workers.")
+
+(defun rg/async-add-load-path (path)
+  "Add PATH to `load-path' when it exists."
+  (when (file-directory-p path)
+    (add-to-list 'load-path (file-name-as-directory path))))
+
+(defun rg/async-add-straight-package (package &optional repo)
+  "Add Straight PACKAGE and optional REPO directories to `load-path'."
+  (rg/async-add-load-path (expand-file-name package rg/async-straight-build-dir))
+  (rg/async-add-load-path
+   (expand-file-name (or repo package) rg/async-straight-repos-dir)))
+
+(rg/async-add-straight-package "org" "org-mode")
 (require 'org)
 (require 'ox)
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-mode/contrib/lisp/")
 (require 'ox-koma-letter)
 (require 'ox-beamer)
 
 ;; Org-Ref Stuff
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/org-ref/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/dash.el/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm.el/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/build/helm/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/helm-bibtex/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/ivy/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/hydra/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/key-chord/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/s.el/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/f.el/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/pdf-tools/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/emacs-htmlize/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/parsebib/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/build/async/")
-(add-to-list 'load-path "~/.emacs.d/.local/straight/repos/biblio.el/")
+(dolist (package '("org-ref" "dash" "s" "f" "hydra" "avy" "request"
+                   "queue" "aio" "citeproc" "parsebib"
+                   "biblio" "async" "htmlize" "pdf-tools"
+                   "bibtex-completion"))
+  (rg/async-add-straight-package package))
+(rg/async-add-straight-package "dash" "dash.el")
+(rg/async-add-straight-package "s" "s.el")
+(rg/async-add-straight-package "f" "f.el")
+(rg/async-add-straight-package "biblio" "biblio.el")
+(rg/async-add-straight-package "request" "emacs-request")
+(rg/async-add-straight-package "aio" "emacs-aio")
+(rg/async-add-straight-package "htmlize" "emacs-htmlize")
+(rg/async-add-straight-package "bibtex-completion" "helm-bibtex")
 (require 'org-ref)
 
 (load (expand-file-name
@@ -37,9 +69,9 @@
 ;; Path addtion
 (let ((texlive-path
        (cond
-        ((featurep :system 'linux)
+        ((eq system-type 'gnu/linux)
          (concat (getenv "HOME") "/.local/share/texlive-20230827/bin/x86_64-linux"))
-        ((featurep :system 'macos)
+        ((eq system-type 'darwin)
          (concat (getenv "HOME") "/usr/local/texlive/2021/bin/universal-darwin")))))
   (when texlive-path
     (add-to-list 'exec-path texlive-path)

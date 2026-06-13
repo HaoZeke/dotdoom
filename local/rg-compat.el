@@ -2,6 +2,9 @@
 
 (require 'cl-lib)
 
+(defvar-local rg/parsebib-normalized-buffer nil
+  "Non-nil when the current buffer has normalized escaped BibTeX braces.")
+
 (defun rg/parsebib-normalize-escaped-braces ()
   "Normalize Zotero escaped braces in the current BibTeX buffer."
   (goto-char (point-min))
@@ -11,6 +14,13 @@
          "{\\\\textbraceleft}"
        "{\\\\textbraceright}")
      t t)))
+
+(defun rg/parsebib-normalize-current-buffer-once ()
+  "Normalize escaped BibTeX braces in the current buffer once."
+  (unless rg/parsebib-normalized-buffer
+    (save-excursion
+      (rg/parsebib-normalize-escaped-braces))
+    (setq rg/parsebib-normalized-buffer t)))
 
 (defun rg/parsebib-parse-bib-buffer-normalized (orig-fn &rest args)
   "Call ORIG-FN on a normalized copy of the current BibTeX buffer."
@@ -22,7 +32,7 @@
       (when dialect
         (setq-local bibtex-dialect dialect))
       (insert contents)
-      (rg/parsebib-normalize-escaped-braces)
+      (rg/parsebib-normalize-current-buffer-once)
       (apply orig-fn args))))
 
 (with-eval-after-load 'parsebib
@@ -30,6 +40,17 @@
                            'parsebib-parse-bib-buffer)
     (advice-add 'parsebib-parse-bib-buffer
                 :around #'rg/parsebib-parse-bib-buffer-normalized)))
+
+(defun rg/bibtex-completion-with-normalized-buffer (orig-fn &rest args)
+  "Call ORIG-FN after normalizing the current BibTeX buffer."
+  (rg/parsebib-normalize-current-buffer-once)
+  (apply orig-fn args))
+
+(with-eval-after-load 'bibtex-completion
+  (dolist (fn '(bibtex-completion-parse-bibliography
+                bibtex-completion-parse-strings))
+    (unless (advice-member-p #'rg/bibtex-completion-with-normalized-buffer fn)
+      (advice-add fn :around #'rg/bibtex-completion-with-normalized-buffer))))
 
 (defun rg/flycheck-org-lint-line-number (line)
   "Return a numeric line for LINE from Org lint report data."
