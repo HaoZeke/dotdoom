@@ -29,6 +29,11 @@
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/biblio.el/")
 (require 'org-ref)
 
+(load (expand-file-name
+       "rg-compat.el"
+       (file-name-directory (or load-file-name buffer-file-name)))
+      nil t)
+
 ;; Path addtion
 (let ((texlive-path
        (cond

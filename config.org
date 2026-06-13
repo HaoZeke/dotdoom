@@ -164,10 +164,7 @@
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
   - [[#xenops-inspired][Xenops Inspired]]
-- [[#llm-interactions][LLM Interactions]]
-  - [[#gptel][gptel]]
-  - [[#pi-coding-agent-integration][Pi-coding-agent integration]]
-  - [[#vterm-quick-launchers][Vterm quick launchers]]
+- [[#vterm-quick-launchers][Vterm quick launchers]]
 - [[#notes][Notes]]
   - [[#noteyoda][noteYoda]]
     - [[#org-ref][Org-Ref]]
@@ -999,6 +996,7 @@ As per this [[https://superuser.com/a/898717/899764][interesting answer on the s
 ~org-export-async-init-file~.
 #+BEGIN_SRC emacs-lisp
 (setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
+(load! "local/rg-compat")
 #+END_SRC
 *** TRAMP Settings
 I use some paths on my remote machines, which are non-standard.
@@ -2558,6 +2556,11 @@ This is essentially the same, only some extra packages are added.
 (add-to-list 'load-path "~/.emacs.d/.local/straight/repos/biblio.el/")
 (require 'org-ref)
 
+(load (expand-file-name
+       "rg-compat.el"
+       (file-name-directory (or load-file-name buffer-file-name)))
+      nil t)
+
 ;; Path addtion
 <<orgPaths>>
 
@@ -2849,69 +2852,7 @@ This includes settings for both flycheck and the packages it needs.
 [[https://github.com/dandavison/xenops/][Xenops]] is essentially a supercharged literate set of functions for using ~Mathematica~ and ~SymPy~. It is similar to my previous ~mash~ et. al. setup but automatically appends ~// TeXForm // ToString~ and other helpful conversions. Due to the many modifications of my default environment and setup; these functions are adapted for use from ~xenops~ but cannot be loaded directly with it. Also my use case here is more focused towards only working in ~orgmode~ as opposed to ~xenops~'s focus on ~TeX~.
 #+begin_src emacs-lisp
 #+end_src
-* LLM Interactions
-** gptel
-Doom's built-in ~gptel~ backend, pointed at the local GPU LLM proxy (RTX 4070 Ti
-SUPER via SSH tunnel on localhost:8081). Requires ~gpu-llm-up~ to be running.
-#+begin_src emacs-lisp
-(after! gptel
-  (setq gptel-model "qwen3-coder-30b-a3b"
-        gptel-backend (gptel-make-openai "gpu-llm"
-                                         :host "localhost:8081"
-                                         :protocol "http"
-                                         :models '("qwen3-coder-30b-a3b"
-                                                   "qwen3-coder-next-80b"
-                                                   "qwen3.5-35b-a3b")
-                                         :stream t))
-  (setq gptel-default-mode 'org-mode))
-#+end_src
-** Pi-coding-agent integration
-Send buffer, region, or file to [[https://github.com/mariozechner/pi-coding-agent][pi-coding-agent]] running against the local GPU
-LLM proxy. Agentic mode gives pi full tool access (file edits, shell commands).
-#+begin_src emacs-lisp
-(defvar rg/pi-command "bunx @mariozechner/pi-coding-agent"
-  "Command to launch pi-coding-agent.")
-
-(defun rg/pi-send-region (start end prompt)
-  "Send region between START and END to pi with PROMPT in a vterm buffer."
-  (interactive "r\nsPrompt for pi: ")
-  (let* ((text (buffer-substring-no-properties start end))
-         (buf-name "*vterm-pi*")
-         (escaped-prompt (shell-quote-argument
-                          (format "%s\n\n```\n%s\n```" prompt text))))
-    (unless (get-buffer buf-name)
-      (let ((vterm-buffer-name buf-name))
-        (vterm)))
-    (switch-to-buffer buf-name)
-    (vterm-send-string
-     (format "%s --prompt %s" rg/pi-command escaped-prompt))
-    (vterm-send-return)))
-
-(defun rg/pi-send-buffer (prompt)
-  "Send entire buffer to pi with PROMPT."
-  (interactive "sPrompt for pi: ")
-  (rg/pi-send-region (point-min) (point-max) prompt))
-
-(defun rg/pi-open ()
-  "Open an interactive pi-coding-agent session in a vterm buffer."
-  (interactive)
-  (let ((buf-name "*vterm-pi*"))
-    (unless (get-buffer buf-name)
-      (let ((vterm-buffer-name buf-name))
-        (vterm)))
-    (switch-to-buffer buf-name)
-    (vterm-send-string rg/pi-command)
-    (vterm-send-return)))
-
-;; Pi bindings under SPC l (Doom's llm prefix) alongside gptel
-;; gptel-send is already SPC l s, gptel-menu is SPC l m
-(map! :leader
-      (:prefix "l"
-       :desc "Pi interactive" "p" #'rg/pi-open
-       :desc "Pi send region" "R" #'rg/pi-send-region
-       :desc "Pi send buffer" "b" #'rg/pi-send-buffer))
-#+end_src
-** Vterm quick launchers
+* Vterm quick launchers
 Named vterm buffers for common tasks.
 #+begin_src emacs-lisp
 (defun rg/vterm-named (name cmd)
