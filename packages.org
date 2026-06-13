@@ -211,6 +211,8 @@ setup and stuff as well so this might move into a tree of it's own.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-noter)
+(package! nov)
+(package! djvu)
 #+END_SRC
 
 This actually breaks the ~pdf-tools~ bindings.

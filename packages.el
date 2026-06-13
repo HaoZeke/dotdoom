@@ -63,6 +63,8 @@
 
 ;; [[file:packages.org::*Org Noter][Org Noter:1]]
 (package! org-noter)
+(package! nov)
+(package! djvu)
 ;; Org Noter:1 ends here
 
 ;; [[file:packages.org::*Org Ref][Org Ref:1]]
