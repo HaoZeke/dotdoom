@@ -352,6 +352,7 @@ These conflict with my other templates.
 ** Variables
 #+begin_src emacs-lisp
 (load! "local/rg-bibtex")
+(load! "local/rg-cite-notes")
 (rg/bibtex-configure-paths)
 #+end_src
 *** Theme
@@ -2992,7 +2993,8 @@ Named vterm buffers for common tasks.
              ookcite-search-styles
              ookcite-ridley-read
              ookcite-ridley-read-at-point
-             ookcite-ridley-read-reference)
+             ookcite-ridley-read-reference
+             ookcite-embark-setup)
   :hook (org-mode . ookcite-mode)
   :init
   (setq ookcite-use-citar t)
@@ -3000,9 +3002,12 @@ Named vterm buffers for common tasks.
   (rg/bibtex-configure-paths)
   (setq ookcite-bibliography-files (list zot_bib_source)
         ookcite-ridley-notes-file (expand-file-name "bibnotes.org" org_notes)
+        ookcite-ridley-note-format-function #'rg/cite-notes-ookcite-note-text
         ookcite-ridley-item-json-files
         (list (expand-file-name
                "~/Git/Github/TurtleTech-ehf/ridley-desktop/fixtures/seed.json")))
+  (with-eval-after-load 'embark
+    (ookcite-embark-setup))
   (add-hook 'ookcite-after-bibliography-update-hook
             #'rg/zot-bib-refresh-cache-async)
   (map! :leader
@@ -3044,7 +3049,7 @@ sections are set in my ~private~ config.
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
    bibtex-completion-bibliography (list zot_bib)
    bibtex-completion-notes-path (expand-file-name "bibnotes.org" org_notes)
-   org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+   org-ref-note-title-format (rg/cite-notes-org-ref-title-format)
    org-ref-notes-directory org_notes
    org-ref-notes-function 'orb-edit-notes
    ))
@@ -3069,22 +3074,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
    bibtex-completion-bibliography (list zot_bib)
    bibtex-completion-pdf-field "file"
    bibtex-completion-notes-template-multiple-files
-   (concat
-    "#+TITLE: ${title}\n"
-    "#+ROAM_KEY: cite:${=key=}\n"
-    "#+ROAM_TAGS: ${keywords}\n"
-    "* TODO Notes\n"
-    ":PROPERTIES:\n"
-    ":Custom_ID: ${=key=}\n"
-    ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-    ":AUTHOR: ${author-abbrev}\n"
-    ":JOURNAL: ${journaltitle}\n"
-    ":DATE: ${date}\n"
-    ":YEAR: ${year}\n"
-    ":DOI: ${doi}\n"
-    ":URL: ${url}\n"
-    ":END:\n\n"
-    )
+   (rg/cite-notes-bibtex-completion-template)
    )
   )
 #+END_SRC
@@ -3101,15 +3091,10 @@ modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
   (setq org-roam-bibtex-preformat-keywords
         '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
   (setq orb-templates
-        '(("r" "ref" plain (function org-roam-capture--get-point)
+        `(("r" "ref" plain (function org-roam-capture--get-point)
            ""
            :file-name "${slug}"
-           :head "#+TITLE: ${=key=}: ${title}\n#+ROAM_KEY: ${ref}\n#+ROAM_TAGS:
-
-- keywords :: ${keywords}
-
-\n* ${title}\n  :PROPERTIES:\n  :Custom_ID: ${=key=}\n  :URL: ${url}\n  :AUTHOR: ${author-or-editor}\n  :NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n  :NOTER_PAGE: \n  :END:\n\n"
-
+           :head ,(rg/cite-notes-orb-head)
            :unnarrowed t))))
 #+end_src
 
