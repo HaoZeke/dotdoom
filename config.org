@@ -991,6 +991,7 @@ As per this [[https://superuser.com/a/898717/899764][interesting answer on the s
 #+BEGIN_SRC emacs-lisp
 (setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
 (load! "local/rg-compat")
+(load! "local/rg-health")
 (load! "local/rg-prose")
 (load! "local/rg-snapper")
 (load! "local/rg-vale")
@@ -2896,6 +2897,7 @@ This includes settings for both flycheck and the packages it needs.
         :desc "Paths" "v" #'rg/vale-run
         :desc "Sync styles" "s" #'rg/vale-sync)
        :desc "Harper LSP" "h" #'rg/prose-eglot-ensure
+       :desc "Health" "H" #'rg/doom-health-check
        :desc "Profile Org" "p" #'rg/profile-org-editing))
 #+end_src
 * Vterm quick launchers
