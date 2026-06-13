@@ -79,7 +79,6 @@
   - [[#no-matrix-clients][NO Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
-  - [[#llm-interactions][LLM Interactions]]
   - [[#snippets][Snippets]]
     - [[#doom][Doom]]
     - [[#standard][Standard]]
@@ -480,12 +479,6 @@ This is for linting files before submitting to MELPA.
 (package! package-lint)
 (package! flycheck-package)
 #+END_SRC
-** LLM Interactions
-#+begin_src emacs-lisp
-;; gptel is built into Doom's :tools llm module
-;; (package! aidermacs)  ; aider not installed; using pi-coding-agent via vterm
-;; (package! ellama)     ; ollama removed; GPU LLM proxy via gptel instead
-#+end_src
 ** Snippets
 These are from [[https://github.com/hlissner][hlissner]].
 *** Doom

@@ -239,12 +239,6 @@
 (package! flycheck-package)
 ;; MELPA Helper:1 ends here
 
-;; [[file:packages.org::*LLM Interactions][LLM Interactions:1]]
-;; gptel is built into Doom's :tools llm module
-;; (package! aidermacs)  ; aider not installed; using pi-coding-agent via vterm
-;; (package! ellama)     ; ollama removed; GPU LLM proxy via gptel instead
-;; LLM Interactions:1 ends here
-
 ;; [[file:packages.org::*Doom][Doom:1]]
 (package! emacs-snippets
   :recipe (:host github
