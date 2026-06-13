@@ -353,6 +353,7 @@ These conflict with my other templates.
 #+begin_src emacs-lisp
 (load! "local/rg-bibtex")
 (load! "local/rg-cite-notes")
+(load! "local/rg-org-capture")
 (rg/bibtex-configure-paths)
 #+end_src
 *** Theme
@@ -3137,44 +3138,14 @@ article thing.
 *** Functions
 These are needed for ~org-capture~ alone for now.
 #+BEGIN_SRC emacs-lisp
-;; Fix some link issues
-(defun transform-square-brackets-to-round-ones(string-to-transform)
-  "Transforms [ into ( and ] into ), other chars left unchanged."
-  (concat
-   (mapcar #'(lambda (c) (if (equal c ?\[) ?\( (if (equal c ?\]) ?\) c))) string-to-transform))
-  )
+(require 'rg-org-capture)
 #+END_SRC
 *** Templates
 This might get complicated but I am only trying to get the bare minimum for
 ~org-protocol~ right now. Will look into [[https://github.com/abo-abo/orca][orca]] and [[https://github.com/progfolio/doct/][doct]].
 #+BEGIN_SRC emacs-lisp
-;; Actually start using templates
 (after! org-capture
-  ;; Firefox
-  (add-to-list 'org-capture-templates
-               '("P" "Protocol" entry
-                 (file+headline +org-capture-notes-file "Inbox")
-                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?"
-                 :prepend t
-                 :kill-buffer t))
-  (add-to-list 'org-capture-templates
-               '("L" "Protocol Link" entry
-                 (file+headline +org-capture-notes-file "Inbox")
-                 "* %? [[%:link][%(transform-square-brackets-to-round-ones \"%:description\")]]\n"
-                 :prepend t
-                 :kill-buffer t))
-  ;; Misc
-  (add-to-list 'org-capture-templates
-               '("a"               ; key
-                 "Article"         ; name
-                 entry             ; type
-                 (file+headline +org-capture-notes-file "Article")  ; target
-                 "* %^{Title} %(org-set-tags)  :article: \n:PROPERTIES:\n:Created: %U\n:Linked: %a\n:END:\n%i\nBrief description:\n%?"  ; template
-                 :prepend t        ; properties
-                 :empty-lines 1    ; properties
-                 :created t        ; properties
-                 ))
-  )
+  (rg/org-capture-install))
 #+END_SRC
 **** HTML Parsing
 The standard capture method isn't too great, but [[https://github.com/alphapapa/org-protocol-capture-html][this]] makes it better.
@@ -3183,13 +3154,7 @@ The standard capture method isn't too great, but [[https://github.com/alphapapa/
 (use-package! org-protocol-capture-html
   :after org-protocol
   :config
-  (add-to-list 'org-capture-templates
-               '("w"
-                 "Web site"
-                 entry
-                 (file+headline +org-capture-notes-file "Website")  ; target
-                 "* %a :website:\n\n%U %?\n\n%:initial")
-               )
+  (rg/org-capture-install-html)
   )
 #+END_SRC
 
