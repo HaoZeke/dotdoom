@@ -1081,6 +1081,16 @@ Prose linting with vale (custom ~rgoswami~ style at =~/.config/vale=) and spell 
           python-mode rust-mode c-mode c++-mode nim-mode
           emacs-lisp-mode sh-mode yaml-mode))
 (add-to-list 'flycheck-checkers 'typos 'append)
+
+(defun rg/prose-flycheck-on-save ()
+  "Run Flycheck in prose buffers on save and mode activation."
+  (setq-local flycheck-check-syntax-automatically '(save mode-enabled)))
+
+(after! flycheck
+  (add-to-list 'flycheck-disabled-checkers 'org-lint)
+  (dolist (hook '(org-mode-hook markdown-mode-hook gfm-mode-hook
+                  text-mode-hook latex-mode-hook))
+    (add-hook hook #'rg/prose-flycheck-on-save)))
 #+end_src
 ** Package Settings
 These should eventually go into a different module.
