@@ -5,6 +5,8 @@
 (require 'rg-snapper nil t)
 (require 'rg-vale nil t)
 
+(declare-function parsebib-parse-bib-buffer "parsebib")
+
 (defun rg/health-item (name ok detail)
   "Return a health item named NAME with OK state and DETAIL."
   (list :name name

@@ -5,9 +5,16 @@
 
 (defvar bibtex-completion-bibliography)
 (defvar citar-bibliography)
+(defvar deft-directory)
 (defvar org-cite-global-bibliography)
 (defvar org-cite-basic-mouse-over-key-face)
+(defvar org-directory)
+(defvar org-roam-directory)
 
+(declare-function async-start "async")
+(declare-function bibtex-completion-candidates "bibtex-completion")
+(declare-function bibtex-completion-clear-cache "bibtex-completion")
+(declare-function bibtex-completion-clear-string-cache "bibtex-completion")
 (declare-function org-cite-boundaries "oc")
 (declare-function org-cite-get-references "oc")
 (declare-function org-cite-key-boundaries "oc")

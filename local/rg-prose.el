@@ -1,5 +1,9 @@
 ;;; rg-prose.el --- Local prose editing helpers -*- lexical-binding: t; -*-
 
+(require 'profiler)
+
+(declare-function eglot-ensure "eglot")
+
 (defgroup rg-prose nil
   "Local prose editing helpers."
   :group 'tools)

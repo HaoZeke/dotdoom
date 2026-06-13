@@ -1,5 +1,8 @@
 ;;; rg-org-visual.el --- Local Org visual helpers -*- lexical-binding: t; -*-
 
+(declare-function org-appear-mode "org-appear")
+(declare-function org-modern-mode "org-modern")
+
 (defvar rg/org-visual-max-buffer-size (* 1024 1024)
   "Maximum Org buffer size for automatic visual prettification.")
 

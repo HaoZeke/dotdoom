@@ -4,6 +4,9 @@
 (require 'compile)
 (require 'subr-x)
 
+(eval-when-compile
+  (require 'transient))
+
 (defgroup rg-snapper nil
   "Local commands for the Snapper semantic line-break formatter."
   :group 'tools)

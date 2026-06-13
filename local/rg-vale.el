@@ -1,7 +1,10 @@
 ;;; rg-vale.el --- Vale prose lint commands -*- lexical-binding: t; -*-
 
 (require 'compile)
+(require 'project)
 (require 'subr-x)
+
+(declare-function projectile-project-root "projectile")
 
 (defgroup rg-vale nil
   "Local commands for Vale prose linting."

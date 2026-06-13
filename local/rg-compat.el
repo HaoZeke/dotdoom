@@ -2,6 +2,9 @@
 
 (require 'cl-lib)
 
+(declare-function flycheck-error-new-at "flycheck")
+(declare-function org-lint "org-lint")
+
 (defvar-local rg/parsebib-normalized-buffer nil
   "Non-nil when the current buffer has normalized escaped BibTeX braces.")
 

@@ -2,6 +2,11 @@
 
 (require 'cl-lib)
 
+(defvar doom-private-dir)
+(defvar org-coderef-label-format)
+
+(declare-function org-babel-tangle-file "ob-tangle")
+
 (defvar rg/tangle--coderef-advice-installed nil
   "Non-nil when the Org coderef compatibility advice is installed.")
 
