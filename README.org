@@ -35,6 +35,7 @@ Run ~scripts/tangle-doom-config~ after editing them; it regenerates the ignored
 
 Local helper modules live under ~local/rg-*.el~ with matching ERT tests. The
 encrypted ~local/private.el.gpg~ holds host-local paths and private custom state.
+Run ~scripts/test-local-elisp~ to execute the local helper test suite.
 
 The ~docs/~ directory is the tracked static site output for this repo; keep
 ~docs/CNAME~ and ~docs/keybase.txt~ with it. The ~reveal/rjs/~ tree is vendored
