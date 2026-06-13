@@ -128,6 +128,9 @@
 ;; [[file:packages.org::*Citar][Citar:1]]
 (package! citar)
 (package! citar-embark)
+(package! ookcite
+  :recipe (:local-repo "~/Git/Github/Tools/ookcite.el"
+           :files ("ookcite.el")))
 ;; Citar:1 ends here
 
 ;; [[file:packages.org::*Zotero][Zotero:1]]

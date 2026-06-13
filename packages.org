@@ -304,6 +304,9 @@ available for older documents.
 #+begin_src emacs-lisp :tangle yes
 (package! citar)
 (package! citar-embark)
+(package! ookcite
+  :recipe (:local-repo "~/Git/Github/Tools/ookcite.el"
+           :files ("ookcite.el")))
 #+end_src
 **** Zotero
 There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://github.com/vspinu/zotelo][zotelo]], but

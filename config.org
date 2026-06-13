@@ -2971,6 +2971,44 @@ Named vterm buffers for common tasks.
   :after (citar embark)
   :config
   (citar-embark-mode))
+
+(use-package! ookcite
+  :commands (ookcite-mode
+             ookcite-insert-org-cite
+             ookcite-add-citation-to-bib
+             ookcite-add-citation-to-collection
+             ookcite-add-doi-to-collection
+             ookcite-lookup-doi
+             ookcite-format-doi
+             ookcite-search-styles
+             ookcite-ridley-read
+             ookcite-ridley-read-at-point
+             ookcite-ridley-read-reference)
+  :hook (org-mode . ookcite-mode)
+  :init
+  (setq ookcite-use-citar t)
+  :config
+  (rg/bibtex-configure-paths)
+  (setq ookcite-bibliography-files (list zot_bib_source)
+        ookcite-ridley-notes-file (expand-file-name "bibnotes.org" org_notes)
+        ookcite-ridley-item-json-files
+        (list (expand-file-name
+               "~/Git/Github/TurtleTech-ehf/ridley-desktop/fixtures/seed.json")))
+  (add-hook 'ookcite-after-bibliography-update-hook
+            #'rg/zot-bib-refresh-cache-async)
+  (map! :leader
+        (:prefix ("S" . "Prose")
+         (:prefix ("o" . "OokCite")
+          :desc "Insert citation" "i" #'ookcite-insert-org-cite
+          :desc "Add to BibTeX" "a" #'ookcite-add-citation-to-bib
+          :desc "Add to collection" "A" #'ookcite-add-citation-to-collection
+          :desc "Add DOI to collection" "D" #'ookcite-add-doi-to-collection
+          :desc "Lookup DOI" "l" #'ookcite-lookup-doi
+          :desc "Format DOI" "f" #'ookcite-format-doi
+          :desc "Search styles" "s" #'ookcite-search-styles
+          :desc "Ridley read" "r" #'ookcite-ridley-read
+          :desc "Read at point" "R" #'ookcite-ridley-read-at-point
+          :desc "Read reference" "o" #'ookcite-ridley-read-reference))))
 #+end_src
 
 *** Org-Ref
