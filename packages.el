@@ -119,7 +119,7 @@
 ;; Org GCal:1 ends here
 
 ;; [[file:packages.org::*Citeproc Org][Citeproc Org:1]]
-(package! citeproc-org :pin "0fb4c96f48b3055a59a397af24d3f1a82cf77b66")
+(package! citeproc-org)
 ;; Citeproc Org:1 ends here
 
 ;; [[file:packages.org::*Zotero][Zotero:1]]

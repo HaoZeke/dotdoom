@@ -293,6 +293,7 @@ This extension seems to be a maintained fork.
 Mainly used with ~ox-hugo~
 #+begin_src emacs-lisp :tangle yes
 (package! citeproc-org)
+#+end_src
 ** Reference Management
 **** Zotero
 There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://github.com/vspinu/zotelo][zotelo]], but
