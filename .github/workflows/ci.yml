@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  emacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Emacs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y emacs-nox
+
+      - name: Check shell scripts
+        run: bash -n scripts/tangle-doom-config scripts/test-local-elisp
+
+      - name: Run local ERT
+        run: scripts/test-local-elisp
+
+      - name: Tangle config
+        run: scripts/tangle-doom-config
