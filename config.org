@@ -347,65 +347,8 @@ These conflict with my other templates.
 
 ** Variables
 #+begin_src emacs-lisp
-(setq
-   org_notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
-   zot_bib_source (concat (getenv "HOME") "/Insync/r95g10@gmail.com/Google Drive/zotLib.bib")
-   zot_bib_cache (expand-file-name "doom/zotLib.bib"
-                                   (or (getenv "XDG_CACHE_HOME")
-                                       (expand-file-name "~/.cache")))
-   zot_bib (if (file-readable-p zot_bib_cache) zot_bib_cache zot_bib_source)
-   org-directory org_notes
-   deft-directory org_notes
-   org-roam-directory org_notes
-   )
-
-(defun rg/zot-bib-use-cache ()
-  "Use the local BibTeX cache when it is readable."
-  (setq zot_bib (if (file-readable-p zot_bib_cache)
-                    zot_bib_cache
-                  zot_bib_source))
-  (when (boundp 'bibtex-completion-bibliography)
-    (setq bibtex-completion-bibliography (list zot_bib)))
-  zot_bib)
-
-(defun rg/zot-bib-refresh-cache ()
-  "Refresh the local BibTeX cache from `zot_bib_source'."
-  (interactive)
-  (unless (file-readable-p zot_bib_source)
-    (user-error "Cannot read %s" zot_bib_source))
-  (make-directory (file-name-directory zot_bib_cache) t)
-  (copy-file zot_bib_source zot_bib_cache t)
-  (rg/zot-bib-use-cache)
-  (when (featurep 'bibtex-completion)
-    (bibtex-completion-clear-cache (list zot_bib))
-    (bibtex-completion-clear-string-cache (list zot_bib)))
-  (message "BibTeX cache refreshed: %s" zot_bib_cache))
-
-(defun rg/bibtex-completion-warm-cache ()
-  "Load BibTeX completion candidates explicitly."
-  (interactive)
-  (require 'bibtex-completion)
-  (rg/zot-bib-use-cache)
-  (message "BibTeX candidates loaded: %d"
-           (length (bibtex-completion-candidates))))
-
-(defcustom rg/profile-org-editing-seconds 25
-  "Seconds to collect CPU profiler samples for Org editing."
-  :type 'integer)
-
-(defun rg/profile-org-editing (&optional seconds)
-  "Profile Org editing CPU use for SECONDS."
-  (interactive "P")
-  (let ((duration (if seconds
-                      (prefix-numeric-value seconds)
-                    rg/profile-org-editing-seconds)))
-    (profiler-start 'cpu)
-    (run-at-time
-     duration nil
-     (lambda ()
-       (profiler-stop)
-       (profiler-report)))
-    (message "Profiling Org editing for %s seconds" duration)))
+(load! "local/rg-bibtex")
+(rg/bibtex-configure-paths)
 #+end_src
 *** Theme
 Sometimes I do tire of the defaults.
@@ -1000,6 +943,7 @@ Now we set the customize path.
 (after! epa-file
   (setq custom-file (concat doom-private-dir "local/private.el.gpg"))
   (load custom-file)
+  (rg/bibtex-configure-paths)
   )
 #+end_src
 **** MacOS
@@ -1047,6 +991,7 @@ As per this [[https://superuser.com/a/898717/899764][interesting answer on the s
 #+BEGIN_SRC emacs-lisp
 (setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
 (load! "local/rg-compat")
+(load! "local/rg-prose")
 (load! "local/rg-snapper")
 (load! "local/rg-vale")
 #+END_SRC
@@ -1097,12 +1042,6 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
     )
   )
 #+end_src
-#+begin_src emacs-lisp
-(defun rg/prose-eglot-ensure ()
-  "Start Eglot for the current prose buffer."
-  (interactive)
-  (eglot-ensure))
-#+end_src
 Also ~booster~ helps.
 #+begin_src emacs-lisp
 (use-package! eglot-booster
@@ -1139,10 +1078,6 @@ Prose linting with vale (custom ~rgoswami~ style at =~/.config/vale=) and spell 
           python-mode rust-mode c-mode c++-mode nim-mode
           emacs-lisp-mode sh-mode yaml-mode))
 (add-to-list 'flycheck-checkers 'typos 'append)
-
-(defun rg/prose-flycheck-on-save ()
-  "Run Flycheck in prose buffers on save and mode activation."
-  (setq-local flycheck-check-syntax-automatically '(save mode-enabled)))
 
 (after! flycheck
   (add-to-list 'flycheck-disabled-checkers 'org-lint)
@@ -3003,12 +2938,13 @@ sections are set in my ~private~ config.
         (org-ref-process-buffer 'html)))
     (add-to-list 'org-export-before-parsing-hook #'my/org-ref-process-buffer--html))
   :config
+  (rg/bibtex-configure-paths)
   (setq
    org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
-   bibtex-completion-bibliography (list (concat (getenv "HOME") "/Documents/zotLib.bib"))
-   bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/bibnotes.org")
+   bibtex-completion-bibliography (list zot_bib)
+   bibtex-completion-notes-path (expand-file-name "bibnotes.org" org_notes)
    org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
-   org-ref-notes-directory (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
+   org-ref-notes-directory org_notes
    org-ref-notes-function 'orb-edit-notes
    ))
 #+END_SRC
@@ -3028,7 +2964,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
 #+BEGIN_SRC emacs-lisp
 (after! org-ref
   (setq
-   bibtex-completion-notes-path (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
+   bibtex-completion-notes-path org_notes
    bibtex-completion-bibliography zot_bib
    bibtex-completion-pdf-field "file"
    bibtex-completion-notes-template-multiple-files
