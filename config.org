@@ -3058,7 +3058,7 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
 (after! org-ref
   (setq
    bibtex-completion-notes-path org_notes
-   bibtex-completion-bibliography zot_bib
+   bibtex-completion-bibliography (list zot_bib)
    bibtex-completion-pdf-field "file"
    bibtex-completion-notes-template-multiple-files
    (concat

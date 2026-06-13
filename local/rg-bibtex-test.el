@@ -4,6 +4,10 @@
 (require 'cl-lib)
 (require 'rg-bibtex)
 
+(defvar bibtex-completion-bibliography)
+(defvar citar-bibliography)
+(defvar org-cite-global-bibliography)
+
 (ert-deftest rg-bibtex-cache-path-defaults-to-xdg-cache ()
   (let ((process-environment '("XDG_CACHE_HOME=/tmp/rg-cache")))
     (should
@@ -36,6 +40,24 @@
           (zot_bib_cache cache)
           (zot_bib_clean_cache clean-cache))
       (should (equal (rg/zot-bib-use-cache) clean-cache)))))
+
+(ert-deftest rg-bibtex-cache-selection-updates-citation-consumers ()
+  (let ((source "/tmp/rg-bibtex-source-consumers.bib")
+        (cache "/tmp/rg-bibtex-cache-consumers.bib")
+        (clean-cache "/tmp/rg-bibtex-clean-cache-consumers.bib")
+        (org-cite-global-bibliography 'old-org-cite)
+        (citar-bibliography 'old-citar)
+        (bibtex-completion-bibliography 'old-bibtex-completion))
+    (with-temp-file source (insert "@article{source}\n"))
+    (with-temp-file cache (insert "@article{cache}\n"))
+    (with-temp-file clean-cache (insert "@article{clean}\n"))
+    (let ((zot_bib_source source)
+          (zot_bib_cache cache)
+          (zot_bib_clean_cache clean-cache))
+      (should (equal (rg/zot-bib-use-cache) clean-cache))
+      (should (equal org-cite-global-bibliography (list clean-cache)))
+      (should (equal citar-bibliography (list clean-cache)))
+      (should (equal bibtex-completion-bibliography (list clean-cache))))))
 
 (ert-deftest rg-bibtex-cache-selection-falls-back-to-source ()
   (let ((source "/tmp/rg-bibtex-source.bib")

@@ -3,6 +3,10 @@
 (require 'seq)
 (require 'subr-x)
 
+(defvar bibtex-completion-bibliography)
+(defvar citar-bibliography)
+(defvar org-cite-global-bibliography)
+
 (defgroup rg-bibtex nil
   "Local bibliography and notes path helpers."
   :group 'tools)
@@ -121,9 +125,19 @@
         org-directory org_notes
         deft-directory org_notes
         org-roam-directory org_notes)
-  (when (boundp 'bibtex-completion-bibliography)
-    (setq bibtex-completion-bibliography (list zot_bib)))
+  (rg/bibtex-apply-active-bibliography)
   zot_bib)
+
+(defun rg/bibtex-apply-active-bibliography ()
+  "Point citation consumers at the active BibTeX file."
+  (let ((bibliography (list zot_bib)))
+    (when (boundp 'org-cite-global-bibliography)
+      (setq org-cite-global-bibliography bibliography))
+    (when (boundp 'citar-bibliography)
+      (setq citar-bibliography bibliography))
+    (when (boundp 'bibtex-completion-bibliography)
+      (setq bibtex-completion-bibliography bibliography))
+    bibliography))
 
 (defun rg/zot-bib-use-cache ()
   "Use the best local BibTeX cache when it is readable."
@@ -131,8 +145,7 @@
                                                 zot_bib_cache
                                                 zot_bib_source)
                     zot_bib_source))
-  (when (boundp 'bibtex-completion-bibliography)
-    (setq bibtex-completion-bibliography (list zot_bib)))
+  (rg/bibtex-apply-active-bibliography)
   zot_bib)
 
 (defun rg/zot-bib-cache-stale-p ()
