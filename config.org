@@ -2902,6 +2902,7 @@ This includes settings for both flycheck and the packages it needs.
 (map! :leader
       (:prefix ("S" . "Prose")
        (:prefix ("s" . "Snapper")
+        :desc "Menu" "m" #'rg/snapper-menu
         :desc "Format buffer" "f" #'rg/snapper-format-buffer
         :desc "Format region" "r" #'rg/snapper-format-region
         :desc "Check buffer" "c" #'rg/snapper-check-buffer
