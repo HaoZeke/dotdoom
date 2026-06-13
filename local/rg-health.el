@@ -23,15 +23,28 @@
       (rg/health-item name t (format "readable %s" file))
     (rg/health-item name nil (format "not readable %s" file))))
 
+(defun rg/health-bibtex-parse-cache (file)
+  "Return nil when parsebib accepts FILE, or a diagnostic string."
+  (when (require 'parsebib nil t)
+    (with-temp-buffer
+      (insert-file-contents file)
+      (condition-case err
+          (progn
+            (parsebib-parse-bib-buffer :replace-TeX t)
+            nil)
+        (parsebib-error (error-message-string err))))))
+
 (defun rg/health-bibtex-cache ()
   "Return a health item for the active BibTeX cache."
   (when (fboundp 'rg/bibtex-configure-paths)
     (rg/bibtex-configure-paths))
   (cond
    ((and (boundp 'zot_bib_clean_cache) (file-readable-p zot_bib_clean_cache))
-    (rg/health-item "BibTeX cache" t (format "clean cache readable %s" zot_bib_clean_cache)))
+    (if-let ((parse-error (rg/health-bibtex-parse-cache zot_bib_clean_cache)))
+        (rg/health-item "BibTeX cache" nil (format "clean cache parse failed: %s" parse-error))
+      (rg/health-item "BibTeX cache" t (format "clean cache readable %s" zot_bib_clean_cache))))
    ((and (boundp 'zot_bib_cache) (file-readable-p zot_bib_cache))
-    (rg/health-item "BibTeX cache" t (format "cache readable %s" zot_bib_cache)))
+    (rg/health-item "BibTeX cache" nil (format "cache readable %s; clean cache missing" zot_bib_cache)))
    ((and (boundp 'zot_bib_source) (file-readable-p zot_bib_source))
     (rg/health-item "BibTeX cache" nil (format "using source %s" zot_bib_source)))
    (t

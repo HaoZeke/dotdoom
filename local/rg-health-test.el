@@ -16,15 +16,18 @@
       (should (eq (plist-get item :status) 'ok))
       (should (string-match-p "/usr/bin/vale" (plist-get item :detail))))))
 
-(ert-deftest rg-health-bibtex-check-prefers-cache ()
+(ert-deftest rg-health-bibtex-check-warns-on-raw-cache-only ()
   (let ((source "/tmp/rg-health-source.bib")
-        (cache "/tmp/rg-health-cache.bib"))
+        (cache "/tmp/rg-health-cache.bib")
+        (clean-cache "/tmp/rg-health-missing-clean-cache.bib"))
     (with-temp-file source (insert "@article{source}\n"))
     (with-temp-file cache (insert "@article{cache}\n"))
+    (ignore-errors (delete-file clean-cache))
     (let ((zot_bib_source source)
-          (zot_bib_cache cache))
+          (zot_bib_cache cache)
+          (zot_bib_clean_cache clean-cache))
       (let ((item (rg/health-bibtex-cache)))
-        (should (eq (plist-get item :status) 'ok))
+        (should (eq (plist-get item :status) 'warn))
         (should (string-match-p "cache readable" (plist-get item :detail)))))))
 
 (ert-deftest rg-health-bibtex-check-prefers-clean-cache ()
@@ -41,6 +44,23 @@
         (should (eq (plist-get item :status) 'ok))
         (should (string-match-p "clean cache readable"
                                 (plist-get item :detail)))))))
+
+(ert-deftest rg-health-bibtex-check-warns-on-unparseable-clean-cache ()
+  (let ((source "/tmp/rg-health-parse-source.bib")
+        (cache "/tmp/rg-health-parse-cache.bib")
+        (clean-cache "/tmp/rg-health-parse-clean-cache.bib"))
+    (with-temp-file source (insert "@article{source}\n"))
+    (with-temp-file cache (insert "@article{cache}\n"))
+    (with-temp-file clean-cache (insert "@article{broken,\n  author = bad\\value\n}\n"))
+    (let ((zot_bib_source source)
+          (zot_bib_cache cache)
+          (zot_bib_clean_cache clean-cache))
+      (cl-letf (((symbol-function 'rg/health-bibtex-parse-cache)
+                 (lambda (_file) "Invalid character `\\'")))
+        (let ((item (rg/health-bibtex-cache)))
+          (should (eq (plist-get item :status) 'warn))
+          (should (string-match-p "parse failed"
+                                  (plist-get item :detail))))))))
 
 (ert-deftest rg-health-report-renders-items ()
   (let ((report (rg/health-render
