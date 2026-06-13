@@ -15,6 +15,16 @@
   "Default BibTeX file used when no private value is configured."
   :type 'file)
 
+(defcustom rg/zot-bib-auto-refresh-idle-delay 30
+  "Idle seconds before checking whether the BibTeX cache is stale."
+  :type 'number)
+
+(defconst rg/bibtex-library-file
+  (or load-file-name
+      buffer-file-name
+      (locate-library "rg-bibtex"))
+  "Path to this helper file for child Emacs cache refreshes.")
+
 (defvar org_notes nil
   "Org notes directory used by this Doom config.")
 
@@ -29,6 +39,12 @@
 
 (defvar zot_bib nil
   "Active BibTeX file used by completion and citation commands.")
+
+(defvar rg/zot-bib-refresh-cache-async-running nil
+  "Current async BibTeX refresh process, or nil when no refresh is active.")
+
+(defvar rg/zot-bib-auto-refresh-timer nil
+  "Idle timer used to refresh stale BibTeX caches.")
 
 (defun rg/bibtex--env (name)
   "Return non-empty environment variable NAME."
@@ -62,6 +78,18 @@
   (seq-find (lambda (file)
               (and (stringp file) (file-readable-p file)))
             files))
+
+(defun rg/bibtex--file-mtime (file)
+  "Return FILE modification time when FILE is readable."
+  (when (and (stringp file) (file-readable-p file))
+    (file-attribute-modification-time (file-attributes file))))
+
+(defun rg/bibtex-file-newer-p (file other-file)
+  "Return non-nil when FILE is newer than OTHER-FILE."
+  (when-let ((file-time (rg/bibtex--file-mtime file)))
+    (let ((other-time (rg/bibtex--file-mtime other-file)))
+      (or (null other-time)
+          (time-less-p other-time file-time)))))
 
 (defun rg/bibtex-configure-paths ()
   "Configure notes and bibliography paths from private values or environment."
@@ -107,6 +135,13 @@
     (setq bibtex-completion-bibliography (list zot_bib)))
   zot_bib)
 
+(defun rg/zot-bib-cache-stale-p ()
+  "Return non-nil when the sanitized BibTeX cache needs a refresh."
+  (rg/bibtex-configure-paths)
+  (and (file-readable-p zot_bib_source)
+       (or (not (file-readable-p zot_bib_clean_cache))
+           (rg/bibtex-file-newer-p zot_bib_source zot_bib_clean_cache))))
+
 (defun rg/bibtex-sanitize-buffer ()
   "Normalize BibTeX escapes that parsebib rejects in Zotero exports."
   (save-excursion
@@ -146,6 +181,81 @@
     (bibtex-completion-clear-string-cache (list zot_bib)))
   (message "BibTeX cache refreshed: %s" zot_bib)
   zot_bib)
+
+(defun rg/bibtex-clear-completion-caches ()
+  "Clear loaded BibTeX completion caches."
+  (when (featurep 'bibtex-completion)
+    (bibtex-completion-clear-cache (list zot_bib))
+    (bibtex-completion-clear-string-cache (list zot_bib))))
+
+(defun rg/bibtex--async-start (start-func finish-func)
+  "Run START-FUNC asynchronously and call FINISH-FUNC with the result."
+  (require 'async)
+  (async-start start-func finish-func))
+
+(defun rg/zot-bib-refresh-cache-async-finish (result)
+  "Handle async BibTeX refresh RESULT."
+  (setq rg/zot-bib-refresh-cache-async-running nil)
+  (if (plist-get result :ok)
+      (progn
+        (rg/zot-bib-use-cache)
+        (rg/bibtex-clear-completion-caches)
+        (message "BibTeX cache refreshed asynchronously: %s"
+                 (plist-get result :path)))
+    (message "BibTeX async refresh failed: %s"
+             (plist-get result :error))))
+
+(defun rg/zot-bib-refresh-cache-async (&optional force)
+  "Refresh stale BibTeX caches in a child Emacs process.
+With FORCE, refresh even when the sanitized cache is current."
+  (interactive "P")
+  (rg/bibtex-configure-paths)
+  (cond
+   ((and rg/zot-bib-refresh-cache-async-running (not force))
+    (message "BibTeX async refresh already running")
+    nil)
+   ((and (not force) (not (rg/zot-bib-cache-stale-p)))
+    (rg/zot-bib-use-cache)
+    (message "BibTeX clean cache is current: %s" zot_bib)
+    nil)
+   (t
+    (let* ((helper-file rg/bibtex-library-file)
+           (notes-dir org_notes)
+           (source-file zot_bib_source)
+           (raw-cache zot_bib_cache)
+           (clean-cache zot_bib_clean_cache)
+           (process
+            (rg/bibtex--async-start
+             `(lambda ()
+                (condition-case err
+                    (progn
+                      (load ,helper-file nil t)
+                      (setq org_notes ,notes-dir
+                            zot_bib_source ,source-file
+                            zot_bib_cache ,raw-cache
+                            zot_bib_clean_cache ,clean-cache)
+                      (rg/zot-bib-refresh-cache)
+                      (list :ok t :path zot_bib))
+                  (error
+                   (list :ok nil :error (error-message-string err)))))
+             #'rg/zot-bib-refresh-cache-async-finish)))
+      (setq rg/zot-bib-refresh-cache-async-running process)
+      process))))
+
+(defun rg/zot-bib-refresh-cache-on-idle ()
+  "Refresh stale BibTeX caches from an idle timer."
+  (when (rg/zot-bib-cache-stale-p)
+    (rg/zot-bib-refresh-cache-async)))
+
+(defun rg/zot-bib-enable-auto-refresh ()
+  "Enable idle BibTeX cache refresh checks."
+  (interactive)
+  (when (timerp rg/zot-bib-auto-refresh-timer)
+    (cancel-timer rg/zot-bib-auto-refresh-timer))
+  (setq rg/zot-bib-auto-refresh-timer
+        (run-with-idle-timer rg/zot-bib-auto-refresh-idle-delay
+                             t
+                             #'rg/zot-bib-refresh-cache-on-idle)))
 
 (defun rg/bibtex-completion-warm-cache ()
   "Load BibTeX completion candidates explicitly."
