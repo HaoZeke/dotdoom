@@ -979,7 +979,7 @@ open emacs.
 (setq safe-local-variable-values '((after-save-hook . haozeke/org-save-and-export-latex)
  (before-save-hook . org-babel-execute-buffer)))
 #+END_SRC
-**** KILL Caveats
+**** KILL Caveats :noexport:
 CLOSED: [2020-07-24 Fri 01:17]
 - This actually forms it relative to the exact path.
   (Gotta move it to the config folder)
@@ -1273,7 +1273,7 @@ dealing with ~append~ and stuff.
 (use-package! mermaid-mode)
 (use-package! ob-mermaid)
 #+end_src
-*** KILL Ob-Julia
+*** KILL Ob-Julia :noexport:
 So ~julia~ support is inbuilt, however the process variable needs to be set:
 #+BEGIN_SRC emacs-lisp :tangle no
 (setq  inferior-julia-program-name "/bin/julia")
@@ -2873,10 +2873,8 @@ This includes settings for both flycheck and the packages it needs.
   :after flycheck
   :config (flycheck-package-setup))
 #+END_SRC
-** Xenops Inspired
+** Xenops Inspired :noexport:
 [[https://github.com/dandavison/xenops/][Xenops]] is essentially a supercharged literate set of functions for using ~Mathematica~ and ~SymPy~. It is similar to my previous ~mash~ et. al. setup but automatically appends ~// TeXForm // ToString~ and other helpful conversions. Due to the many modifications of my default environment and setup; these functions are adapted for use from ~xenops~ but cannot be loaded directly with it. Also my use case here is more focused towards only working in ~orgmode~ as opposed to ~xenops~'s focus on ~TeX~.
-#+begin_src emacs-lisp
-#+end_src
 * Prose commands
 #+begin_src emacs-lisp
 (map! :leader

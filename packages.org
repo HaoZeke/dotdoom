@@ -232,7 +232,7 @@ Not on MELPA yet. From [[https://github.com/swillner/org-gantt][here]].
   :recipe (:host github
             :repo "swillner/org-gantt" :files ("*.el")))
 #+END_SRC
-*** NO Org Mind Map
+*** NO Org Mind Map :noexport:
 CLOSED: [2025-07-27 Sun 02:06]
 Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -413,7 +413,7 @@ highlighting.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! systemd)
 #+END_SRC
-*** NO Dart Mode
+*** NO Dart Mode :noexport:
 CLOSED: [2025-07-27 Sun 02:06]
 Might eventually want to also get the companion [[https://github.com/bradyt/dart-server][dart server]] sometime, but for
 now this syntax-highlighter will do. Might actually want to see if ~prettier~
@@ -444,7 +444,7 @@ I ended up making one of my own based off of ~c-mode~. This is temporary, pendin
   :recipe (:host github
            :repo "HaoZeke/capnp2-mode"))
 #+end_src
-*** NO Astro
+*** NO Astro :noexport:
 CLOSED: [2025-07-27 Sun 02:07]
 For the TTech landing page.
 #+BEGIN_SRC emacs-lisp :tangle no
@@ -472,7 +472,7 @@ the image name.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! dockerfile-mode)
 #+END_SRC
-** NO Matrix Clients
+** NO Matrix Clients :noexport:
 CLOSED: [2025-07-27 Sun 02:07]
 Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
 #+begin_src emacs-lisp :tangle no
