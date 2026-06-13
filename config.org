@@ -162,6 +162,7 @@
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helpers][MELPA Helpers]]
   - [[#xenops-inspired][Xenops Inspired]]
+- [[#prose-commands][Prose commands]]
 - [[#vterm-quick-launchers][Vterm quick launchers]]
 - [[#notes][Notes]]
   - [[#noteyoda][noteYoda]]
@@ -349,11 +350,63 @@ These conflict with my other templates.
 #+begin_src emacs-lisp
 (setq
    org_notes (concat (getenv "HOME") "/Git/Gitlab/Mine/Notes/")
-   zot_bib (concat (getenv "HOME") "/Insync/r95g10@gmail.com/Google Drive/zotLib.bib")
+   zot_bib_source (concat (getenv "HOME") "/Insync/r95g10@gmail.com/Google Drive/zotLib.bib")
+   zot_bib_cache (expand-file-name "doom/zotLib.bib"
+                                   (or (getenv "XDG_CACHE_HOME")
+                                       (expand-file-name "~/.cache")))
+   zot_bib (if (file-readable-p zot_bib_cache) zot_bib_cache zot_bib_source)
    org-directory org_notes
    deft-directory org_notes
    org-roam-directory org_notes
    )
+
+(defun rg/zot-bib-use-cache ()
+  "Use the local BibTeX cache when it is readable."
+  (setq zot_bib (if (file-readable-p zot_bib_cache)
+                    zot_bib_cache
+                  zot_bib_source))
+  (when (boundp 'bibtex-completion-bibliography)
+    (setq bibtex-completion-bibliography (list zot_bib)))
+  zot_bib)
+
+(defun rg/zot-bib-refresh-cache ()
+  "Refresh the local BibTeX cache from `zot_bib_source'."
+  (interactive)
+  (unless (file-readable-p zot_bib_source)
+    (user-error "Cannot read %s" zot_bib_source))
+  (make-directory (file-name-directory zot_bib_cache) t)
+  (copy-file zot_bib_source zot_bib_cache t)
+  (rg/zot-bib-use-cache)
+  (when (featurep 'bibtex-completion)
+    (bibtex-completion-clear-cache (list zot_bib))
+    (bibtex-completion-clear-string-cache (list zot_bib)))
+  (message "BibTeX cache refreshed: %s" zot_bib_cache))
+
+(defun rg/bibtex-completion-warm-cache ()
+  "Load BibTeX completion candidates explicitly."
+  (interactive)
+  (require 'bibtex-completion)
+  (rg/zot-bib-use-cache)
+  (message "BibTeX candidates loaded: %d"
+           (length (bibtex-completion-candidates))))
+
+(defcustom rg/profile-org-editing-seconds 25
+  "Seconds to collect CPU profiler samples for Org editing."
+  :type 'integer)
+
+(defun rg/profile-org-editing (&optional seconds)
+  "Profile Org editing CPU use for SECONDS."
+  (interactive "P")
+  (let ((duration (if seconds
+                      (prefix-numeric-value seconds)
+                    rg/profile-org-editing-seconds)))
+    (profiler-start 'cpu)
+    (run-at-time
+     duration nil
+     (lambda ()
+       (profiler-stop)
+       (profiler-report)))
+    (message "Profiling Org editing for %s seconds" duration)))
 #+end_src
 *** Theme
 Sometimes I do tire of the defaults.
@@ -995,6 +1048,7 @@ As per this [[https://superuser.com/a/898717/899764][interesting answer on the s
 #+BEGIN_SRC emacs-lisp
 (setq org-export-async-init-file (concat doom-private-dir "local/async-ox.el"))
 (load! "local/rg-compat")
+(load! "local/rg-snapper")
 #+END_SRC
 *** TRAMP Settings
 I use some paths on my remote machines, which are non-standard.
@@ -1028,12 +1082,10 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
   (add-hook 'f90-mode-hook 'eglot-ensure)
   (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
   (set-eglot-client! 'python-mode '("uvx" "ruff" "server"))
-  ;; harper-ls for grammar checking in prose modes
   (set-eglot-client! 'org-mode '("harper-ls" "--stdio"))
   (set-eglot-client! 'markdown-mode '("harper-ls" "--stdio"))
   (set-eglot-client! 'text-mode '("harper-ls" "--stdio"))
   (set-eglot-client! 'latex-mode '("harper-ls" "--stdio"))
-  (add-hook 'org-mode-hook 'eglot-ensure)
   (add-hook 'markdown-mode-hook 'eglot-ensure)
   (when (string= (system-name) "Rohits-MacBook-Pro.local")
     (setq exec-path (append exec-path '(
@@ -1044,6 +1096,12 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
                                         )))
     )
   )
+#+end_src
+#+begin_src emacs-lisp
+(defun rg/prose-eglot-ensure ()
+  "Start Eglot for the current prose buffer."
+  (interactive)
+  (eglot-ensure))
 #+end_src
 Also ~booster~ helps.
 #+begin_src emacs-lisp
@@ -2882,6 +2940,22 @@ This includes settings for both flycheck and the packages it needs.
 ** Xenops Inspired
 [[https://github.com/dandavison/xenops/][Xenops]] is essentially a supercharged literate set of functions for using ~Mathematica~ and ~SymPy~. It is similar to my previous ~mash~ et. al. setup but automatically appends ~// TeXForm // ToString~ and other helpful conversions. Due to the many modifications of my default environment and setup; these functions are adapted for use from ~xenops~ but cannot be loaded directly with it. Also my use case here is more focused towards only working in ~orgmode~ as opposed to ~xenops~'s focus on ~TeX~.
 #+begin_src emacs-lisp
+#+end_src
+* Prose commands
+#+begin_src emacs-lisp
+(map! :leader
+      (:prefix ("S" . "Prose")
+       (:prefix ("s" . "Snapper")
+        :desc "Format buffer" "f" #'rg/snapper-format-buffer
+        :desc "Format region" "r" #'rg/snapper-format-region
+        :desc "Check buffer" "c" #'rg/snapper-check-buffer
+        :desc "Git diff" "d" #'rg/snapper-git-diff
+        :desc "Watch" "w" #'rg/snapper-watch)
+       (:prefix ("b" . "BibTeX")
+        :desc "Refresh cache" "r" #'rg/zot-bib-refresh-cache
+        :desc "Warm cache" "w" #'rg/bibtex-completion-warm-cache)
+       :desc "Harper LSP" "h" #'rg/prose-eglot-ensure
+       :desc "Profile Org" "p" #'rg/profile-org-editing))
 #+end_src
 * Vterm quick launchers
 Named vterm buffers for common tasks.
