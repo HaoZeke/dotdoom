@@ -295,6 +295,13 @@ Mainly used with ~ox-hugo~
 (package! citeproc-org)
 #+end_src
 ** Reference Management
+**** Citar
+Use Citar for ~org-cite~ insertion and reference actions while keeping ~org-ref~
+available for older documents.
+#+begin_src emacs-lisp :tangle yes
+(package! citar)
+(package! citar-embark)
+#+end_src
 **** Zotero
 There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://github.com/vspinu/zotelo][zotelo]], but
 they don't seem to be all that well mantained. [[https://github.com/emacsmirror/zotxt][Zotxt]] seems to be updated pretty

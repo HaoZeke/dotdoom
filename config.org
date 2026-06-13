@@ -2888,6 +2888,9 @@ This includes settings for both flycheck and the packages it needs.
         :desc "Git diff" "d" #'rg/snapper-git-diff
         :desc "Watch" "w" #'rg/snapper-watch)
        (:prefix ("b" . "BibTeX")
+        :desc "Insert citation" "i" #'citar-insert-citation
+        :desc "Org cite" "c" #'org-cite-insert
+        :desc "Open reference" "o" #'citar-open
         :desc "Refresh cache" "r" #'rg/zot-bib-refresh-cache
         :desc "Warm cache" "w" #'rg/bibtex-completion-warm-cache)
        (:prefix ("v" . "Vale")
@@ -2921,6 +2924,34 @@ Named vterm buffers for common tasks.
 * Notes
 ** noteYoda
 +This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility this will be broken down into a per-package configuration. The heart of this is an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]].+ Now described in [[https://rgoswami.me/posts/org-note-workflow][this post]].
+*** Citar
+#+begin_src emacs-lisp
+(use-package! citar
+  :commands (citar-insert-citation
+             citar-insert-reference
+             citar-open
+             citar-capf-setup)
+  :init
+  (setq org-cite-global-bibliography (list zot_bib)
+        org-cite-insert-processor 'citar
+        org-cite-follow-processor 'citar
+        org-cite-activate-processor 'citar
+        citar-bibliography org-cite-global-bibliography)
+  :hook ((org-mode . citar-capf-setup)
+         (LaTeX-mode . citar-capf-setup)
+         (latex-mode . citar-capf-setup))
+  :config
+  (rg/bibtex-configure-paths)
+  (setq org-cite-global-bibliography (list zot_bib)
+        citar-bibliography org-cite-global-bibliography
+        citar-at-point-function 'embark-act))
+
+(use-package! citar-embark
+  :after (citar embark)
+  :config
+  (citar-embark-mode))
+#+end_src
+
 *** Org-Ref
 [[https://github.com/jkitchin/org-ref][This]] seems like an ubiquitous choice for working with org files and references,
 though quite a bit of the config here relates to [[https://github.com/tmalsburg/helm-bibtex/tree/file-field][helm-bibtex]]. *Commented*

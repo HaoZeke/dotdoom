@@ -122,6 +122,11 @@
 (package! citeproc-org)
 ;; Citeproc Org:1 ends here
 
+;; [[file:packages.org::*Citar][Citar:1]]
+(package! citar)
+(package! citar-embark)
+;; Citar:1 ends here
+
 ;; [[file:packages.org::*Zotero][Zotero:1]]
 (package! zotxt)
 ;; Zotero:1 ends here
