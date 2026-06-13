@@ -1490,23 +1490,44 @@ agenda. Together they cover everything helm-org-rifle did but with vertico.
 #+END_SRC
 *** Org Modern
 #+BEGIN_SRC emacs-lisp :tangle yes
+(load! "local/rg-org-visual")
+
 (use-package! org-modern
   :after org
+  :hook (org-mode . rg/org-modern-mode-maybe)
   :config
-  (setq global-org-modern-mode t)
-)
+  (setq org-modern-star 'replace
+        org-modern-replace-stars '("◉" "○" "◈" "◇" "✳")
+        org-modern-hide-stars nil
+        org-modern-table t
+        org-modern-table-vertical 1
+        org-modern-table-horizontal 0.2
+        org-modern-block-fringe nil
+        org-modern-todo t
+        org-modern-tag t
+        org-modern-priority '((?A . "A")
+                              (?B . "B")
+                              (?C . "C"))
+        org-modern-keyword t)
+  (map! :leader
+        (:prefix ("t" . "toggle")
+         :desc "Org visuals" "O" #'rg/org-visuals-toggle)))
 #+END_SRC
 *** Org Appear
 Reveal hidden markup (emphasis, links, subscripts, entities) when cursor is on them.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! org-appear
-  :hook (org-mode . org-appear-mode)
+  :hook (org-mode . rg/org-appear-mode-maybe)
   :config
   (setq org-hide-emphasis-markers t
+        org-pretty-entities t
+        org-appear-trigger 'always
+        org-appear-delay 0.1
         org-appear-autoemphasis t
-        org-appear-autolinks t
+        org-appear-autolinks 'just-brackets
         org-appear-autosubmarkers t
-        org-appear-autoentities t))
+        org-appear-autoentities t
+        org-appear-inside-latex nil))
 #+END_SRC
 *** LaTeX Auto-Activating Snippets
 Context-aware auto-expanding snippets in math environments. Typing =sr= expands
