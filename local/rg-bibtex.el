@@ -121,17 +121,25 @@
         (expand-file-name
          (or (rg/bibtex--env "RG_ZOT_BIB_CLEAN_CACHE")
              (rg/bibtex--bound-value 'zot_bib_clean_cache)
-             (rg/bibtex-default-clean-cache-file)))
-        zot_bib
+             (rg/bibtex-default-clean-cache-file))))
+  (rg/bibtex-ensure-clean-cache)
+  (setq zot_bib
         (or (rg/bibtex--first-readable zot_bib_clean_cache
-                                      zot_bib_cache
-                                      zot_bib_source)
+                                        zot_bib_cache
+                                        zot_bib_source)
             zot_bib_source)
         org-directory org_notes
         deft-directory org_notes
         org-roam-directory org_notes)
   (rg/bibtex-apply-active-bibliography)
   zot_bib)
+
+(defun rg/bibtex-ensure-clean-cache ()
+  "Create the sanitized BibTeX cache when it is missing."
+  (when-let ((input-file (and (not (file-readable-p zot_bib_clean_cache))
+                              (rg/bibtex--first-readable zot_bib_cache
+                                                          zot_bib_source))))
+    (rg/zot-bib-build-clean-cache input-file zot_bib_clean_cache)))
 
 (defun rg/bibtex-apply-active-bibliography ()
   "Point citation consumers at the active BibTeX file."
@@ -185,7 +193,8 @@
 (defun rg/zot-bib-build-clean-cache (&optional input output)
   "Build sanitized BibTeX cache from INPUT at OUTPUT."
   (interactive)
-  (rg/bibtex-configure-paths)
+  (unless (and input output)
+    (rg/bibtex-configure-paths))
   (let ((input-file (or input
                         (rg/bibtex--first-readable zot_bib_cache
                                                     zot_bib_source)))

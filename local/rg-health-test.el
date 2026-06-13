@@ -16,7 +16,7 @@
       (should (eq (plist-get item :status) 'ok))
       (should (string-match-p "/usr/bin/vale" (plist-get item :detail))))))
 
-(ert-deftest rg-health-bibtex-check-warns-on-raw-cache-only ()
+(ert-deftest rg-health-bibtex-check-repairs-raw-cache-only ()
   (let ((source "/tmp/rg-health-source.bib")
         (cache "/tmp/rg-health-cache.bib")
         (clean-cache "/tmp/rg-health-missing-clean-cache.bib"))
@@ -27,8 +27,10 @@
           (zot_bib_cache cache)
           (zot_bib_clean_cache clean-cache))
       (let ((item (rg/health-bibtex-cache)))
-        (should (eq (plist-get item :status) 'warn))
-        (should (string-match-p "cache readable" (plist-get item :detail)))))))
+        (should (eq (plist-get item :status) 'ok))
+        (should (file-readable-p clean-cache))
+        (should (string-match-p "clean cache readable"
+                                (plist-get item :detail)))))))
 
 (ert-deftest rg-health-bibtex-check-prefers-clean-cache ()
   (let ((source "/tmp/rg-health-source.bib")

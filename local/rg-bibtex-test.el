@@ -109,6 +109,27 @@
     (should (equal zot_bib_cache "/tmp/rg-zot-cache.bib"))
     (should (equal zot_bib_clean_cache "/tmp/rg-zot-clean-cache.bib"))))
 
+(ert-deftest rg-bibtex-configure-paths-builds-missing-clean-cache ()
+  (let ((source "/tmp/rg-bibtex-configure-source.bib")
+        (cache "/tmp/rg-bibtex-configure-cache.bib")
+        (clean-cache "/tmp/rg-bibtex-configure-clean-cache.bib"))
+    (with-temp-file source
+      (insert "@article{source,\n")
+      (insert "  author = {Mahmoud\\}, Chiheb \\{Ben}\n")
+      (insert "}\n"))
+    (ignore-errors (delete-file cache))
+    (ignore-errors (delete-file clean-cache))
+    (let ((org_notes "/tmp/rg-bibtex-configure-notes")
+          (zot_bib_source source)
+          (zot_bib_cache cache)
+          (zot_bib_clean_cache clean-cache))
+      (should (equal (rg/bibtex-configure-paths) clean-cache))
+      (should (file-readable-p clean-cache))
+      (should (equal zot_bib clean-cache))
+      (with-temp-buffer
+        (insert-file-contents clean-cache)
+        (should-not (string-match-p "\\\\[{}]" (buffer-string)))))))
+
 (ert-deftest rg-bibtex-sanitize-removes-escaped-braces ()
   (with-temp-buffer
     (insert "@unpublished{sample,\n")
@@ -143,7 +164,7 @@
           "author = {Mahmoud, Chiheb Ben and Anelli, Andrea}"
           (buffer-string)))))))
 
-(ert-deftest rg-bibtex-cache-stale-when-clean-cache-missing ()
+(ert-deftest rg-bibtex-cache-stale-builds-missing-clean-cache ()
   (let ((source "/tmp/rg-bibtex-source-stale.bib")
         (cache "/tmp/rg-bibtex-cache-stale.bib")
         (clean-cache "/tmp/rg-bibtex-clean-cache-missing.bib"))
@@ -152,7 +173,8 @@
     (let ((zot_bib_source source)
           (zot_bib_cache cache)
           (zot_bib_clean_cache clean-cache))
-      (should (rg/zot-bib-cache-stale-p)))))
+      (should-not (rg/zot-bib-cache-stale-p))
+      (should (file-readable-p clean-cache)))))
 
 (ert-deftest rg-bibtex-cache-stale-when-source-is-newer ()
   (let ((source "/tmp/rg-bibtex-source-newer.bib")
@@ -205,7 +227,9 @@
         (clean-cache "/tmp/rg-bibtex-async-clean-stale.bib")
         (started nil))
     (with-temp-file source (insert "@article{source}\n"))
-    (ignore-errors (delete-file clean-cache))
+    (with-temp-file clean-cache (insert "@article{clean}\n"))
+    (set-file-times clean-cache (encode-time 0 0 0 1 1 2024))
+    (set-file-times source (encode-time 0 0 0 1 1 2025))
     (let ((zot_bib_source source)
           (zot_bib_cache cache)
           (zot_bib_clean_cache clean-cache)
