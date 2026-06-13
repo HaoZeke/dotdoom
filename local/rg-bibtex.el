@@ -6,6 +6,11 @@
 (defvar bibtex-completion-bibliography)
 (defvar citar-bibliography)
 (defvar org-cite-global-bibliography)
+(defvar org-cite-basic-mouse-over-key-face)
+
+(declare-function org-cite-boundaries "oc")
+(declare-function org-cite-get-references "oc")
+(declare-function org-cite-key-boundaries "oc")
 
 (defgroup rg-bibtex nil
   "Local bibliography and notes path helpers."
@@ -138,6 +143,21 @@
     (when (boundp 'bibtex-completion-bibliography)
       (setq bibtex-completion-bibliography bibliography))
     bibliography))
+
+(defun rg/citar-org-fast-activate (citation)
+  "Apply cheap text properties for Org citation CITATION."
+  (pcase-let ((`(,beg . ,end) (org-cite-boundaries citation)))
+    (put-text-property beg end 'font-lock-multiline t)
+    (add-face-text-property beg end 'org-cite)
+    (dolist (reference (org-cite-get-references citation))
+      (pcase-let ((`(,key-beg . ,key-end)
+                   (org-cite-key-boundaries reference)))
+        (when (boundp 'org-cite-basic-mouse-over-key-face)
+          (put-text-property key-beg
+                             key-end
+                             'mouse-face
+                             org-cite-basic-mouse-over-key-face))
+        (add-face-text-property key-beg key-end 'org-cite-key)))))
 
 (defun rg/zot-bib-use-cache ()
   "Use the best local BibTeX cache when it is readable."

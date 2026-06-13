@@ -2966,7 +2966,11 @@ Named vterm buffers for common tasks.
   (rg/bibtex-configure-paths)
   (setq org-cite-global-bibliography (list zot_bib)
         citar-bibliography org-cite-global-bibliography
-        citar-at-point-function 'embark-act))
+        citar-at-point-function 'embark-act)
+  (with-eval-after-load 'citar-org
+    (setq citar-org-activation-functions
+          '(rg/citar-org-fast-activate
+            citar-org-activate-keymap))))
 
 (use-package! citar-embark
   :after (citar embark)
