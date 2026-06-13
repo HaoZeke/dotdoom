@@ -32,8 +32,8 @@
   (eglot-ensure))
 
 (defun rg/prose-flycheck-on-save ()
-  "Run Flycheck in prose buffers on save and mode activation."
-  (setq-local flycheck-check-syntax-automatically '(save mode-enabled)))
+  "Run Flycheck in prose buffers on save."
+  (setq-local flycheck-check-syntax-automatically '(save)))
 
 (provide 'rg-prose)
 ;;; rg-prose.el ends here

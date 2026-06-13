@@ -14,7 +14,7 @@
   (with-temp-buffer
     (rg/prose-flycheck-on-save)
     (should
-     (equal flycheck-check-syntax-automatically '(save mode-enabled)))))
+     (equal flycheck-check-syntax-automatically '(save)))))
 
 (provide 'rg-prose-test)
 ;;; rg-prose-test.el ends here
