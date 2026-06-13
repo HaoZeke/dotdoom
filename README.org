@@ -21,15 +21,27 @@ with ~emacs~ commits. Also managing snippets with ~dotgit~ was not exactly
 pleasant, since each symlink needed to be listed in the ~filelist~.
 ** Who?
 I'm [[https://orcid.org/0000-0002-2393-8056][Rohit Goswami]] (or HaoZeke, or rg0swami), and well, if you
-need to know more about why you might want to use my work, check my [[https://rgoswami.me][site]], or any of the [[https:keybase.io/HaoZeke][other sites]] I manage, or even [[https://publons.com/researcher/2911170/rohit-goswami/][my publications]] or [[github:HaoZeke][my code]].
+need to know more about why you might want to use my work, check my [[https://rgoswami.me][site]], or any of the [[https://keybase.io/HaoZeke][other sites]] I manage, or even [[https://publons.com/researcher/2911170/rohit-goswami/][my publications]] or [[https://github.com/HaoZeke][my code]].
 * How?
 Well it just goes where ~doom~ expects config files.
 #+BEGIN_SRC bash
 # Honestly, this should be $HOME/.config
-git clone git@github.com:HaoZeke/dotDoom $HOME/.config/doom
+git clone git@github.com:HaoZeke/dotdoom $HOME/.config/doom
 #+END_SRC
+* Maintenance
+The canonical configuration sources are [[file:config.org][config.org]] and [[file:packages.org][packages.org]].
+Run ~scripts/tangle-doom-config~ after editing them; it regenerates the ignored
+~config.el~ and the tracked ~packages.el~ from those Org sources.
+
+Local helper modules live under ~local/rg-*.el~ with matching ERT tests. The
+encrypted ~local/private.el.gpg~ holds host-local paths and private custom state.
+
+The ~docs/~ directory is the tracked static site output for this repo; keep
+~docs/CNAME~ and ~docs/keybase.txt~ with it. The ~reveal/rjs/~ tree is vendored
+reveal.js for Org reveal exports, and ~reveal/extras/~ contains local
+presentation CSS.
 * Config
-Since the ~config.el~ needs no page of its own, it is simply included below:
-#+INCLUDE: "./init.el" src emacs-lisp
+Doom reads ~init.el~, the generated ~config.el~, and the tracked ~packages.el~.
+The maintained commentary lives in [[file:config.org][config.org]] and [[file:packages.org][packages.org]].
 * License
 It is a personal configuration. So I guess the [[https://choosealicense.com/licenses/mit/][MIT license]] will do for now.

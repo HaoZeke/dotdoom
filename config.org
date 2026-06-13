@@ -126,7 +126,7 @@
   - [[#chat-clients][Chat Clients]]
     - [[#matrix][Matrix]]
   - [[#projects][Projects]]
-    - [[#dotdoom][dotDoom]]
+    - [[#dotdoom][dotdoom]]
     - [[#firestarter][Firestarter]]
   - [[#hooks][Hooks]]
     - [[#caveats-1][Caveats]]
@@ -2341,14 +2341,14 @@ These are to help setup org-mode workflows.
 (unless (boundp 'org-publish-project-alist)
   (setq org-publish-project-alist nil))
 #+END_SRC
-*** dotDoom
-This is used to generate plain HTML for my [[https://github.com/HaoZeke/dotDoom][dotDoom repo]]. The setup is taken from
+*** dotdoom
+This is used to generate plain HTML for my [[https://github.com/HaoZeke/dotdoom][dotdoom repo]]. The setup is taken from
 the [[https://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html#fn.3][worg documentation]] and [[https://github.com/shishougang/wiki/blob/gh-pages/src/notes-init.el][this repository]]. It so turns out that we can host the
 entire thing from the master branch on GitHub, but only if it is in a ~docs/~
 subfolder... Plus ~org-html-export-to-html~ does not accept filenames which was
 a real bummer.
 #+BEGIN_SRC emacs-lisp
-; dotDoom stuff
+; dotdoom publishing
 ; This is a rather harmless useful variable
 (setq dotdoom-root-dir "~/.config/doom/")
 (setq dotdoom-publish-dir  (concat dotdoom-root-dir "docs"))
