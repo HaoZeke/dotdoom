@@ -1098,13 +1098,15 @@ This section is to work with the settings for the ~word-wrap~ ~doom~ module.
 *** Spellings
 #+begin_src emacs-lisp
 (after! spell-fu
+  (let ((word-list "/usr/share/dict/cracklib-small"))
+    (when (file-readable-p word-list)
+      (setq ispell-alternate-dictionary word-list)))
   (setq spell-fu-idle-delay 0.5 ; default is 0.25
         ispell-program-name "aspell"
         ispell-extra-args '("--sug-mode=ultra")
         ispell-dictionary "en_US"
         ispell-personal-dictionary "~/.aspell.en.pws"
-        spell-fu-dictionary "~/.config/dict"
-        )
+        spell-fu-dictionary "~/.config/dict")
   (ispell-change-dictionary "american" t)
   )
 #+end_src
@@ -3003,6 +3005,8 @@ it has better support for working with multiple documents linked to one file.
 #+BEGIN_SRC emacs-lisp
 (use-package! org-noter
   :after (:any org pdf-view)
+  :init
+  (setq org-noter-supported-modes '(doc-view-mode pdf-view-mode))
   :config
   (setq
    ;; The WM can handle splits
