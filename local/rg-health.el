@@ -28,6 +28,8 @@
   (when (fboundp 'rg/bibtex-configure-paths)
     (rg/bibtex-configure-paths))
   (cond
+   ((and (boundp 'zot_bib_clean_cache) (file-readable-p zot_bib_clean_cache))
+    (rg/health-item "BibTeX cache" t (format "clean cache readable %s" zot_bib_clean_cache)))
    ((and (boundp 'zot_bib_cache) (file-readable-p zot_bib_cache))
     (rg/health-item "BibTeX cache" t (format "cache readable %s" zot_bib_cache)))
    ((and (boundp 'zot_bib_source) (file-readable-p zot_bib_source))

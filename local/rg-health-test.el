@@ -27,6 +27,21 @@
         (should (eq (plist-get item :status) 'ok))
         (should (string-match-p "cache readable" (plist-get item :detail)))))))
 
+(ert-deftest rg-health-bibtex-check-prefers-clean-cache ()
+  (let ((source "/tmp/rg-health-source.bib")
+        (cache "/tmp/rg-health-cache.bib")
+        (clean-cache "/tmp/rg-health-clean-cache.bib"))
+    (with-temp-file source (insert "@article{source}\n"))
+    (with-temp-file cache (insert "@article{cache}\n"))
+    (with-temp-file clean-cache (insert "@article{clean}\n"))
+    (let ((zot_bib_source source)
+          (zot_bib_cache cache)
+          (zot_bib_clean_cache clean-cache))
+      (let ((item (rg/health-bibtex-cache)))
+        (should (eq (plist-get item :status) 'ok))
+        (should (string-match-p "clean cache readable"
+                                (plist-get item :detail)))))))
+
 (ert-deftest rg-health-report-renders-items ()
   (let ((report (rg/health-render
                  (list (rg/health-item "One" t "ready")
