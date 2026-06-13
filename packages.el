@@ -98,6 +98,7 @@
 ;; ESSGD:1 ends here
 
 ;; [[file:packages.org::*Org Async][Org Async:1]]
+(package! async)
 (package! org-babel-eval-in-repl)
 ;; Org Async:1 ends here
 

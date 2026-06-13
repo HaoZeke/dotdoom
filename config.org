@@ -944,6 +944,7 @@ Now we set the customize path.
   (setq custom-file (concat doom-private-dir "local/private.el.gpg"))
   (load custom-file)
   (rg/bibtex-configure-paths)
+  (rg/zot-bib-enable-auto-refresh)
   )
 #+end_src
 **** MacOS
@@ -2889,6 +2890,7 @@ This includes settings for both flycheck and the packages it needs.
         :desc "Insert citation" "i" #'citar-insert-citation
         :desc "Org cite" "c" #'org-cite-insert
         :desc "Open reference" "o" #'citar-open
+        :desc "Async refresh" "a" #'rg/zot-bib-refresh-cache-async
         :desc "Refresh cache" "r" #'rg/zot-bib-refresh-cache
         :desc "Warm cache" "w" #'rg/bibtex-completion-warm-cache)
        (:prefix ("v" . "Vale")

@@ -263,8 +263,9 @@ Not yet on MELPA, but [[https://github.com/sje30/essgd][very cool]].
            :branch "main"))
 #+END_SRC
 *** Org Async
-We will use this.
+We use async child processes for Org workflows and BibTeX cache refreshes.
 #+begin_src emacs-lisp :tangle yes
+(package! async)
 (package! org-babel-eval-in-repl)
 #+end_src
 *** Anki Mode
