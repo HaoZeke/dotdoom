@@ -353,8 +353,10 @@ These conflict with my other templates.
 #+begin_src emacs-lisp
 (load! "local/rg-bibtex")
 (load! "local/rg-cite-notes")
+(load! "local/rg-doom-runtime")
 (load! "local/rg-org-capture")
 (rg/bibtex-configure-paths)
+(rg/register-ookcite-source)
 #+end_src
 *** Theme
 Sometimes I do tire of the defaults.
@@ -2478,6 +2480,8 @@ upstream.
 #+BEGIN_SRC emacs-lisp
 (after! doom-themes
   (remove-hook 'doom-load-theme-hook #'doom-themes-treemacs-config))
+
+(rg/install-julia-command-predicates)
 #+END_SRC
 * Sphinx and RsT
 As mentioned in [[file:packages.org]], we have some packages which make life easier.
