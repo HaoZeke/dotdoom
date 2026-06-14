@@ -18,6 +18,22 @@
     (should-not (rg/add-existing-load-path "/tmp/rg-doom-runtime-missing"))
     (should-not load-path)))
 
+(ert-deftest rg-doom-runtime-register-straight-build-packages-adds-existing-packages ()
+  (let* ((root (make-temp-file "rg-doom-runtime-straight-" t))
+         (citar-dir (expand-file-name "citar" root))
+         (missing-dir (expand-file-name "missing" root))
+         load-path)
+    (unwind-protect
+        (progn
+          (make-directory citar-dir)
+          (let ((rg/straight-build-root root))
+            (should (equal (rg/register-straight-build-packages
+                            '("citar" "missing"))
+                           (list (file-name-as-directory citar-dir))))
+            (should (member (file-name-as-directory citar-dir) load-path))
+            (should-not (member (file-name-as-directory missing-dir) load-path))))
+      (delete-directory root t))))
+
 (ert-deftest rg-doom-runtime-julia-predicates-default-to-regular-repl ()
   (should (rg/julia-open-repl-command-predicate '+julia/open-repl nil))
   (should-not

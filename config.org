@@ -356,6 +356,7 @@ These conflict with my other templates.
 (load! "local/rg-doom-runtime")
 (load! "local/rg-org-capture")
 (rg/bibtex-configure-paths)
+(rg/register-citation-package-builds)
 (rg/register-ookcite-source)
 #+end_src
 *** Theme

@@ -10,6 +10,22 @@
   :type 'directory
   :group 'rg-doom-runtime)
 
+(defcustom rg/straight-build-root
+  (expand-file-name
+   (format "straight/build-%s" emacs-version)
+   (if (boundp 'doom-local-dir)
+       doom-local-dir
+     "~/.config/emacs/.local/"))
+  "Root directory containing straight.el package builds."
+  :type 'directory
+  :group 'rg-doom-runtime)
+
+(defcustom rg/citation-straight-build-packages
+  '("citar" "citar-embark")
+  "Straight package build directories required by citation integrations."
+  :type '(repeat string)
+  :group 'rg-doom-runtime)
+
 (defun rg/add-existing-load-path (path)
   "Add PATH to `load-path' when it names an existing directory."
   (when (file-directory-p path)
@@ -20,6 +36,18 @@
 (defun rg/register-ookcite-source ()
   "Expose the local OokCite source directory to `load-path'."
   (rg/add-existing-load-path rg/ookcite-source-dir))
+
+(defun rg/register-straight-build-packages (packages)
+  "Expose straight build directories for PACKAGES to `load-path'."
+  (delq nil
+        (mapcar (lambda (package)
+                  (rg/add-existing-load-path
+                   (expand-file-name package rg/straight-build-root)))
+                packages)))
+
+(defun rg/register-citation-package-builds ()
+  "Expose citation package build directories to `load-path'."
+  (rg/register-straight-build-packages rg/citation-straight-build-packages))
 
 (defun rg/doom-module-has-flag-p (group module flag)
   "Return non-nil when Doom GROUP MODULE has FLAG enabled."
