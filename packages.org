@@ -182,6 +182,13 @@ Technically not only an org addition, [[https://mermaid-js.github.io/mermaid/#/]
 (package! mermaid-mode)
 (package! ob-mermaid)
 #+end_src
+*** GitHub Markdown Export
+Starfleet answer sidecars are pasted as GitHub-style Markdown, so Org needs a
+GFM backend for fenced source blocks and tables.
+#+begin_src emacs-lisp :tangle yes
+(package! ox-gfm
+  :recipe (:host github :repo "larstvei/ox-gfm"))
+#+end_src
 *** Org Download
 Now I load it here since I don't use ~+attach~.
 #+BEGIN_SRC emacs-lisp :tangle yes

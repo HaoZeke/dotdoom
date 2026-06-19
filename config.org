@@ -1262,6 +1262,14 @@ For the longest time I was setting this per file for bizarre reasons. This makes
   (ox-extras-activate '(ignore-headlines))
   )
 #+end_src
+*** GitHub Markdown Export
+Starfleet answer sidecars are reviewer-facing Markdown, so load a GFM exporter
+when Org export is available. The local Starfleet exporter still disables Babel
+and keeps a fallback for machines where this package has not been installed.
+#+begin_src emacs-lisp
+(use-package! ox-gfm
+  :after org)
+#+end_src
 *** File Handling
 This controls what is used to open links in ~org~ documents. Since there are
 only a few defaults defined, I am just prepending them to my changes instead of
