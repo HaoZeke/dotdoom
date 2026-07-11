@@ -355,9 +355,11 @@ These conflict with my other templates.
 (load! "local/rg-cite-notes")
 (load! "local/rg-doom-runtime")
 (load! "local/rg-org-capture")
+(load! "local/rg-trace-feedback")
 (rg/bibtex-configure-paths)
 (rg/register-citation-package-builds)
 (rg/register-ookcite-source)
+(rg/trace-feedback-load-private-settings)
 #+end_src
 *** Theme
 Sometimes I do tire of the defaults.
