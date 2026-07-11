@@ -38,6 +38,27 @@
 (defconst rg/trace-feedback--buckets
   '("tbd" "submitted" "noResult" "not_applicable"))
 
+(defconst rg/trace-feedback-monitor-category
+  "Monitor / Subagent Task / Background Task Issues")
+
+(defconst rg/trace-feedback-categories
+  (list rg/trace-feedback-monitor-category
+        "Intent Understanding / Instruction Following"
+        "Code Correctness"
+        "Code Scope"
+        "Code Quality"
+        "Regression Safety"
+        "Dangerous Actions"
+        "Laziness - Unnecessary Ask"
+        "Laziness - Task Incomplete"
+        "Laziness - Self verification"
+        "Tool Call Inefficiencies"
+        "Hallucination"
+        "Transparency"
+        "Reject Premise / Bullshit Actions"
+        "Presentation"
+        "Other"))
+
 (defun rg/trace-feedback--require-root ()
   "Return the configured trace root or raise a user error."
   (unless (and rg/trace-feedback-vault-root
@@ -310,7 +331,7 @@ Signal a user error and display the output when xait exits nonzero."
 (defvar rg-trace-feedback-rank-mode-map
   (let ((map (make-sparse-keymap)))
     (set-keymap-parent map special-mode-map)
-    (define-key map (kbd "g") #'rg/trace-feedback-rank)
+    (define-key map (kbd "g") #'rg/trace-feedback-refresh)
     (define-key map (kbd "q") #'quit-window)
     (define-key map (kbd "/") #'rg/trace-feedback-rank-search)
     map)
@@ -318,6 +339,9 @@ Signal a user error and display the output when xait exits nonzero."
 
 (define-derived-mode rg-trace-feedback-rank-mode special-mode "xait-rank"
   "Major mode for xait trace queue output.")
+
+(defvar-local rg/trace-feedback--queue-args nil
+  "xait argument list used to populate the current queue buffer.")
 
 (defun rg/trace-feedback-rank-search ()
   "Search the rank buffer with Consult when available."
@@ -335,19 +359,50 @@ Signal a user error and display the output when xait exits nonzero."
         (erase-buffer)
         (insert output)
         (goto-char (point-min))
-        (rg-trace-feedback-rank-mode)))
+        (rg-trace-feedback-rank-mode)
+        (setq rg/trace-feedback--queue-args (copy-sequence args))))
     (display-buffer buffer)
     buffer))
+
+(defun rg/trace-feedback-refresh ()
+  "Refresh the current queue with the arguments that opened it."
+  (interactive)
+  (unless rg/trace-feedback--queue-args
+    (user-error "This buffer has no saved xait queue arguments"))
+  (rg/trace-feedback--queue-buffer
+   (buffer-name) rg/trace-feedback--queue-args))
+
+(defun rg/trace-feedback--rank-args (&optional category)
+  "Return ranked-queue arguments, optionally filtered by CATEGORY."
+  (append
+   (list "db" "trace" "rank" "--model"
+         (or rg/trace-feedback-default-model
+             (user-error "Set the default trace model"))
+         "--spread")
+   (when category (list "--category" category))))
 
 (defun rg/trace-feedback-rank ()
   "Open the ranked trace feedback queue."
   (interactive)
   (rg/trace-feedback--queue-buffer
    "*xait trace rank*"
-   (list "db" "trace" "rank" "--model"
-         (or rg/trace-feedback-default-model
-             (user-error "Set the default trace model"))
-         "--spread")))
+   (rg/trace-feedback--rank-args)))
+
+(defun rg/trace-feedback-filter-category (category)
+  "Open the ranked trace queue filtered by CATEGORY."
+  (interactive
+   (list (completing-read "Trace category: "
+                          rg/trace-feedback-categories nil nil)))
+  (when (string-empty-p (string-trim category))
+    (user-error "A category filter is required"))
+  (rg/trace-feedback--queue-buffer
+   (format "*xait trace rank: %s*" category)
+   (rg/trace-feedback--rank-args category)))
+
+(defun rg/trace-feedback-monitor ()
+  "Open the ranked monitor and background-task findings queue."
+  (interactive)
+  (rg/trace-feedback-filter-category rg/trace-feedback-monitor-category))
 
 (defun rg/trace-feedback-status ()
   "Open the xait trace status output."
@@ -373,6 +428,8 @@ Signal a user error and display the output when xait exits nonzero."
            rg/trace-feedback-mark-not-submitted)]
          ["Queue"
           ("r" "Ranked queue" rg/trace-feedback-rank)
+          ("f" "Filter category" rg/trace-feedback-filter-category)
+          ("m" "Monitor queue" rg/trace-feedback-monitor)
           ("t" "Status" rg/trace-feedback-status)]]))))
 
 (defun rg/trace-feedback-dispatch ()
@@ -387,7 +444,8 @@ Signal a user error and display the output when xait exits nonzero."
        "Trace command: "
        '("rg/trace-feedback-new" "rg/trace-feedback-lint-export"
          "rg/trace-feedback-submit" "rg/trace-feedback-mark-not-submitted"
-         "rg/trace-feedback-rank" "rg/trace-feedback-status")
+         "rg/trace-feedback-rank" "rg/trace-feedback-filter-category"
+         "rg/trace-feedback-monitor" "rg/trace-feedback-status")
        nil t)))))
 
 (defun rg/trace-feedback-install-keybindings ()
@@ -405,6 +463,8 @@ Signal a user error and display the output when xait exits nonzero."
           "s" #'rg/trace-feedback-submit
           "c" #'rg/trace-feedback-mark-not-submitted
           "r" #'rg/trace-feedback-rank
+          "f" #'rg/trace-feedback-filter-category
+          "m" #'rg/trace-feedback-monitor
           "t" #'rg/trace-feedback-status)))
 
 (defun rg/trace-feedback-load-private-settings ()
