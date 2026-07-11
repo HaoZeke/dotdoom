@@ -361,6 +361,20 @@ These conflict with my other templates.
 (rg/register-ookcite-source)
 (rg/trace-feedback-load-private-settings)
 #+end_src
+*** xait trace feedback
+The nimvaulted settings install =SPC n x= as the Trace Analysis prefix.
+
+| Key | Command |
+|-----+---------|
+| =x= | Open the Transient menu |
+| =n= | Create a feedback packet |
+| =l= | Lint, export, and copy the form text |
+| =s= | Stamp a packet after Slack submission |
+| =c= | Mark a packet trivial or not submitted |
+| =r= | Open the ranked queue buffer |
+| =t= | Open trace status |
+
+The rank buffer uses =g= to refresh, =q= to close, and =/= to search.
 *** Theme
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
