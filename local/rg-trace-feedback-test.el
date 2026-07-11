@@ -192,5 +192,30 @@
               (should (equal (nreverse calls) (list args args))))
           (kill-buffer buffer))))))
 
+(ert-deftest rg-trace-feedback-view-opens-groket-from-the-packet-directory ()
+  (rg-trace-feedback-test--with-root
+    (let* ((packet (file-name-as-directory
+                    (expand-file-name "tasks/tbd/example" root)))
+           (feedback (expand-file-name "feedback.org" packet))
+           (buffer (find-file-noselect feedback))
+           launched-name launched-command launched-directory)
+      (make-directory packet t)
+      (write-region "* Session ID\n019f-example\n* Turn\n7\n"
+                    nil feedback nil 'silent)
+      (unwind-protect
+          (with-current-buffer buffer
+            (cl-letf (((symbol-function 'executable-find)
+                       (lambda (_) "/tmp/xait-test"))
+                      ((symbol-function 'rg/vterm-named)
+                       (lambda (name command)
+                         (setq launched-name name
+                               launched-command command
+                               launched-directory default-directory))))
+              (rg/trace-feedback-view)
+              (should (equal launched-name "xait-groket-example"))
+              (should (equal launched-command "/tmp/xait-test trace view"))
+              (should (equal launched-directory packet))))
+        (kill-buffer buffer)))))
+
 (provide 'rg-trace-feedback-test)
 ;;; rg-trace-feedback-test.el ends here
