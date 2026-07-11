@@ -372,9 +372,12 @@ The nimvaulted settings install =SPC n x= as the Trace Analysis prefix.
 | =s= | Stamp a packet after Slack submission |
 | =c= | Mark a packet trivial or not submitted |
 | =r= | Open the ranked queue buffer |
+| =f= | Filter the ranked queue by category |
+| =m= | Open monitor and background-task findings |
 | =t= | Open trace status |
 
-The rank buffer uses =g= to refresh, =q= to close, and =/= to search.
+The rank buffer uses =g= to refresh the same filters, =q= to close, and =/= to
+search.
 *** Theme
 Sometimes I do tire of the defaults.
 #+BEGIN_SRC emacs-lisp
