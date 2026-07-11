@@ -362,7 +362,8 @@ These conflict with my other templates.
 (rg/trace-feedback-load-private-settings)
 #+end_src
 *** xait trace feedback
-The nimvaulted settings install =SPC n x= as the Trace Analysis prefix.
+The public loader reads the nimvaulted helper and settings. They install
+=SPC n x= as the Trace Analysis prefix when the vault is unsealed.
 
 | Key | Command |
 |-----+---------|
@@ -374,6 +375,7 @@ The nimvaulted settings install =SPC n x= as the Trace Analysis prefix.
 | =r= | Open the ranked queue buffer |
 | =f= | Filter the ranked queue by category |
 | =m= | Open monitor and background-task findings |
+| =v= | Open the current packet in Groket |
 | =t= | Open trace status |
 
 The rank buffer uses =g= to refresh the same filters, =q= to close, and =/= to
