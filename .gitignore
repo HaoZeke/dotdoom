@@ -323,6 +323,9 @@ TSWLatexianTemp*
 # auto folder when using emacs and auctex
 ./auto/*
 *.el
+!local/rg-trace-feedback.el
+!local/rg-trace-feedback-test.el
+local/private/
 
 # expex forward references with \gathertags
 *-tags.tex
