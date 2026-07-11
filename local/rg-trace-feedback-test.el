@@ -159,5 +159,38 @@
               (should (string-match-p "173 major example" (buffer-string))))
           (kill-buffer buffer))))))
 
+(ert-deftest rg-trace-feedback-monitor-filters-the-ranked-queue ()
+  (rg-trace-feedback-test--with-root
+    (cl-letf (((symbol-function 'rg/trace-feedback--call-xait)
+               (lambda (&rest args)
+                 (should
+                  (equal args
+                         '("db" "trace" "rank" "--model" "stickynote"
+                           "--spread" "--category"
+                           "Monitor / Subagent Task / Background Task Issues")))
+                 "monitor result\n")))
+      (let ((buffer (rg/trace-feedback-monitor)))
+        (unwind-protect
+            (with-current-buffer buffer
+              (should (equal rg/trace-feedback--queue-args
+                             '("db" "trace" "rank" "--model" "stickynote"
+                               "--spread" "--category"
+                               "Monitor / Subagent Task / Background Task Issues"))))
+          (kill-buffer buffer))))))
+
+(ert-deftest rg-trace-feedback-refresh-preserves-the-active-filter ()
+  (let ((calls nil)
+        (args '("db" "trace" "rank" "--category" "monitor")))
+    (cl-letf (((symbol-function 'rg/trace-feedback--call-xait)
+               (lambda (&rest actual)
+                 (push actual calls)
+                 "filtered result\n")))
+      (let ((buffer (rg/trace-feedback--queue-buffer "*xait filtered test*" args)))
+        (unwind-protect
+            (with-current-buffer buffer
+              (rg/trace-feedback-refresh)
+              (should (equal (nreverse calls) (list args args))))
+          (kill-buffer buffer))))))
+
 (provide 'rg-trace-feedback-test)
 ;;; rg-trace-feedback-test.el ends here
