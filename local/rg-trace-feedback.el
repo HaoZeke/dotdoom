@@ -7,6 +7,11 @@
                       user-emacs-directory))
   "Nimvaulted xait trace-feedback implementation.")
 
+(defconst rg/trace-feedback-answer-export-file
+  (expand-file-name
+   "~/Git/Github/Tools/single-turn-review/emacs/rg-st-export.el")
+  "Turn-grouped Trace Analysis answer exporter.")
+
 (defun rg/trace-feedback-private-status ()
   "Report whether the private trace-feedback implementation is available."
   (interactive)
@@ -19,6 +24,9 @@
   (defun rg/trace-feedback-load-private-settings ()
     "Leave trace feedback disabled while the private vault is sealed."
     (message "xait trace feedback disabled; run nimvault unseal")))
+
+(when (file-readable-p rg/trace-feedback-answer-export-file)
+  (load rg/trace-feedback-answer-export-file nil 'nomessage))
 
 (provide 'rg-trace-feedback)
 ;;; rg-trace-feedback.el ends here
