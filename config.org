@@ -362,8 +362,8 @@ These conflict with my other templates.
 (rg/trace-feedback-load-private-settings)
 #+end_src
 *** xait trace feedback
-The public loader reads the nimvaulted helper and settings. They install
-=SPC n x= as the Trace Analysis prefix when the vault is unsealed.
+The public loader reads the sealed helper and settings. They install
+=SPC n x= as the Trace Analysis prefix when the store is unsealed.
 
 | Key | Command |
 |-----+---------|
@@ -860,11 +860,20 @@ Since I tend to keep ~visual-line-mode~ all the time, [[https://github.com/YourF
   :after evil-colemak-basics
   :config
   (evil-better-visual-line-on)
-  (map! :map evil-colemak-basics-keymap
-        (:nvm "n" 'evil-better-visual-line-next-line
-         :nvm "e" 'evil-better-visual-line-previous-line
-         :nvm "g n" 'evil-next-line
-         :nvm "g e" 'evil-previous-line))
+  ;; Same version split as the page-movement bindings below: 3.x has no
+  ;; evil-colemak-basics-keymap, so binding into it here quietly leaves plain
+  ;; line movement in place instead of the visual-line variants.
+  (if (boundp 'evil-colemak-basics-keymap)
+      (map! :map evil-colemak-basics-keymap
+            (:nvm "n" 'evil-better-visual-line-next-line
+             :nvm "e" 'evil-better-visual-line-previous-line
+             :nvm "g n" 'evil-next-line
+             :nvm "g e" 'evil-previous-line))
+    (evil-define-minor-mode-key '(normal visual motion) 'evil-colemak-basics-mode
+      "n" #'evil-better-visual-line-next-line
+      "e" #'evil-better-visual-line-previous-line
+      "gn" #'evil-next-line
+      "ge" #'evil-previous-line))
   )
 #+END_SRC
 **** Search
@@ -894,11 +903,20 @@ These are somehow not part of the ~evil-colemak~ setup.
 **** Page Movement
 Harmonizing with Zathura.
 #+BEGIN_SRC emacs-lisp
-(after! evil
-  (map! :map evil-colemak-basics-keymap
-      :nv "N" 'evil-scroll-page-down
-      :nv "E" 'evil-scroll-page-up)
-  )
+(after! evil-colemak-basics
+  ;; The package binds two different ways across major versions. 2.x exposes
+  ;; evil-colemak-basics-keymap; 3.x builds its bindings with
+  ;; evil-define-minor-mode-key and defines no such keymap. Binding into a
+  ;; keymap that does not exist raises nothing and changes nothing, so the
+  ;; package's own N and E stay in place and the config looks unread. Ask which
+  ;; form the installed version understands.
+  (if (boundp 'evil-colemak-basics-keymap)
+      (map! :map evil-colemak-basics-keymap
+            :nv "N" #'evil-scroll-page-down
+            :nv "E" #'evil-scroll-page-up)
+    (evil-define-minor-mode-key '(normal visual) 'evil-colemak-basics-mode
+      "N" #'evil-scroll-page-down
+      "E" #'evil-scroll-page-up)))
 #+END_SRC
 **** Evil Org
 Annoyingly, ~evil-org-mode~ had a map which kept overriding all my other
@@ -2211,27 +2229,83 @@ This is a convinience function for working with ~nanoc~.
 #+END_SRC
 *** Org-mode export for the Carpentries workbench
 #+begin_src emacs-lisp
+(defun haozeke/org-normalize-cites-for-workbench ()
+  "Rewrite org-ref / pandoc cite forms so they survive org→md as [@key].
+
+Pandoc escapes bare [@key] when reading org as \\[@key\\], which breaks
+citeproc later.  Raw markdown pass-through @@markdown:[@key]@@ is preserved.
+
+Authoring forms accepted:
+- org-ref: cite:key  or  cite:key1,key2
+- org-cite: [cite:@key]  (already fine; left alone if already bracketed)
+- pandoc: [@key] or [@a; @b]  (wrapped for export)
+- org-ref link: [[cite:&key]] / [[cite:key]]"
+  (goto-char (point-min))
+  ;; 1) [[cite:&key]] or [[cite:key]] or [[cite:&key][desc]]
+  (while (re-search-forward
+          "\\[\\[cite:&?\\([^]|]+\\)\\]\\(?:\\[\\([^]]+\\)\\]\\)?\\]"
+          nil t)
+    (let ((key (match-string 1)))
+      (replace-match (format "@@markdown:[@%s]@@" key) t t)))
+  ;; 2) org-ref cite:key1,key2 (not already inside markdown raw)
+  (goto-char (point-min))
+  (while (re-search-forward
+          "\\bcite:\\([A-Za-z][A-Za-z0-9]+\\(?:,[A-Za-z][A-Za-z0-9]+\\)*\\)"
+          nil t)
+    (let* ((raw (match-string 1))
+           (keys (split-string raw "," t))
+           (inner (mapconcat (lambda (k) (concat "@" (string-trim k))) keys "; ")))
+      (replace-match (format "@@markdown:[%s]@@" inner) t t)))
+  ;; 3) bare pandoc [@key] or [@a; @b] → raw markdown (avoid pandoc escape)
+  (goto-char (point-min))
+  (while (re-search-forward
+          "\\[\\(@[A-Za-z][A-Za-z0-9]+\\(?:;[[:space:]]*@[A-Za-z][A-Za-z0-9]+\\)*\\)\\]"
+          nil t)
+    (let ((inner (match-string 1)))
+      ;; skip if already inside @@markdown:
+      (unless (looking-back "@@markdown:" 12)
+        (replace-match (format "@@markdown:[%s]@@" inner) t t)))))
+
 (defun export-as-workbench-md ()
-  "Save, strip the export line via grep, and pipe to Pandoc."
+  "Export buffer to Carpentries Workbench Markdown with pandoc-ready cites.
+
+Strips export-only keywords, normalizes citations to unescaped [@key]
+for later citeproc (see pathways scripts/sandpaper_citeproc_hook.R),
+then runs pandoc org→markdown-smart+fenced_divs."
   (interactive)
   (save-buffer)
   (let* ((src (buffer-file-name))
-         ;; Get the filename from the buffer keywords
          (kv  (org-collect-keywords '("EXPORT_FILE_NAME")))
          (out (or (cadr (assoc "EXPORT_FILE_NAME" kv))
-                  (concat (file-name-sans-extension src) ".md")))
-         ;; Grep excludes the line -> Pipe -> Pandoc
-         (cmd (format "grep -v '^#+EXPORT_FILE_NAME:' %s | pandoc -f org -t markdown-smart+fenced_divs -o %s"
-                      (shell-quote-argument src)
-                      (shell-quote-argument out))))
-    
-    (shell-command cmd)
-    (message "Exported to %s" out)))
+                  (concat (file-name-sans-extension src) ".md"))))
+    (unless src
+      (error "Buffer is not visiting a file"))
+    (when (file-name-directory out)
+      (make-directory (file-name-directory out) t))
+    (with-temp-buffer
+      (insert-file-contents src)
+      ;; Drop keywords that must not appear as body text
+      (goto-char (point-min))
+      (while (re-search-forward
+              "^#\\+\\(EXPORT_FILE_NAME\\|OPTIONS\\|TITLE\\|AUTHOR\\|DATE\\|PROPERTY\\):.*[\r\n]+"
+              nil t)
+        (replace-match ""))
+      ;; Citations → @@markdown:[@key]@@ so pandoc does not escape them
+      (haozeke/org-normalize-cites-for-workbench)
+      (let ((exit (call-process-region
+                   (point-min) (point-max)
+                   "pandoc" nil nil nil
+                   "-f" "org"
+                   "-t" "markdown-smart+fenced_divs"
+                   "-o" out)))
+        (unless (eq exit 0)
+          (error "pandoc failed with exit %s" exit))))
+    (message "Exported to %s (cites as [@key] for citeproc)" out)))
 #+end_src
 or alternatively a baroque but windows compatible variant without ~grep~.
 #+begin_src emacs-lisp :eval never :exports none
-(defun export-as-workbench-md ()
-  "Export to Carpentries MD, filtering out global Org options that confuse Pandoc."
+(defun export-as-workbench-md--windows-legacy ()
+  "LEGACY unused. See export-as-workbench-md for cite-aware export."
   (interactive)
   (let* ((source-file (buffer-file-name))
          ;; 1. helper to get keywords from the current buffer before we mess with it
