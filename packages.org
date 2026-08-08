@@ -549,6 +549,19 @@ Also, [[https://github.com/johnbcoughlin/calctex][CalcTeX]] makes life a lot eas
   :pin "784cf911bc96aac0f47d529e8cee96ebd7cc31c9")
 #+end_src
 
+** Chat and protocol-driven buffers
+
+[[https://github.com/karthink/gptel][gptel]] is a chat client; [[https://github.com/xenodium/agent-shell][agent-shell]] drives a tool over the Agent Client
+Protocol, so one buffer works for whichever tool is installed rather than
+needing a package for each. Backend details are machine-local and live in an
+encrypted file under =local/=.
+
+#+begin_src emacs-lisp :tangle yes
+(package! gptel)
+(package! acp :recipe (:host github :repo "xenodium/acp.el"))
+(package! agent-shell :recipe (:host github :repo "xenodium/agent-shell"))
+#+end_src
+
 # Local Variables:
 # eval: (add-hook (quote after-save-hook) (lambda nil (org-babel-tangle)) nil t)
 # End:

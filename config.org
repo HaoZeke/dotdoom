@@ -3057,6 +3057,18 @@ Named vterm buffers for common tasks.
        :desc "Open vterm" "v" #'+vterm/here
        :desc "Project vterm" "p" #'+vterm/toggle))
 #+end_src
+* Machine-local backends
+
+Backend configuration names endpoints and model ids, which are machine-local
+and not for a published configuration, so it lives encrypted under =local/= and
+is loaded when present. A machine without the file is unaffected.
+
+#+begin_src emacs-lisp :tangle yes
+(let ((f (concat doom-private-dir "local/extra-backends.el.gpg")))
+  (when (file-exists-p f)
+    (load f :noerror :nomessage)))
+#+end_src
+
 * Notes
 ** noteYoda
 +This is largely inspired from [[https://www.reddit.com/r/emacs/comments/4gudyw/help_me_with_my_orgmode_workflow_for_notetaking/][this reddit comment]]. For clarity and extensibility this will be broken down into a per-package configuration. The heart of this is an [[https://rclone.org/mega/][rclone mega]] folder to manage all these transparently. With this setup links to the files are stored in [[https://www.zotero.org/][zotero]] and managed by [[https://github.com/jlegewie/zotfile][zotfile]].+ Now described in [[https://rgoswami.me/posts/org-note-workflow][this post]].
