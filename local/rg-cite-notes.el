@@ -225,6 +225,7 @@ KEY overrides the generated citation key."
            (rg/cite-notes--ookcite-org-noter-properties)
            `(("RIDLEY_ITEM_ID" . ,(rg/cite-notes-ridley-id item))
              ("DOI" . ,(rg/cite-notes-doi item))
+             ("TRAWL_DOI" . ,(rg/cite-notes-doi item))
              ("URL" . ,(rg/cite-notes-url item))
              ("AUTHOR" . ,(rg/cite-notes-authors-string item))
              ("JOURNAL" . ,(rg/cite-notes-journal item))
