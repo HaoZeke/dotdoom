@@ -52,6 +52,7 @@
     (should (string-search ":NOTER_DOCUMENT: /tmp/readable.pdf" note))
     (should (string-search ":NOTER_NOTES_LOCATION: horizontal-split" note))
     (should (string-search ":RIDLEY_ITEM_ID: 01ABC" note))
+    (should (string-search ":TRAWL_DOI: 10.5555/turing" note))
     (should (string-search ":AUTHOR: Turing, Alan and Lovelace, Ada" note))
     (should (string-search "cite:@turing1950" note))))
 
