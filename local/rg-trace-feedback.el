@@ -5,7 +5,7 @@
                     (if (boundp 'doom-private-dir)
                         doom-private-dir
                       user-emacs-directory))
-  "Nimvaulted xait trace-feedback implementation.")
+  "Private trace-feedback implementation.")
 
 (defconst rg/trace-feedback-answer-export-file
   (expand-file-name
@@ -27,6 +27,19 @@
 
 (when (file-readable-p rg/trace-feedback-answer-export-file)
   (load rg/trace-feedback-answer-export-file nil 'nomessage))
+
+(when (fboundp 'rg/trace-feedback-submit)
+  (unless (fboundp 'rg/trace-feedback-submit-trace)
+    (defalias 'rg/trace-feedback-submit-trace
+      (symbol-function 'rg/trace-feedback-submit)))
+  (defun rg/review-submit ()
+    "Stamp a submitted CQA packet or Trace Analysis feedback packet."
+    (interactive)
+    (if (and (fboundp 'rg/cqa--task-dir)
+             (ignore-errors (rg/cqa--task-dir)))
+        (call-interactively #'rg/cqa-stamp-submission)
+      (call-interactively #'rg/trace-feedback-submit-trace)))
+  (defalias 'rg/trace-feedback-submit #'rg/review-submit))
 
 (provide 'rg-trace-feedback)
 ;;; rg-trace-feedback.el ends here
