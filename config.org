@@ -360,9 +360,6 @@ These conflict with my other templates.
 (rg/register-citation-package-builds)
 (rg/register-ookcite-source)
 (rg/trace-feedback-load-private-settings)
-(when (fboundp 'rg/review-submit)
-  (map! :leader
-        :desc "Stamp submitted review packet" "x s" #'rg/review-submit))
 #+end_src
 *** xait review packets
 The public loader reads the sealed helper and settings. They install
@@ -370,7 +367,6 @@ The public loader reads the sealed helper and settings. They install
 task file, =s= records the already submitted Starfleet form, refreshes its
 Markdown export, and commits and pushes the packet. From a Trace Analysis
 packet, =s= stamps the Slack submission.
-=SPC x s= is a direct binding for the same command.
 
 | Key | Command |
 |-----+---------|
