@@ -885,15 +885,19 @@ Harmonizing with Vimium.
                    ))
 #+END_SRC
 **** Window Bindings
-~evil-colemak-basics~ leaves ~evil-window-map~ alone. ~SPC w~ and ~C-w~ both read that map, so the Colemak motions are bound on it. A described leader prefix would install a fresh keymap in place of ~evil-window-map~ and drop every window command. ~h~ stays left. ~n~ moves down, and new-window stays on ~N~ and ~C-n~.
+~evil-colemak-basics~ leaves ~evil-window-map~ alone. ~SPC w~ and ~C-w~ both read that map, so the Colemak motions are bound on it. A described leader prefix would install a fresh keymap in place of ~evil-window-map~ and drop every window command. ~h e n i~ select a window. ~H E N I~ move it. New-window stays on ~C-n~. ~a~ calls ace-window.
 #+BEGIN_SRC emacs-lisp
 (after! evil
   (map! :map evil-window-map
-        :desc "Left"  "h" #'evil-window-left
-        :desc "Up"    "e" #'evil-window-up
-        :desc "Down"  "n" #'evil-window-down
-        :desc "Right" "i" #'evil-window-right
-        :desc "New"   "N" #'evil-window-new))
+        :desc "Left"       "h" #'evil-window-left
+        :desc "Up"         "e" #'evil-window-up
+        :desc "Down"       "n" #'evil-window-down
+        :desc "Right"      "i" #'evil-window-right
+        :desc "Move left"  "H" #'+evil/window-move-left
+        :desc "Move up"    "E" #'+evil/window-move-up
+        :desc "Move down"  "N" #'+evil/window-move-down
+        :desc "Move right" "I" #'+evil/window-move-right
+        :desc "Ace"        "a" #'ace-window))
 #+END_SRC
 **** Page Movement
 Harmonizing with Zathura.
@@ -916,7 +920,8 @@ Harmonizing with Zathura.
 **** Evil Org
 Annoyingly, ~evil-org-mode~ had a map which kept overriding all my other
 settings. Thankfully it has a helper variable to set movement. I also do not
-need this anyway, at-least not by default.
+need this anyway, at-least not by default. The heading, link, and fold keys
+live on ~org-mode-map~ instead, so ~TAB~ still cycles a heading.
 #+BEGIN_SRC emacs-lisp
 (after! org
   (remove-hook 'org-mode-hook 'evil-org-mode)
@@ -924,7 +929,12 @@ need this anyway, at-least not by default.
         '((up . "e") (down . "n")
           (left . "h") (right . "i"))
         )
-)
+  (map! :map org-mode-map
+        :m "]h" #'org-forward-heading-same-level
+        :m "[h" #'org-backward-heading-same-level
+        :m "]l" #'org-next-link
+        :m "[l" #'org-previous-link
+        :n "za" #'+org/toggle-fold))
 #+END_SRC
 *** DONE Neotree --> Treemacs
 **** CANCELLED Toggle pane
