@@ -3192,6 +3192,11 @@ is loaded when present. A machine without the file is unaffected.
              ookcite-add-citation-to-bib
              ookcite-add-citation-to-collection
              ookcite-add-doi-to-collection
+             ookcite-list-collections
+             ookcite-import-bibliography-file
+             ookcite-export-collection-bibtex
+             ookcite-check-collection-duplicates
+             ookcite-share-collection
              ookcite-lookup-doi
              ookcite-format-doi
              ookcite-search-styles
@@ -3221,6 +3226,11 @@ is loaded when present. A machine without the file is unaffected.
           :desc "Add to BibTeX" "a" #'ookcite-add-citation-to-bib
           :desc "Add to collection" "A" #'ookcite-add-citation-to-collection
           :desc "Add DOI to collection" "D" #'ookcite-add-doi-to-collection
+          :desc "List collections" "c" #'ookcite-list-collections
+          :desc "Import bibliography" "I" #'ookcite-import-bibliography-file
+          :desc "Export BibTeX" "e" #'ookcite-export-collection-bibtex
+          :desc "Check duplicates" "d" #'ookcite-check-collection-duplicates
+          :desc "Share collection" "S" #'ookcite-share-collection
           :desc "Lookup DOI" "l" #'ookcite-lookup-doi
           :desc "Format DOI" "f" #'ookcite-format-doi
           :desc "Search styles" "s" #'ookcite-search-styles
