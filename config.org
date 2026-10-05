@@ -920,8 +920,9 @@ Harmonizing with Zathura.
 **** Evil Org
 Annoyingly, ~evil-org-mode~ had a map which kept overriding all my other
 settings. Thankfully it has a helper variable to set movement. I also do not
-need this anyway, at-least not by default. The heading, link, and fold keys
-live on ~org-mode-map~ instead, so ~TAB~ still cycles a heading.
+need this anyway, at-least not by default. The heading, link, source-block,
+and fold keys live on ~org-mode-map~ instead, so ~TAB~ still cycles a heading.
+~]c~ and ~[c~ stay comment motion outside Org.
 #+BEGIN_SRC emacs-lisp
 (after! org
   (remove-hook 'org-mode-hook 'evil-org-mode)
@@ -934,6 +935,8 @@ live on ~org-mode-map~ instead, so ~TAB~ still cycles a heading.
         :m "[h" #'org-backward-heading-same-level
         :m "]l" #'org-next-link
         :m "[l" #'org-previous-link
+        :m "]c" #'org-babel-next-src-block
+        :m "[c" #'org-babel-previous-src-block
         :n "za" #'+org/toggle-fold))
 #+END_SRC
 *** DONE Neotree --> Treemacs
