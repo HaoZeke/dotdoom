@@ -278,6 +278,9 @@
 (package! org-glossary :recipe (:host github :repo "tecosaur/org-glossary"))
 ;; Visual latexdiff on org exports with magit integration
 (package! orgdiff :recipe (:host github :repo "tecosaur/orgdiff"))
+;; Include a heading or file by link, and highlight passages into one notes file
+(package! org-transclusion)
+(package! org-remark)
 ;; Org and LaTeX enhancements:1 ends here
 
 ;; [[file:packages.org::*Math support][Math support:1]]

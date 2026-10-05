@@ -532,6 +532,9 @@ Tecosaur ecosystem packages for better org-mode and LaTeX export.
 (package! org-glossary :recipe (:host github :repo "tecosaur/org-glossary"))
 ;; Visual latexdiff on org exports with magit integration
 (package! orgdiff :recipe (:host github :repo "tecosaur/orgdiff"))
+;; Include a heading or file by link, and highlight passages into one notes file
+(package! org-transclusion)
+(package! org-remark)
 #+end_src
 ** Math support
 I like [[https://github.com/cdominik/cdlatex][cdlatex]].

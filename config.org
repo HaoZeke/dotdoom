@@ -939,6 +939,74 @@ and fold keys live on ~org-mode-map~ instead, so ~TAB~ still cycles a heading.
         :m "[c" #'org-babel-previous-src-block
         :n "za" #'+org/toggle-fold))
 #+END_SRC
+**** Link preview, transclusion, and marginal notes
+Org 9.8 previews a link with ~org-link-preview~. There is no minor mode for
+it. ~SPC m l p~ previews the link at point, or the entry when point is not
+on a link. ~SPC m l P~ refreshes every preview in the buffer. A prefix
+argument on ~SPC m l p~ clears the previews at point. Doom already refreshes
+the buffer with ~C-c TAB~.
+
+~org-transclusion~ includes another heading or file at a ~#+transclude~
+keyword. ~org-remark~ highlights a passage and stores the note in
+~marginalia.org~ under ~org_notes~, including in EPUB buffers.
+#+BEGIN_SRC emacs-lisp
+(after! org
+  (map! :map org-mode-map
+        :localleader
+        (:prefix "l"
+         :desc "Preview link" "p" #'org-link-preview
+         :desc "Preview buffer" "P" #'org-link-preview-refresh)))
+
+(use-package! org-transclusion
+  :after org
+  :config
+  (map! :map org-mode-map
+        :localleader
+        (:prefix ("u" . "transclusion")
+         :desc "Add" "a" #'org-transclusion-add
+         :desc "Insert" "i" #'org-transclusion-insert
+         :desc "Remove" "d" #'org-transclusion-remove
+         :desc "Refresh" "r" #'org-transclusion-refresh
+         :desc "Open source" "o" #'org-transclusion-open-source
+         :desc "Menu" "." #'org-transclusion-transient-menu
+         :desc "Toggle" "t" #'org-transclusion-mode)))
+
+(use-package! org-remark-global-tracking
+  :after org
+  :config
+  (setq org-remark-notes-file-name
+        (lambda ()
+          (expand-file-name
+           "marginalia.org"
+           (or (and (boundp 'org_notes) (stringp org_notes) org_notes)
+               user-emacs-directory))))
+  (org-remark-global-tracking-mode +1)
+  (with-eval-after-load 'nov
+    (org-remark-nov-mode +1)))
+
+(use-package! org-remark
+  :after org
+  :config
+  (map! :map org-mode-map
+        :localleader
+        (:prefix ("m" . "remark")
+         :desc "Mark" "m" #'org-remark-mark
+         :desc "Line" "l" #'org-remark-mark-line
+         :desc "Open" "o" #'org-remark-open
+         :desc "Next" "n" #'org-remark-view-next
+         :desc "Previous" "p" #'org-remark-view-prev
+         :desc "Remove" "d" #'org-remark-remove))
+  (after! nov
+    (map! :map nov-mode-map
+          :localleader
+          (:prefix ("m" . "remark")
+           :desc "Mark" "m" #'org-remark-mark
+           :desc "Line" "l" #'org-remark-mark-line
+           :desc "Open" "o" #'org-remark-open
+           :desc "Next" "n" #'org-remark-view-next
+           :desc "Previous" "p" #'org-remark-view-prev
+           :desc "Remove" "d" #'org-remark-remove))))
+#+END_SRC
 *** DONE Neotree --> Treemacs
 **** CANCELLED Toggle pane
 This remaps ~SPC o N~ to use ~treemacs~.
