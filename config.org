@@ -486,16 +486,12 @@ There are way too many of these to keep using ~helm~.
       )
 #+END_SRC
 **** Insert Unicode
-This should hopefully propagate across all modes.
-#+BEGIN_SRC emacs-lisp
-(map! :leader
-      (:prefix ("i" . "Insert")
-       :desc "Unicode" "u" 'insert-char
-       :desc "Snippet" "s" 'yas-insert-snippet
-       :desc "From Clipboard" "y" '+default/yank-pop
-       :desc "From Evil Registers" "r" 'evil-show-registers
-      )
-)
+Doom's insert prefix already binds Unicode, snippets, the clipboard, and
+registers, and also emoji, the file name, and the file path. A label on
+that prefix installs a fresh keymap and drops the keys Doom added. Nothing
+here needs to rebind it.
+#+BEGIN_SRC emacs-lisp :tangle no
+;; (:prefix ("i" . "Insert") replaces doom-leader-insert-map.
 #+END_SRC
 **** Wrap Words
 - [ ] Load conditionally
@@ -509,15 +505,14 @@ This is for working with the various options enabled by ~+smartparens~.
           )))
 #+END_SRC
 **** Lookup
-These were bound to really weird things.
+The leader reads ~doom-leader-map~. ~nmap~ writes the normal-state map, which
+the leader prefix never consults, so ~SPC l~ stayed empty. The collab prefix
+is not loaded, so ~l~ is free.
 #+BEGIN_SRC emacs-lisp
-(nmap
-  :prefix my-leader
-  ;; look things up
-  "l" '(:ignore t :wk "lookup")
-  "l o" '(+lookup/online-select :wk "Online")
-  "l f" '(+lookup/file :wk "File")
-  )
+(map! :leader
+      (:prefix ("l" . "lookup")
+       :desc "Online" "o" #'+lookup/online-select
+       :desc "File" "f" #'+lookup/file))
 #+END_SRC
 **** No ESC
 The escape key for exiting things seems very painful.
@@ -1527,8 +1522,9 @@ agenda. Together they cover everything helm-org-rifle did but with vertico.
   :commands (org-ql-search org-ql-view org-ql-find))
 
 (after! org
+  ;; A label on this prefix replaces doom-leader-open-map.
   (map! :leader
-        (:prefix ("o" . "open")
+        (:prefix "o"
          :desc "Org heading (buffer)" "h" #'consult-org-heading
          :desc "Org heading (agenda)" "H" #'consult-org-agenda
          :desc "Org-ql find" "q" #'org-ql-find
@@ -1566,8 +1562,9 @@ agenda. Together they cover everything helm-org-rifle did but with vertico.
                               (?B . "B")
                               (?C . "C"))
         org-modern-keyword t)
+  ;; A label on this prefix replaces doom-leader-toggle-map.
   (map! :leader
-        (:prefix ("t" . "toggle")
+        (:prefix "t"
          :desc "Org visuals" "O" #'rg/org-visuals-toggle)))
 #+END_SRC
 *** Org Appear
@@ -2647,16 +2644,20 @@ The idea is to replace ~md~ completely with ~org~. Since ~polymode~ is pretty fi
 *** Keybindings
 #+begin_src emacs-lisp
 (defun then_R_operator ()
-  "R - %>% operator or 'then' pipe operator"
+  "Insert %>% in an ESS buffer.
+
+The leader map is global, and a leader binding ignores :map, so this
+chord cannot be limited to ess-mode-map."
   (interactive)
+  (unless (derived-mode-p 'ess-mode 'inferior-ess-mode)
+    (user-error "%>% belongs in an ESS buffer"))
   (just-one-space 1)
   (insert "%>%")
   (reindent-then-newline-and-indent))
 #+end_src
 #+begin_src emacs-lisp
 (map! :leader
-      :map (ess-mode-map, inferior-ess-mode-map)
-      :desc "Insert pipe"  ">" 'then_R_operator)
+      :desc "Insert pipe" ">" #'then_R_operator)
 #+end_src
 * Org LaTeX
 Portions of this section are to be mirrored in [[file:local/async-ox.el][the async init]] file since. That's
