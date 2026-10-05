@@ -1550,6 +1550,7 @@ agenda. Together they cover everything helm-org-rifle did but with vertico.
 *** Org Modern
 #+BEGIN_SRC emacs-lisp :tangle yes
 (load! "local/rg-org-visual")
+(load! "local/rg-surf-desk")
 
 (use-package! org-modern
   :after org
