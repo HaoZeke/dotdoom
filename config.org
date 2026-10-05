@@ -890,18 +890,15 @@ Harmonizing with Vimium.
                    ))
 #+END_SRC
 **** Window Bindings
-These are somehow not part of the ~evil-colemak~ setup.
+~evil-colemak-basics~ leaves ~evil-window-map~ alone. ~SPC w~ and ~C-w~ both read that map, so the Colemak motions are bound on it. A described leader prefix would install a fresh keymap in place of ~evil-window-map~ and drop every window command. ~h~ stays left. ~n~ moves down, and new-window stays on ~N~ and ~C-n~.
 #+BEGIN_SRC emacs-lisp
 (after! evil
   (map! :map evil-window-map
-        (:leader
-         (:prefix ("w" . "Select Window")
-          :n :desc "Left"  "h" 'evil-window-left
-          :n :desc "Up"    "e" 'evil-window-up
-          :n :desc "Down"  "n" 'evil-window-down
-          :n :desc "Right" "i" 'evil-window-right
-          ))
-        ))
+        :desc "Left"  "h" #'evil-window-left
+        :desc "Up"    "e" #'evil-window-up
+        :desc "Down"  "n" #'evil-window-down
+        :desc "Right" "i" #'evil-window-right
+        :desc "New"   "N" #'evil-window-new))
 #+END_SRC
 **** Page Movement
 Harmonizing with Zathura.
