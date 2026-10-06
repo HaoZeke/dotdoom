@@ -43,7 +43,7 @@
       :ui
       deft              ; notational velocity for Emacs
       doom              ; what makes DOOM look the way it does
-      doom-dashboard    ; a nifty splash screen for Emacs
+      dashboard         ; a nifty splash screen for Emacs
       doom-quit         ; DOOM quit-message prompts when you quit Emacs
       (emoji +unicode)  ; 🙂
      ; fill-column       ; a `fill-column' indicator
@@ -178,7 +178,6 @@
        julia                ; a better, faster MATLAB
        ;;kotlin             ; a better, slicker Java(Script)
        (latex               ; writing papers in Emacs has never been so fun
-        +latexmk            ; no other option TBH
         +cdlatex            ; for better math
         +fold)              ; neat folding things
        ;;lean               ; for folks with too much to prove

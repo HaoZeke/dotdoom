@@ -43,6 +43,11 @@
 (package! ob-mermaid)
 ;; Mermaid:1 ends here
 
+;; [[file:packages.org::*GitHub Markdown Export][GitHub Markdown Export:1]]
+(package! ox-gfm
+  :recipe (:host github :repo "larstvei/ox-gfm"))
+;; GitHub Markdown Export:1 ends here
+
 ;; [[file:packages.org::*Org Download][Org Download:1]]
 (package! org-download
   :recipe (:host github
@@ -112,10 +117,6 @@
 ;; [[file:packages.org::*Org Re-Reveal Extensions][Org Re-Reveal Extensions:1]]
 (package! org-re-reveal-ref)
 ;; Org Re-Reveal Extensions:1 ends here
-
-;; [[file:packages.org::*Org Roam Bibtex][Org Roam Bibtex:1]]
-(package! org-roam-bibtex)
-;; Org Roam Bibtex:1 ends here
 
 ;; [[file:packages.org::*Org GCal][Org GCal:1]]
 (package! org-gcal)
@@ -297,5 +298,8 @@
   :pin "784cf911bc96aac0f47d529e8cee96ebd7cc31c9")
 ;; Math support:3 ends here
 
-;; GitHub-flavoured Markdown exporter, used by config.el (use-package! ox-gfm).
-(package! ox-gfm)
+;; [[file:packages.org::*Chat and protocol-driven buffers][Chat and protocol-driven buffers:1]]
+(package! gptel)
+(package! acp :recipe (:host github :repo "xenodium/acp.el"))
+(package! agent-shell :recipe (:host github :repo "xenodium/agent-shell"))
+;; Chat and protocol-driven buffers:1 ends here

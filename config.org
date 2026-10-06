@@ -276,7 +276,7 @@ I prefer the regular diminished font size, even for the childframes.
 I have trouble at work with the current DOOM dashboard. This one is from the
 ~doom-emacs~ lead developer, as found on Discord.
 #+BEGIN_SRC emacs-lisp
-(setq +doom-dashboard-banner-file (expand-file-name "banner.png" doom-private-dir))
+(setq fancy-splash-image (expand-file-name "banner.png" doom-private-dir))
 #+END_SRC
 ** Tweaks
 *** Non-posix shells
@@ -565,7 +565,6 @@ are a part of ~org-mode~.
                   :desc "Eval Block" "e" 'ober-eval-block-in-repl
                   (:prefix "o"
                    :desc "Tags" "t" 'org-set-tags
-                   :desc "Roam Bibtex" "b" 'orb-note-actions
                    (:prefix ("p" . "Properties")
                     :desc "Set" "s" 'org-set-property
                     :desc "Delete" "d" 'org-delete-property
@@ -3265,7 +3264,6 @@ sections are set in my ~private~ config.
    bibtex-completion-notes-path (expand-file-name "bibnotes.org" org_notes)
    org-ref-note-title-format (rg/cite-notes-org-ref-title-format)
    org-ref-notes-directory org_notes
-   org-ref-notes-function 'orb-edit-notes
    ))
 #+END_SRC
 
@@ -3294,10 +3292,8 @@ For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above p
 #+END_SRC
 
 *** Org-Roam
-Will also setup the ~org-roam-bibtex~ thing here.
-As foretold in the last line, there are more settings for [[https://github.com/Zaeph/org-roam-bibtex][ORB]]. The template is
-modified from [[https://github.com/zaeph/org-roam-bibtex/issues/4][here]].
-#+begin_src emacs-lisp :tangle yes
+~+roam2~ is off, so this block does not load.
+#+begin_src emacs-lisp :tangle no
 (use-package! org-roam-bibtex
   :after (org-roam)
   :hook (org-roam-mode . org-roam-bibtex-mode)

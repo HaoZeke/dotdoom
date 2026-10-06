@@ -290,9 +290,9 @@ An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref
 (package! org-re-reveal-ref)
 #+end_src
 *** Org Roam Bibtex
-This should be a part of the main ~+roam~ setup, but until then.
-#+begin_src emacs-lisp :tangle yes
-(package! org-roam-bibtex)
+~+roam2~ is off in ~init.el~, so this package has no ~org-roam~ to attach to.
+#+begin_src emacs-lisp :tangle no
+;; (package! org-roam-bibtex)
 #+end_src
 *** Org GCal
 This extension seems to be a maintained fork.
