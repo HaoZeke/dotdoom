@@ -29,6 +29,8 @@ Well it just goes where ~doom~ expects config files.
 git clone git@github.com:HaoZeke/dotdoom $HOME/.config/doom
 #+END_SRC
 * Maintenance
+The Doom checkout paired with this config is core ~59cdaa32ae933469bb6a1fb3cadee8a988c15968~ and modules ~42a04791696482ad0b174602afd2c0be26ccff50~.
+
 The canonical configuration sources are [[file:config.org][config.org]] and [[file:packages.org][packages.org]].
 Run ~scripts/tangle-doom-config~ after editing them; it regenerates the ignored
 ~config.el~ and the tracked ~packages.el~ from those Org sources.
