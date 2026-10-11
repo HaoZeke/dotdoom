@@ -389,6 +389,16 @@ Sometimes I do tire of the defaults.
 ;; Also like doom-city-lights, doom-oceanic-next, doom-tomorrow-night, doom-wilmersdorf, leuven, doom-monokai-pro, doom-solarized-dark-high-contrast
 ;; Light ones like solarized
 (setq doom-theme 'doom-tomorrow-night)
+;; rg-theme writes this after a palette change. It overrides the setq above.
+(let ((rg-theme-file (expand-file-name "~/.config/rg-theme/emacs-theme.el")))
+  (when (file-readable-p rg-theme-file)
+    (load rg-theme-file nil t)))
+;; The daemon owns the "server" socket. A GUI Emacs uses "gui" so a
+;; palette change can reach it.
+(unless (daemonp)
+  (setq server-name "gui")
+  (unless (server-running-p)
+    (server-start)))
 #+END_SRC
 *** Do not Format on Save
 Formatting with ~styler~ takes forever.
