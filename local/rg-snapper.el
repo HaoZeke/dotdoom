@@ -61,7 +61,7 @@
   "Return Snapper FORMAT arguments."
   (unless format
     (user-error "Cannot infer Snapper format for this buffer"))
-  (list "--format" format))
+  (list "--native" "--format" format))
 
 (defun rg/snapper-region-args (&optional file)
   "Return Snapper arguments for formatting region text from FILE."
@@ -103,14 +103,25 @@ OPTIONS accepts :check, :diff, and :in-place."
   buffer-file-name)
 
 (defun rg/snapper-format-region (beg end)
-  "Format region from BEG to END with Snapper."
+  "Format BEG through END, replacing text only on a successful result."
   (interactive "r")
   (let* ((file (or buffer-file-name (buffer-name)))
          (args (rg/snapper-region-args file))
-         (exit (apply #'call-process-region
-                      beg end (rg/snapper--program) t t nil args)))
-    (unless (and (integerp exit) (zerop exit))
-      (user-error "Snapper failed with exit status %S" exit))))
+         (output (generate-new-buffer " *snapper-output*"))
+         (errors (make-temp-file "snapper-stderr-")))
+    (unwind-protect
+        (let ((exit (apply #'call-process-region
+                           beg end (rg/snapper--program) nil (list output errors) nil args)))
+          (unless (and (integerp exit) (zerop exit))
+            (let ((diagnostic (with-temp-buffer
+                                (insert-file-contents errors)
+                                (string-trim (buffer-string)))))
+              (user-error "Snapper failed with exit status %S%s" exit
+                          (if (string-empty-p diagnostic) "" (concat ": " diagnostic)))))
+          (let ((formatted (with-current-buffer output (buffer-string))))
+            (replace-region-contents beg end (lambda () formatted))))
+      (when (buffer-live-p output) (kill-buffer output))
+      (when (file-exists-p errors) (delete-file errors)))))
 
 (defun rg/snapper-format-buffer ()
   "Format the current buffer with Snapper."
