@@ -27,7 +27,8 @@
 
 (defun rg/health-bibtex-parse-cache (file)
   "Return nil when parsebib accepts FILE, or a diagnostic string."
-  (when (require 'parsebib nil t)
+  (if (not (require 'parsebib nil t))
+      "parsebib is not available"
     (with-temp-buffer
       (insert-file-contents file)
       (condition-case err
@@ -72,6 +73,20 @@
          "enabled in flycheck"))
     (rg/health-item "org-lint" t "flycheck not loaded")))
 
+(defconst rg/health-local-module-features
+  '(rg-bibtex
+    rg-cite-notes
+    rg-trawl
+    rg-doom-runtime
+    rg-org-capture
+    rg-trace-feedback
+    rg-compat
+    rg-prose
+    rg-snapper
+    rg-vale
+    rg-org-visual)
+  "Local helper features that config.el load!s, excluding rg-health itself.")
+
 (defun rg/health-local-modules ()
   "Return health items for local helper modules."
   (mapcar
@@ -80,7 +95,19 @@
       (format "module %s" feature)
       (featurep feature)
       (if (featurep feature) "loaded" "not loaded")))
-   '(rg-bibtex rg-prose rg-snapper rg-vale)))
+   rg/health-local-module-features))
+
+(defun rg/health-colemak ()
+  "Return a health item for Colemak movement being live."
+  (cond
+   ((not (featurep 'evil-colemak-basics))
+    (rg/health-item "Colemak" nil "evil-colemak-basics not loaded"))
+   ((not (bound-and-true-p global-evil-colemak-basics-mode))
+    (rg/health-item "Colemak" nil "package loaded; global mode off"))
+   ((eq (key-binding "E") 'evil-lookup)
+    (rg/health-item "Colemak" nil "E is evil-lookup, not page-up"))
+   (t
+    (rg/health-item "Colemak" t "global-evil-colemak-basics-mode on"))))
 
 (defun rg/doom-health-items ()
   "Return local Doom health-check items."
@@ -92,9 +119,13 @@
     (rg/health-executable "Snapper" (or (and (boundp 'rg/snapper-executable)
                                              rg/snapper-executable)
                                         "snapper"))
+    (rg/health-executable "Trawl" (or (and (boundp 'rg/trawl-command)
+                                           rg/trawl-command)
+                                      "trawl"))
     (rg/health-bibtex-cache)
     (rg/health-literate-after-save)
-    (rg/health-org-lint))
+    (rg/health-org-lint)
+    (rg/health-colemak))
    (rg/health-local-modules)))
 
 (defun rg/health-render (items)

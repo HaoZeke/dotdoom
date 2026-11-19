@@ -21,5 +21,6 @@ for test_file in "${test_files[@]}"; do
       load_path=(-L local/private -L local)
       ;;
   esac
-  emacs --batch -Q "${load_path[@]}" -l "${test_file}" -f ert-run-tests-batch-and-exit
+  emacs --batch -Q --eval '(setq load-prefer-newer t)' \
+        "${load_path[@]}" -l "${test_file}" -f ert-run-tests-batch-and-exit
 done
