@@ -1162,10 +1162,14 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
   (add-hook 'f90-mode-hook 'eglot-ensure)
   (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
   (set-eglot-client! 'python-mode '("uvx" "ruff" "server"))
-  (set-eglot-client! 'org-mode '("harper-ls" "--stdio"))
-  (set-eglot-client! 'markdown-mode '("harper-ls" "--stdio"))
-  (set-eglot-client! 'text-mode '("harper-ls" "--stdio"))
+  ;; set-eglot-client! pushes onto the front of eglot-server-programs, so the
+  ;; last call wins. org-mode and markdown-mode derive from text-mode: register
+  ;; them last, or they match the text-mode entry and Harper reads them as
+  ;; plain text (no org/markdown parser, so block headers and code are linted).
   (set-eglot-client! 'latex-mode '("harper-ls" "--stdio"))
+  (set-eglot-client! 'text-mode '("harper-ls" "--stdio"))
+  (set-eglot-client! 'markdown-mode '("harper-ls" "--stdio"))
+  (set-eglot-client! '(org-mode :language-id "org") '("harper-ls" "--stdio"))
   (add-hook 'markdown-mode-hook 'eglot-ensure)
   (when (string= (system-name) "Rohits-MacBook-Pro.local")
     (setq exec-path (append exec-path '(
@@ -1176,6 +1180,35 @@ Between ~lsp-mode~ and ~eglot~ I ended up with eglot for reasons better describe
                                         )))
     )
   )
+#+end_src
+Harper's org parser lints inside ~=verbatim=~ and ~~code~~ spans and reads the
+~TODO~ keyword as prose, so identifiers, file paths and keywords flood the
+buffer. Spelling already comes from ~typos~ and the ~spell~ module, so Harper's
+=SpellCheck= goes everywhere; =ToDoHyphen= goes everywhere too, since TODO
+markers are keywords in org and markdown alike. =OrthographicConsistency= and
+=SplitWords= still catch real slips in markdown prose, where code spans are
+parsed as code, so they go for org only. Measured on a code-review packet: 95
+diagnostics before, 3 after, with grammar errors in prose still reported.
+#+begin_src emacs-lisp
+(defun rg/harper-workspace-configuration (server)
+  "Harper settings for SERVER: no spelling, no org-syntax false positives."
+  (let* ((org (ignore-errors
+                (seq-some (lambda (m) (provided-mode-derived-p m 'org-mode))
+                          (eglot--major-modes server))))
+         (off :json-false)
+         (linters `(:SpellCheck ,off :ToDoHyphen ,off
+                    ,@(when org `(:OrthographicConsistency ,off :SplitWords ,off)))))
+    `(:harper-ls (:linters ,linters))))
+;; harper-ls 3.2 logs "Settings must be an object" for the configuration it
+;; reads while starting, then keeps its defaults. A push after connecting is
+;; applied, and the next lint uses it.
+(defun rg/harper-push-settings (server)
+  "Send SERVER its settings again once it is up, if it is harper-ls."
+  (when (member "harper-ls" (process-command (jsonrpc--process server)))
+    (eglot-signal-didChangeConfiguration server)))
+(after! eglot
+  (setq-default eglot-workspace-configuration #'rg/harper-workspace-configuration)
+  (add-hook 'eglot-connect-hook #'rg/harper-push-settings))
 #+end_src
 Also ~booster~ helps.
 #+begin_src emacs-lisp
@@ -2720,9 +2753,19 @@ Basically only ~poly-markdown~ for ~rmd~ files.
 The idea is to replace ~md~ completely with ~org~. Since ~polymode~ is pretty finicky for most of my ~org~ files, I will ensure it is only enabled for ~Rorg~ files.
 #+BEGIN_SRC emacs-lisp
 (use-package! poly-org
+:mode ("\\.Rorg\\'" . poly-org-mode)
+:init
+;; poly-org's autoloads put ("\\.org\\'" . poly-org-mode) ahead of org's own
+;; entry, so every .org file opened through polymode's hidden base buffers.
+;; Adding the org-mode entry again is a no-op (it is already a member), so
+;; delete poly-org's entry instead. Loading poly-org.el runs the same
+;; autoload form again, hence the second deletion under :config.
+(defun rg/poly-org-release-org-files ()
+  (setq auto-mode-alist
+        (delete '("\\.org\\'" . poly-org-mode) auto-mode-alist)))
+(rg/poly-org-release-org-files)
 :config
-(add-to-list 'auto-mode-alist '("\\.org" . org-mode))
-(add-to-list 'auto-mode-alist '("\\.Rorg" . poly-org-mode))
+(rg/poly-org-release-org-files)
 (map! (:localleader
       :map polymode-mode-map
       :desc "Export"   "E" 'polymode-export
