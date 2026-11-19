@@ -397,7 +397,10 @@ Sometimes I do tire of the defaults.
     (load rg-theme-file nil t)))
 ;; The daemon owns the "server" socket. A GUI Emacs uses "gui" so a
 ;; palette change can reach it.
+;; A non-daemon Emacs has not loaded server.el by this point, so
+;; server-running-p is void there; require it before asking.
 (unless (daemonp)
+  (require 'server)
   (setq server-name "gui")
   (unless (server-running-p)
     (server-start)))
