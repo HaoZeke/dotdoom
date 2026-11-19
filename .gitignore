@@ -365,8 +365,8 @@ Temporary Items
 
 .aider*
 
-# Claude Code
-CLAUDE.md
-.claude/
 local/rg_signature.png
-../../../../tmp/.tmpclaude/ttech_zotero_vault_block.yml
+
+# Snippet links into the rg-beamer checkout; that repository owns the templates.
+/snippets/org-mode/org-beamer-rg
+/snippets/org-mode/org-report-rg
