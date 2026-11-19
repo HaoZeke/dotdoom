@@ -98,7 +98,7 @@
        :term
        eshell            ; a consistent, cross-platform shell (WIP)
        ;; shell          ; simple shell REPL for Emacs
-       term              ; basic terminal emulator for Emacs
+       ;; term           ; built-in term.el; vterm is what this config binds
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
@@ -118,13 +118,13 @@
        direnv
        ;; docker
        editorconfig     ; let someone else argue about tabs vs spaces
-       ein              ; tame Jupyter notebooks with emacs
+       ;; ein           ; notebook UI; org +jupyter already covers babel kernels
        (eval +overlay)  ; run code, run (also, repls)
        ;; gist          ; interacting with github gists
        (lookup          ; helps you navigate your code and documentation
         +dictionary     ; enable word definitions and thesaurus lookup
-        +offline        ; install and prefer offline dictionary/thesaurus
-        +docsets)       ; ...on in Dash docsets locally
+        +offline)       ; install and prefer offline dictionary/thesaurus
+       ;; +docsets      ; Dash/Zeal sets; lookup map only uses online and file
        (lsp +eglot)     ; M-x vscode
        magit            ; a git porcelain for Emacs
        ;;make           ; run make tasks from Emacs

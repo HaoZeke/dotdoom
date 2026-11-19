@@ -18,7 +18,6 @@
   - [[#about-this-file][About this file]]
     - [[#about-that-toc][About that TOC..]]
     - [[#the-properties][The properties]]
-  - [[#bugfixes][Bugfixes]]
   - [[#os-specific-packages][OS Specific Packages]]
     - [[#macos][MacOS]]
   - [[#aesthetic-packages][Aesthetic Packages]]
@@ -26,12 +25,12 @@
     - [[#wakatime][Wakatime]]
   - [[#later-magit-additions][LATER Magit Additions]]
     - [[#magit-delta][Magit Delta]]
-  - [[#key-chords-and-keybindings][Key Chords and Keybindings]]
   - [[#evil-colemak][Evil Colemak]]
   - [[#firestarter][Firestarter]]
   - [[#faster-eglot][Faster ~eglot~]]
   - [[#org-additions][Org Additions]]
     - [[#mermaid][Mermaid]]
+    - [[#github-markdown-export][GitHub Markdown Export]]
     - [[#org-download][Org Download]]
     - [[#later-org-drill][LATER Org Drill]]
     - [[#org-protocol-updates][Org Protocol Updates]]
@@ -39,8 +38,7 @@
     - [[#org-ref][Org Ref]]
     - [[#org-modern][Org Modern]]
     - [[#org-gantt][Org Gantt]]
-    - [[#no-org-mind-map][NO Org Mind Map]]
-    - [[#org-rifle][Org Rifle]]
+    - [[#org-ql-replaces-helm-org-rifle][Org-ql (replaces helm-org-rifle)]]
     - [[#org-cv][Org CV]]
     - [[#essgd][ESSGD]]
     - [[#org-async][Org Async]]
@@ -65,23 +63,22 @@
     - [[#vim-mode][VIM mode]]
     - [[#jvm-languages][JVM Languages]]
     - [[#systemd-mode][Systemd Mode]]
-    - [[#no-dart-mode][NO Dart Mode]]
     - [[#wolfram-mode][Wolfram Mode]]
     - [[#polymode][Polymode]]
     - [[#snakemake][Snakemake]]
     - [[#capnproto][CapnProto]]
-    - [[#no-astro][NO Astro]]
     - [[#nushell][Nushell]]
     - [[#fish-shell][Fish shell]]
     - [[#nickel][Nickel]]
     - [[#dockerfile-mode][Dockerfile Mode]]
-  - [[#no-matrix-clients][NO Matrix Clients]]
   - [[#flycheck-additions][Flycheck Additions]]
     - [[#melpa-helper][MELPA Helper]]
   - [[#snippets][Snippets]]
     - [[#doom][Doom]]
     - [[#standard][Standard]]
+  - [[#org-and-latex-enhancements][Org and LaTeX enhancements]]
   - [[#math-support][Math support]]
+  - [[#chat-and-protocol-driven-buffers][Chat and protocol-driven buffers]]
 
 ** About this file
 This is an Emacs literate package file and is meant to compliment [[file:config.org][my
@@ -108,11 +105,6 @@ block and moreover the output directory is the ~doom-private-dir~. It's
 practically self explanatory but still. 
 
 The filename is determined by the ~SRC~ block languages.
-** Bugfixes
-These are hopefully just temporary.
-#+begin_src emacs-lisp :tangle no
-;; https://github.com/doomemacs/doomemacs/issues/7078#issuecomment-1430884107
-#+end_src
 ** OS Specific Packages
 *** MacOS
 Paths are a nightmare on ~darwin~ systems which necessitates a separate package [[https://github.com/purcell/exec-path-from-shell][for setting things up]].
@@ -124,7 +116,8 @@ Paths are a nightmare on ~darwin~ systems which necessitates a separate package 
 *** Dired Icons
 Since treemacs already uses ~all-the-icons~ it is silly to not use them in
 dired, from the [[https://github.com/domtronn/all-the-icons.el/wiki][all-the-icons wiki]].
-#+BEGIN_SRC emacs-lisp :tangle yes
+;; unused: dired +icons uses dirvish nerd-icons, not all-the-icons-dired
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! all-the-icons-dired)
 #+END_SRC
 *** Wakatime
@@ -133,16 +126,7 @@ Not exactly aesthetic, but yeah, for stats.
 (package! wakatime-mode)
 #+END_SRC
 ** LATER Magit Additions
-These basically allow for TODOs in magit along with enhanced github integration.
-These have been added upstream in ~develop~.
-
-#+BEGIN_SRC emacs-lisp :tangle no
-(package! magit-org-todos)
-#+END_SRC
-
-Actually [[https://github.com/alphapapa/magit-todos][magit-todos]] has been added upstream which collates all ~todo~ items.
-There might still be workflows where [[https://github.com/danielma/magit-org-todos.el][magit-org-todos]] is useful since that
-displays a global ~todo.org~ file.
+[[https://github.com/alphapapa/magit-todos][magit-todos]] is upstream in ~develop~ and collates ~todo~ items.
 *** DONE Magit Delta
 CLOSED: [2022-01-21 Fri 10:44]
 #+begin_src emacs-lisp :tangle yes
@@ -152,7 +136,8 @@ CLOSED: [2022-01-21 Fri 10:44]
 ** Evil Colemak
 I guess I just gave up, [[https://github.com/wbolster/evil-colemak-basics][from here]]. Read about why [[https://rgoswami.me/posts/colemak-dots-refactor/][here]]. The visual line mode setup leverages [[https://github.com/YourFin/evil-better-visual-line/][this package]].
 #+begin_src emacs-lisp :tangle yes
-(package! evil-colemak-basics :recipe (:branch "main"))
+(package! evil-colemak-basics :recipe (:branch "main")
+  :pin "70a08ff4c8148c38e0cdc2b89b0316fd504501f6")
 (package! evil-better-visual-line)
 #+end_src
 
@@ -199,7 +184,8 @@ Now I load it here since I don't use ~+attach~.
 
 *** LATER Org Drill
 The [[https://bitbucket.org/eeeickythump/org-drill/src][actual repo]] has not been updated in 3 years, so I must use [[https://github.com/hakanserce/org-drill][this fork]].
-#+BEGIN_SRC emacs-lisp :tangle yes
+;; unused: config.org org-drill use-package is :tangle no
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! org-drill
   :recipe (:host github
             :repo "hakanserce/org-drill"))
@@ -218,6 +204,9 @@ setup and stuff as well so this might move into a tree of it's own.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! org-noter)
+#+END_SRC
+;; unused: org-noter-supported-modes is only doc-view-mode and pdf-view-mode
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! nov)
 (package! djvu)
 #+END_SRC
@@ -241,14 +230,6 @@ Not on MELPA yet. From [[https://github.com/swillner/org-gantt][here]].
   :recipe (:host github
             :repo "swillner/org-gantt" :files ("*.el")))
 #+END_SRC
-*** NO Org Mind Map :noexport:
-CLOSED: [2025-07-27 Sun 02:06]
-Not on MELPA yet. From [[https://github.com/theodorewiles/org-mind-map][here]].
-#+BEGIN_SRC emacs-lisp :tangle no
-(package! org-mind-map
-  :recipe (:host github
-            :repo "theodorewiles/org-mind-map"))
-#+END_SRC
 *** Org-ql (replaces helm-org-rifle)
 Structured org queries with vertico integration. Searches headings, content,
 tags, and properties across files.
@@ -261,7 +242,8 @@ Not yet on MELPA, but used here to [[https://gitlab.com/zzamboni/vita/-/tree/mas
 (package! org-cv
   :recipe (:host gitlab
            :repo "Titan-C/org-cv"
-           :branch "master"))
+           :branch "master")
+  :pin "e8de952df7669b38ca475d00fe943ab96d8cfac4")
 #+END_SRC
 *** ESSGD
 Not yet on MELPA, but [[https://github.com/sje30/essgd][very cool]].
@@ -269,7 +251,8 @@ Not yet on MELPA, but [[https://github.com/sje30/essgd][very cool]].
 (package! essgd
   :recipe (:host github
            :repo "sje30/essgd"
-           :branch "main"))
+           :branch "main")
+  :pin "d9a3729ebaeeeec78984f00508cf2785bc7e8978")
 #+END_SRC
 *** Org Async
 We use async child processes for Org workflows and BibTeX cache refreshes.
@@ -286,7 +269,8 @@ This is put here since it only works with ~org-mode~ stuff.
 
 *** Org Re-Reveal Extensions
 An [[https://gitlab.com/oer/org-re-reveal-ref][extension]] to ~org-re-reveal-ref~. Also [[https://gitlab.com/oer/oer-reveal][this]].
-#+begin_src emacs-lisp :tangle yes
+;; unused: :lang org +present is off, so after! org-re-reveal never runs
+#+begin_src emacs-lisp :tangle no
 (package! org-re-reveal-ref)
 #+end_src
 *** Org Roam Bibtex
@@ -320,7 +304,8 @@ There are a bunch of ~zotero~ integrations for emacs, most notably, [[https://gi
 they don't seem to be all that well mantained. [[https://github.com/emacsmirror/zotxt][Zotxt]] seems to be updated pretty
 often though.
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+;; unused: no use-package! / require / zotxt consumer
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! zotxt)
 #+END_SRC
 ** Syntax Highlighting
@@ -343,7 +328,8 @@ Though the standard ~doom-emacs~ module configuration is a sane set of defaults,
 (package! highlight-doxygen)
 #+end_src
 *** Quarto Mode
-#+begin_src emacs-lisp :tangle yes
+;; unused: config.org quarto-mode use-package is :tangle no
+#+begin_src emacs-lisp :tangle no
 (package! quarto-mode)
 #+end_src
 *** Meson Mode
@@ -426,14 +412,6 @@ highlighting.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! systemd)
 #+END_SRC
-*** NO Dart Mode :noexport:
-CLOSED: [2025-07-27 Sun 02:06]
-Might eventually want to also get the companion [[https://github.com/bradyt/dart-server][dart server]] sometime, but for
-now this syntax-highlighter will do. Might actually want to see if ~prettier~
-has anything for it.
-#+BEGIN_SRC emacs-lisp :tangle no
-(package! dart-mode)
-#+END_SRC
 *** Wolfram Mode
 Actually ~wolfram-mode~ seems to be able to do more than just syntax highlighting, but at the moment I just need font-locking.
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -457,12 +435,6 @@ I ended up making one of my own based off of ~c-mode~. This is temporary, pendin
   :recipe (:host github
            :repo "HaoZeke/capnp2-mode"))
 #+end_src
-*** NO Astro :noexport:
-CLOSED: [2025-07-27 Sun 02:07]
-For the TTech landing page.
-#+BEGIN_SRC emacs-lisp :tangle no
-(package! astro-ts-mode)
-#+END_SRC
 *** Nushell
 Since ~rattler-build~ supports ~.nu~ for a cross-platform build script.
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -485,13 +457,6 @@ the image name.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (package! dockerfile-mode)
 #+END_SRC
-** NO Matrix Clients :noexport:
-CLOSED: [2025-07-27 Sun 02:07]
-Apparently Riot.im is now Element.io; and I could do with an ~emacs~ client...
-#+begin_src emacs-lisp :tangle no
-(package! pretty-hydra)
-(package! matrix-client :recipe (:host github :repo "alphapapa/matrix-client.el"))
-#+end_src
 ** Flycheck Additions
 *** MELPA Helper
 This is for linting files before submitting to MELPA.
@@ -502,7 +467,8 @@ This is for linting files before submitting to MELPA.
 ** Snippets
 These are from [[https://github.com/hlissner][hlissner]].
 *** Doom
-#+BEGIN_SRC emacs-lisp :tangle yes
+;; unused: duplicate of Doom :editor snippets doom-snippets
+#+BEGIN_SRC emacs-lisp :tangle no
 (package! emacs-snippets
   :recipe (:host github
            :repo "hlissner/emacs-snippets"

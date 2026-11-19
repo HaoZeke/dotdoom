@@ -333,7 +333,8 @@ I am not sure if these need to be initialized.
 #+BEGIN_SRC emacs-lisp
 ; AndreaCrotti
 (use-package! yasnippet-snippets
-  :after yasnippet)
+  :after yasnippet
+  :demand t)
 #+END_SRC
 *** Kill over-eager literate after-save-hook
 This is a little too frequent for working with a ~git~ repo. Henrik mentioned an
@@ -353,6 +354,7 @@ These conflict with my other templates.
 #+begin_src emacs-lisp
 (load! "local/rg-bibtex")
 (load! "local/rg-cite-notes")
+(load! "local/rg-trawl")
 (load! "local/rg-doom-runtime")
 (load! "local/rg-org-capture")
 (load! "local/rg-trace-feedback")
@@ -584,7 +586,7 @@ are a part of ~org-mode~.
                   (:prefix ("i" . "Insert")
                    :desc "Link" "l" 'org-insert-link
                    :desc "Item" "o" 'org-toggle-item
-                   :desc "Citation" "c" 'org-ref-insert-cite-link
+                   :desc "Citation" "c" #'citar-insert-citation
                    :desc "Footnote" "f" 'org-footnote-action
                    :desc "Table" "t" 'org-table-create-or-convert-from-region
                    (:prefix ("d" . "Download")
@@ -855,9 +857,26 @@ These are mostly because movement without ~hnei~ is horrible. Read about it
 #+BEGIN_SRC emacs-lisp
 (use-package! evil-colemak-basics
   :after evil
+  ;; Doom's use-package! defers by default. :after evil only delays
+  ;; configuration; it does not require the package. Without :demand
+  ;; the feature never loads, n stays evil-ex-search-next, and the
+  ;; echo says "Search failed".
+  :demand t
   :config
-  (setq evil-colemak-basics-rotate-t-f-j t)
+  (setq evil-colemak-basics-rotate-t-f-j t
+        avy-keys '(?a ?r ?s ?t ?d ?h ?n ?e ?i))
   (global-evil-colemak-basics-mode)
+  ;; Package 3.x binds E to evil-lookup (QWERTY K) in motion+normal+visual.
+  ;; A later after! that only writes normal+visual loses to that motion
+  ;; map, and after! itself never ran while the package was deferred.
+  ;; Bind here, in the same states the package uses.
+  (if (boundp 'evil-colemak-basics-keymap)
+      (map! :map evil-colemak-basics-keymap
+            :nvm "N" #'evil-scroll-page-down
+            :nvm "E" #'evil-scroll-page-up)
+    (evil-define-minor-mode-key '(motion normal visual) 'evil-colemak-basics-mode
+      "N" #'evil-scroll-page-down
+      "E" #'evil-scroll-page-up))
   )
 #+END_SRC
 **** Visual Lines
@@ -865,11 +884,12 @@ Since I tend to keep ~visual-line-mode~ all the time, [[https://github.com/YourF
 #+BEGIN_SRC emacs-lisp
 (use-package! evil-better-visual-line
   :after evil-colemak-basics
+  :demand t
   :config
   (evil-better-visual-line-on)
-  ;; Same version split as the page-movement bindings below: 3.x has no
-  ;; evil-colemak-basics-keymap, so binding into it here quietly leaves plain
-  ;; line movement in place instead of the visual-line variants.
+  ;; Same version split as the page-movement binds in the colemak
+  ;; :config: 3.x has no evil-colemak-basics-keymap, so binding into it
+  ;; here quietly leaves plain line movement in place.
   (if (boundp 'evil-colemak-basics-keymap)
       (map! :map evil-colemak-basics-keymap
             (:nvm "n" 'evil-better-visual-line-next-line
@@ -909,23 +929,9 @@ Harmonizing with Vimium.
         :desc "Ace"        "a" #'ace-window))
 #+END_SRC
 **** Page Movement
-Harmonizing with Zathura.
-#+BEGIN_SRC emacs-lisp
-(after! evil-colemak-basics
-  ;; The package binds two different ways across major versions. 2.x exposes
-  ;; evil-colemak-basics-keymap; 3.x builds its bindings with
-  ;; evil-define-minor-mode-key and defines no such keymap. Binding into a
-  ;; keymap that does not exist raises nothing and changes nothing, so the
-  ;; package's own N and E stay in place and the config looks unread. Ask which
-  ;; form the installed version understands.
-  (if (boundp 'evil-colemak-basics-keymap)
-      (map! :map evil-colemak-basics-keymap
-            :nv "N" #'evil-scroll-page-down
-            :nv "E" #'evil-scroll-page-up)
-    (evil-define-minor-mode-key '(normal visual) 'evil-colemak-basics-mode
-      "N" #'evil-scroll-page-down
-      "E" #'evil-scroll-page-up)))
-#+END_SRC
+Harmonizing with Zathura. Bound in the ~evil-colemak-basics~ ~:config~
+block above, in motion+normal+visual, so they replace the package's
+~E~ = ~evil-lookup~ instead of sitting unused in a later ~after!~.
 **** Evil Org
 Annoyingly, ~evil-org-mode~ had a map which kept overriding all my other
 settings. Thankfully it has a helper variable to set movement. I also do not
@@ -1397,7 +1403,11 @@ need to be bound in ~org-mode~ files. Also updated to have ~evil-colemak~ bindin
 This is for my favorite [[https://github.com/louietan/anki-editor][anki interaction]] mechanism.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! anki-editor
-  :after org-noter
+  :commands (anki-editor-push-notes
+             anki-editor-retry-failure-notes
+             anki-editor-insert-note
+             anki-editor-cloze-dwim
+             anki-editor-cloze-region)
   :config
   ; I like making decks
   (setq anki-editor-create-decks 't))
@@ -1415,6 +1425,7 @@ For the longest time I was setting this per file for bizarre reasons. This makes
 #+begin_src emacs-lisp
 (use-package! ox-extra
   :after org
+  :demand t
   :config
   (ox-extras-activate '(ignore-headlines))
   )
@@ -1425,7 +1436,8 @@ when Org export is available. The local Starfleet exporter still disables Babel
 and keeps a fallback for machines where this package has not been installed.
 #+begin_src emacs-lisp
 (use-package! ox-gfm
-  :after org)
+  :after org
+  :demand t)
 #+end_src
 *** File Handling
 This controls what is used to open links in ~org~ documents. Since there are
@@ -1445,8 +1457,11 @@ dealing with ~append~ and stuff.
 
 *** Ob-Mermaid
 #+begin_src emacs-lisp
-(use-package! mermaid-mode)
-(use-package! ob-mermaid)
+(use-package! mermaid-mode
+  :mode ("\\.mmd\\'" "\\.mermaid\\'"))
+(use-package! ob-mermaid
+  :after org
+  :demand t)
 #+end_src
 *** KILL Ob-Julia :noexport:
 So ~julia~ support is inbuilt, however the process variable needs to be set:
@@ -1515,6 +1530,7 @@ Julia and Mathematica are not set. Other languages might also be needed here eve
 #+begin_src emacs-lisp
 (use-package! ox-awesomecv
   :after org
+  :demand t
   :config
   (defun hz/org-export-to-file-awesomecv-tex ()
     (interactive)
@@ -1526,6 +1542,7 @@ Usage is from [[https://github.com/stotok/dotdoomemacs/blob/d6e19efb19546bab0983
 #+begin_src emacs-lisp
 (use-package! ox-moderncv
   :after org
+  :demand t
   :config
   (defun hz/org-export-to-file-moderncv-tex ()
     (interactive)
@@ -1735,6 +1752,7 @@ magit for commit-to-commit comparison. Requires ~latexdiff~ from texlive.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! orgdiff
   :after org
+  :demand t
   :config
   (let ((texlive-bin (car (file-expand-wildcards
                            (expand-file-name "~/.local/share/texlive-*/bin/x86_64-linux")))))
@@ -1746,7 +1764,8 @@ magit for commit-to-commit comparison. Requires ~latexdiff~ from texlive.
 Useful TeX generator.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (use-package! org-gantt
- :after org)
+  :after org
+  :demand t)
 #+END_SRC
 *** Org Drill
 It makes sense to keep this around so as to leverage existing resources.
@@ -1800,6 +1819,7 @@ I also like to have rational and numbered citations.
 #+begin_src emacs-lisp
 (after! ox-hugo
   (use-package! citeproc-org
+    :demand t
     :config
     (citeproc-org-setup)
     (setq citeproc-org-org-bib-header "* References\n")
@@ -2071,8 +2091,8 @@ Apparently, [[https://github.com/kawabata/wolfram-mode][wolfram-mode]] is the be
 #+end_src
 *** CapnProto
 #+begin_src emacs-lisp
-(use-package! capnp-mode
-    :mode "\\.capnp")
+(use-package! capnp2-mode
+  :mode "\\.capnp\\'")
 #+end_src
 *** Nushell
 #+begin_src emacs-lisp
@@ -2148,10 +2168,12 @@ highlighting Dockerfiles.
 Was removed from the core ~modules~ of ~doom-emacs~.
 #+BEGIN_SRC emacs-lisp
 (use-package! wakatime-mode
+  :demand t
   :config
   (cond ((featurep :system 'linux) (setq wakatime-cli-path "/usr/bin/wakatime"))
         ((featurep :system 'macos) (setq wakatime-cli-path "/usr/local/bin/wakatime-cli")) ;; We assume homebrew
         )
+  (global-wakatime-mode)
   )
 #+END_SRC
 ** Functions
@@ -2712,7 +2734,8 @@ upstream.
 As mentioned in [[file:packages.org]], we have some packages which make life easier.
 #+begin_src emacs-lisp
 (use-package! ox-rst
-:after org)
+  :after org
+  :demand t)
 (use-package! sphinx-mode)
 #+end_src
 * Python Helpers
@@ -2733,6 +2756,7 @@ Basically only ~poly-markdown~ for ~rmd~ files.
 #+BEGIN_SRC emacs-lisp
 ;; Load
 (use-package! poly-R
+:mode ("\\.[rR]md\\'" . poly-markdown+r-mode)
 :config
 (map! (:localleader
       :map polymode-mode-map
@@ -3001,17 +3025,13 @@ These are required to view math properly.
 ** Math support
 This is from [[https://www.reddit.com/r/emacs/comments/8tjgtu/cdlatex_and_general_latex_completion_with_company/][this reddit]] thread.
 #+begin_src emacs-lisp
-(map! :map cdlatex-mode-map
-      :i "TAB" #'cdlatex-tab)
-#+end_src
-Also we need some more things.
-#+BEGIN_SRC emacs-lisp
 (use-package! cdlatex
-  :after (:any org-mode LaTeX-mode)
-  :hook
-  ((LaTeX-mode . turn-on-cdlatex)
-   (org-mode . turn-on-org-cdlatex)))
-#+END_SRC
+  :hook ((LaTeX-mode . turn-on-cdlatex)
+         (org-mode . turn-on-org-cdlatex))
+  :config
+  (map! :map cdlatex-mode-map
+        :i "TAB" #'cdlatex-tab))
+#+end_src
 #+BEGIN_SRC emacs-lisp
 (use-package! company-math
   :after (:any org-mode TeX-mode)
@@ -3037,6 +3057,7 @@ Similarly:
 We would also like to set up the ~math-symbol-list~ unicode input [[https://www.emacswiki.org/emacs/TeXInputMethod][from here]].
 #+begin_src emacs-lisp
 (use-package! math-symbol-lists
+  :demand t
   :config
   (quail-define-package "math" "UTF-8" "Ω" t)
   (quail-define-rules ; add whatever extra rules you want to define here...
@@ -3142,6 +3163,7 @@ This includes settings for both flycheck and the packages it needs.
 #+BEGIN_SRC emacs-lisp
 (use-package! flycheck-package
   :after flycheck
+  :demand t
   :config (flycheck-package-setup))
 #+END_SRC
 ** Xenops Inspired :noexport:
@@ -3219,7 +3241,9 @@ is loaded when present. A machine without the file is unaffected.
         org-cite-insert-processor 'citar
         org-cite-follow-processor 'citar
         org-cite-activate-processor 'citar
-        citar-bibliography org-cite-global-bibliography)
+        org-cite-export-processors '((latex biblatex) (t csl))
+        citar-bibliography org-cite-global-bibliography
+        citar-notes-paths (list org_notes))
   :hook ((org-mode . citar-capf-setup)
          (LaTeX-mode . citar-capf-setup)
          (latex-mode . citar-capf-setup))
@@ -3227,7 +3251,9 @@ is loaded when present. A machine without the file is unaffected.
   (rg/bibtex-configure-paths)
   (setq org-cite-global-bibliography (list zot_bib)
         citar-bibliography org-cite-global-bibliography
+        citar-notes-paths (list org_notes)
         citar-at-point-function 'embark-act)
+  (after! org (require 'oc-csl))
   (with-eval-after-load 'citar-org
     (setq citar-org-activation-functions
           '(rg/citar-org-fast-activate
@@ -3235,6 +3261,7 @@ is loaded when present. A machine without the file is unaffected.
 
 (use-package! citar-embark
   :after (citar embark)
+  :demand t
   :config
   (citar-embark-mode))
 
@@ -3264,9 +3291,7 @@ is loaded when present. A machine without the file is unaffected.
   (setq ookcite-bibliography-files (list zot_bib_source)
         ookcite-ridley-notes-file (expand-file-name "bibnotes.org" org_notes)
         ookcite-ridley-note-format-function #'rg/cite-notes-ookcite-note-text
-        ookcite-ridley-item-json-files
-        (list (expand-file-name
-               "~/Git/Github/TurtleTech-ehf/ridley-desktop/fixtures/seed.json")))
+        ookcite-ridley-item-json-files (rg/trawl-ridley-json-files))
   (with-eval-after-load 'embark
     (ookcite-embark-setup))
   (add-hook 'ookcite-after-bibliography-update-hook
@@ -3288,7 +3313,14 @@ is loaded when present. A machine without the file is unaffected.
           :desc "Search styles" "s" #'ookcite-search-styles
           :desc "Ridley read" "r" #'ookcite-ridley-read
           :desc "Read at point" "R" #'ookcite-ridley-read-at-point
-          :desc "Read reference" "o" #'ookcite-ridley-read-reference))))
+          :desc "Read reference" "o" #'ookcite-ridley-read-reference)
+         (:prefix ("t" . "Trawl")
+          :desc "Find" "f" #'rg/trawl-find
+          :desc "Land" "l" #'rg/trawl-land
+          :desc "Today" "t" #'rg/trawl-today
+          :desc "Open PDF" "o" (lambda ()
+                                 (interactive)
+                                 (rg/trawl--run "open" (read-string "Open: ")))))))
 #+end_src
 
 *** Org-Ref
@@ -3312,9 +3344,10 @@ sections are set in my ~private~ config.
   :config
   (rg/bibtex-configure-paths)
   (setq
-   org-ref-get-pdf-filename-function 'org-ref-get-pdf-filename-helm-bibtex
+   org-ref-get-pdf-filename-function #'org-ref-get-pdf-filename-bibtex-completion
    bibtex-completion-bibliography (list zot_bib)
    bibtex-completion-notes-path (expand-file-name "bibnotes.org" org_notes)
+   bibtex-completion-pdf-field "file"
    org-ref-note-title-format (rg/cite-notes-org-ref-title-format)
    org-ref-notes-directory org_notes
    ))
@@ -3330,19 +3363,9 @@ asynchronous. Basically, this is because using the minibuffer, as ivy does is a
 blocking action while the ~helm~ buffer may be opened asynchronously.
 Name aside, [[https://github.com/tmalsburg/helm-bibtex][helm-bibtex]] also works for ~ivy~. Basically meant to interface with
 bibliographies in general. However, since I'm using ~org-ref~, I won't be configuring or loading that anymore.
-*** Helm Bibtex
-For some reason, ~org-ref-notes~ isn't working very nicely, so the setup above prioritizes the ~helm-bibtex~ note-taking setup.
-#+BEGIN_SRC emacs-lisp
-(after! org-ref
-  (setq
-   bibtex-completion-notes-path org_notes
-   bibtex-completion-bibliography (list zot_bib)
-   bibtex-completion-pdf-field "file"
-   bibtex-completion-notes-template-multiple-files
-   (rg/cite-notes-bibtex-completion-template)
-   )
-  )
-#+END_SRC
+Authoring inserts go through citar / org-cite / ookcite. org-ref stays loaded
+for older ~cite:~ documents and for citeproc-org / HTML preprocess. Notes stay
+on ~bibnotes.org~ (ookcite ridley + org-noter), not ORB.
 
 *** Org-Roam
 ~+roam2~ is off, so this block does not load.
@@ -3371,15 +3394,13 @@ it has better support for working with multiple documents linked to one file.
   (setq org-noter-supported-modes '(doc-view-mode pdf-view-mode))
   :config
   (setq
-   ;; The WM can handle splits
    org-noter-notes-window-location 'other-frame
-   ;; Please stop opening frames
    org-noter-always-create-frame nil
-   ;; I want to see the whole file
    org-noter-hide-other nil
-   ;; Everything is relative to the rclone mega
-   org-noter-notes-search-path (list org_notes)
-   )
+   org-noter-auto-save-last-location t
+   org-noter-default-notes-file-names '("bibnotes.org")
+   org-noter-notes-search-path (list org_notes))
+  (rg/trawl-install-noter-hook)
   )
 #+END_SRC
 
@@ -3415,6 +3436,7 @@ The standard capture method isn't too great, but [[https://github.com/alphapapa/
 #+BEGIN_SRC emacs-lisp
 (use-package! org-protocol-capture-html
   :after org-protocol
+  :demand t
   :config
   (rg/org-capture-install-html)
   )

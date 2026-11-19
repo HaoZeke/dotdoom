@@ -8,10 +8,6 @@
               ))
 ;; MacOS:1 ends here
 
-;; [[file:packages.org::*Dired Icons][Dired Icons:1]]
-(package! all-the-icons-dired)
-;; Dired Icons:1 ends here
-
 ;; [[file:packages.org::*Wakatime][Wakatime:1]]
 (package! wakatime-mode)
 ;; Wakatime:1 ends here
@@ -21,7 +17,8 @@
 ;; Magit Delta:1 ends here
 
 ;; [[file:packages.org::*Evil Colemak][Evil Colemak:1]]
-(package! evil-colemak-basics :recipe (:branch "main"))
+(package! evil-colemak-basics :recipe (:branch "main")
+  :pin "70a08ff4c8148c38e0cdc2b89b0316fd504501f6")
 (package! evil-better-visual-line)
 ;; Evil Colemak:1 ends here
 
@@ -54,12 +51,6 @@
             :repo "abo-abo/org-download"))
 ;; Org Download:1 ends here
 
-;; [[file:packages.org::*LATER Org Drill][LATER Org Drill:1]]
-(package! org-drill
-  :recipe (:host github
-            :repo "hakanserce/org-drill"))
-;; LATER Org Drill:1 ends here
-
 ;; [[file:packages.org::*Org Protocol Updates][Org Protocol Updates:1]]
 (package! org-protocol-capture-html
   :recipe (:host github
@@ -68,8 +59,6 @@
 
 ;; [[file:packages.org::*Org Noter][Org Noter:1]]
 (package! org-noter)
-(package! nov)
-(package! djvu)
 ;; Org Noter:1 ends here
 
 ;; [[file:packages.org::*Org Ref][Org Ref:1]]
@@ -94,14 +83,16 @@
 (package! org-cv
   :recipe (:host gitlab
            :repo "Titan-C/org-cv"
-           :branch "master"))
+           :branch "master")
+  :pin "e8de952df7669b38ca475d00fe943ab96d8cfac4")
 ;; Org CV:1 ends here
 
 ;; [[file:packages.org::*ESSGD][ESSGD:1]]
 (package! essgd
   :recipe (:host github
            :repo "sje30/essgd"
-           :branch "main"))
+           :branch "main")
+  :pin "d9a3729ebaeeeec78984f00508cf2785bc7e8978")
 ;; ESSGD:1 ends here
 
 ;; [[file:packages.org::*Org Async][Org Async:1]]
@@ -113,10 +104,6 @@
 (package! anki-editor
   :recipe (:host github :repo "orgtre/anki-editor"))
 ;; Anki Mode:1 ends here
-
-;; [[file:packages.org::*Org Re-Reveal Extensions][Org Re-Reveal Extensions:1]]
-(package! org-re-reveal-ref)
-;; Org Re-Reveal Extensions:1 ends here
 
 ;; [[file:packages.org::*Org GCal][Org GCal:1]]
 (package! org-gcal)
@@ -134,10 +121,6 @@
            :files ("ookcite.el")))
 ;; Citar:1 ends here
 
-;; [[file:packages.org::*Zotero][Zotero:1]]
-(package! zotxt)
-;; Zotero:1 ends here
-
 ;; [[file:packages.org::*Sphinx and RsT][Sphinx and RsT:1]]
 (package! ox-rst
   :recipe (:host github
@@ -151,10 +134,6 @@
 ;; [[file:packages.org::*CPP Additions][CPP Additions:1]]
 (package! highlight-doxygen)
 ;; CPP Additions:1 ends here
-
-;; [[file:packages.org::*Quarto Mode][Quarto Mode:1]]
-(package! quarto-mode)
-;; Quarto Mode:1 ends here
 
 ;; [[file:packages.org::*Meson Mode][Meson Mode:1]]
 (package! meson-mode)
@@ -250,13 +229,6 @@
 (package! package-lint)
 (package! flycheck-package)
 ;; MELPA Helper:1 ends here
-
-;; [[file:packages.org::*Doom][Doom:1]]
-(package! emacs-snippets
-  :recipe (:host github
-           :repo "hlissner/emacs-snippets"
-           :files ("*")))
-;; Doom:1 ends here
 
 ;; [[file:packages.org::*Standard][Standard:1]]
 (package! yasnippet-snippets
