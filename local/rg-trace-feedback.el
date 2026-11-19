@@ -26,7 +26,10 @@
     (message "xait trace feedback disabled; run nimvault unseal")))
 
 (when (file-readable-p rg/trace-feedback-answer-export-file)
-  (load rg/trace-feedback-answer-export-file nil 'nomessage))
+  (condition-case err
+      (load rg/trace-feedback-answer-export-file nil 'nomessage)
+    (error
+     (message "rg-st-export load failed: %s" (error-message-string err)))))
 
 (when (fboundp 'rg/trace-feedback-submit)
   (unless (fboundp 'rg/trace-feedback-submit-trace)
