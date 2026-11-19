@@ -13,8 +13,8 @@
   :type 'string)
 
 (defcustom rg/trawl-ridley-library
-  (expand-file-name "~/.local/share/Ridley/sample-library/library.json")
-  "Live Ridley CSL-JSON mirror used for org-noter item lookup."
+  (expand-file-name "~/.local/share/Ridley/libraries/personal.redb")
+  "Live Ridley store used for org-noter item lookup."
   :type 'file)
 
 (defun rg/trawl--run (&rest args)
@@ -112,12 +112,15 @@
               (lambda (&rest _) (rg/trawl-noter-log-insert))))
 
 (defun rg/trawl-ridley-json-files ()
-  "Ridley item JSON files: live mirror first, seed fixture last."
-  (let ((live rg/trawl-ridley-library)
-        (seed (expand-file-name
-               "~/Git/Github/TurtleTech-ehf/ridley-desktop/fixtures/seed.json")))
-    (append (and (file-readable-p live) (list live))
-            (and (file-readable-p seed) (list seed)))))
+  "Ridley item JSON files from the live store. Never sample or seed fixtures."
+  (let* ((live rg/trawl-ridley-library)
+         (json (cond
+                ((and live (file-directory-p live))
+                 (expand-file-name "library.json" live))
+                ((and live (string-match-p "\\.json\\'" live))
+                 live)
+                (t nil))))
+    (and json (file-readable-p json) (list json))))
 
 (defun rg/trawl-configure ()
   "Apply org-noter and Ridley paths for the trawl desk."

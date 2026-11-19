@@ -12,11 +12,23 @@
 (ert-deftest rg-trawl-parse-find-line-rejects-noise ()
   (should (null (rg/trawl-parse-find-line "cap 8 — not a harvest"))))
 
-(ert-deftest rg-trawl-ridley-json-prefers-live-when-present ()
-  (let ((rg/trawl-ridley-library
-         (expand-file-name "~/.local/share/Ridley/sample-library/library.json")))
-    (should (string-suffix-p "library.json"
-                             (or (car (rg/trawl-ridley-json-files)) "")))))
+(ert-deftest rg-trawl-ridley-library-defaults-to-personal-redb ()
+  (should (file-equal-p
+           rg/trawl-ridley-library
+           (expand-file-name "~/.local/share/Ridley/libraries/personal.redb")))
+  (should (file-exists-p rg/trawl-ridley-library)))
+
+(ert-deftest rg-trawl-ridley-json-files-omit-fixtures ()
+  (dolist (f (rg/trawl-ridley-json-files))
+    (should-not (string-match-p "sample-library" f))
+    (should-not (string-match-p "seed\\.json\\'" f))))
+
+(ert-deftest rg-trawl-ridley-json-includes-readable-json ()
+  (let* ((tmp (make-temp-file "rg-trawl-live" nil ".json"))
+         (rg/trawl-ridley-library tmp))
+    (unwind-protect
+        (should (equal (rg/trawl-ridley-json-files) (list tmp)))
+      (delete-file tmp))))
 
 (provide 'rg-trawl-test)
 ;;; rg-trawl-test.el ends here
